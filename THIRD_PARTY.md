@@ -15,9 +15,11 @@ or bundled binary. [FontTools license](https://github.com/fonttools/fonttools/bl
 
 Unreal Engine and the modding kit are separately installed build/verification
 tools under their own licenses. Proprietary Oodle texture compression is replaced
-with uncompressed BGRA8 in these templates. NVIDIA Texture Tools was evaluated
+with BGRA8 for small textures and the included authored deterministic BC3 encoder for seven large atlas instances in v1.0.1. NVIDIA Texture Tools was evaluated
 locally and is not included in this release.
 
 UE4SS and PalSchema remain separately installed runtime dependencies. Minecraft
 jar/asset-index inputs, generated font/pixel caches, and patched paks are private
 outputs belonging to the user's installation and are excluded from distribution.
+
+The v1.0.1 BC3 implementation (`DeterministicBc.cs`) is authored GPL-3.0-or-later C# source using independent blocks and bounded .NET workers. No external texture encoder or native codec is distributed.

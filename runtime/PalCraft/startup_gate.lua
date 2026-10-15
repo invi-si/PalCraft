@@ -26,7 +26,7 @@ return function(ctx)
     local began=ctx.now();jobs[index]();local ms=ctx.now()-began
     ctx.log('MC35_STARTUP_SLICE index='..index..' work_ms='..ms..' elapsed_ms='..math.floor(ctx.now()-self.worldAt));index=index+1;done=done+1
     
-    if done>=8 or ctx.now()-slice>=8 then return false end
+    if done>=16 or ctx.now()-slice>=16 then return false end
    end
    if done>0 then return false end
    ctx.log('MC35_ASSET_GATE_OPEN elapsed_ms='..math.floor(ctx.now()-self.worldAt));finish();return true

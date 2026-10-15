@@ -29,15 +29,16 @@ return function(ctx)
   T.loop(1,function()
    if epoch~=ctx.epoch()or ctx.quiesced()then return true end
    
-   if ctx.UE and ctx.UE.loadingCover51 and(ctx.UE.loadingCover51.at or ctx.UE.loadingCover51.armed)then return false end
-   self.coverReleasedL=self.coverReleasedL or os.clock();if os.clock()-self.coverReleasedL<5 then return false end
    local current=ctx.environment();if not current then return false end
    if ctx.primeReady and not ctx.primeReady(current)then return false end
+   if i>#warm then
+    if ctx.UE and ctx.UE.alex and not ctx.UE.alex:preloadOB(current)then return false end
+    self.ready=true;ctx.log('MC51_UI_PREBUILT count='..#warm..' epoch='..epoch..' opacity=0 plain_graphs_collapsed=true lua_tick=true catalogs_on_first_open=true');return true
+   end
    local name=warm[i];local r=self:get(current,name,'inventory',true)
    if self.prime then self.prime(current,r,name)end
    self:hide(r.widget)
    i=i+1
-   if i>#warm then self.ready=true;ctx.log('MC51_UI_PREBUILT count='..#warm..' epoch='..epoch..' opacity=0 plain_graphs_collapsed=true lua_tick=true catalogs_on_first_open=true');return true end
    return false
   end,'ui-prebuild')
  end

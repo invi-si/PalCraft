@@ -1753,7 +1753,7 @@ local function mechanicNativeEmpty(c,env)
     local finish={X=p.X,Y=p.Y,Z=p.Z+.2}
     for _=1,16 do
         local hit={}
-        if not system:BoxTraceSingle(env.player,p,finish,{X=49.9,Y=49.9,Z=49.9},{Pitch=0,Yaw=0,Roll=0},0,false,ignored,0,hit,true,colour,colour,0)then return true end
+        if not _G.MC_OUT_K('BoxTraceSingle',system,env.player,p,finish,{X=49.9,Y=49.9,Z=49.9},{Pitch=0,Yaw=0,Roll=0},0,false,ignored,0,hit,true,colour,colour,0)then return true end
         local component=hit.Component:Get();local actor=valid(component)and component:GetOwner()or nil
         if not valid(actor)or not actor:GetClass():GetFullName():find('BP_MapObject_CommonDropItem3D',1,true)then return false end
         ignored[#ignored+1]=actor 
@@ -1847,6 +1847,8 @@ else resources={start=function()end,scan=1}end
 local task34=config.test_mode and (function()return nil end)()
 phaseA.menuOpen=function()return phaseD.open or phaseD.nativeVisibleG or deathScreen.open or(UE.alexTrade and UE.alexTrade.open)or(UE.waystones83 and(UE.waystones83.open or UE.waystones83.busy))end
 local uiEntry=UE.dofileJ(base..'/ui_entry.lua')({base=base,UE=UE,valid=valid,log=log,config=config,world=WORLD,phaseA=phaseA,items=phaseB,uiKit=uiKit,startup=Startup,loadWidgetClass=loadWidgetClass,preloadSteve=function(retain)steve:preload(retain)end,
+    preloadIslands=function(add,retain)if island then island:preloadAssetsOC(add,retain)end end,
+    preloadAlex=function(retain)if UE.alex then UE.alex:preloadStaticOC(retain)end end,
     ready=function()return worldReady and Startup.open and not transitioning and not quiesced and not disabled end,
     earlyReady=function()return Startup.uiOpen and not quiesced and not disabled end,
     earlyEnvironment=function()
@@ -1863,6 +1865,7 @@ local uiEntry=UE.dofileJ(base..'/ui_entry.lua')({base=base,UE=UE,valid=valid,log
 phaseA.uiEntry=uiEntry;uiEntry:start()
 UE.entryHold51=UE.dofileJ(base..'/entry_hold.lua')({valid=valid,epoch=function()return epoch end,log=log,timers=Timers})
 UE.loadingCover51=UE.dofileJ(base..'/loading_cover.lua')({valid=valid,UE=UE,uiKit=uiKit,create=UE.createRawUI51,loadClass=loadWidgetClass,widgets=uiWidgets,dirt=function()return UE.loadingDirt51 end,log=log,resetReady=function()UE.sceneReady52=nil;UE.coverStable52=nil end})
+Timers.coveredBudget=function()return Startup.open and UE.loadingCover51.at and not UE.leaving62 and 24 or nil end
 UE.prespawnQ2=UE.dofileJ(base..'/native_prespawnQ2.lua')({valid=valid,log=log})
 Timers.onEpoch('native-prespawn-Q2',function()UE.prespawnQ2:reset();UE.prespawnNextQ2=nil;UE.prespawnActiveQ2=nil end)
 function UE.observePrespawnQ2()
@@ -1963,12 +1966,12 @@ Timers.frame('entry-loading',function()
         Startup.probing=true;transitioning=false;init(e)
     elseif restoring then UE.loadingCover51:show(e);steve:early(e)
     elseif UE.loadingCover51.at and not(UE.waystones83 and UE.waystones83.busy)then
-        local release,reason=UE.coverRelease78.ready({alive=e.status=='alive',controlled=valid(e.controller.Pawn),hudReady=phaseA:ready78(e),seconds=os.clock()-UE.loadingCover51.at,sceneReady=UE.sceneReady52 and(not island or island:nearbyReady(e)),held=UE.entryHold51.active})
+            local release,reason=UE.coverRelease78.ready({alive=e.status=='alive',controlled=valid(e.controller.Pawn),hudReady=phaseA:ready78(e),seconds=os.clock()-UE.loadingCover51.at,sceneReady=UE.sceneReady52 and UE.uiCache51.ready and(not island or island:nearbyReady(e)),held=UE.entryHold51.active})
         if release and UE.sceneReady52 and(not island or island:nearbyReady(e))and UE.restoreReady109(e.player:K2_GetActorLocation())and UE.sceneRenderedM(e)and(config.steve==false or steve.state and steve.state.epoch==epoch and steve.state.player==e.player:GetAddress()and valid(steve.mesh))then
             if reason=='alive-hud-timeout15s'and not UE.loadingCover51.safety78 then
                 UE.loadingCover51.safety78=true;UE.entryHold51:release(e,reason);log('MC78_COVER_SAFETY_RELEASE alive=true controlled=true hud=true')
             end
-            UE.coverStable52=UE.coverStable52 or os.clock();if os.clock()-UE.coverStable52>.35 then e.controller.PlayerCameraManager:StopCameraFade();UE.loadingCover51:hide()end
+            UE.coverStable52=UE.coverStable52 or os.clock();if os.clock()-UE.coverStable52>.10 then e.controller.PlayerCameraManager:StopCameraFade();UE.loadingCover51:hide()end
         else UE.coverStable52=nil end
     end
     UE.entryHold51:tick(e)
@@ -2292,7 +2295,7 @@ function UE.restartWorld65b()
         if Startup.open and deathScreen.open then deathScreen:close(ready)end
 
         if aliveAddress~=ready.playerAddress then aliveAddress=ready.playerAddress;aliveSince=os.clock();log('MCH_PAWN_READY_BEGIN address='..tostring(aliveAddress))end
-        if os.clock()-aliveSince<.75 then restoreHandle=Timers.after(250,boot,'startup-probe');return end
+        if os.clock()-aliveSince<.25 then restoreHandle=Timers.after(125,boot,'startup-probe');return end
         log(string.format('MCH_PAWN_READY_STABLE seconds=%.3f',os.clock()-aliveSince))
             local env=environment(true)
             if env then

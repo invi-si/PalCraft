@@ -204,11 +204,17 @@ return function(ctx)
   if ctx.config.ui_preload~=false then
    jobs[#jobs+1]=function()self:retain(ctx.uiKit:pixelFont53())end
    if ctx.preloadSteve then jobs[#jobs+1]=function()ctx.preloadSteve(function(o)self:retain(o)end)end end
+   if ctx.preloadIslands then ctx.preloadIslands(function(job)jobs[#jobs+1]=job end,function(o)self:retain(o)end)end
+   if ctx.preloadAlex then jobs[#jobs+1]=function()ctx.preloadAlex(function(o)self:retain(o)end)end end
+   for _,name in ipairs({'WBP_MCInventory2','WBP_MCInventory3','WBP_MCGameMenu','WBP_MCDeath'})do jobs[#jobs+1]=function()self:retain(ctx.loadWidgetClass(name))end end
    
    jobs[#jobs+1]=function()self:retain(ctx.loadWidgetClass('WBP_MCHUD'))end
 
    for _,name in ipairs(dofile(ctx.base..'/ui_preload.lua'))do
-    if name:match('^T_MCHUD_')or name=='F_MC_UI53'or name=='M_MC_UIPixel'then jobs[#jobs+1]=function()self:retain(ctx.uiKit:asset(name))end end
+    if not name:match('_%d+$')then jobs[#jobs+1]=function()
+     local texture=ctx.uiKit:asset(name);self:retain(texture)
+     ctx.uiKit.titleRetainedOC=ctx.uiKit.titleRetainedOC or{};ctx.uiKit.titleRetainedOC[texture:GetAddress()]=texture
+    end end
    end
   end
   if ctx.config.ui_default_mask then

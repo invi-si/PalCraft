@@ -4,7 +4,7 @@ return function()
  local indices={K2_SetRelativeLocation={3},K2_SetRelativeRotation={3},K2_SetWorldLocation={3},K2_SetWorldRotation={3},K2_SetRelativeTransform={3},K2_SetWorldTransform={3},K2_SetActorLocation={3},GetActorBounds={2,3},LineTraceSingle={8},CapsuleTraceSingle={10},BoxTraceSingle={10},SphereTraceSingleForObjects={9},GetAllActorsWithTag={3},GetAllActorsOfClass={3},GetInstanceTransform={2},K2_ProjectPointToNavigation={3}}
  indices['GetSlots']={1};indices['TryGetDynamicItemData']={1};indices['IsAnyMenuOpened']={1};indices['TryGetContainerFromInventoryType']={2};indices['GetLocalizedCharacterName']={2};indices['GetDisplayNickName']={4};indices['GetItemName']={3};indices['GetItemDescription']={3};indices['FindWazaForBP']={2};indices['GetRequiredMaterialInfos']={1};indices['GetDropItemData']={3};indices['TryGetConcreteModel']={1};indices['GetTechnologyIcon']={3};
  indices['CalcDamageCharacter']={4}
- local pools={};local depth=0;local stats={calls=0,buffers=0,maxDepth=0,releasedFields=0,errors=0}
+ local pools={};local depth=0;local stats={calls=0,buffers=0,maxDepth=0,releasedFields=0,errors=0,releasedRefs=0,retainedTailCalls=0}
  local function clear(t)for k in pairs(t)do t[k]=nil end end
  local function call(method,object,...)
   local slots=assert(indices[method]);local args=table.pack(...);local destinations={}
@@ -18,12 +18,24 @@ return function()
   end
   local sample=_G.MC_REGISTRY_SAMPLE_L
   if sample and os.clock()>sample.untilAt then sample=nil end
-  local before=sample and rawlen(debug.getregistry())
+  local registry=debug.getregistry();local before=rawlen(registry)
   local result=table.pack(pcall(object[method],object,table.unpack(args,1,args.n)))
+  local after=rawlen(registry);local released=0
+  if result[1]then
+   for index=after,before+1,-1 do
+    local value=rawget(registry,index);local ours=false
+    for _,slot in ipairs(slots)do if rawequal(value,args[slot])then ours=true;break end end
+    if not ours then break end
+    rawset(registry,index,nil);released=released+1
+   end
+  end
+  stats.releasedRefs=stats.releasedRefs+released
+  if after-before>released then stats.retainedTailCalls=stats.retainedTailCalls+1 end
   if sample then
    local info=debug.getinfo(2,'Sl');local key=info.short_src..':'..info.currentline..':'..method
-   local row=sample.sites[key]or{calls=0,registryGrowth=0,outputSlots=#slots};sample.sites[key]=row
-   row.calls=row.calls+1;row.registryGrowth=row.registryGrowth+rawlen(debug.getregistry())-before
+   local row=sample.sites[key]or{calls=0,registryGrowth=0,outputSlots=#slots,nativeRefs=0,releasedRefs=0};sample.sites[key]=row
+   row.calls=row.calls+1;row.registryGrowth=row.registryGrowth+rawlen(registry)-before
+   row.nativeRefs=(row.nativeRefs or 0)+after-before;row.releasedRefs=(row.releasedRefs or 0)+released
   end
   for n,index in ipairs(slots)do
    local buffer=args[index]

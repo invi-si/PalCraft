@@ -9,9 +9,23 @@ return function(ctx)
   local a=UE.Object(path);if not valid(a)then local package,name=path:match('^(.*)%.([^%.]+)$');a=UE.GetAsset109(UE.Object('/Script/AssetRegistry.Default__AssetRegistryHelpers'),{PackageName=UE.FindOrAddFName(package),AssetName=UE.FindOrAddFName(name)})end
   assert(valid(a),'Alex asset unavailable '..path);ctx.retain(a);return a
  end
- function A:start(env)
+ function A:preloadOB(env)
+  if self.preloadEpochOB==ctx.epoch()then return true end
+  local index=self.preloadIndexOB or 1
+  local paths={'/Game/MinecraftTask70/SK_MC70AlexBody.SK_MC70AlexBody',ctx.registry[ctx.types.oak_planks].mesh,ctx.registry[ctx.types.oak_log].mesh,ctx.registry[ctx.types.red_wool].mesh}
+  if paths[index]then asset(paths[index])
+  elseif index==#paths+1 then local tex=UE.texRuntime:load('textures/entity/player/wide/alex.png',nil);if valid(tex)then ctx.retain(tex)end
+  elseif index==#paths+2 then if ctx.trade.prime67 then ctx.trade:prime67(env)end
+  else self:start(env,true);self.preloadEpochOB=ctx.epoch();return true end
+  self.preloadIndexOB=index+1;return false
+ end
+ function A:preloadStaticOC(retain)
+  for _,path in ipairs({'/Game/MinecraftTask70/SK_MC70AlexBody.SK_MC70AlexBody',ctx.registry[ctx.types.oak_planks].mesh,ctx.registry[ctx.types.oak_log].mesh,ctx.registry[ctx.types.red_wool].mesh})do retain(asset(path))end
+  local tex=UE.texRuntime:load('textures/entity/player/wide/alex.png',nil);if valid(tex)then retain(tex)end
+ end
+ function A:start(env,preparingOB)
   if not UE.worldScope65:valid(UE.worldScope65.id)then return end
-  if self.epoch==ctx.epoch()and valid(self.actor)then return end
+  if self.epoch==ctx.epoch()and valid(self.actor)and not self.preparedOnlyOB then return end
   if support.failed.alex then return end
   local nativeOnly=UE.packFlags and not UE.packFlags:has('hud_skins')
   local anchor=UE.restorePlanner109.alex
@@ -21,7 +35,7 @@ return function(ctx)
    if not island.admitted or not island.footingReady or island.epoch~=ctx.epoch()then return end
    local p=island.data.arrival;anchor={X=p.X+300,Y=p.Y+300,Z=p.Z}
   end
-  local floor=support:ready('alex',anchor,500,function()
+  local floor=preparingOB and anchor.Z or support:ready('alex',anchor,500,function()
    local p=anchor;local color={R=0,G=0,B=0,A=0};local hit={}
    local top=nativeOnly and p.Z+400 or 6400;local bottom=nativeOnly and p.Z-1200 or 3500
    if _G.MC_OUT_K('LineTraceSingle',UE.GetKismetSystemLibrary(),env.player,{X=p.X,Y=p.Y,Z=top},{X=p.X,Y=p.Y,Z=bottom},0,false,{env.player},0,hit,true,color,color,0)and hit.ImpactNormal.Z>.65 then
@@ -31,7 +45,7 @@ return function(ctx)
   end)
   if not floor then return end
   self.epoch=ctx.epoch();local tag=UE.FindOrAddFName('MC62Alex');local found={}
-  local g=UE.Object('/Script/Engine.Default__GameplayStatics');_G.MC_OUT_K('GetAllActorsWithTag',g,env.player,tag,found)
+  local g=UE.Object('/Script/Engine.Default__GameplayStatics');if not valid(self.actor)then _G.MC_OUT_K('GetAllActorsWithTag',g,env.player,tag,found)end
   for _,v in ipairs(found)do local a=v:get();if valid(a)then local w=a:GetWorld();if valid(w)and w:GetAddress()==env.world:GetAddress()then assert(not self.actor,'Duplicate Alex');self.actor=a end end end
   if not valid(self.actor)then
    local p={X=anchor.X,Y=anchor.Y,Z=floor+2};local transform=tf(p)
@@ -49,7 +63,10 @@ return function(ctx)
   else
    self.mesh=self.actor:GetComponentByClass(UE.Object('/Script/Engine.PoseableMeshComponent'))
   end
-  assert(valid(self.mesh));pose:bind(self.mesh);pose:tick(0,0);self.look=pose.snapshot;self.actor:SetActorHiddenInGame(false);local p=self.actor:K2_GetActorLocation();self.p={X=p.X,Y=p.Y,Z=p.Z};self.facing=90
+  assert(valid(self.mesh));pose:bind(self.mesh);pose:tick(0,0);self.look=pose.snapshot
+  if preparingOB then self.actor:SetActorHiddenInGame(true);self.preparedOnlyOB=true;return end
+  if self.preparedOnlyOB then assert(_G.MC_OUT_K('K2_SetActorLocation',self.actor,{X=anchor.X,Y=anchor.Y,Z=floor+2},false,{},true));self.preparedOnlyOB=nil end
+  self.actor:SetActorHiddenInGame(false);local p=self.actor:K2_GetActorLocation();self.p={X=p.X,Y=p.Y,Z=p.Z};self.facing=90
   self.actor:K2_SetActorRotation({Pitch=0,Yaw=self.facing,Roll=0},true)
   ctx.log('MC62_ALEX_READY pooled=true slim=true native_npc=false epoch='..self.epoch)
   if ctx.trade.prime67 then ctx.trade:prime67(env)end
@@ -58,7 +75,7 @@ return function(ctx)
  function A:tick()
   if not UE.worldScope65:valid(UE.worldScope65.id)then return false end
   local env=ctx.environment();if not env or not ctx.ready()then return false end
-  self:start(env);if self.epoch~=ctx.epoch()or not valid(self.actor)or not valid(self.mesh)then return false end
+  self:start(env);if self.preparedOnlyOB or self.epoch~=ctx.epoch()or not valid(self.actor)or not valid(self.mesh)then return false end
   local w=self.actor:GetWorld();if not valid(w)or w:GetAddress()~=env.world:GetAddress()then return false end
   local p=env.player:K2_GetActorLocation();local dx,dy,dz=p.X-self.p.X,p.Y-self.p.Y,p.Z+60-self.p.Z-168;local distance=self:distance(env)
   local yaw,pitch=0,0;if distance<=800 then yaw=math.max(-75,math.min(75,(math.deg(math.atan(dy,dx))-self.facing+180)%360-180));pitch=-math.max(-40,math.min(40,math.deg(math.atan(dz,math.sqrt(dx*dx+dy*dy)))))end
@@ -77,6 +94,6 @@ return function(ctx)
  end)
 
  T.loop(100,function()return A:tick()end,'alex-owned-actor')
- T.onEpoch('alex',function()support:reset();A.actor=nil;A.mesh=nil;A.p=nil;A.epoch=nil;A.interact=nil;A.look=nil end)
+ T.onEpoch('alex',function()support:reset();A.actor=nil;A.mesh=nil;A.p=nil;A.epoch=nil;A.interact=nil;A.look=nil;A.preloadIndexOB=nil;A.preloadEpochOB=nil;A.preparedOnlyOB=nil end)
  return A
 end

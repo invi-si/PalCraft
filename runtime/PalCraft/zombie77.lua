@@ -29,6 +29,11 @@ return function(ctx)
  species.MC_Warden={kind='warden',host='Garm',attack='Ac_Golem',radius=65,half=140,ground=true,material='/Game/MinecraftBossC/MI_MC_warden_hit.MI_MC_warden_hit'}
  species.MC_Wither={kind='wither',host='HawkBird',attack='Ac_Golem',radius=95,half=140,bossD=true,material='/Game/MinecraftBossD/MI_MC_wither_hit.MI_MC_wither_hit'}
  species.MC_EnderDragon={kind='enderdragon',host='HawkBird',attack='Ac_Golem',radius=200,half=220,bossD=true,material='/Game/MinecraftBossD/MI_MC_enderdragon_hit.MI_MC_enderdragon_hit'}
+ local rootPoseOA=dofile(ctx.base..'/poseK.lua')
+ local function rotateRootOA(root,rotation)
+  local p,s=root.RelativeLocation,root.RelativeScale3D
+  rootPoseOA(root,{location={X=p.X,Y=p.Y,Z=p.Z},rotation=rotation,scale={X=s.X,Y=s.Y,Z=s.Z}})
+ end
  local lifecycle108=dofile(ctx.base..'/costume108.lua')(ctx)
  local ride106=dofile(ctx.base..'/ride106.lua')(ctx)
  local farmGround=dofile(ctx.base..'/farm_ground96.lua')(ctx);local farmCapture=dofile(ctx.base..'/farm_capture96.lua')(ctx)
@@ -211,7 +216,7 @@ return function(ctx)
   s.lastActionObject=nil;s.attackStart=nil;s.aggressive=false;s.actionHistory={};s.attackCount103=0;s.fuseStart=nil;s.fuseScale=nil;s.materialVariant=nil
   s.lastMotionPosition=nil;s.lastMotionAt=nil;s.panicUntil=nil;s.motionHistory={};s.flee101=nil;s.lastFlee101=nil;s.passive101=nil;s.fleeRotation101=nil
   s.bossPoseD=nil;s.bossHistoryD=nil;s.fixtureD=nil;s.lookBodyT=nil;s.lookHeadT=nil;s.rootYawT=nil;s.lookTargetT=nil;s.lookAbsoluteT=true
-  s.bossAppliedE=nil;s.bossDesiredE=nil;s.bossRootAppliedE=nil;s.bossWriteCursorE=nil;s.armorE=nil
+  s.bossAppliedE=nil;s.bossDesiredE=nil;s.bossRootAppliedE=nil;s.bossWriteCursorE=nil;s.armorE=nil;s.armorMaterialsRetainedOA=nil
   s.normalMaterial105=nil;s.hitMaterial105=nil;s.coat106=nil;s.seatPartI=nil;s.seatMaterialI=nil
   if s.kind=='rabbit'and a:K2_GetActorLocation().X < -450000 then
    s.normalMaterial105=self:asset('/Game/MinecraftCreatures105/MI_MC_rabbitdesert.MI_MC_rabbitdesert')
@@ -364,7 +369,7 @@ return function(ctx)
   s.lookBodyT,s.lookHeadT=lookT.couple(s.lookBodyT or bodyTarget,s.lookHeadT or bodyTarget,bodyTarget,headTarget,dt,75)
   local rootYaw=s.lookBodyT
   if s.deathAngle~=death or not s.rootYawT or math.abs(lookT.wrap(rootYaw-s.rootYawT))>.01 then
-   _G.MC_OUT_K('K2_SetRelativeRotation',s.root,{Pitch=0,Yaw=rootYaw,Roll=death},false,ignoredHitJ(),true);s.deathAngle=death;s.rootYawT=rootYaw
+   rotateRootOA(s.root,{Pitch=0,Yaw=rootYaw,Roll=death});s.deathAngle=death;s.rootYawT=rootYaw
   end
    fidelity:animate(s,now,dt)
  end

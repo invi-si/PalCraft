@@ -1,7 +1,7 @@
 {
   "version": 1,
   "pakVersion": 3,
-  "format": "BGRA8 cooked payload ranges",
+  "format": "BGRA8 small textures; deterministic BC3 large atlases",
   "recipeFile": "texture-recipes.json",
   "fontGenerator": "CookedFontCache.cs",
   "paks": [
@@ -6537,10 +6537,10 @@
       "files": 796
     },
     {
-      "indexOffset": 218084231,
+      "indexOffset": 217298303,
       "indexSize": 77755,
-      "indexHashOffset": 218162010,
-      "sha256": "4a73c81ce8359edab343fd427ac7e0e648fb59fc99fd1c5216201966ded1f6fc",
+      "indexHashOffset": 217376082,
+      "sha256": "7a77757d5e056287a2e776de4b66cb6faafd8f7cd1e1b5ac6ad24a86d3a080ea",
       "name": "L_MC_Plains_T114_P.pak",
       "pack": "islands_animals",
       "patches": [
@@ -6599,7 +6599,7 @@
           "dataOffset": 217031892,
           "fileSize": 1791,
           "headerHashOffset": 217031867,
-          "indexHashOffset": 218161743,
+          "indexHashOffset": 217375815,
           "forceOpaque": true
         },
         {
@@ -6664,7 +6664,7 @@
             "textures/block/white_wool.png"
           ],
           "supported": true,
-          "format": "PF_B8G8R8A8",
+          "format": "PF_DXT5",
           "originalFormat": "PF_DXT5",
           "srgb": true,
           "width": 512,
@@ -6672,17 +6672,17 @@
           "mips": [
             {
               "index": 0,
-              "offset": 338,
-              "size": 1048576,
+              "offset": 334,
+              "size": 262144,
               "width": 512,
               "height": 512
             }
           ],
           "normalChannels": false,
-          "dataOffset": 217035289,
-          "fileSize": 1048942,
-          "headerHashOffset": 217035264,
-          "indexHashOffset": 218161961,
+          "dataOffset": 217035797,
+          "fileSize": 262506,
+          "headerHashOffset": 217035772,
+          "indexHashOffset": 217376033,
           "forceOpaque": false
         }
       ],
@@ -98354,10 +98354,10 @@
       "files": 20
     },
     {
-      "indexOffset": 199792592,
+      "indexOffset": 197958428,
       "indexSize": 51939,
-      "indexHashOffset": 199844555,
-      "sha256": "4bf6182fafcbf1c006b483921e1d2e84c7e1a837c3cb099b15d3f2d1108ea24f",
+      "indexHashOffset": 198010391,
+      "sha256": "ab78addf4344adbbebd9481caab0e32a9a07c4a06b6b188b2c98c14e3d194d78",
       "name": "pakchunk20083-minecraft-plains_P.pak",
       "pack": "islands_animals",
       "patches": [
@@ -98423,7 +98423,7 @@
             "textures/block/white_wool.png"
           ],
           "supported": true,
-          "format": "PF_B8G8R8A8",
+          "format": "PF_DXT5",
           "originalFormat": "PF_DXT5",
           "srgb": true,
           "width": 512,
@@ -98431,80 +98431,80 @@
           "mips": [
             {
               "index": 0,
-              "offset": 230,
-              "size": 1048576,
+              "offset": 226,
+              "size": 262144,
               "width": 512,
               "height": 512
             },
             {
               "index": 1,
-              "offset": 1048838,
-              "size": 262144,
+              "offset": 262402,
+              "size": 65536,
               "width": 256,
               "height": 256
             },
             {
               "index": 2,
-              "offset": 1311014,
-              "size": 65536,
+              "offset": 327970,
+              "size": 16384,
               "width": 128,
               "height": 128
             },
             {
               "index": 3,
-              "offset": 1376582,
-              "size": 16384,
+              "offset": 344386,
+              "size": 4096,
               "width": 64,
               "height": 64
             },
             {
               "index": 4,
-              "offset": 1392998,
-              "size": 4096,
+              "offset": 348514,
+              "size": 1024,
               "width": 32,
               "height": 32
             },
             {
               "index": 5,
-              "offset": 1397126,
-              "size": 1024,
+              "offset": 349570,
+              "size": 256,
               "width": 16,
               "height": 16
             },
             {
               "index": 6,
-              "offset": 1398182,
-              "size": 256,
+              "offset": 349858,
+              "size": 64,
               "width": 8,
               "height": 8
             },
             {
               "index": 7,
-              "offset": 1398470,
-              "size": 64,
+              "offset": 349954,
+              "size": 16,
               "width": 4,
               "height": 4
             },
             {
               "index": 8,
-              "offset": 1398566,
+              "offset": 350002,
               "size": 16,
               "width": 2,
               "height": 2
             },
             {
               "index": 9,
-              "offset": 1398614,
-              "size": 4,
+              "offset": 350050,
+              "size": 16,
               "width": 1,
               "height": 1
             }
           ],
           "normalChannels": false,
-          "dataOffset": 198393946,
-          "fileSize": 1398646,
-          "headerHashOffset": 198393921,
-          "indexHashOffset": 199844506,
+          "dataOffset": 197608334,
+          "fileSize": 350094,
+          "headerHashOffset": 197608309,
+          "indexHashOffset": 198010342,
           "forceOpaque": false
         },
         {
@@ -98569,7 +98569,7 @@
             "textures/block/white_wool.png"
           ],
           "supported": true,
-          "format": "PF_B8G8R8A8",
+          "format": "PF_DXT5",
           "originalFormat": "PF_DXT5",
           "srgb": true,
           "width": 512,
@@ -98577,27 +98577,27 @@
           "mips": [
             {
               "index": 0,
-              "offset": 338,
-              "size": 1048576,
+              "offset": 334,
+              "size": 262144,
               "width": 512,
               "height": 512
             }
           ],
           "normalChannels": false,
-          "dataOffset": 197343785,
-          "fileSize": 1048942,
-          "headerHashOffset": 197343760,
-          "indexHashOffset": 199844294,
+          "dataOffset": 197344293,
+          "fileSize": 262506,
+          "headerHashOffset": 197344268,
+          "indexHashOffset": 198010130,
           "forceOpaque": false
         }
       ],
       "files": 458
     },
     {
-      "indexOffset": 315699786,
+      "indexOffset": 313865628,
       "indexSize": 104626,
-      "indexHashOffset": 315804436,
-      "sha256": "2f882a34cfba90f3adc005997c7376ef1a0249c73df2dea632f220d01dad7993",
+      "indexHashOffset": 313970278,
+      "sha256": "ae73913236fb3093aa05b8eb5fbce72a7cf80dd0c59c26d6db42f3b41252d1cb",
       "name": "pakchunk20088-minecraft-islands_P.pak",
       "pack": "islands_animals",
       "patches": [
@@ -98671,7 +98671,7 @@
             "textures/entity/chest/normal.png"
           ],
           "supported": true,
-          "format": "PF_B8G8R8A8",
+          "format": "PF_DXT5",
           "originalFormat": "PF_DXT5",
           "srgb": true,
           "width": 512,
@@ -98679,80 +98679,80 @@
           "mips": [
             {
               "index": 0,
-              "offset": 230,
-              "size": 1048576,
+              "offset": 226,
+              "size": 262144,
               "width": 512,
               "height": 512
             },
             {
               "index": 1,
-              "offset": 1048838,
-              "size": 262144,
+              "offset": 262402,
+              "size": 65536,
               "width": 256,
               "height": 256
             },
             {
               "index": 2,
-              "offset": 1311014,
-              "size": 65536,
+              "offset": 327970,
+              "size": 16384,
               "width": 128,
               "height": 128
             },
             {
               "index": 3,
-              "offset": 1376582,
-              "size": 16384,
+              "offset": 344386,
+              "size": 4096,
               "width": 64,
               "height": 64
             },
             {
               "index": 4,
-              "offset": 1392998,
-              "size": 4096,
+              "offset": 348514,
+              "size": 1024,
               "width": 32,
               "height": 32
             },
             {
               "index": 5,
-              "offset": 1397126,
-              "size": 1024,
+              "offset": 349570,
+              "size": 256,
               "width": 16,
               "height": 16
             },
             {
               "index": 6,
-              "offset": 1398182,
-              "size": 256,
+              "offset": 349858,
+              "size": 64,
               "width": 8,
               "height": 8
             },
             {
               "index": 7,
-              "offset": 1398470,
-              "size": 64,
+              "offset": 349954,
+              "size": 16,
               "width": 4,
               "height": 4
             },
             {
               "index": 8,
-              "offset": 1398566,
+              "offset": 350002,
               "size": 16,
               "width": 2,
               "height": 2
             },
             {
               "index": 9,
-              "offset": 1398614,
-              "size": 4,
+              "offset": 350050,
+              "size": 16,
               "width": 1,
               "height": 1
             }
           ],
           "normalChannels": false,
-          "dataOffset": 314301140,
-          "fileSize": 1398646,
-          "headerHashOffset": 314301115,
-          "indexHashOffset": 315804387,
+          "dataOffset": 313515534,
+          "fileSize": 350094,
+          "headerHashOffset": 313515509,
+          "indexHashOffset": 313970229,
           "forceOpaque": false
         },
         {
@@ -98825,7 +98825,7 @@
             "textures/entity/chest/normal.png"
           ],
           "supported": true,
-          "format": "PF_B8G8R8A8",
+          "format": "PF_DXT5",
           "originalFormat": "PF_DXT5",
           "srgb": true,
           "width": 512,
@@ -98833,17 +98833,17 @@
           "mips": [
             {
               "index": 0,
-              "offset": 338,
-              "size": 1048576,
+              "offset": 334,
+              "size": 262144,
               "width": 512,
               "height": 512
             }
           ],
           "normalChannels": false,
-          "dataOffset": 312178062,
-          "fileSize": 1048942,
-          "headerHashOffset": 312178037,
-          "indexHashOffset": 315801497,
+          "dataOffset": 312178573,
+          "fileSize": 262506,
+          "headerHashOffset": 312178548,
+          "indexHashOffset": 313967339,
           "forceOpaque": false
         },
         {
@@ -98919,10 +98919,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 313228477,
+          "dataOffset": 312442552,
           "fileSize": 87929,
-          "headerHashOffset": 313228452,
-          "indexHashOffset": 315801717,
+          "headerHashOffset": 312442527,
+          "indexHashOffset": 313967559,
           "forceOpaque": false
         },
         {
@@ -98998,10 +98998,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 313317919,
+          "dataOffset": 312531994,
           "fileSize": 87929,
-          "headerHashOffset": 313317894,
-          "indexHashOffset": 315801953,
+          "headerHashOffset": 312531969,
+          "indexHashOffset": 313967795,
           "forceOpaque": true
         },
         {
@@ -99077,10 +99077,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 313407326,
+          "dataOffset": 312621401,
           "fileSize": 87929,
-          "headerHashOffset": 313407301,
-          "indexHashOffset": 315802175,
+          "headerHashOffset": 312621376,
+          "indexHashOffset": 313968017,
           "forceOpaque": false
         },
         {
@@ -99156,10 +99156,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 313496718,
+          "dataOffset": 312710793,
           "fileSize": 87929,
-          "headerHashOffset": 313496693,
-          "indexHashOffset": 315802391,
+          "headerHashOffset": 312710768,
+          "indexHashOffset": 313968233,
           "forceOpaque": false
         },
         {
@@ -99235,10 +99235,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 313586115,
+          "dataOffset": 312800190,
           "fileSize": 87929,
-          "headerHashOffset": 313586090,
-          "indexHashOffset": 315802609,
+          "headerHashOffset": 312800165,
+          "indexHashOffset": 313968451,
           "forceOpaque": false
         },
         {
@@ -99314,10 +99314,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 313675512,
+          "dataOffset": 312889587,
           "fileSize": 87929,
-          "headerHashOffset": 313675487,
-          "indexHashOffset": 315802827,
+          "headerHashOffset": 312889562,
+          "indexHashOffset": 313968669,
           "forceOpaque": false
         },
         {
@@ -99393,10 +99393,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 313764924,
+          "dataOffset": 312978999,
           "fileSize": 87929,
-          "headerHashOffset": 313764899,
-          "indexHashOffset": 315803051,
+          "headerHashOffset": 312978974,
+          "indexHashOffset": 313968893,
           "forceOpaque": true
         },
         {
@@ -99472,10 +99472,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 313854356,
+          "dataOffset": 313068431,
           "fileSize": 87929,
-          "headerHashOffset": 313854331,
-          "indexHashOffset": 315803283,
+          "headerHashOffset": 313068406,
+          "indexHashOffset": 313969125,
           "forceOpaque": true
         },
         {
@@ -99551,10 +99551,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 314033145,
+          "dataOffset": 313247220,
           "fileSize": 87929,
-          "headerHashOffset": 314033120,
-          "indexHashOffset": 315803717,
+          "headerHashOffset": 313247195,
+          "indexHashOffset": 313969559,
           "forceOpaque": false
         },
         {
@@ -99630,10 +99630,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 313943753,
+          "dataOffset": 313157828,
           "fileSize": 87929,
-          "headerHashOffset": 313943728,
-          "indexHashOffset": 315803501,
+          "headerHashOffset": 313157803,
+          "indexHashOffset": 313969343,
           "forceOpaque": false
         },
         {
@@ -99709,10 +99709,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 314122587,
+          "dataOffset": 313336662,
           "fileSize": 87929,
-          "headerHashOffset": 314122562,
-          "indexHashOffset": 315803953,
+          "headerHashOffset": 313336637,
+          "indexHashOffset": 313969795,
           "forceOpaque": true
         },
         {
@@ -99788,20 +99788,20 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 314211984,
+          "dataOffset": 313426059,
           "fileSize": 87929,
-          "headerHashOffset": 314211959,
-          "indexHashOffset": 315804171,
+          "headerHashOffset": 313426034,
+          "indexHashOffset": 313970013,
           "forceOpaque": false
         }
       ],
       "files": 908
     },
     {
-      "indexOffset": 174209304,
+      "indexOffset": 173423379,
       "indexSize": 52131,
-      "indexHashOffset": 174261459,
-      "sha256": "7feaa32e9649fca1232f408665a8a5c465844ef4a187109e4dea297176694301",
+      "indexHashOffset": 173475534,
+      "sha256": "d707d1e0d11cb4fd37ea8302b29c72a1b1feb5ea0cda8e71b5006bce20ce4186",
       "name": "pakchunk20089-minecraft-islands_P.pak",
       "pack": "islands_animals",
       "patches": [
@@ -99852,7 +99852,7 @@
             "textures/entity/chest/normal.png"
           ],
           "supported": true,
-          "format": "PF_B8G8R8A8",
+          "format": "PF_DXT5",
           "originalFormat": "PF_DXT5",
           "srgb": true,
           "width": 512,
@@ -99860,17 +99860,17 @@
           "mips": [
             {
               "index": 0,
-              "offset": 338,
-              "size": 1048576,
+              "offset": 334,
+              "size": 262144,
               "width": 512,
               "height": 512
             }
           ],
           "normalChannels": false,
-          "dataOffset": 172623995,
-          "fileSize": 1048942,
-          "headerHashOffset": 172623970,
-          "indexHashOffset": 174260108,
+          "dataOffset": 172624506,
+          "fileSize": 262506,
+          "headerHashOffset": 172624481,
+          "indexHashOffset": 173474183,
           "forceOpaque": false
         },
         {
@@ -99946,10 +99946,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 173674390,
+          "dataOffset": 172888465,
           "fileSize": 87929,
-          "headerHashOffset": 173674365,
-          "indexHashOffset": 174260320,
+          "headerHashOffset": 172888440,
+          "indexHashOffset": 173474395,
           "forceOpaque": true
         },
         {
@@ -100025,10 +100025,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 173763767,
+          "dataOffset": 172977842,
           "fileSize": 87929,
-          "headerHashOffset": 173763742,
-          "indexHashOffset": 174260530,
+          "headerHashOffset": 172977817,
+          "indexHashOffset": 173474605,
           "forceOpaque": true
         },
         {
@@ -100104,10 +100104,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 173853179,
+          "dataOffset": 173067254,
           "fileSize": 87929,
-          "headerHashOffset": 173853154,
-          "indexHashOffset": 174260754,
+          "headerHashOffset": 173067229,
+          "indexHashOffset": 173474829,
           "forceOpaque": false
         },
         {
@@ -100183,10 +100183,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 173942571,
+          "dataOffset": 173156646,
           "fileSize": 87929,
-          "headerHashOffset": 173942546,
-          "indexHashOffset": 174260970,
+          "headerHashOffset": 173156621,
+          "indexHashOffset": 173475045,
           "forceOpaque": true
         },
         {
@@ -100262,10 +100262,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 174031963,
+          "dataOffset": 173246038,
           "fileSize": 87929,
-          "headerHashOffset": 174031938,
-          "indexHashOffset": 174261186,
+          "headerHashOffset": 173246013,
+          "indexHashOffset": 173475261,
           "forceOpaque": false
         },
         {
@@ -100341,10 +100341,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 174121375,
+          "dataOffset": 173335450,
           "fileSize": 87929,
-          "headerHashOffset": 174121350,
-          "indexHashOffset": 174261410,
+          "headerHashOffset": 173335425,
+          "indexHashOffset": 173475485,
           "forceOpaque": false
         }
       ],
@@ -120599,10 +120599,10 @@
       "files": 2
     },
     {
-      "indexOffset": 57948990,
+      "indexOffset": 57163062,
       "indexSize": 25078,
-      "indexHashOffset": 57974092,
-      "sha256": "f9488ab8c523be197579eb2f139772b865192d7eaf49dcbfb529020da212553f",
+      "indexHashOffset": 57188164,
+      "sha256": "8a78dff4e158594ba4a74be21270cf319c8addcc0e938bf20d9b1d92541e360c",
       "name": "pakchunk29980-palcraft-shared-dependencies_P.pak",
       "pack": "core",
       "patches": [
@@ -120633,7 +120633,7 @@
           "dataOffset": 4208151,
           "fileSize": 1390,
           "headerHashOffset": 4208126,
-          "indexHashOffset": 57950933,
+          "indexHashOffset": 57165005,
           "forceOpaque": true
         },
         {
@@ -120663,7 +120663,7 @@
           "dataOffset": 4211118,
           "fileSize": 16750,
           "headerHashOffset": 4211093,
-          "indexHashOffset": 57951137,
+          "indexHashOffset": 57165209,
           "forceOpaque": false
         },
         {
@@ -120721,7 +120721,7 @@
           "dataOffset": 32504611,
           "fileSize": 1791,
           "headerHashOffset": 32504586,
-          "indexHashOffset": 57953053,
+          "indexHashOffset": 57167125,
           "forceOpaque": true
         },
         {
@@ -120779,7 +120779,7 @@
           "dataOffset": 32507771,
           "fileSize": 1791,
           "headerHashOffset": 32507746,
-          "indexHashOffset": 57953269,
+          "indexHashOffset": 57167341,
           "forceOpaque": true
         },
         {
@@ -120837,7 +120837,7 @@
           "dataOffset": 32510931,
           "fileSize": 1791,
           "headerHashOffset": 32510906,
-          "indexHashOffset": 57953485,
+          "indexHashOffset": 57167557,
           "forceOpaque": true
         },
         {
@@ -120895,7 +120895,7 @@
           "dataOffset": 32514091,
           "fileSize": 1791,
           "headerHashOffset": 32514066,
-          "indexHashOffset": 57953701,
+          "indexHashOffset": 57167773,
           "forceOpaque": true
         },
         {
@@ -120953,7 +120953,7 @@
           "dataOffset": 32517251,
           "fileSize": 1791,
           "headerHashOffset": 32517226,
-          "indexHashOffset": 57953917,
+          "indexHashOffset": 57167989,
           "forceOpaque": true
         },
         {
@@ -121011,7 +121011,7 @@
           "dataOffset": 32520411,
           "fileSize": 1791,
           "headerHashOffset": 32520386,
-          "indexHashOffset": 57954133,
+          "indexHashOffset": 57168205,
           "forceOpaque": true
         },
         {
@@ -121069,7 +121069,7 @@
           "dataOffset": 32523571,
           "fileSize": 1791,
           "headerHashOffset": 32523546,
-          "indexHashOffset": 57954349,
+          "indexHashOffset": 57168421,
           "forceOpaque": true
         },
         {
@@ -121127,7 +121127,7 @@
           "dataOffset": 32526731,
           "fileSize": 1791,
           "headerHashOffset": 32526706,
-          "indexHashOffset": 57954565,
+          "indexHashOffset": 57168637,
           "forceOpaque": true
         },
         {
@@ -121185,7 +121185,7 @@
           "dataOffset": 32529891,
           "fileSize": 1791,
           "headerHashOffset": 32529866,
-          "indexHashOffset": 57954781,
+          "indexHashOffset": 57168853,
           "forceOpaque": true
         },
         {
@@ -121243,7 +121243,7 @@
           "dataOffset": 32533051,
           "fileSize": 1791,
           "headerHashOffset": 32533026,
-          "indexHashOffset": 57954997,
+          "indexHashOffset": 57169069,
           "forceOpaque": true
         },
         {
@@ -121301,7 +121301,7 @@
           "dataOffset": 32536211,
           "fileSize": 1791,
           "headerHashOffset": 32536186,
-          "indexHashOffset": 57955213,
+          "indexHashOffset": 57169285,
           "forceOpaque": true
         },
         {
@@ -121359,7 +121359,7 @@
           "dataOffset": 32539371,
           "fileSize": 1791,
           "headerHashOffset": 32539346,
-          "indexHashOffset": 57955429,
+          "indexHashOffset": 57169501,
           "forceOpaque": true
         },
         {
@@ -121417,7 +121417,7 @@
           "dataOffset": 32542531,
           "fileSize": 1791,
           "headerHashOffset": 32542506,
-          "indexHashOffset": 57955645,
+          "indexHashOffset": 57169717,
           "forceOpaque": true
         },
         {
@@ -121475,7 +121475,7 @@
           "dataOffset": 32545691,
           "fileSize": 1791,
           "headerHashOffset": 32545666,
-          "indexHashOffset": 57955861,
+          "indexHashOffset": 57169933,
           "forceOpaque": true
         },
         {
@@ -121533,7 +121533,7 @@
           "dataOffset": 32548851,
           "fileSize": 1791,
           "headerHashOffset": 32548826,
-          "indexHashOffset": 57956077,
+          "indexHashOffset": 57170149,
           "forceOpaque": true
         },
         {
@@ -121591,7 +121591,7 @@
           "dataOffset": 32552011,
           "fileSize": 1791,
           "headerHashOffset": 32551986,
-          "indexHashOffset": 57956293,
+          "indexHashOffset": 57170365,
           "forceOpaque": true
         },
         {
@@ -121649,7 +121649,7 @@
           "dataOffset": 32555201,
           "fileSize": 1791,
           "headerHashOffset": 32555176,
-          "indexHashOffset": 57956521,
+          "indexHashOffset": 57170593,
           "forceOpaque": true
         },
         {
@@ -121707,7 +121707,7 @@
           "dataOffset": 32558361,
           "fileSize": 1791,
           "headerHashOffset": 32558336,
-          "indexHashOffset": 57956737,
+          "indexHashOffset": 57170809,
           "forceOpaque": true
         },
         {
@@ -121765,7 +121765,7 @@
           "dataOffset": 32561521,
           "fileSize": 1791,
           "headerHashOffset": 32561496,
-          "indexHashOffset": 57956953,
+          "indexHashOffset": 57171025,
           "forceOpaque": true
         },
         {
@@ -121823,7 +121823,7 @@
           "dataOffset": 32564681,
           "fileSize": 1791,
           "headerHashOffset": 32564656,
-          "indexHashOffset": 57957169,
+          "indexHashOffset": 57171241,
           "forceOpaque": true
         },
         {
@@ -121881,7 +121881,7 @@
           "dataOffset": 32567841,
           "fileSize": 1791,
           "headerHashOffset": 32567816,
-          "indexHashOffset": 57957385,
+          "indexHashOffset": 57171457,
           "forceOpaque": true
         },
         {
@@ -121939,7 +121939,7 @@
           "dataOffset": 32571001,
           "fileSize": 1791,
           "headerHashOffset": 32570976,
-          "indexHashOffset": 57957601,
+          "indexHashOffset": 57171673,
           "forceOpaque": true
         },
         {
@@ -121997,7 +121997,7 @@
           "dataOffset": 32574161,
           "fileSize": 1791,
           "headerHashOffset": 32574136,
-          "indexHashOffset": 57957817,
+          "indexHashOffset": 57171889,
           "forceOpaque": true
         },
         {
@@ -122055,7 +122055,7 @@
           "dataOffset": 32577321,
           "fileSize": 1791,
           "headerHashOffset": 32577296,
-          "indexHashOffset": 57958033,
+          "indexHashOffset": 57172105,
           "forceOpaque": true
         },
         {
@@ -122113,7 +122113,7 @@
           "dataOffset": 32580481,
           "fileSize": 1791,
           "headerHashOffset": 32580456,
-          "indexHashOffset": 57958249,
+          "indexHashOffset": 57172321,
           "forceOpaque": true
         },
         {
@@ -122171,7 +122171,7 @@
           "dataOffset": 32583641,
           "fileSize": 1791,
           "headerHashOffset": 32583616,
-          "indexHashOffset": 57958465,
+          "indexHashOffset": 57172537,
           "forceOpaque": true
         },
         {
@@ -122229,7 +122229,7 @@
           "dataOffset": 32586801,
           "fileSize": 1791,
           "headerHashOffset": 32586776,
-          "indexHashOffset": 57958681,
+          "indexHashOffset": 57172753,
           "forceOpaque": true
         },
         {
@@ -122287,7 +122287,7 @@
           "dataOffset": 32589961,
           "fileSize": 1791,
           "headerHashOffset": 32589936,
-          "indexHashOffset": 57958897,
+          "indexHashOffset": 57172969,
           "forceOpaque": true
         },
         {
@@ -122345,7 +122345,7 @@
           "dataOffset": 32593121,
           "fileSize": 1791,
           "headerHashOffset": 32593096,
-          "indexHashOffset": 57959113,
+          "indexHashOffset": 57173185,
           "forceOpaque": true
         },
         {
@@ -122403,7 +122403,7 @@
           "dataOffset": 32596281,
           "fileSize": 1791,
           "headerHashOffset": 32596256,
-          "indexHashOffset": 57959329,
+          "indexHashOffset": 57173401,
           "forceOpaque": true
         },
         {
@@ -122461,7 +122461,7 @@
           "dataOffset": 32599441,
           "fileSize": 1791,
           "headerHashOffset": 32599416,
-          "indexHashOffset": 57959545,
+          "indexHashOffset": 57173617,
           "forceOpaque": true
         },
         {
@@ -122519,7 +122519,7 @@
           "dataOffset": 32602601,
           "fileSize": 1791,
           "headerHashOffset": 32602576,
-          "indexHashOffset": 57959761,
+          "indexHashOffset": 57173833,
           "forceOpaque": true
         },
         {
@@ -122577,7 +122577,7 @@
           "dataOffset": 32605761,
           "fileSize": 1791,
           "headerHashOffset": 32605736,
-          "indexHashOffset": 57959977,
+          "indexHashOffset": 57174049,
           "forceOpaque": true
         },
         {
@@ -122635,7 +122635,7 @@
           "dataOffset": 32608921,
           "fileSize": 1791,
           "headerHashOffset": 32608896,
-          "indexHashOffset": 57960193,
+          "indexHashOffset": 57174265,
           "forceOpaque": true
         },
         {
@@ -122693,7 +122693,7 @@
           "dataOffset": 32612081,
           "fileSize": 1791,
           "headerHashOffset": 32612056,
-          "indexHashOffset": 57960409,
+          "indexHashOffset": 57174481,
           "forceOpaque": true
         },
         {
@@ -122751,7 +122751,7 @@
           "dataOffset": 32615271,
           "fileSize": 1791,
           "headerHashOffset": 32615246,
-          "indexHashOffset": 57960637,
+          "indexHashOffset": 57174709,
           "forceOpaque": true
         },
         {
@@ -122809,7 +122809,7 @@
           "dataOffset": 32618437,
           "fileSize": 1791,
           "headerHashOffset": 32618412,
-          "indexHashOffset": 57960857,
+          "indexHashOffset": 57174929,
           "forceOpaque": true
         },
         {
@@ -122867,7 +122867,7 @@
           "dataOffset": 32621603,
           "fileSize": 1791,
           "headerHashOffset": 32621578,
-          "indexHashOffset": 57961077,
+          "indexHashOffset": 57175149,
           "forceOpaque": true
         },
         {
@@ -122925,7 +122925,7 @@
           "dataOffset": 32624769,
           "fileSize": 1791,
           "headerHashOffset": 32624744,
-          "indexHashOffset": 57961297,
+          "indexHashOffset": 57175369,
           "forceOpaque": true
         },
         {
@@ -122983,7 +122983,7 @@
           "dataOffset": 32627935,
           "fileSize": 1791,
           "headerHashOffset": 32627910,
-          "indexHashOffset": 57961517,
+          "indexHashOffset": 57175589,
           "forceOpaque": true
         },
         {
@@ -123041,7 +123041,7 @@
           "dataOffset": 32631101,
           "fileSize": 1791,
           "headerHashOffset": 32631076,
-          "indexHashOffset": 57961737,
+          "indexHashOffset": 57175809,
           "forceOpaque": true
         },
         {
@@ -123099,7 +123099,7 @@
           "dataOffset": 32634267,
           "fileSize": 1791,
           "headerHashOffset": 32634242,
-          "indexHashOffset": 57961957,
+          "indexHashOffset": 57176029,
           "forceOpaque": true
         },
         {
@@ -123157,7 +123157,7 @@
           "dataOffset": 32637433,
           "fileSize": 1791,
           "headerHashOffset": 32637408,
-          "indexHashOffset": 57962177,
+          "indexHashOffset": 57176249,
           "forceOpaque": true
         },
         {
@@ -123215,7 +123215,7 @@
           "dataOffset": 32640599,
           "fileSize": 1791,
           "headerHashOffset": 32640574,
-          "indexHashOffset": 57962397,
+          "indexHashOffset": 57176469,
           "forceOpaque": true
         },
         {
@@ -123273,7 +123273,7 @@
           "dataOffset": 32643765,
           "fileSize": 1791,
           "headerHashOffset": 32643740,
-          "indexHashOffset": 57962617,
+          "indexHashOffset": 57176689,
           "forceOpaque": true
         },
         {
@@ -123331,7 +123331,7 @@
           "dataOffset": 32646931,
           "fileSize": 1791,
           "headerHashOffset": 32646906,
-          "indexHashOffset": 57962837,
+          "indexHashOffset": 57176909,
           "forceOpaque": true
         },
         {
@@ -123389,7 +123389,7 @@
           "dataOffset": 32650097,
           "fileSize": 1791,
           "headerHashOffset": 32650072,
-          "indexHashOffset": 57963057,
+          "indexHashOffset": 57177129,
           "forceOpaque": true
         },
         {
@@ -123447,7 +123447,7 @@
           "dataOffset": 32653263,
           "fileSize": 1791,
           "headerHashOffset": 32653238,
-          "indexHashOffset": 57963277,
+          "indexHashOffset": 57177349,
           "forceOpaque": true
         },
         {
@@ -123505,7 +123505,7 @@
           "dataOffset": 32656429,
           "fileSize": 1791,
           "headerHashOffset": 32656404,
-          "indexHashOffset": 57963497,
+          "indexHashOffset": 57177569,
           "forceOpaque": true
         },
         {
@@ -123563,7 +123563,7 @@
           "dataOffset": 32659595,
           "fileSize": 1791,
           "headerHashOffset": 32659570,
-          "indexHashOffset": 57963717,
+          "indexHashOffset": 57177789,
           "forceOpaque": true
         },
         {
@@ -123621,7 +123621,7 @@
           "dataOffset": 32662761,
           "fileSize": 1791,
           "headerHashOffset": 32662736,
-          "indexHashOffset": 57963937,
+          "indexHashOffset": 57178009,
           "forceOpaque": true
         },
         {
@@ -123679,7 +123679,7 @@
           "dataOffset": 32665927,
           "fileSize": 1791,
           "headerHashOffset": 32665902,
-          "indexHashOffset": 57964157,
+          "indexHashOffset": 57178229,
           "forceOpaque": true
         },
         {
@@ -123737,7 +123737,7 @@
           "dataOffset": 32669093,
           "fileSize": 1791,
           "headerHashOffset": 32669068,
-          "indexHashOffset": 57964377,
+          "indexHashOffset": 57178449,
           "forceOpaque": true
         },
         {
@@ -123795,7 +123795,7 @@
           "dataOffset": 32672274,
           "fileSize": 1791,
           "headerHashOffset": 32672249,
-          "indexHashOffset": 57964603,
+          "indexHashOffset": 57178675,
           "forceOpaque": true
         },
         {
@@ -123853,7 +123853,7 @@
           "dataOffset": 32675470,
           "fileSize": 1791,
           "headerHashOffset": 32675445,
-          "indexHashOffset": 57964835,
+          "indexHashOffset": 57178907,
           "forceOpaque": true
         },
         {
@@ -123911,7 +123911,7 @@
           "dataOffset": 56231796,
           "fileSize": 1791,
           "headerHashOffset": 56231771,
-          "indexHashOffset": 57970723,
+          "indexHashOffset": 57184795,
           "forceOpaque": true
         },
         {
@@ -123969,7 +123969,7 @@
           "dataOffset": 56234976,
           "fileSize": 1791,
           "headerHashOffset": 56234951,
-          "indexHashOffset": 57970947,
+          "indexHashOffset": 57185019,
           "forceOpaque": true
         },
         {
@@ -124027,7 +124027,7 @@
           "dataOffset": 56238161,
           "fileSize": 1791,
           "headerHashOffset": 56238136,
-          "indexHashOffset": 57971173,
+          "indexHashOffset": 57185245,
           "forceOpaque": true
         },
         {
@@ -124085,7 +124085,7 @@
           "dataOffset": 56241351,
           "fileSize": 1791,
           "headerHashOffset": 56241326,
-          "indexHashOffset": 57971401,
+          "indexHashOffset": 57185473,
           "forceOpaque": true
         },
         {
@@ -124115,7 +124115,7 @@
           "dataOffset": 56561752,
           "fileSize": 8558,
           "headerHashOffset": 56561727,
-          "indexHashOffset": 57972481,
+          "indexHashOffset": 57186553,
           "forceOpaque": false
         },
         {
@@ -124180,7 +124180,7 @@
             "textures/block/white_wool.png"
           ],
           "supported": true,
-          "format": "PF_B8G8R8A8",
+          "format": "PF_DXT5",
           "originalFormat": "PF_DXT5",
           "srgb": true,
           "width": 512,
@@ -124188,17 +124188,17 @@
           "mips": [
             {
               "index": 0,
-              "offset": 338,
-              "size": 1048576,
+              "offset": 334,
+              "size": 262144,
               "width": 512,
               "height": 512
             }
           ],
           "normalChannels": false,
-          "dataOffset": 56571916,
-          "fileSize": 1048942,
-          "headerHashOffset": 56571891,
-          "indexHashOffset": 57972699,
+          "dataOffset": 56572424,
+          "fileSize": 262506,
+          "headerHashOffset": 56572399,
+          "indexHashOffset": 57186771,
           "forceOpaque": false
         },
         {
@@ -124220,7 +124220,7 @@
           "dataOffset": 4235366,
           "fileSize": 4710460,
           "headerHashOffset": 4235341,
-          "indexHashOffset": 57951753
+          "indexHashOffset": 57165825
         },
         {
           "package": "/Game/MinecraftFonts/Face/MC53toBold",
@@ -124241,7 +124241,7 @@
           "dataOffset": 8946842,
           "fileSize": 4710460,
           "headerHashOffset": 8946817,
-          "indexHashOffset": 57951965
+          "indexHashOffset": 57166037
         },
         {
           "package": "/Game/MinecraftFonts/Face/MC53toBoldItalic",
@@ -124262,7 +124262,7 @@
           "dataOffset": 13658336,
           "fileSize": 4710460,
           "headerHashOffset": 13658311,
-          "indexHashOffset": 57952189
+          "indexHashOffset": 57166261
         },
         {
           "package": "/Game/MinecraftFonts/Face/MC53toItalic",
@@ -124283,7 +124283,7 @@
           "dataOffset": 18369818,
           "fileSize": 4710460,
           "headerHashOffset": 18369793,
-          "indexHashOffset": 57952405
+          "indexHashOffset": 57166477
         },
         {
           "package": "/Game/MinecraftFonts/Face/MC53toLight",
@@ -124304,7 +124304,7 @@
           "dataOffset": 23081297,
           "fileSize": 4710460,
           "headerHashOffset": 23081272,
-          "indexHashOffset": 57952619
+          "indexHashOffset": 57166691
         },
         {
           "package": "/Game/MinecraftFonts/Face/MC53toRegular",
@@ -124325,7 +124325,7 @@
           "dataOffset": 27792782,
           "fileSize": 4710460,
           "headerHashOffset": 27792757,
-          "indexHashOffset": 57952837
+          "indexHashOffset": 57166909
         },
         {
           "package": "/Game/MinecraftRuntimeAssets/T_PC_Steve",
@@ -124351,10 +124351,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 57932446,
+          "dataOffset": 57146518,
           "fileSize": 16544,
-          "headerHashOffset": 57932421,
-          "indexHashOffset": 57974043,
+          "headerHashOffset": 57146493,
+          "indexHashOffset": 57188115,
           "forceOpaque": false
         },
         {
@@ -124381,10 +124381,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 57910861,
+          "dataOffset": 57124933,
           "fileSize": 16750,
-          "headerHashOffset": 57910836,
-          "indexHashOffset": 57973609,
+          "headerHashOffset": 57124908,
+          "indexHashOffset": 57187681,
           "forceOpaque": false
         },
         {
@@ -124411,10 +124411,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 57892017,
+          "dataOffset": 57106089,
           "fileSize": 16750,
-          "headerHashOffset": 57891992,
-          "indexHashOffset": 57973385,
+          "headerHashOffset": 57106064,
+          "indexHashOffset": 57187457,
           "forceOpaque": false
         },
         {
@@ -124469,10 +124469,10 @@
             }
           ],
           "normalChannels": false,
-          "dataOffset": 57929379,
+          "dataOffset": 57143451,
           "fileSize": 1791,
-          "headerHashOffset": 57929354,
-          "indexHashOffset": 57973825,
+          "headerHashOffset": 57143426,
+          "indexHashOffset": 57187897,
           "forceOpaque": false
         },
         {
@@ -124503,7 +124503,7 @@
           "dataOffset": 56513769,
           "fileSize": 1390,
           "headerHashOffset": 56513744,
-          "indexHashOffset": 57972057
+          "indexHashOffset": 57186129
         }
       ],
       "files": 226

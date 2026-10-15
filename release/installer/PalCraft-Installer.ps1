@@ -24,7 +24,7 @@ param(
   [switch]$LibraryOnly      # dot-source: define functions only (used by tests)
 )
 
-$script:InstallerVersion = '1.0.0'
+$script:InstallerVersion = '1.0.1'
 $script:SteamAppId = '1623730'
 $script:Dry = [bool]$WhatIf
 $script:UiLog = $null

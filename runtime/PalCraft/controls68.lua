@@ -75,16 +75,22 @@ return function(ctx)
   return true
  end
 
- function C:reset()self.address=nil;self.own=nil;self.nextHit=nil end
+ function C:reset()self.address=nil;self.own=nil;self.nextHit=nil;self.uiShooterOA=nil;self.uiBlockedOA=nil end
  local T=dofile(ctx.base..'/timers.lua')
  T.onEpoch('controls68',function()C:reset();C.bowHeldZ1=nil end)
 
  T.frame('bow-input-Z1',function()
   local e=ctx.environment();if not e then C.bowHeldZ1=nil;return end
   local shooter=e.player.ShooterComponent
+  local uiBlocked=not ctx.gameplayInput(e);local address=shooter:GetAddress()
+  if C.uiShooterOA~=address or C.uiBlockedOA~=uiBlocked then
+   shooter:SetDisableShootFlag(ctx.UE.FindOrAddFName('MinecraftModalOA'),uiBlocked)
+   if uiBlocked then shooter:ReleaseTrigger();C.bowHeldZ1=nil end
+   C.uiShooterOA=address;C.uiBlockedOA=uiBlocked
+  end
   local selected=ctx.items:hotbar(e,ctx.phaseA.selected).id
   local weapon=shooter:GetHasWeapon()
-  local available=selected=='MC_Bow'and ctx.valid(weapon)and weapon:GetItemId().StaticId:ToString()=='MC_Bow'and not e.controller:IsRiding()and ctx.gameplayInput(e)
+  local available=selected=='MC_Bow'and ctx.valid(weapon)and weapon:GetItemId().StaticId:ToString()=='MC_Bow'and not e.controller:IsRiding()and not uiBlocked
   C.bowKeysZ1=C.bowKeysZ1 or{{KeyName=ctx.UE.FindOrAddFName('LeftMouseButton')},{KeyName=ctx.UE.FindOrAddFName('RightMouseButton')}}
   local down=available and(e.controller:IsInputKeyDown(C.bowKeysZ1[1])or e.controller:IsInputKeyDown(C.bowKeysZ1[2]))
   if down and not C.bowHeldZ1 and shooter:CanShoot()then

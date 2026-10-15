@@ -1,6 +1,6 @@
 # Install PalCraft
 
-**PalCraft v1.0: READY for offline delivery.** Opus accepted the measured cold-load exception in SEQ268. The second All cold entry was 15.703 seconds (first: 16.002 seconds); the original 14.5-second target was not met. The final release retains the native-tested gameplay, installer and asset bytes.
+**PalCraft v1.0.1: READY for offline delivery.** Opus accepts the two OC cold loads of 15.928516 and 15.656792 seconds; the original 14.5-second target remains failed. See RELEASE_NOTES.md for OA/OB/OC changes and measured limitations.
 
 Use a release whose manifest status is `READY`. Close Palworld before changing installed mod files. Install the compatible [UE4SS Palworld build](https://github.com/Okaetsu/RE-UE4SS/releases/tag/experimental-palworld) and [PalSchema](https://github.com/Okaetsu/PalSchema/releases) first; these dependencies are not included.
 
@@ -22,3 +22,5 @@ The first launch after install does a one-time setup (several minutes); later lo
 The first mod startup converts your local JSON into a versioned table cache under `PalCraft/cache/`; later startups read that cache. Changing the jar or converter invalidates it automatically. Minecraft sounds are unavailable in this version: native sounds or silence provide the fallback.
 
 To reverse legacy cutover, close the game, disable/uninstall PalCraft's new payload, then run the backup's `Restore-Legacy.ps1 -WhatIf` to review it and run it again without `-WhatIf` to restore. It verifies backup hashes and refuses to overwrite existing legacy destinations. It restores the prior legacy Lua enablement while preserving unrelated mod registrations; copied PalCraft save sidecars remain available.
+
+For v1.0.1, seven large atlas instances use deterministic install-time BC3 (75% less payload); small textures remain BGRA8. Minor enlarged palette quantization is accepted. No reconstructed Minecraft pixels are distributed. The final ten-minute eight-zombie soak had zero registry growth and +0.025326 MiB/min completed-cycle heap trend; this does not establish unlimited stability. Only All was live-tested in OC.

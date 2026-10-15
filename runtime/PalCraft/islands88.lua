@@ -16,6 +16,19 @@ return function(ctx)
  end
  local keys={};for k in pairs(all)do if k~='plains'then keys[#keys+1]=k end end;table.sort(keys)
  local timers=dofile(ctx.base..'/timers.lua');local starts={};for k,i in pairs(all)do starts[k]=i.start end
+ function primary:preloadAssetsOC(add,retain)
+  ctx.UE.islandAssetsOC=ctx.UE.islandAssetsOC or{}
+  local ordered={};for k in pairs(all)do ordered[#ordered+1]=k end;table.sort(ordered)
+  for _,key in ipairs(ordered)do for _,chunk in ipairs(all[key].data.chunks)do
+   local name=chunk.name;local path='/Game/MinecraftIslandX6/'..key..'/R2/'..name..'.'..name
+   add(function()
+    local at=os.clock();local a=ctx.UE.islandAssetsOC[path]
+    if not ctx.valid(a)then a=ctx.UE.GetAsset109(ctx.UE.Object('/Script/AssetRegistry.Default__AssetRegistryHelpers'),{PackageName=ctx.UE.FindOrAddFName(path:match('^(.*)%.[^%.]+$')),AssetName=ctx.UE.FindOrAddFName(name)})end
+    assert(ctx.valid(a)and a:IsA(ctx.UE.Object('/Script/Engine.StaticMesh'))and a:GetFullName()=='StaticMesh '..path,'Title island dependency changed: '..path)
+    retain(a);ctx.UE.islandAssetsOC[path]=a;ctx.log('MCOC_TITLE_DEPENDENCY key='..key..' name='..name..' ms='..((os.clock()-at)*1000))
+   end)
+  end end
+ end
  local function nearby(i,p)
   local d=i.data;local mid=(d.min or 0)+d.size/2
   local x=d.origin.X+mid*100*(d.signX or 1);local y=d.origin.Y+mid*100*(d.signY or -1)

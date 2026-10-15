@@ -47,8 +47,8 @@
     },
     {
       "path": "BUILD.md",
-      "sha256": "3dc223fa7d05ad677fc38885d56dd16138bd8855bd7c092f454c9bcdccc865bd",
-      "bytes": 7476
+      "sha256": "d1fc8db76772e5718dd2cdb1bbb71ccda88f529f7af46efb8a02c8ca59069c06",
+      "bytes": 8193
     },
     {
       "path": "CONTRIBUTING.md",
@@ -57,8 +57,8 @@
     },
     {
       "path": "INSTALL.md",
-      "sha256": "462a32d60506eb295d0ea7e3435ca138e7e3052d3e22470c63f944fcf3e03b5d",
-      "bytes": 4597
+      "sha256": "eea35abfba2c864421400213fb4b1e2a6550d78129b6697f5717817234f434f3",
+      "bytes": 4948
     },
     {
       "path": "LICENSE",
@@ -69,6 +69,21 @@
       "path": "LICENSE-ART.md",
       "sha256": "f8b3172a7987c859296a85506c9fee4fef268c553b3c7c0fab5fd118a668f5c7",
       "bytes": 876
+    },
+    {
+      "path": "OA_NOTES.md",
+      "sha256": "d7c3572c60ce5f83b2254146668fa819aca419c1c9b67d9a19ae4f815237e807",
+      "bytes": 2768
+    },
+    {
+      "path": "OB_NOTES.md",
+      "sha256": "064ab01f1e70430d3ce45c81798ac4d391f80502ac1232d1d3f1748e257a1cc0",
+      "bytes": 3314
+    },
+    {
+      "path": "OC_NOTES.md",
+      "sha256": "3d6df7a02f977e258141dd2715a34c2850ef2a44c1b44ca6a437d2efd089e1c3",
+      "bytes": 6382
     },
     {
       "path": "project/Config/DefaultEngine.ini",
@@ -131447,13 +131462,13 @@
     },
     {
       "path": "README.ko.md",
-      "sha256": "6e756b63cd0a7b6fb1eb4b7cc55c33c7de92d581d07db93da49686dd4d763084",
-      "bytes": 9749
+      "sha256": "3e8e3e5086fd11c21889d5e22ee999a7b78fc0be64f3da42e186331aca2d32ee",
+      "bytes": 10008
     },
     {
       "path": "README.md",
-      "sha256": "55821ead26cb5f03eb1d3194a199e35fb49b57873e251ff5f32799a0ea16caeb",
-      "bytes": 4176
+      "sha256": "37d63367d1098e48efd118f396eb79fea0bbaed32dfa8c84f6a27c0c25a63fc7",
+      "bytes": 4595
     },
     {
       "path": "release/art/icons/Bed.png",
@@ -131622,8 +131637,8 @@
     },
     {
       "path": "release/asset-runtime/cooked-patches.json",
-      "sha256": "7cb7023eeed178869f535d1809bb812ce51c67a2050665a5c36ef29c577b49dc",
-      "bytes": 3913518
+      "sha256": "4077e1fd7f5646750ee9c2b20169886bce6d3abe941c912bd77c70efeb023844",
+      "bytes": 3913480
     },
     {
       "path": "release/asset-runtime/CookedFontCache.cs",
@@ -131632,13 +131647,18 @@
     },
     {
       "path": "release/asset-runtime/CookedPakPatch.cs",
-      "sha256": "09981f1b5b22f3735d1072ed35361f2edc033674774b2b3bfe6437a2822a4ee3",
-      "bytes": 7708
+      "sha256": "dbe26af41b7963e97d5d1119688dc35ff57fd5bebeddeed62b881702324ce15a",
+      "bytes": 9079
     },
     {
       "path": "release/asset-runtime/DecodedTextureCache.cs",
       "sha256": "b9d032d3b8f5a534c8fb43f85a26227fe8bff443a2663cb0b84ff3d3f294af81",
       "bytes": 2285
+    },
+    {
+      "path": "release/asset-runtime/DeterministicBc.cs",
+      "sha256": "be7e929648dee6c135a39150c088b63391952a82dd1be772ead36184a57872d7",
+      "bytes": 4680
     },
     {
       "path": "release/asset-runtime/FontCache.cs",
@@ -131647,8 +131667,8 @@
     },
     {
       "path": "release/asset-runtime/Patch-CookedPaks.ps1",
-      "sha256": "4fd8fe0c84d8f4b7a69a77380e7d7607e488e5d1edb066fb1ccf84d7904dec53",
-      "bytes": 1146
+      "sha256": "1ed67195a82ee515fc54b7178421d9089d652996e7346d41bd34427d68a1094d",
+      "bytes": 1160
     },
     {
       "path": "release/asset-runtime/texture-recipes.json",
@@ -131707,7 +131727,7 @@
     },
     {
       "path": "release/installer/PalCraft-Installer.ps1",
-      "sha256": "3c35efb6edbb945aedbf6e2f761bc1d829610ff26b62c6dbd07cf778804f9b4b",
+      "sha256": "19799991e61a10aaf019d5e3dd0abf8461b93c39e874c376f885259d5ebb520c",
       "bytes": 52093
     },
     {
@@ -131752,8 +131772,8 @@
     },
     {
       "path": "release/modules.json",
-      "sha256": "d0bd4aefbb3ac458d6401c34909bb8d631e99f050392bcaa965f714a22e5e136",
-      "bytes": 120523
+      "sha256": "4a7a8a538bf4b8a87beecbc78b73f8ba989f19464df9b92918d05c1d7f9a980a",
+      "bytes": 124659
     },
     {
       "path": "release/modules.json.license",
@@ -131772,8 +131792,13 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "sha256": "e048025f67c587edfd3969856f98f04a97ed5b230380f3293da634104ffec15b",
-      "bytes": 3667
+      "sha256": "d866294f6c8eaacce0867df36e6d983045833cc64d45c3981e18aa3da1405f5c",
+      "bytes": 3308
+    },
+    {
+      "path": "RELEASE_v1.0.1.md",
+      "sha256": "e3d3771f5f15750567793f5db3836702c20d36dedb2dae1c2cc4513db42d8271",
+      "bytes": 5017
     },
     {
       "path": "RELEASE_v1.0.md",
@@ -131782,13 +131807,13 @@
     },
     {
       "path": "RS_REPORT.md",
-      "sha256": "159ab5fb415dd3bbc61480b049d843a92b24eed38a4b9db69f6a24696fed9c83",
-      "bytes": 21113
+      "sha256": "8263a93249655a885282378a74263b284fbfbda0b67f829c399b5588443677e1",
+      "bytes": 27654
     },
     {
       "path": "runtime/PalCraft/alex.lua",
-      "sha256": "0f6ae61b78206d936f91992e2c27189305b7b235aba878717840e0923463c919",
-      "bytes": 6546
+      "sha256": "7c24a2e30179b4ff4fca932d0911bd263a11902b70187f1cbd94862cf1ac7a8f",
+      "bytes": 8159
     },
     {
       "path": "runtime/PalCraft/alex67.lua",
@@ -131877,8 +131902,8 @@
     },
     {
       "path": "runtime/PalCraft/boss_barF.lua",
-      "sha256": "b6f6b42ced640c14205d9ee33763d3ddea70333b11dea490eeef226e5e089937",
-      "bytes": 2218
+      "sha256": "90eb0052c94f12cf51f3972fe4f9357ea718ffed98efa6088b64f675508a8901",
+      "bytes": 2314
     },
     {
       "path": "runtime/PalCraft/boss_motionD.lua",
@@ -131907,8 +131932,8 @@
     },
     {
       "path": "runtime/PalCraft/bossD.lua",
-      "sha256": "776a63944b26be74dfe855aa1343c1b4d575764916ed1a5f50d2961ba8ee65d3",
-      "bytes": 18611
+      "sha256": "a618820b7560e4aa608bb109101bc13f72af12f4fbdde390a64d0bb670324e93",
+      "bytes": 19075
     },
     {
       "path": "runtime/PalCraft/bossD_data.lua",
@@ -131917,8 +131942,8 @@
     },
     {
       "path": "runtime/PalCraft/bossFA.lua",
-      "sha256": "a86b72abe12202f9350114560a1d66e0663ac2d32a8757d4a2110ee10a6711c7",
-      "bytes": 8694
+      "sha256": "8983ff91ec51906bf45bb68d03e64bd747edcd93b7d8807e4af3eae530f56edd",
+      "bytes": 10299
     },
     {
       "path": "runtime/PalCraft/cacheL.lua",
@@ -131977,8 +132002,8 @@
     },
     {
       "path": "runtime/PalCraft/controls68.lua",
-      "sha256": "8dceac7fb6ff2bde989b596c7a9144a012b3db0789b53c22dadb39f10599c7e6",
-      "bytes": 7495
+      "sha256": "0e53e808f4620ec341b8340e72a6e1900014208c5a5393760a920252adfa9cb2",
+      "bytes": 7981
     },
     {
       "path": "runtime/PalCraft/costume108.lua",
@@ -132227,8 +132252,8 @@
     },
     {
       "path": "runtime/PalCraft/island.lua",
-      "sha256": "d16a1aa817972796b2e4f1e8a0e66e8b0a08b5df1fed5afa47185b2742dfbe96",
-      "bytes": 8833
+      "sha256": "4616542ef1cfea46dbc280ce87a901cf43e15ed1ee8725cf627916fdb7194e31",
+      "bytes": 10500
     },
     {
       "path": "runtime/PalCraft/island_actorB.lua",
@@ -132287,8 +132312,8 @@
     },
     {
       "path": "runtime/PalCraft/islands88.lua",
-      "sha256": "fe86caa8915492a6236b7564fc60c050322624656fbdd569deb3d48965bb7819",
-      "bytes": 3776
+      "sha256": "fc94da6684b9a8ad61cd6822342fb7e214b89c4db21c8aebbc5a1a7f86157d8f",
+      "bytes": 4851
     },
     {
       "path": "runtime/PalCraft/islands88_data.lua",
@@ -132457,8 +132482,8 @@
     },
     {
       "path": "runtime/PalCraft/native_harvestR.lua",
-      "sha256": "37122c398b6eef19156d46375807d6f56389e90e41c4fab87b66bb8c16c3a9ce",
-      "bytes": 5706
+      "sha256": "72bcbf634f4c0586210622c2071a3c1b09f34f53bb29c127b0b6a871c0c122f0",
+      "bytes": 5884
     },
     {
       "path": "runtime/PalCraft/native_icons.lua",
@@ -132502,8 +132527,8 @@
     },
     {
       "path": "runtime/PalCraft/native_travelW.lua",
-      "sha256": "b2da121639acb4dff5c9a4e6bec01d39593f5e7ceefcfc7e275cf8d355725feb",
-      "bytes": 10033
+      "sha256": "c74c07e049bd6c675123b3c0287bf46a478c32b4738d1c4997dfe0bb4f45ce35",
+      "bytes": 9676
     },
     {
       "path": "runtime/PalCraft/native_widgetG.lua",
@@ -132537,8 +132562,8 @@
     },
     {
       "path": "runtime/PalCraft/outparmK.lua",
-      "sha256": "2b89f9c743d066b87161a692af89c833393e27867d867abcfafed514ecfc2b63",
-      "bytes": 2740
+      "sha256": "50d720cd1b5729f68ba08dd1f84c6283a28288b3caf4e1fcb5cc87fbfc9b9837",
+      "bytes": 3437
     },
     {
       "path": "runtime/PalCraft/owned_travel.lua",
@@ -132682,8 +132707,8 @@
     },
     {
       "path": "runtime/PalCraft/Scripts/main.lua",
-      "sha256": "f6ba1fc637a7d456cb1aad58db600a541ef99a4d4807a9ea5cf9f57b8e82d1fa",
-      "bytes": 156315
+      "sha256": "a5e78c191125025a309fefcd1533dc66a41d37e2c92af64b24323673010e8c16",
+      "bytes": 159062
     },
     {
       "path": "runtime/PalCraft/skin_portraitZ1.lua",
@@ -132772,8 +132797,8 @@
     },
     {
       "path": "runtime/PalCraft/startup_gate.lua",
-      "sha256": "ab0748e582f6b7842f0adab1a3f6f4041aa24bd414fb7333a23ed128b6d17ce2",
-      "bytes": 1882
+      "sha256": "7cf86755f4b08c55f3cb8ec7f756721307fbd15d3076b90b590b62985f9c9e24",
+      "bytes": 1923
     },
     {
       "path": "runtime/PalCraft/state_writer.lua",
@@ -132872,8 +132897,8 @@
     },
     {
       "path": "runtime/PalCraft/timers.lua",
-      "sha256": "032160fab724aeee62c396f6a24faac6c2724016dd9a77a966d6256c7183c97e",
-      "bytes": 14751
+      "sha256": "f5feb9f5facba04ffd8fe547d246519a80f4840ab4739c6f45eced732015519a",
+      "bytes": 15069
     },
     {
       "path": "runtime/PalCraft/title_overlay.lua",
@@ -132932,8 +132957,8 @@
     },
     {
       "path": "runtime/PalCraft/ui_cache.lua",
-      "sha256": "d48673d1bd73c1fdaf36425364a8e39b2e33d41865f2488b021440d65ae117a1",
-      "bytes": 2917
+      "sha256": "444eaad71a3de55bf889588588bced75717b8c4039676baa96202b2b77970d3b",
+      "bytes": 2828
     },
     {
       "path": "runtime/PalCraft/ui_design.lua",
@@ -132942,8 +132967,8 @@
     },
     {
       "path": "runtime/PalCraft/ui_entry.lua",
-      "sha256": "af90d1ca0df52dd752a54159f028d9fe06aca9a1b3f58f4f00537e62ed398039",
-      "bytes": 17092
+      "sha256": "4513fd696c68560c093ce55e326bc47dd505122dc7e7cd3738c81ac1beccf6e9",
+      "bytes": 17883
     },
     {
       "path": "runtime/PalCraft/ui_input.lua",
@@ -132952,8 +132977,8 @@
     },
     {
       "path": "runtime/PalCraft/ui_kit.lua",
-      "sha256": "c4e7db07d42b5ea3b1479e6310f0e7480dd84e63de7657289fd8b53ea89467e0",
-      "bytes": 23192
+      "sha256": "671ea5b023f172ffb275a5571f371427685b6afd8380d45e4a217ef34a3d66ee",
+      "bytes": 23562
     },
     {
       "path": "runtime/PalCraft/ui_preload.lua",
@@ -133022,8 +133047,8 @@
     },
     {
       "path": "runtime/PalCraft/zombie77.lua",
-      "sha256": "a551373df328c531d67d6df98b80da99678eea6d4171f01ebe8174bcede558d2",
-      "bytes": 29910
+      "sha256": "cd67a644d0ba1f5831707e6c051767701204678b5a643ce6e67bcb6e94ab2bcf",
+      "bytes": 30572
     },
     {
       "path": "schema/PalCraft_Alex/blueprints/alex.json",
@@ -134907,8 +134932,8 @@
     },
     {
       "path": "THIRD_PARTY.md",
-      "sha256": "5a6cadad5fabdf9560e2e15e3fcaa007aa96a9c341fd1daa38b2d9812f4dee37",
-      "bytes": 1360
+      "sha256": "a760fed42cb525d95a0e126dc0d04da3c630c64a3648f10e9cab4cee5c7433b7",
+      "bytes": 1645
     },
     {
       "path": "tools/assets/blender_export.py",
@@ -134927,13 +134952,13 @@
     },
     {
       "path": "tools/release/build_cooked_patch.py",
-      "sha256": "17574d923007ff6d2a9e708edbba7fc811e860df591d16a0d506592e703b9492",
-      "bytes": 15925
+      "sha256": "8152a8f321cbe5ea2f6fce3de8204fa91562779f30d56817bc9842ca033c3549",
+      "bytes": 16169
     },
     {
       "path": "tools/release/build_release.py",
-      "sha256": "e36f95956cf04c88bba76ec553c8c6b2a85eb61234db704330b50d56cb1c7e3f",
-      "bytes": 14770
+      "sha256": "d8e3938143d1b6680231d900cb5ca98d3ed5a306c0c32becdbf2cbb042d5a328",
+      "bytes": 14784
     },
     {
       "path": "tools/release/classify_modules.py",
@@ -134947,8 +134972,8 @@
     },
     {
       "path": "tools/release/cooked_payload.py",
-      "sha256": "a6fdfd53d961fb35de02dd38ed73aa388f12929b2624216257949ae31602fa20",
-      "bytes": 8507
+      "sha256": "e030ed95402aec85ae8097e7d57162d18242416929d7edc195e31d685b03f168",
+      "bytes": 8783
     },
     {
       "path": "tools/release/export_public_repo.py",
@@ -135488,34 +135513,8 @@
       "reason": "Excluded development/private/audited file"
     }
   ],
-  "rf_validation": {
-    "status": "ACCEPTED FOR v1.0 by SEQ268; original cold gate FAIL",
-    "original_icon_instances": 16,
-    "original_icon_packages": 15,
-    "islands_alex": "PASS: native appearance and head tracking",
-    "cold_first_seconds": 16.002473,
-    "cold_second_seconds": 15.702672,
-    "cold_limit_seconds": 14.5,
-    "soak_sampled_seconds": 300.008,
-    "soak_frames": 8999,
-    "soak_max_ms": 45.478601008654,
-    "soak_over60": 0,
-    "soak_metric": "Native world delta; not GPU/present timing",
-    "choices_booted": [
-      "all",
-      "hud_skins",
-      "islands_animals"
-    ],
-    "lua_errors": 0,
-    "new_crashes": 0,
-    "motion": "Steve first/third person and Alex/Bram/Rina clips + 16 consecutive frames at 10 fps",
-    "tested_zip_sha256": "7f4550fd212fe1960054209a1248207dc3fbbffea6429efe52779456d26a7b45",
-    "uncompressed_visual_difference": "accepted by owner",
-    "blank_font_fallback": "diagnostic only; unreadable; normal install requires Minecraft",
-    "cold_exception_acceptance": "SEQ268"
-  },
   "release_status": "READY",
-  "version": "1.0",
+  "version": "1.0.1",
   "source_rebuild_complete": false,
   "source_exclusions": [
     "MinecraftBlocks/T_MC_UI20_death_dim.uasset",
@@ -135527,34 +135526,452 @@
   "historical_validation": {
     "rc_validation": "Visual identity, Alex/skin rig, cold entry and HUD-only native acceptance fail. Mob loader, migration default and local data recovery fixed. Missing-assets run: one warning, no crash, portrait hash error; log guard offline tested only. Skin material experiment withdrawn. No readiness promotion.",
     "rd_validation": "See private Task RD handoff for native acceptance and limitations. Readiness remains unpromoted.",
-    "re_validation": "Install-time cooked texture/font reconstruction replaces general runtime binding. Recipe gaps, visible reference differences, cold-entry limits and Islands-only Alex placement prevent READY. No patched paks or reconstructed pixels/fonts are exported."
+    "re_validation": "Install-time cooked texture/font reconstruction replaces general runtime binding. Recipe gaps, visible reference differences, cold-entry limits and Islands-only Alex placement prevent READY. No patched paks or reconstructed pixels/fonts are exported.",
+    "rf_validation": {
+      "status": "ACCEPTED FOR v1.0 by SEQ268; original cold gate FAIL",
+      "original_icon_instances": 16,
+      "original_icon_packages": 15,
+      "islands_alex": "PASS: native appearance and head tracking",
+      "cold_first_seconds": 16.002473,
+      "cold_second_seconds": 15.702672,
+      "cold_limit_seconds": 14.5,
+      "soak_sampled_seconds": 300.008,
+      "soak_frames": 8999,
+      "soak_max_ms": 45.478601008654,
+      "soak_over60": 0,
+      "soak_metric": "Native world delta; not GPU/present timing",
+      "choices_booted": [
+        "all",
+        "hud_skins",
+        "islands_animals"
+      ],
+      "lua_errors": 0,
+      "new_crashes": 0,
+      "motion": "Steve first/third person and Alex/Bram/Rina clips + 16 consecutive frames at 10 fps",
+      "tested_zip_sha256": "7f4550fd212fe1960054209a1248207dc3fbbffea6429efe52779456d26a7b45",
+      "uncompressed_visual_difference": "accepted by owner",
+      "blank_font_fallback": "diagnostic only; unreadable; normal install requires Minecraft",
+      "cold_exception_acceptance": "SEQ268"
+    },
+    "v1_release_acceptance": {
+      "id": "SEQ268",
+      "decision": "ACCEPTED FOR v1.0",
+      "delegated_release_authority": "Opus",
+      "authorization": "coordination/OPUS_TASK_RS.txt",
+      "authorization_sha256": "56f1cbb6a0d37231b0b18fd80178a5233899fa3c7f520701e96dbaf0baf7fb09",
+      "evidence": "local/taskRF/REPORT.json",
+      "evidence_sha256": "6964a6e1dbea8ef5e4cab380aff4aede92d9991f7121c8c0be59bac6f0a3c492",
+      "tested_zip_sha256": "7f4550fd212fe1960054209a1248207dc3fbbffea6429efe52779456d26a7b45",
+      "candidate_zip_sha256": "a04d07da190d3f90b0f886366f4a0be86308c6993c73d190573809bdb23c9253",
+      "cold_gate": {
+        "measured_result": "FAIL",
+        "original_limit_seconds": 14.5,
+        "first_seconds": 16.002473,
+        "second_seconds": 15.702672,
+        "exception_accepted": true,
+        "reason": "Uncompressed BGRA8 trades roughly one second of loading for exact reconstructed pixels; prior release-v1 timing used a different method."
+      },
+      "readiness": true,
+      "gameplay_changes": false,
+      "installer_changes": false,
+      "asset_changes": false,
+      "game_launched": false,
+      "remote_added": false,
+      "pushed": false,
+      "timestamp": "2026-10-16T02:44:37.479461"
+    }
   },
   "release_acceptance": {
-    "id": "SEQ268",
-    "decision": "ACCEPTED FOR v1.0",
+    "id": "RH-OPUS-20261016",
+    "decision": "ACCEPTED FOR v1.0.1",
     "delegated_release_authority": "Opus",
     "authorization": "coordination/OPUS_TASK_RS.txt",
-    "authorization_sha256": "56f1cbb6a0d37231b0b18fd80178a5233899fa3c7f520701e96dbaf0baf7fb09",
-    "evidence": "local/taskRF/REPORT.json",
-    "evidence_sha256": "6964a6e1dbea8ef5e4cab380aff4aede92d9991f7121c8c0be59bac6f0a3c492",
-    "tested_zip_sha256": "7f4550fd212fe1960054209a1248207dc3fbbffea6429efe52779456d26a7b45",
-    "candidate_zip_sha256": "a04d07da190d3f90b0f886366f4a0be86308c6993c73d190573809bdb23c9253",
+    "authorization_sha256": "2551f307e61d3d7c2d1f5b4a0d97a3b74adb382b851d90c94f0b4f058d31b59c",
+    "evidence": {
+      "local/taskOA/REPORT.json": "ae918d4dd2f9cb2dd7d1ec24ae16505c358c1de226a8c9cec9d828a171ef8d44",
+      "local/taskOB/REPORT.json": "efbdf3956ebac8d85d63ebfe444accd21c34932db924c3835acc42c67731b747",
+      "local/taskOC/REPORT.json": "4801ba6c9ccc458350d751c1f1c94190dba9856a7f98deece3f293b9404db91a"
+    },
+    "tested_zip_sha256": "72e28d9067c0c1fff689e167570a607213d35095d60abcb6a4d0facf8668595b",
+    "candidate_zip_sha256": "a2492eff4c3766b1963265c98304b9fc4a01df750b440dfd1537421fc2f61059",
     "cold_gate": {
-      "measured_result": "FAIL",
+      "measured_result": "FAIL against original target",
       "original_limit_seconds": 14.5,
-      "first_seconds": 16.002473,
-      "second_seconds": 15.702672,
+      "first_seconds": 15.928516149520874,
+      "second_seconds": 15.656791687011719,
       "exception_accepted": true,
-      "reason": "Uncompressed BGRA8 trades roughly one second of loading for exact reconstructed pixels; prior release-v1 timing used a different method."
+      "method": "Fresh process, same Plains entry position; actual LMB release to cover end; no OS cache flush"
     },
     "readiness": true,
-    "gameplay_changes": false,
-    "installer_changes": false,
-    "asset_changes": false,
-    "game_launched": false,
-    "remote_added": false,
-    "pushed": false,
-    "timestamp": "2026-10-16T02:44:37.479461"
+    "owner_hold_superseded": true,
+    "promotion_payload_changes": false,
+    "timestamp": "2026-10-16T07:35:42.595521"
   },
-  "binary_release_sha256": "0f93d4b04ef9bfd40fe81e8690a88ead2bdd0c2d97debf3230e0a7008517434d"
+  "binary_release_sha256": "30dc070ba35fb8abf7c29798cc761cf2b581563173a05f9aa67bb70919f4cbad",
+  "history_commits": 2,
+  "oc_validation": {
+    "performance": {
+      "status": "PARTIAL/FAIL",
+      "cold": [
+        {
+          "evidence": "all-entry-20261016-065755-932512-20261016-065817-749495.json",
+          "seconds": 15.928516149520874,
+          "origin": "real LMB release, after focus/cursor preparation",
+          "coverEnd": "[2026-10-16 06:58:12.3960287] [Lua] [PalCraft] MC51_LOADING_COVER_END seconds=6.012",
+          "worldReady": true
+        },
+        {
+          "evidence": "all-entry-20261016-071813-324059-20261016-071835-405632.json",
+          "seconds": 15.656791687011719,
+          "origin": "real LMB release, after focus/cursor preparation",
+          "coverEnd": "[2026-10-16 07:18:29.5195506] [Lua] [PalCraft] MC51_LOADING_COVER_END seconds=5.943",
+          "worldReady": true
+        }
+      ],
+      "coldPass": false,
+      "postCover": [
+        {
+          "source": "final-one-entry-frames.json",
+          "complete": true,
+          "windows": {
+            "10": {
+              "frames": 298,
+              "max": 88.620901107788,
+              "p99": 46.988300979137,
+              "over60": 1,
+              "over100": 0,
+              "hitches": [
+                {
+                  "master": 1028,
+                  "ms": 88.620901107788,
+                  "s": 7.082
+                }
+              ]
+            },
+            "15": {
+              "frames": 446,
+              "max": 88.620901107788,
+              "p99": 43.851997703314,
+              "over60": 2,
+              "over100": 0,
+              "hitches": [
+                {
+                  "master": 1028,
+                  "ms": 88.620901107788,
+                  "s": 7.082
+                },
+                {
+                  "master": 1149,
+                  "ms": 81.799894571304,
+                  "s": 11.175
+                }
+              ]
+            },
+            "60": {
+              "frames": 1793,
+              "max": 88.620901107788,
+              "p99": 33.391200006008,
+              "over60": 2,
+              "over100": 0,
+              "hitches": [
+                {
+                  "master": 1028,
+                  "ms": 88.620901107788,
+                  "s": 7.082
+                },
+                {
+                  "master": 1149,
+                  "ms": 81.799894571304,
+                  "s": 11.175
+                }
+              ]
+            }
+          }
+        },
+        {
+          "source": "final-two-entry-frames.json",
+          "complete": true,
+          "windows": {
+            "10": {
+              "frames": 298,
+              "max": 85.328996181488,
+              "p99": 45.786801725626,
+              "over60": 1,
+              "over100": 0,
+              "hitches": [
+                {
+                  "master": 1134,
+                  "ms": 85.328996181488,
+                  "s": 7.069
+                }
+              ]
+            },
+            "15": {
+              "frames": 447,
+              "max": 85.328996181488,
+              "p99": 44.558998197317,
+              "over60": 2,
+              "over100": 0,
+              "hitches": [
+                {
+                  "master": 1134,
+                  "ms": 85.328996181488,
+                  "s": 7.069
+                },
+                {
+                  "master": 1256,
+                  "ms": 79.824805259705,
+                  "s": 11.195
+                }
+              ]
+            },
+            "60": {
+              "frames": 1793,
+              "max": 85.328996181488,
+              "p99": 33.4776006639,
+              "over60": 2,
+              "over100": 0,
+              "hitches": [
+                {
+                  "master": 1134,
+                  "ms": 85.328996181488,
+                  "s": 7.069
+                },
+                {
+                  "master": 1256,
+                  "ms": 79.824805259705,
+                  "s": 11.195
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "postCoverPass": true,
+      "islandMaxMs": {
+        "desert": 4.0000000000191,
+        "jungle": 4.0000000000191,
+        "mushroom": 3.0000000000427,
+        "plains": 1.9999999999953
+      },
+      "islandPass": true,
+      "coldTiming": "Fresh process, same Plains entry position; actual LMB release to cover end; no OS cache flush",
+      "metric": "Native world delta; not GPU/present timing",
+      "firstCaptureCaveat": "Read-only gate/budget/status probes occurred at56-58s of the first60s capture. Both observed hitches were at7.082 and11.175s. Second60s capture has no input/probe through completion.",
+      "bc": {
+        "instances": 7,
+        "bytesBefore": 8039080,
+        "bytesAfter": 2009824,
+        "savedPercent": 74.99932828134564
+      },
+      "titlePreload": "Final131 jobs; first final elapsed2186ms, work1291ms. This moves work before world-start input; it is not eliminated work.",
+      "remainingDelay": "Final first scene-ready at4.825s of cover; previousRendered remains false until5.745s; cover ended6.012s. Native rendering/restore readiness remains gated. UI prebuild max464ms still occurs behind cover.",
+      "excluded": "second-entry-summary.json is stale prior-process data, superseded by second-fresh-entry-summary.json. First two OC launches are intermediate candidates; third failed at title and is not acceptance."
+    },
+    "soak": {
+      "complete": true,
+      "interrupted": false,
+      "sampledSeconds": 600.021,
+      "frames": 17988,
+      "missedFrames": 0,
+      "maxMs": 50.203800201416,
+      "over60": 0,
+      "gcMaxMs": 4.9999999999955,
+      "minMB": 36.695828437805,
+      "maxMB": 38.578890800476,
+      "registryStart": 115,
+      "registryEnd": 115,
+      "registryGrowth": 0,
+      "minimumMobs": 8,
+      "maximumMobs": 8,
+      "underfilledFrames": 0,
+      "fixtureRespawns": 0,
+      "refsPerSecond": 0.0,
+      "heapSlopeMBPerMinute": 0.01876107462867372,
+      "completedCycleSlopeMBPerMinute": 0.025325763979020265,
+      "cycleFirst": 36.725570678711,
+      "cycleLast": 37.58244228363,
+      "p50": 33.3,
+      "p95": 33.3,
+      "p99": 33.3,
+      "outputPool": {
+        "buffers": 1,
+        "calls": 8068,
+        "errors": 0,
+        "maxDepth": 1,
+        "releasedFields": 160515,
+        "releasedRefs": 8068,
+        "retainedTailCalls": 0
+      },
+      "metric": "Native world delta; not GPU/present timing",
+      "source": "taskK-status-final.json",
+      "workloadPass": true,
+      "framePass": true,
+      "registryPass": true,
+      "heapFlatAssessment": "Absolute completed-cycle least-squares slope <=0.1 MiB/min; finite ten-minute observation, not proof of unlimited stability",
+      "heapPass": true
+    },
+    "regression": {
+      "status": "PASS",
+      "pass": true,
+      "candidateSha256": "72e28d9067c0c1fff689e167570a607213d35095d60abcb6a4d0facf8668595b",
+      "luaErrors": 0,
+      "newCrashes": [],
+      "log": "final-route-20261016-071710-034112.log",
+      "realInput": true,
+      "inventory": {
+        "pass": true,
+        "evidence": "inventory-final-20261016-071023-599244.png"
+      },
+      "technology": {
+        "pass": true,
+        "cycles": 4,
+        "evidence": "technology-cycle-4-20261016-071039-958015.png"
+      },
+      "trades": {
+        "pass": true,
+        "rows": [
+          {
+            "key": "bram_mc_stonepickaxe",
+            "at": 1792095059,
+            "cost": {
+              "Eemerald": 2,
+              "Stone": 12,
+              "Wood": 4
+            },
+            "give": {
+              "MC_StonePickaxe": 1
+            },
+            "before": {
+              "Eemerald": 100,
+              "Glider_Super": 1,
+              "MC_Bow": 1,
+              "MC_IronBoots": 1,
+              "MC_IronHoe": 1,
+              "MC_IronSword": 1,
+              "MC_Saddle": 1,
+              "SkillUnlock_Garm": 1,
+              "SkillUnlock_HawkBird": 1,
+              "Stone": 50,
+              "Sword": 1,
+              "Wood": 50
+            },
+            "after": {
+              "Eemerald": 98,
+              "Glider_Super": 1,
+              "MC_Bow": 1,
+              "MC_IronBoots": 1,
+              "MC_IronHoe": 1,
+              "MC_IronSword": 1,
+              "MC_Saddle": 1,
+              "MC_StonePickaxe": 1,
+              "SkillUnlock_Garm": 1,
+              "SkillUnlock_HawkBird": 1,
+              "Stone": 38,
+              "Sword": 1,
+              "Wood": 46
+            }
+          },
+          {
+            "key": "rina_arrows",
+            "at": 1792095079,
+            "cost": {
+              "Eemerald": 1,
+              "Stone": 4,
+              "Wood": 4
+            },
+            "give": {
+              "Arrow": 16
+            },
+            "before": {
+              "Eemerald": 98,
+              "Glider_Super": 1,
+              "MC_Bow": 1,
+              "MC_IronBoots": 1,
+              "MC_IronHoe": 1,
+              "MC_IronSword": 1,
+              "MC_Saddle": 1,
+              "MC_StonePickaxe": 1,
+              "SkillUnlock_Garm": 1,
+              "SkillUnlock_HawkBird": 1,
+              "Stone": 38,
+              "Sword": 1,
+              "Wood": 46
+            },
+            "after": {
+              "Arrow": 16,
+              "Eemerald": 97,
+              "Glider_Super": 1,
+              "MC_Bow": 1,
+              "MC_IronBoots": 1,
+              "MC_IronHoe": 1,
+              "MC_IronSword": 1,
+              "MC_Saddle": 1,
+              "MC_StonePickaxe": 1,
+              "SkillUnlock_Garm": 1,
+              "SkillUnlock_HawkBird": 1,
+              "Stone": 34,
+              "Sword": 1,
+              "Wood": 42
+            }
+          }
+        ],
+        "screens": [
+          "bram-trade-result-20261016-071101-224624.png",
+          "rina-trade-result-20261016-071120-693446.png"
+        ]
+      },
+      "statueTravel": {
+        "pass": true,
+        "method": "Real F native map, Jungle icon click, native confirmation click",
+        "before": "probe-travel_status-20261016-071131-729189.json",
+        "after": "probe-travel_status-20261016-071253-234316.json",
+        "reviewedBurst": "all-statue-travel-20261016-071142-408353-window-8-20261016-071234-210883.jpg",
+        "helperNote": "Generic capture helper waited for MC51 cover-end, which this same-world native-map transition does not emit. Its worldReady=false is not used as travel acceptance; native position, Jungle admission and actual transition frames establish arrival. No failed game travel."
+      },
+      "bow": {
+        "pass": true,
+        "arrowsBefore": 16,
+        "arrowsAfter": 15,
+        "mounted": false,
+        "video": "bow-real-20261016-071412-246775.mp4",
+        "strip": "bow-real-20261016-071412-246775-strip.jpg",
+        "assessment": "Real LMB bow draw/release and one consumed arrow; hit damage is not claimed."
+      },
+      "deathRespawn": {
+        "pass": true,
+        "cause": "Real Wither skull hits after disabling fixture protection; no synthetic SetHP death command",
+        "deathAt": "2026-10-16 07:14:39.585",
+        "video": "death-real-20261016-071436-234395.mp4",
+        "strip": "death-real-20261016-071436-234395-transition-strip.jpg",
+        "stripStartSeconds": 2.7,
+        "frames": 16,
+        "fps": 10,
+        "reviewedRespawn": "all-respawn-20261016-071511-986479-window-13-20261016-071602-809262.jpg",
+        "assessment": "Actual combat-to-death transition and real respawn click. No0/0 boss bar or native in-world HUD in reviewed frames."
+      },
+      "reload": {
+        "pass": true,
+        "cycles": 1,
+        "epochs": [
+          1,
+          3
+        ],
+        "before": "lifecycle-before-20261016-071548-556330.json",
+        "after": "lifecycle-after-1-20261016-071625-661834.json",
+        "positionAfter": {
+          "X": -340500.0,
+          "Y": 307000.0,
+          "Z": -1409.8500213623
+        },
+        "follow86": 1,
+        "loot88": 1,
+        "limitation": "One functional reload; no claim of multi-cycle leak acceptance."
+      }
+    },
+    "sourceZipSha256": "72e28d9067c0c1fff689e167570a607213d35095d60abcb6a4d0facf8668595b",
+    "ownerHold": false,
+    "priorOwnerHoldSupersededBy": "RH-OPUS-20261016",
+    "coldExceptionAccepted": true
+  }
 }

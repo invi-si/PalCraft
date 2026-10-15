@@ -10,7 +10,7 @@ if (-not $Manifest) { $Manifest=Join-Path $PSScriptRoot 'cooked-patches.json' }
 if (-not $Receipt) { $Receipt=Join-Path $AssetsRoot '_palcraft/cooked-patch-receipt.json' }
 Add-Type -AssemblyName System.Drawing,System.Web.Extensions
 if (-not ('PalCraftCookedPakPatch' -as [type])) {
- Add-Type -TypeDefinition ([IO.File]::ReadAllText((Join-Path $PSScriptRoot 'CookedPakPatch.cs'))) -ReferencedAssemblies System.Drawing,System.Web.Extensions,System.Core
+ Add-Type -Path @((Join-Path $PSScriptRoot 'CookedPakPatch.cs'),(Join-Path $PSScriptRoot 'DeterministicBc.cs')) -ReferencedAssemblies System.Drawing,System.Web.Extensions,System.Core
 }
 $report=[PalCraftCookedPakPatch]::Apply([IO.Path]::GetFullPath($PaksRoot),[IO.Path]::GetFullPath($AssetsRoot),[IO.Path]::GetFullPath($Manifest))
 [void][IO.Directory]::CreateDirectory((Split-Path -Parent $Receipt))

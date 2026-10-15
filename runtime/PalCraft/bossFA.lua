@@ -111,16 +111,41 @@ return function(ctx,Z)
   end
  end
  
- local function armor(_,attacker,defender,remote)
-  if not ctx.ready()then return end
-  local target=defender:get();if not valid(target)then return end
+ local function armor(target,info)
+  if not ctx.ready()or not valid(target)then return end
   local s=Z.hosts[target:GetAddress()]
   if not s or s.species~='MC_Wither'or not valid(s.parameter)or s.parameter:GetHP().Value>s.parameter:GetMaxHP().Value*.5 then return end
-  local info=remote:get()
   if info.WeaponType==8 or info.WeaponType==9 then info.NoDamage=true;F:event('ARROW_IMMUNE',s,{weapon=info.WeaponType})end
  end
- T.hook('/Script/Pal.PalUtility:ProcessDamageAndPlayEffects',armor)
- T.hook('/Script/Pal.PalUtility:ProcessDamageAndPlayEffectsByDamageInfo',armor)
- T.onEpoch('bossFA',function()F.events={};F.calibration={}end)
+ UE.bossFAArmor=armor
+ if not T.hooks['/Script/Pal.PalUtility:ProcessDamageAndPlayEffects']then
+  T.hook('/Script/Pal.PalUtility:ProcessDamageAndPlayEffects',function(_,_,defender,remote)armor(defender:get(),remote:get())end)
+ end
+ T.hook('/Script/Pal.PalUtility:ProcessDamageAndPlayEffectsByDamageInfo',function(_,_,defender,remote)armor(defender:get(),remote:get())end)
+ local bulletGuards={}
+ local function bulletHook(path)
+  local stack={};bulletGuards[#bulletGuards+1]=stack
+  local function bulletPre(remote,_,other)
+  stack[#stack+1]=false
+  if not ctx.ready()then return end
+  local target=other:get();if not valid(target)then return end
+  local s=Z.hosts[target:GetAddress()]
+  if not s or s.species~='MC_Wither'or not valid(s.parameter)or s.parameter:GetHP().Value>s.parameter:GetMaxHP().Value*.5 then return end
+  local bullet=remote:get();if not valid(bullet)then return end
+  local id=bullet:GetOwnerStaticItemId():ToString();local cls=bullet:GetClass():GetFullName():lower()
+  if not id:lower():find('bow',1,true)and not cls:find('arrow',1,true)then return end
+  local previous=bullet.isDamageable;if type(previous)~='boolean'then return end
+  stack[#stack]={bullet=bullet,previous=previous};bullet:SetDamageable(false)
+  F:event('ARROW_IMMUNE',s,{item=id,path='native-projectile-collision'})
+ end
+  local function bulletPost()
+   local guard=table.remove(stack)
+   if guard and valid(guard.bullet)then guard.bullet:SetDamageable(guard.previous)end
+  end
+  T.hook(path,bulletPre,bulletPost)
+ end
+ bulletHook('/Script/Pal.PalBullet:OnBeginOverlap')
+ bulletHook('/Script/Pal.PalBullet:OnBlock')
+ T.onEpoch('bossFA',function()F.events={};F.calibration={};for _,stack in ipairs(bulletGuards)do for i=#stack,1,-1 do stack[i]=nil end end end)
  return F
 end

@@ -17,14 +17,16 @@ return function(valid)
   for i=1,2 do
    local s=rows[i];local suffix=i==1 and'D'or'F2'
    local back,fill,name='BossBack'..suffix,'BossFill'..suffix,'BossName'..suffix
-   local show=s~=nil and enabled==true
+   local hp,max
+   if s then hp=s.parameter:GetHP().Value;max=s.parameter:GetMaxHP().Value end
+   local show=s~=nil and enabled==true and e.status=='alive'and hp>0 and max>0
    if s or ns[name]then
     if ns['bossShow'..suffix]~=show then
      ns['bossShow'..suffix]=show
      for _,key in ipairs({back,fill,name})do local n=U:makeNode(ns,key,key==name and'TextBlock'or'Image');n:SetRenderOpacity(show and 1 or 0);n.Slot:SetZOrder(93)end
     end
     if show then
-     local hp=s.parameter:GetHP().Value;local max=s.parameter:GetMaxHP().Value;local ratio=math.max(0,math.min(1,hp/math.max(1,max)))
+     local ratio=math.max(0,math.min(1,hp/max))
      local _,_,dpi,size=U:metrics(e);local y=20+(i-1)*24-size.Y/(unit*dpi)*.5
      local key=s.address..':'..hp..':'..max..':'..unit..':'..dpi..':'..size.X..':'..size.Y..':'..tostring(U.language57 and U.language57.lang)
      if ns['bossKey'..suffix]~=key then

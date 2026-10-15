@@ -35,9 +35,25 @@ public static class PalCraftCookedPakPatch {
   }
  }
  static byte Byte(double v){return(byte)Math.Max(0,Math.Min(255,Math.Floor(v*255.0+.5)));}
+ static List<byte[]> EncodeLevels(string file,Dictionary<string,object> row,List<byte[]> levels){
+  string format=row.ContainsKey("format")?(string)row["format"]:"PF_B8G8R8A8";
+  if(format=="PF_B8G8R8A8")return levels;
+  if(format!="PF_DXT1"&&format!="PF_DXT5")throw new Exception("Unsupported install encoder");
+  var layouts=A(row["mips"]);string cache=Path.Combine(Path.GetDirectoryName(file),"bc-cache");Directory.CreateDirectory(cache);
+  for(int i=0;i<levels.Count;i++){
+   var m=D(layouts[i]);int w=N(m["width"]),h=N(m["height"]),size=((w+3)/4)*((h+3)/4)*(format=="PF_DXT5"?16:8);
+   string hash;using(var sha=SHA256.Create())hash=Hex(sha.ComputeHash(levels[i]));
+   string name=Path.Combine(cache,PalCraftBc.Version+"-"+format+"-"+w+"x"+h+"-"+hash+".bc");
+   byte[] encoded=null;
+   if(File.Exists(name)&&File.Exists(name+".sha256")){byte[] saved=File.ReadAllBytes(name);using(var sha=SHA256.Create())if(saved.Length==size&&Hex(sha.ComputeHash(saved))==File.ReadAllText(name+".sha256"))encoded=saved;}
+   if(encoded==null){encoded=PalCraftBc.Encode(levels[i],w,h,format=="PF_DXT5");File.WriteAllBytes(name,encoded);using(var sha=SHA256.Create())File.WriteAllText(name+".sha256",Hex(sha.ComputeHash(encoded)));}
+   levels[i]=encoded;
+  }
+  return levels;
+ }
  static List<byte[]> Mips(string file,Dictionary<string,object> row){
   int w=N(row["width"]),h=N(row["height"]);bool srgb=Convert.ToBoolean(row["srgb"]);byte[] raw=Pixels(file,w,h,Convert.ToBoolean(row["normalChannels"]),row.ContainsKey("forceOpaque")&&Convert.ToBoolean(row["forceOpaque"]));var result=new List<byte[]>{raw};var layouts=A(row["mips"]);
-  if(layouts.Length==1)return result;
+  if(layouts.Length==1)return EncodeLevels(file,row,result);
   float[] linear=new float[raw.Length];for(int i=0;i<raw.Length;i++){double v=raw[i]/255.0;linear[i]=(float)(i%4!=3&&srgb?(v<=.04045?v/12.92:Math.Pow((v+.055)/1.055,2.4)):v);}
   for(int mip=1;mip<layouts.Length;mip++){
    var m=D(layouts[mip]);int nw=N(m["width"]),nh=N(m["height"]);if(nw!=Math.Max(1,w/2)||nh!=Math.Max(1,h/2))throw new Exception("Unsupported mip dimensions");
@@ -48,7 +64,7 @@ public static class PalCraftCookedPakPatch {
    }
    result.Add(encoded);linear=next;w=nw;h=nh;
   }
-  return result;
+  return EncodeLevels(file,row,result);
  }
  static void Write(FileStream stream,long at,byte[] data){if(at<0||at>stream.Length-data.Length)throw new Exception("Payload range outside pak");stream.Position=at;stream.Write(data,0,data.Length);}
  static byte[] Sha1(FileStream stream,long at,long size){
@@ -75,7 +91,7 @@ public static class PalCraftCookedPakPatch {
        using(var h=SHA256.Create())if(Hex(h.ComputeHash(font))!=(string)row["expectedPayloadSha256"])throw new Exception("Generated font differs from supported Minecraft 1.21.11 face");
        Write(stream,dataAt+L(row["offset"]),font);fonts++;
       }else{
-       string key=source+"|"+row["srgb"]+"|"+row["normalChannels"]+"|"+(row.ContainsKey("forceOpaque")?row["forceOpaque"]:false)+"|"+row["width"]+"x"+row["height"]+"|"+A(row["mips"]).Length;List<byte[]> levels;
+       string key=source+"|"+row["srgb"]+"|"+row["normalChannels"]+"|"+(row.ContainsKey("forceOpaque")?row["forceOpaque"]:false)+"|"+row["width"]+"x"+row["height"]+"|"+A(row["mips"]).Length+"|"+(row.ContainsKey("format")?row["format"]:"PF_B8G8R8A8");List<byte[]> levels;
        if(!images.TryGetValue(key,out levels)){levels=Mips(Under(assets,source),row);images[key]=levels;}
        var layouts=A(row["mips"]);for(int i=0;i<layouts.Length;i++){var m=D(layouts[i]);if(levels[i].Length!=N(m["size"]))throw new Exception("Mip payload size mismatch");Write(stream,dataAt+L(m["offset"]),levels[i]);}textures++;
       }

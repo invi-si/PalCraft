@@ -1,3 +1,5 @@
+> **v1.0.1 READY.** Opus accepts cold loads of 15.928516/15.656792 s (original 14.5 s target failed). OC: registry growth 0; ten-minute cycle heap trend +0.025326 MiB/min. The v1.0 figures below are historical; see [v1.0.1 release notes](RELEASE_v1.0.1.md).
+
 # PalCraft (한국어)
 
 **v1.0 배포 준비 완료 — Opus 승인 SEQ268.** 두 번째 All 콜드 로딩은 15.702672초(첫 번째 16.002473초)로, 기존 14.5초 목표를 넘었지만 v1.0의 예외로 승인되었습니다. 런타임·설치 프로그램·에셋은 RF에서 실제로 시험한 바이트를 유지합니다.

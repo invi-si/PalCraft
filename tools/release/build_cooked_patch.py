@@ -129,7 +129,7 @@ def main():
     extraRecipes = OUT / 'additional-recipes.json'
     if extraRecipes.exists():
         recipes.update(json.loads(extraRecipes.read_text()))
-    manifest = {'version': 1, 'pakVersion': 3, 'format': 'BGRA8 cooked payload ranges', 'recipeFile': 'texture-recipes.json', 'fontGenerator': 'CookedFontCache.cs', 'paks': []}
+    manifest = {'version': 1, 'pakVersion': 3, 'format': 'BGRA8 small textures; deterministic BC3 large atlases', 'recipeFile': 'texture-recipes.json', 'fontGenerator': 'CookedFontCache.cs', 'paks': []}
     proof = []
     cache = {}
     counts = collections.Counter()
@@ -203,7 +203,8 @@ def main():
             h = source.read_bytes()
             d = exp.read_bytes()
             ub = bulk.read_bytes() if bulk.exists() else b''
-            key = sha(h + d + ub)
+            outputFormat = 'PF_DXT5' if not isFont and 'atlas' in package.lower() and (min(layout(d, ub)['width'], layout(d, ub)['height']) >= 512) else 'PF_B8G8R8A8'
+            key = sha(h + d + ub + outputFormat.encode())
             if isFont:
                 start = d.find(fontPayload)
                 assert start >= 0 and d.count(fontPayload) == 1
@@ -231,7 +232,7 @@ def main():
                     wanted = assets[package]['size']
                     if wanted != [old['width'], old['height']]:
                         override = wanted
-                nh, nd, old, new = blank_texture(h, d, ub, override)
+                nh, nd, old, new = blank_texture(h, d, ub, override, output_format=outputFormat)
                 target = template / key
                 target.mkdir(exist_ok=True)
                 (target / 'asset.uasset').write_bytes(nh)
@@ -261,7 +262,7 @@ def main():
                 proof.append(dict(pak=name, package=package, kind='original-icon', source='tools/release/original_icons.py', noInputPixels=True))
                 continue
             srgb = metadata.get(package, {}).get('srgb', True)
-            row = dict(package=package, file=stem + '.uexp', kind='texture', source=imageFile, sources=source_paths(recipe) if recipe is not None else [], supported=not unresolved, format='PF_B8G8R8A8', originalFormat=old['format'], srgb=srgb, width=new['width'], height=new['height'], mips=[{k: v for k, v in m.items() if k in ['index', 'offset', 'size', 'width', 'height']} for m in new['mips']], normalChannels=old['format'] == 'PF_BC5')
+            row = dict(package=package, file=stem + '.uexp', kind='texture', source=imageFile, sources=source_paths(recipe) if recipe is not None else [], supported=not unresolved, format=outputFormat, originalFormat=old['format'], srgb=srgb, width=new['width'], height=new['height'], mips=[{k: v for k, v in m.items() if k in ['index', 'offset', 'size', 'width', 'height']} for m in new['mips']], normalChannels=old['format'] == 'PF_BC5')
             row['forceOpaque'] = old['format'] == 'PF_DXT1'
             if unresolved:
                 errors.append(dict(pak=name, package=package, reason='Original image has no jar reconstruction recipe; blank fallback retained', sourceAuthoringFile=assets.get(package, {}).get('file')))

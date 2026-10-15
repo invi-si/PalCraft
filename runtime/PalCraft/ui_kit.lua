@@ -8,6 +8,8 @@ return function(ctx)
  local assetIds={};local textureHolders={}
  function U:retainTexture(t)
   if not valid(self.iconCacheRoot)or not valid(t)or not t:IsA(UE.Object('/Script/Engine.Texture'))then return end
+  local retained=self.titleRetainedOC and self.titleRetainedOC[t:GetAddress()]
+  if valid(retained)and retained:GetFullName()==t:GetFullName()then return end
   local k=t:GetAddress();if valid(textureHolders[k])then return end
   local n=UE.Object('/Script/Engine.Default__GameplayStatics'):SpawnObject(UE.Object('/Script/UMG.Image'),self.iconCacheRoot:GetOuter());assert(valid(n),'Texture retainer missing');self.iconCacheRoot:AddChildToCanvas(n);n.Slot:SetSize({X=1,Y=1});n:SetVisibility(3);n:SetRenderOpacity(0);n:SetBrushFromTexture(t,false);textureHolders[k]=n
  end

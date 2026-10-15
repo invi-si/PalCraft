@@ -1,3 +1,21 @@
+# RH offline v1.0.1 promotion - 16 October 2026
+
+**Current delivery status: READY for v1.0.1 under the Opus RH acceptance.** This supersedes the historical candidate/publication holds in OA, OB and OC. The original 14.5-second cold target remains failed: OC measured 15.928516 and 15.656792 seconds from actual world-start mouse release to cover end in fresh processes, without flushing the OS cache. Opus explicitly accepts those times for this release.
+
+v1.0.1 includes native Wither arrow immunity below half health, Dragon perch/breath behavior, menu bow click-through protection, retained Wither materials, and a respawn-safe boss bar. Covered preloading and selective deterministic install-time BC3 for seven large atlas instances reduce visible post-cover spikes from the earlier 329-351 ms to two final 60-second maxima of 88.620901 and 85.328996 ms. Both intervals have two frames above 60 ms and zero above 100 ms. Plains/Jungle/Mushroom/Desert admission measured 2/4/3/4 ms.
+
+The final 600.021-second soak after 30 seconds warmup maintained exactly eight living zombies, 17,988 frames and zero missed frames. Maximum simulation delta was 50.203800 ms, with zero above 60 ms. Registry length stayed 115 to 115; completed-cycle heap trend was +0.025326 MiB/min (acceptance limit 0.1), with heap 36.696-38.579 MiB. These are bounded native simulation measurements, not GPU/present latency or proof of unlimited stability. OC supersedes the earlier OA/OB memory failures.
+
+OC's final real-input regression covered inventory, four Technology cycles, Bram/Rina trades with counts, native map travel, unmounted bow release consuming one arrow, actual Wither-skull death, respawn, and save/title/reload. Bow hit damage is not claimed. Final gameplay and cold logs report zero Lua errors and zero new crashes. Only All was live-tested in OC; earlier RF acceptance covers the other pack choices on the v1.0 base.
+
+RH preserves every tested runtime, installer, asset and schema byte. Only documentation and readiness metadata change. The final archive is `dist/PalCraft-v1.0.1.zip`; the OC candidate/native-tested ZIPs and released v1.0 remain retained. The external release notes and final RH receipts add hashes after sealing to avoid circular self-hashes. Public source retains 13,136 cleared source packages and the five explicit exclusions; it is not a complete rebuild kit.
+
+Known limitations remain several-minute first setup and local texture/font reconstruction; 15.7-15.9-second measured later cold loads; minor BC3 palette quantization on large atlases; Minecraft sounds unavailable; unreadable blank-font diagnostic fallback; finite motion/performance coverage; and Islands-only Alex trade not demonstrated. Original dimensions, linear-light mip generation and material references are preserved. Seven large atlas instances use 2,009,824 bytes versus 8,039,080 bytes (75% reduction), with small textures still BGRA8. Title preload moves work before the world-start click; indivisible native UI calls may still reach 464 ms under cover.
+
+RH is offline: no game launch, game-install write, remote addition or push, no owner Git identity, and no write to CODEX_RESULT.txt or OPUS_INTERRUPT.txt. Historical sections below describe prior snapshots; current claims are limited to the acceptance above.
+
+---
+
 # RG offline v1.0 promotion - 16 October 2026
 
 **Current delivery status: READY, accepted under Opus decision SEQ268.** This supersedes the historical NOT READY/CANDIDATE release status below. RF's measured second All cold entry remains 15.702672 seconds against the original 14.5-second target; it is an accepted v1.0 exception, not a passing measurement. First entry was 16.002473 seconds. The acceptance is hash-bound to `local/taskRF/REPORT.json` in `local/taskRG/acceptance.json`.
@@ -111,3 +129,26 @@ Islands-only Alex waits for the owned Plains collision footing and uses its arri
 The night-eight stationary soak sampled 300.008 seconds after 15 seconds warmup: 8,999 frames, maximum 45.478601 ms, zero over 60 ms and zero missed frames. The metric is native world delta, not GPU presentation time. Heap range was 5.229 MB and registry growth was 2,736 entries; this does not establish long-duration boundedness. The prior RE 400 ms spike coincided with a private exhaustive object/material diagnostic. That diagnostic was excluded from this soak and the spike did not recur. The optional service-budget profile was empty and is not claimed as attribution proof.
 
 Initial All reconstruction took approximately 146 seconds on the test machine; other choices also took several minutes including prior-install preservation. Minecraft sounds remain unavailable. No non-candidate archive was produced and readiness flags remain false. The public source tree passed its full privacy/provenance scan; subsequent documentation-only changes are scanned incrementally. Final payload binding verifies that documentation/manifest updates preserve all tested gameplay, installer and asset bytes.
+
+
+## RG final delivery verification
+
+Final non-candidate archive: `dist/PalCraft-v1.0.zip` (352,925,294 bytes).
+
+| Artifact | SHA256 |
+| --- | --- |
+| Final ZIP | `0f93d4b04ef9bfd40fe81e8690a88ead2bdd0c2d97debf3230e0a7008517434d` |
+| Packaged manifest | `4fc7ec651de2bc0491ce886d979f1d9c592bb6405185734169d6cb9a83f20931` |
+| Public export manifest | `90c005a303077b0ac053ebf60e847125823fb4e367b6566ab09e2df3dfb52d2e` |
+
+ZIP CRC, 529 inventoried file hashes, exact archive-to-disk equality and the 523-file native-tested binding PASS. The full final package leak/provenance scan covered 530 files and 62 hash-cleared binaries, including all 60 template paks. The full public scan covered 27,013 files, including 13,352 license sidecars and 13,136 source packages. Identity, email, local-path and cleared binary/provenance checks PASS. All public production Lua, installer and patch sources were also matched to their tested package bytes. Five source texture exclusions remain explicit; `source_rebuild_complete` remains false.
+
+The installer's own candidate-refusal test PASS; the actual packaged installer's 16-case status/flag matrix PASS with zero target writes, including READY passage without CandidateTest and rejection of ordinary candidate installation. Negative policy tests reject private identifiers/paths/emails and uncleared Mojang/base-game asset fixtures. No runtime or installer code was changed, so RF's unchanged native and safety evidence is retained.
+
+Public repository: `public_repo/`, exactly **one** commit `4f0eb87ddb59f365dcad676c3b64fd969c1aed8b`, authored and committed by **Invi <invi@users.noreply.github.com>**, with annotated tag **v1.0** (tag object `14c3bf5c76f1dc2d2f5f55ef96bbce85c2b0bd41`). All 27,013 tracked Git blobs match the fully scanned export byte-for-byte. Working tree clean; `git fsck --full` PASS; **zero remotes**; nothing pushed. The entire object database contains one commit and one tag. No private Git history, inherited Git hooks or owner identity was used.
+
+Public Git attributes preserve the manifest's exact bytes, including existing line endings. The ignore rules admit the four cleared Bram/Rina skin/license files while keeping generated asset folders excluded. The first Git inventory preflight exposed those four ignored files; that preflight repository was moved by exact path into project release evidence, and the delivered repository was recreated fresh after the correction and another full leak scan.
+
+Receipts: `../local/taskRG/acceptance.json`, `final-tested-payload-binding.json`, `package-full-leak-scan.json`, `public-full-leak-scan.json`, `public-git-verification.json`, candidate guard/matrix and policy receipts, and `REPORT.json`. The packaged/public reports and public release document are frozen acceptance snapshots; this external section adds final hashes after ZIP sealing and Git commit creation, avoiding circular self-hashes.
+
+RG never launched the game, changed its installation, added a remote, pushed, or wrote CODEX_RESULT.txt / OPUS_INTERRUPT.txt. Both prohibited coordination files retain their initial RG hashes. Existing unrelated root-worktree changes were left in place. The RF candidate and native-tested archives remain retained.

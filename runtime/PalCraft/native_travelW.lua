@@ -66,16 +66,6 @@ return function(ctx,W)
     f=assert(io.open(path,'wb'));f:write(dofile(ctx.base..'/json.lua').encode({mode='native-W',legacyRetired=true}));f:close()
    end
   end
-
-  if UE.loadingCover51 and(UE.loadingCover51.at or UE.loadingCover51.armed)then return end
-  self.quietStartZ3=self.quietStartZ3 or os.clock()
-
-  if os.clock()-self.quietStartZ3<10 or e.controller.bShowMouseCursor then return end
-  local velocity=e.player:GetVelocity()
-  if velocity.X^2+velocity.Y^2+velocity.Z^2>100^2 then return end
-  for _,k in ipairs(self.order)do local row=self.rows[k]
-   if row and valid(row.actor)and row.actor:IsUnlocked()and not ctx.island:request(k,e)then return end
-  end
  end
  function N:snapshot(e)
   local d={mode='native-W',normalPlay=true,error=self.failed,player=v(e.player:K2_GetActorLocation()),flags=flags(e),statues={},points={}}

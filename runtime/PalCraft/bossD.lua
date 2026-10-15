@@ -176,6 +176,10 @@ return function(ctx,Z)
   if not dragon then
    local armored=ratio<=.5
    if s.armorE~=armored then
+    if armored and not s.armorMaterialsRetainedOA then
+     for _,mid in pairs(s.x4 and s.x4.materials or{})do ctx.retain(mid)end
+     s.armorMaterialsRetainedOA=true
+    end
     s.armorE=armored;s.normalMaterial105=armored and Z:asset('/Game/MinecraftBossE/M_WitherArmorE.M_WitherArmorE')or nil
     for i,m in ipairs(s.models)do if m.mesh then local c=s.parts[i];c:SetMaterial(0,s.normalMaterial105 or(s.x4 and s.x4.materials[i])or(s.seatPartI==i and s.seatMaterialI)or c.StaticMesh:GetMaterial(0))end end
     self:event('ARMOR',s,{enabled=armored,ratio=ratio})

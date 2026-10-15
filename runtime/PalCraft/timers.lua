@@ -161,7 +161,8 @@ local function new(native)
         local backgroundRan=false
         for _,token in ipairs(due)do
             if token.owner~='perf-sampler'then
-                if T.budgetMs and native.now()-frameStart>=T.budgetMs and backgroundRan then break end
+                local budget=T.coveredBudget and T.coveredBudget()or T.budgetMs
+                if budget and native.now()-frameStart>=budget and backgroundRan then break end
             end
             if not token.interval and token.epoch~=T.epoch then if T.pending[token]then T.pendingCountZ3=T.pendingCountZ3-1 end;T.pending[token]=nil;token.cancelled=true end
             if T.pending[token]and not token.cancelled and(not T.paused or token.owner=='perf-sampler')and(not T.admission or T.admission(token.owner))then

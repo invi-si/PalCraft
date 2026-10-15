@@ -11,7 +11,7 @@ return function(ctx)
  function I:guard(env,stamp)return env and env.status=='alive'and stamp==ctx.epoch()and not ctx.quiesced()and ctx.ready()end
  timers.onEpoch('island-native-wrappers'..(data.key or 'plains'),function()
   
-  I.actors={};I.actor=nil;I.cls=nil;I.handle=nil;I.epoch=nil;I.spawned=0;I.prewarm=0;I.quiet=0;I.admitted=false;I.footingReady=false;I.maxMs=0;I.operations={}
+  I.actors={};I.actor=nil;I.cls=nil;I.handle=nil;I.epoch=nil;I.spawned=0;I.prewarm=0;I.quiet=0;I.admitted=false;I.footingReady=false;I.maxMs=0;I.operations={};I.preloadOB=nil
  end)
  function I:height(x,y)
   local a,b=math.floor((x-data.origin.X)/(100*(data.signX or 1)))-(data.min or 0)+1,math.floor((y-data.origin.Y)/(100*(data.signY or 1)))-(data.min or 0)+1
@@ -59,19 +59,37 @@ return function(ctx)
   local stamp=ctx.epoch();assert(self:guard(env,stamp),'Island before WORLD_READY/restore completion')
   if self.epoch==stamp and(self.handle or self.admitted)then return end
   self.epoch=stamp;self.quiet=0
-  self.handle=timers.loop(100,function()
+  self.handle=timers.loop(1,function()
    if stamp~=ctx.epoch()or ctx.quiesced()then return true end
    local alive=ctx.environment();if not self:guard(alive,stamp)then return false end
    if ctx.streamReady and not ctx.streamReady(alive)then self.quiet=0;return false end
-   self.quiet=self.quiet+1;if self.quiet<5 then return false end
-   local begin=os.clock();local existing=self:census(alive);local a=existing[1]
+   self.quiet=self.quiet+1;if self.quiet<2 then return false end
+   local begin=os.clock()
+   self.preloadOB=self.preloadOB or 1
+   while data.chunks[self.preloadOB]do
+    local chunk=data.chunks[self.preloadOB];local path='/Game/MinecraftIslandX6/'..islandKey..'/R2/'..chunk.name..'.'..chunk.name
+    local cached=ctx.UE.islandAssetsOC and ctx.UE.islandAssetsOC[path]
+    if not ctx.valid(cached)then break end
+    self.operations[#self.operations+1]={kind='cached-dependency',name=chunk.name,ms=0};self.preloadOB=self.preloadOB+1
+   end
+   local dependency=data.chunks[self.preloadOB]
+   if dependency then
+    local path='/Game/MinecraftIslandX6/'..islandKey..'/R2/'..dependency.name..'.'..dependency.name
+    local asset=ctx.UE.GetAsset109(ctx.UE.Object('/Script/AssetRegistry.Default__AssetRegistryHelpers'),{PackageName=ctx.UE.FindOrAddFName(path:match('^(.*)%.[^%.]+$')),AssetName=ctx.UE.FindOrAddFName(dependency.name)})
+    assert(typed(asset,'/Script/Engine.StaticMesh')and asset:GetFullName()=='StaticMesh '..path,'Island dependency changed: '..path)
+    if ctx.retain then ctx.retain(asset)end
+    local ms=(os.clock()-begin)*1000;self.operations[#self.operations+1]={kind='dependency',name=dependency.name,ms=ms};self.maxMs=math.max(self.maxMs,ms)
+    self.preloadOB=self.preloadOB+1;ctx.log('MCOB_ISLAND_DEPENDENCY key='..islandKey..' name='..dependency.name..' ms='..ms);return false
+   end
+   local existing=self:census(alive);local a=existing[1]
    if not a then
     ctx.log('MC48_ISLAND_CLASS_LOAD_BEGIN epoch='..stamp..' key='..(data.key or 'plains'))
     if not typed(self.cls,'/Script/CoreUObject.Class')then
      local lib=ctx.UE.GetKismetSystemLibrary()
      local cls=ctx.UE.Native109(lib,'LoadClassAsset_Blocking',lib:Conv_SoftClassPathToSoftClassRef(lib:MakeSoftClassPath(classPath)))
      assert(typed(cls,'/Script/CoreUObject.Class')and cls:GetFullName()=='BlueprintGeneratedClass '..classPath,'Cooked island class not admitted')
-     self.cls=cls;self.classMsZ3=(os.clock()-begin)*1000
+     if ctx.retain then ctx.retain(cls)end
+     self.cls=cls;self.classMsZ3=(os.clock()-begin)*1000;self.operations[#self.operations+1]={kind='class',ms=self.classMsZ3};self.maxMs=math.max(self.maxMs,self.classMsZ3)
      ctx.log('MCZ3_ISLAND_CLASS_READY key='..islandKey..' ms='..self.classMsZ3)
      return false
     end
@@ -99,8 +117,8 @@ return function(ctx)
      ctx.log('PALCRAFT_ISLAND_BIND_READY key='..islandKey)
     end)
    else self.admitted=true;self.handle=nil end
-   self.maxMs=(os.clock()-begin)*1000
-   self.operations={{kind='class',ms=self.classMsZ3 or 0},{kind=self.spawned==1 and'spawn'or'reacquire',ms=self.maxMs}}
+   local operationMs=(os.clock()-begin)*1000;self.maxMs=math.max(self.maxMs,operationMs)
+   self.operations[#self.operations+1]={kind=self.spawned==1 and'spawn'or'reacquire',ms=operationMs}
    ctx.log('MC48_ISLAND_READY actors=1 chunks='..#data.chunks..' columns=81 epoch='..stamp..' actor='..a:GetAddress()..' outer='..a:GetOuter():GetFullName()..' ms='..self.maxMs..' key='..(data.key or 'plains'))
    return true
   end,'island-cooked-once'..(data.key or 'plains'))

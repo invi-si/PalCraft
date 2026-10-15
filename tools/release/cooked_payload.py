@@ -77,10 +77,11 @@ def name_hash(name):
         h = h >> 8 ^ table[(h ^ c) & 255]
     return struct.pack('<HH', h & 65535, zlib.crc32(b''.join((struct.pack('<I', ord(c)) for c in name))) & 65535)
 
-def blank_texture(header, data, bulk=b'', size_override=None):
+def blank_texture(header, data, bulk=b'', size_override=None, output_format='PF_B8G8R8A8'):
     old = layout(data, bulk)
     hi = header_info(header)
-    if old['format'] == 'PF_B8G8R8A8' and (not size_override):
+    assert output_format in ('PF_B8G8R8A8', 'PF_DXT1', 'PF_DXT5')
+    if old['format'] == output_format and (not size_override) and all((m['file'] == '.uexp' for m in old['mips'])):
         result = bytearray(data)
         for m in old['mips']:
             assert m['file'] == '.uexp'
@@ -88,7 +89,7 @@ def blank_texture(header, data, bulk=b'', size_override=None):
         return (header, bytes(result), old, old)
     assert old['format'] in ('PF_DXT1', 'PF_DXT5', 'PF_BC5', 'PF_B8G8R8A8')
     pf = old['pixelFormatOffset']
-    name = 'PF_B8G8R8A8'
+    name = output_format
     newHeader = bytearray(header)
     if old['format'] != name:
         table = bytearray()
@@ -109,7 +110,7 @@ def blank_texture(header, data, bulk=b'', size_override=None):
         struct.pack_into('<ii', result, pf - 16, w, h)
         mips = [dict(mips[0], width=w, height=h)]
     for m in mips:
-        size = m['width'] * m['height'] * 4
+        size = m['width'] * m['height'] * 4 if name == 'PF_B8G8R8A8' else max(1, (m['width'] + 3) // 4) * max(1, (m['height'] + 3) // 4) * (8 if name == 'PF_DXT1' else 16)
         offset = len(newHeader) + len(result) + 20
         result += struct.pack('<Iiiq', 72, size, size, offset) + bytes(size) + struct.pack('<iii', m['width'], m['height'], 1)
     result += data[old['end']:]

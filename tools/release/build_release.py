@@ -54,7 +54,7 @@ def build(candidate=False, audit_path=None, paks_path=None):
     runtime_root = Path(modules.get('runtime_source_root', 'runtime/MinecraftBlocks'))
     dist = ROOT / 'release/dist'
     stage = dist / ('.staging-' + uuid.uuid4().hex)
-    package = stage / 'PalCraft-v1.0'
+    package = stage / 'PalCraft-v1.0.1'
     package.mkdir(parents=True)
     for pack in PACKS:
         (package / 'payload' / pack).mkdir(parents=True)
@@ -204,23 +204,23 @@ def build(candidate=False, audit_path=None, paks_path=None):
         raise RuntimeError('Release assets/audit incomplete: ' + '; '.join(issues))
     leak_scan(package, approved_binaries=approved_binaries)
     files = [dict(path=p.relative_to(package).as_posix(), bytes=p.stat().st_size, sha256=sha(p)) for p in sorted(package.rglob('*')) if p.is_file()]
-    manifest = dict(product='PalCraft', version='1.0', status='CANDIDATE' if issues else 'READY', incomplete_reasons=issues, files=files, excluded=excluded, audit_sha256=sha(audit.path) if audit.data else None, modules_sha256=sha(ROOT / 'release/modules.json'), missing_runtime_modules=excluded_runtime, generated_data_modules=generated_loaders, data_generation_ready=generator_ready, legacy_cutover_ready=cutover_ready, dependencies_bundled=False, extracted_assets_bundled=False)
+    manifest = dict(product='PalCraft', version='1.0.1', status='CANDIDATE' if issues else 'READY', incomplete_reasons=issues, files=files, excluded=excluded, audit_sha256=sha(audit.path) if audit.data else None, modules_sha256=sha(ROOT / 'release/modules.json'), missing_runtime_modules=excluded_runtime, generated_data_modules=generated_loaders, data_generation_ready=generator_ready, legacy_cutover_ready=cutover_ready, dependencies_bundled=False, extracted_assets_bundled=False)
     write_json(package / 'manifest.json', manifest)
     leak_scan(package, approved_binaries=approved_binaries)
-    target = dist / 'PalCraft-v1.0'
+    target = dist / 'PalCraft-v1.0.1'
     if target.exists():
         evidence = dist / 'evidence'
         evidence.mkdir(exist_ok=True)
-        backup = evidence / ('PalCraft-v1.0-' + datetime.now().strftime('%Y%m%d-%H%M%S') + '-' + uuid.uuid4().hex[:6])
+        backup = evidence / ('PalCraft-v1.0.1-' + datetime.now().strftime('%Y%m%d-%H%M%S') + '-' + uuid.uuid4().hex[:6])
         assert target.resolve().is_relative_to(dist.resolve()) and backup.resolve().is_relative_to(evidence.resolve())
         shutil.move(str(target), str(backup))
     shutil.move(str(package), str(target))
-    name = 'PalCraft-v1.0-CANDIDATE.zip' if issues else 'PalCraft-v1.0.zip'
+    name = 'PalCraft-v1.0.1-CANDIDATE.zip' if issues else 'PalCraft-v1.0.1.zip'
     archive = dist / name
     with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED, compresslevel=6) as z:
         for p in sorted(target.rglob('*')):
             if p.is_file() or (p.is_dir() and (not any(p.iterdir()))):
-                z.write(p, 'PalCraft-v1.0/' + p.relative_to(target).as_posix())
+                z.write(p, 'PalCraft-v1.0.1/' + p.relative_to(target).as_posix())
     with zipfile.ZipFile(archive) as z:
         if z.testzip() is not None:
             raise ValueError('Zip CRC verification failed')

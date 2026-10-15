@@ -6,8 +6,10 @@ return function(ctx)
 
  T.hook('/Script/Pal.PalUtility:ProcessDamageAndPlayEffects',function(_,_,defender,value)
   local pending=R.pendingArraysS
-  if not pending and not R.probeS then return end
+  local armor=UE.bossFAArmor
+  if not pending and not R.probeS and not armor then return end
   local d=value:get()
+  if armor then armor(defender:get(),d)end
   if pending then
    if pending.foliage then d.HitFoliageIndex={pending.index}end
    if #pending.rates>0 then d.SpecialAttackRateInfos=pending.rates end
