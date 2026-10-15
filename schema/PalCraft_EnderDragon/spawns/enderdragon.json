@@ -1,0 +1,32 @@
+[
+  {
+    "Type": "Sheet",
+    "SpawnerName": "FA_MC_EnderDragon_FieldBoss",
+    "SpawnerType": "FieldBoss",
+    "Location": {
+      "X": -269720.0,
+      "Y": -203690.0,
+      "Z": 4060.0
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 180.0,
+      "Roll": 0.0
+    },
+    "SpawnGroupList": [
+      {
+        "Weight": 100,
+        "OnlyTime": "Undefined",
+        "PalList": [
+          {
+            "PalId": "MC_EnderDragon",
+            "Level": 50,
+            "Level_Max": 50,
+            "Num": 1,
+            "Num_Max": 1
+          }
+        ]
+      }
+    ]
+  }
+]

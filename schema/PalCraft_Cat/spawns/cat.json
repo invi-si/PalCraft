@@ -1,0 +1,31 @@
+[
+  {
+    "Type": "Sheet",
+    "Location": {
+      "X": -333800.0,
+      "Y": 307100.0,
+      "Z": -1463.0
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 0.0,
+      "Roll": 0.0
+    },
+    "SpawnerName": "MC105_Cat_plains",
+    "SpawnGroupList": [
+      {
+        "Weight": 100,
+        "PalList": [
+          {
+            "PalId": "MC_Cat",
+            "Level": 3,
+            "Level_Max": 3,
+            "Num": 1,
+            "Num_Max": 1
+          }
+        ],
+        "OnlyTime": "Day"
+      }
+    ]
+  }
+]

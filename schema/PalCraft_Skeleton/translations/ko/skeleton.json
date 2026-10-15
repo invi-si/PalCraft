@@ -1,0 +1,11 @@
+{
+  "DT_PalNameText": {
+    "PAL_NAME_MC_Skeleton": "스켈레톤"
+  },
+  "DT_PalShortDescriptionText": {
+    "PAL_SHORT_DESC_MC_Skeleton": "밤에 나타나 활을 쏘는 해골."
+  },
+  "DT_PalLongDescriptionText": {
+    "PAL_LONG_DESC_MC_Skeleton": "어둠 속에서 뼈를 달그락거리며 다가오는 해골. 멀리서 활을 겨누고 화살을 쏜다."
+  }
+}

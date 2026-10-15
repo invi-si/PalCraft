@@ -1,0 +1,31 @@
+[
+  {
+    "Type": "Sheet",
+    "Location": {
+      "X": -406200.0,
+      "Y": 388800.0,
+      "Z": -227.0
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 0.0,
+      "Roll": 0.0
+    },
+    "SpawnerName": "MC105_Panda_jungle",
+    "SpawnGroupList": [
+      {
+        "Weight": 100,
+        "PalList": [
+          {
+            "PalId": "MC_Panda",
+            "Level": 3,
+            "Level_Max": 3,
+            "Num": 1,
+            "Num_Max": 1
+          }
+        ],
+        "OnlyTime": "Day"
+      }
+    ]
+  }
+]

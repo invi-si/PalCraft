@@ -1,0 +1,30 @@
+[
+  {
+    "Type": "Sheet",
+    "Location": {
+      "X": -401400.0,
+      "Y": 384200.0,
+      "Z": 300.0
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 0.0,
+      "Roll": 0.0
+    },
+    "SpawnerName": "A1_RedstoneRevenant",
+    "SpawnGroupList": [
+      {
+        "Weight": 100,
+        "PalList": [
+          {
+            "PalId": "CP_RedstoneRevenant",
+            "Level": 12,
+            "Level_Max": 15,
+            "Num": 1,
+            "Num_Max": 1
+          }
+        ]
+      }
+    ]
+  }
+]

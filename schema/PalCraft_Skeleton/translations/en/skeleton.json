@@ -1,0 +1,11 @@
+{
+  "DT_PalNameText": {
+    "PAL_NAME_MC_Skeleton": "Skeleton"
+  },
+  "DT_PalShortDescriptionText": {
+    "PAL_SHORT_DESC_MC_Skeleton": "A nocturnal skeleton archer."
+  },
+  "DT_PalLongDescriptionText": {
+    "PAL_LONG_DESC_MC_Skeleton": "A skeleton that rattles through the darkness. It aims its bow from a distance and fires arrows."
+  }
+}

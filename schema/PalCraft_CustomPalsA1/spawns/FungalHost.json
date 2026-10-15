@@ -1,0 +1,31 @@
+[
+  {
+    "Type": "Sheet",
+    "Location": {
+      "X": -410200.0,
+      "Y": 303600.0,
+      "Z": -1300.0
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 0.0,
+      "Roll": 0.0
+    },
+    "SpawnerName": "A1_FungalHost",
+    "SpawnGroupList": [
+      {
+        "Weight": 100,
+        "PalList": [
+          {
+            "PalId": "CP_FungalHost",
+            "Level": 6,
+            "Level_Max": 8,
+            "Num": 1,
+            "Num_Max": 1
+          }
+        ],
+        "OnlyTime": "Day"
+      }
+    ]
+  }
+]

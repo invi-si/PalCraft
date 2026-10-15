@@ -1,0 +1,17 @@
+{
+  "DT_PalNameText": {
+    "PAL_NAME_MC_Wither": "Wither"
+  },
+  "DT_PalShortDescriptionText": {
+    "PAL_SHORT_DESC_MC_Wither": "Wither"
+  },
+  "DT_PalLongDescriptionText": {
+    "PAL_LONG_DESC_MC_Wither": "Wither"
+  },
+  "DT_SkillNameText": {
+    "PARTNERSKILL_MC_Wither": "Wither Flight"
+  },
+  "DT_PalFirstActivatedInfoText": {
+    "PAL_FIRST_SPAWN_DESC_MC_Wither": "Ride with a Minecraft Saddle. Hold F to mount; Space rises and Ctrl descends."
+  }
+}

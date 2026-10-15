@@ -1,0 +1,11 @@
+{
+  "DT_PalNameText": {
+    "PAL_NAME_MC_Enderman": "엔더맨"
+  },
+  "DT_PalShortDescriptionText": {
+    "PAL_SHORT_DESC_MC_Enderman": "밤에 나타나는 중립 생물. 공격받으면 반격하며 보랏빛과 함께 순간이동합니다."
+  },
+  "DT_PalLongDescriptionText": {
+    "PAL_LONG_DESC_MC_Enderman": "밤에 나타나는 중립 생물. 공격받으면 반격하며 보랏빛과 함께 순간이동합니다."
+  }
+}

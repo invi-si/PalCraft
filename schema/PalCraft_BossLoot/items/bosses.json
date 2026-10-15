@@ -1,0 +1,24 @@
+{
+  "MC_NetherStar": {
+    "Type": "Generic",
+    "Name": "Nether Star",
+    "Description": "Nether Star boss trophy.",
+    "TypeA": "Material",
+    "TypeB": "MaterialStone",
+    "MaxStackCount": 64,
+    "Weight": 0.1,
+    "IconTexture": "/Game/MinecraftBossD/T_MC_NetherStar.T_MC_NetherStar",
+    "Price": 1500
+  },
+  "MC_DragonEgg": {
+    "Type": "Generic",
+    "Name": "Dragon Egg",
+    "Description": "Dragon Egg boss trophy.",
+    "TypeA": "Material",
+    "TypeB": "MaterialStone",
+    "MaxStackCount": 64,
+    "Weight": 0.1,
+    "IconTexture": "/Game/MinecraftBossD/T_MC_DragonEggIcon.T_MC_DragonEggIcon",
+    "Price": 1500
+  }
+}

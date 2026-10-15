@@ -1,0 +1,17 @@
+{
+  "DT_PalNameText": {
+    "PAL_NAME_MC_Warden": "워든"
+  },
+  "DT_PalShortDescriptionText": {
+    "PAL_SHORT_DESC_MC_Warden": "버섯 섬 폐허의 밤을 지키는 수호자. 육중한 강타와 음파 공격을 사용합니다. 약화시킨 뒤 포획을 시도하세요."
+  },
+  "DT_PalLongDescriptionText": {
+    "PAL_LONG_DESC_MC_Warden": "버섯 섬 폐허의 밤을 지키는 수호자. 육중한 강타와 음파 공격을 사용합니다. 약화시킨 뒤 포획을 시도하세요."
+  },
+  "DT_SkillNameText": {
+    "PARTNERSKILL_MC_Warden": "딥 다크 탑승"
+  },
+  "DT_PalFirstActivatedInfoText": {
+    "PAL_FIRST_SPAWN_DESC_MC_Warden": "마인크래프트 안장으로 탈 수 있습니다. F 키를 길게 눌러 타거나 내립니다."
+  }
+}

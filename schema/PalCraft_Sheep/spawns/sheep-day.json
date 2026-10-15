@@ -1,0 +1,31 @@
+[
+  {
+    "Type": "Sheet",
+    "Location": {
+      "X": -334200.0,
+      "Y": 308000.0,
+      "Z": -1220.0
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 0.0,
+      "Roll": 0.0
+    },
+    "SpawnerName": "MC95_Sheep_Day",
+    "SpawnGroupList": [
+      {
+        "Weight": 100,
+        "OnlyTime": "Day",
+        "PalList": [
+          {
+            "PalId": "MC_Sheep",
+            "Level": 3,
+            "Level_Max": 3,
+            "Num": 1,
+            "Num_Max": 1
+          }
+        ]
+      }
+    ]
+  }
+]

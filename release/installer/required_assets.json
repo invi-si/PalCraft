@@ -1,0 +1,624 @@
+{
+  "schema_version": 1,
+  "minecraft_versions": "1.21.11",
+  "_comment": "Minecraft Java 1.21.11 validated; textures/font providers and vanilla JSON extracted only from the installing user.",
+  "entries": [
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/gui/container/inventory.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/gui/container/crafting_table.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/gui/container/furnace.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/gui/container/generic_54.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/gui/sprites/hud/hotbar.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/gui/sprites/hud/hotbar_selection.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/gui/sprites/hud/heart/full.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/gui/sprites/hud/heart/container.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/gui/sprites/hud/heart/half.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/gui/sprites/hud/food_full.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/gui/sprites/hud/food_empty.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/gui/sprites/hud/crosshair.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/gui/sprites/hud/armor_full.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/gui/title/minecraft.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/gui/sprites/widget/button.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/entity/player/wide/steve.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/entity/player/slim/alex.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/stone.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/dirt.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/grass_block_side.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/grass_block_top.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/oak_planks.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/cobblestone.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/oak_log.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/oak_log_top.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/sand.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/glass.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/coal_ore.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/iron_ore.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/diamond_ore.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/crafting_table_top.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/furnace_front.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/item/diamond_sword.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/item/iron_pickaxe.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/item/bow.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/item/stick.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/item/iron_ingot.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/item/diamond.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/item/coal.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/item/apple.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/entity/equipment/wings/elytra.png",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar_prefix",
+      "path": "assets/minecraft/textures/font/",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/entity/creeper/creeper.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/entity/zombie/zombie.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/entity/skeleton/skeleton.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/entity/spider/spider.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/entity/enderman/enderman.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/entity/pig/temperate_pig.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/entity/cow/temperate_cow.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/entity/sheep/sheep.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/entity/chicken/temperate_chicken.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/entity/villager/villager.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/entity/wither/wither.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/entity/enderdragon/dragon.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/entity/warden/warden.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/entity/iron_golem/iron_golem.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/entity/slime/slime.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/entity/wolf/wolf.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/sandstone.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/sandstone_top.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/mycelium_side.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/mycelium_top.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/jungle_log.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/jungle_leaves.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/textures/block/oak_leaves.png",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds.json",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/lang/ko_kr.json",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/random/click.ogg",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/random/pop.ogg",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/random/break.ogg",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/random/levelup.ogg",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/grass1.ogg",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/stone1.ogg",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/grass1.ogg",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/stone1.ogg",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/damage/hit1.ogg",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/creeper/say1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/creeper/death.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/zombie/say1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/skeleton/say1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/spider/say1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/endermen/idle1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound_prefix",
+      "path": "minecraft/sounds/mob/villager/",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "jar_prefix",
+      "path": "assets/minecraft/textures/",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "jar_prefix",
+      "path": "assets/minecraft/font/",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound_prefix",
+      "path": "minecraft/font/",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "jar",
+      "path": "assets/minecraft/lang/en_us.json",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "jar_prefix",
+      "path": "data/minecraft/",
+      "packs": [
+        "core"
+      ],
+      "note": "Vanilla recipes, tags and loot data for local Lua adapters; never bundled."
+    }
+  ]
+}

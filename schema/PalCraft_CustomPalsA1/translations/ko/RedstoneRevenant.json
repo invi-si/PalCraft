@@ -1,0 +1,17 @@
+{
+  "DT_PalNameText": {
+    "PAL_NAME_CP_RedstoneRevenant": "레드스톤 망령"
+  },
+  "DT_PalShortDescriptionText": {
+    "PAL_SHORT_DESC_CP_RedstoneRevenant": "고대의 레드스톤으로 움직이며 정글 사원을 지킨다."
+  },
+  "DT_PalLongDescriptionText": {
+    "PAL_LONG_DESC_CP_RedstoneRevenant": "고대의 레드스톤으로 움직이며 정글 사원을 지킨다."
+  },
+  "DT_SkillNameText": {
+    "PARTNERSKILL_CP_RedstoneRevenant": "섬의 수호자"
+  },
+  "DT_PalFirstActivatedInfoText": {
+    "PAL_FIRST_SPAWN_DESC_CP_RedstoneRevenant": "함께 싸우며 고유 전투 기술을 사용합니다."
+  }
+}

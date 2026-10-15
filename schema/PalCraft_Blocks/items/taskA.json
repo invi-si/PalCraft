@@ -1,0 +1,14 @@
+{
+  "MC_Saddle": {
+    "Type": "Generic",
+    "Name": "Saddle",
+    "Description": "Unlocks native riding for Minecraft Horse and Camel.",
+    "TypeA": "Essential",
+    "TypeB": "Essential_PalGear",
+    "MaxStackCount": 1,
+    "Weight": 0.1,
+    "IconTexture": "/Game/MinecraftTaskA/T_MC_Saddle.T_MC_Saddle",
+    "Rank": 1,
+    "Price": 500
+  }
+}

@@ -1,0 +1,31 @@
+[
+  {
+    "Type": "Sheet",
+    "Location": {
+      "X": -338500.0,
+      "Y": 309400.0,
+      "Z": -1417.0
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 0.0,
+      "Roll": 0.0
+    },
+    "SpawnerName": "MC95_Cow_Day",
+    "SpawnGroupList": [
+      {
+        "Weight": 100,
+        "OnlyTime": "Day",
+        "PalList": [
+          {
+            "PalId": "MC_Cow",
+            "Level": 3,
+            "Level_Max": 3,
+            "Num": 1,
+            "Num_Max": 1
+          }
+        ]
+      }
+    ]
+  }
+]

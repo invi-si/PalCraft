@@ -1,0 +1,4134 @@
+{
+  "format_version": 1,
+  "product": "PalCraft",
+  "version": "1.0",
+  "runtime_source_root": "runtime/PalCraft",
+  "pack_dependencies": {
+    "core": [],
+    "hud_skins": [
+      "core"
+    ],
+    "islands_animals": [
+      "core"
+    ],
+    "map_art": [
+      "core",
+      "islands_animals"
+    ]
+  },
+  "strip_patterns": [
+    "task*.lua",
+    "*probe*.lua",
+    "timer_tests.lua",
+    "map_historyN.lua",
+    "discovery*.lua",
+    "newworld_check65b.lua",
+    "harness*",
+    "*fixture*",
+    "*-enabled.txt",
+    "test-mode.txt",
+    "views.txt",
+    "skin_*-skinImage.png",
+    "sunny_x8.png",
+    "zuri_x8.png",
+    "owner-*.png",
+    "loading_dirt.png",
+    "alex.png",
+    "steve-wide.png",
+    "steve-slim.png"
+  ],
+  "lua": [
+    {
+      "path": "runtime/PalCraft/alex.lua",
+      "module": "alex",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "alex_pose",
+        "placement109",
+        "steve_skin",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/alex67.lua",
+      "module": "alex67",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "ui67_rules",
+        "ui67_view"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/alex_pose.lua",
+      "module": "alex_pose",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "steve_motion"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/alex_prices.lua",
+      "module": "alex_prices",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/alex_trade.lua",
+      "module": "alex_trade",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "alex67",
+        "alex_prices",
+        "catalog70",
+        "items70",
+        "items88",
+        "items89",
+        "json",
+        "slice_trade_x8",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/armor_meshes.lua",
+      "module": "armor_meshes",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/armor_visuals.lua",
+      "module": "armor_visuals",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "armor_meshes",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/asset_queueG.lua",
+      "module": "asset_queueG",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/attachment108c.lua",
+      "module": "attachment108c",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/base_overview.lua",
+      "module": "base_overview",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "native_icons",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/beds.lua",
+      "module": "beds",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/block_lights.lua",
+      "module": "block_lights",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/blocks88.lua",
+      "module": "blocks88",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/blocks89.lua",
+      "module": "blocks89",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/bossD.lua",
+      "module": "bossD",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "bossD_data",
+        "boss_barF",
+        "boss_motionD",
+        "boss_perchE",
+        "boss_poseE",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/bossD_data.lua",
+      "module": "bossD_data",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/bossFA.lua",
+      "module": "bossFA",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/boss_barF.lua",
+      "module": "boss_barF",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/boss_motionD.lua",
+      "module": "boss_motionD",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/boss_mountI.lua",
+      "module": "boss_mountI",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/boss_perchE.lua",
+      "module": "boss_perchE",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/boss_poseE.lua",
+      "module": "boss_poseE",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/boss_rideP.lua",
+      "module": "boss_rideP",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/cacheL.lua",
+      "module": "cacheL",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/camera_lagT.lua",
+      "module": "camera_lagT",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/capture105.lua",
+      "module": "capture105",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/capture82.lua",
+      "module": "capture82",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/catalog70.lua",
+      "module": "catalog70",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/cell_state.lua",
+      "module": "cell_state",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/character67.lua",
+      "module": "character67",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers",
+        "ui67_view"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/config.lua",
+      "module": "config",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/connected_blocks.lua",
+      "module": "connected_blocks",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/container_layouts.lua",
+      "module": "container_layouts",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/controls68.lua",
+      "module": "controls68",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "hand_motion66",
+        "native_harvestR",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/costume108.lua",
+      "module": "costume108",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "poseK"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/costume_camera108c.lua",
+      "module": "costume_camera108c",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/costume_events108b.lua",
+      "module": "costume_events108b",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "golemAc",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/costume_fidelity_x4.lua",
+      "module": "costume_fidelity_x4",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "mob_models_x4",
+        "vanilla_pose_x4"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/costume_runtimeJ.lua",
+      "module": "costume_runtimeJ",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "costume_fidelity_x4",
+        "lookT",
+        "poseK"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/cover_release78.lua",
+      "module": "cover_release78",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/crafting.lua",
+      "module": "crafting",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/creeper103.lua",
+      "module": "creeper103",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/cursorG.lua",
+      "module": "cursorG",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/custom_fxI.lua",
+      "module": "custom_fxI",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/custom_motionAc.lua",
+      "module": "custom_motionAc",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/custom_palsA.lua",
+      "module": "custom_palsA",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "custom_fxI",
+        "custom_motionAc",
+        "custom_palsA_data",
+        "custom_sizeB",
+        "slice_alpha_x8",
+        "slice_x8_data",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/custom_palsA_data.lua",
+      "module": "custom_palsA_data",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/custom_sizeB.lua",
+      "module": "custom_sizeB",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/custom_sizeB_data.lua",
+      "module": "custom_sizeB_data",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/data_bindings.lua",
+      "module": "data_bindings",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/death_screen.lua",
+      "module": "death_screen",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/decor70.lua",
+      "module": "decor70",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "smelting"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/decor70_data.lua",
+      "module": "decor70_data",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/decor71_data.lua",
+      "module": "decor71_data",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/discovery.lua",
+      "module": "discovery",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/discovery_finish.lua",
+      "module": "discovery_finish",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/drop_fallback66.lua",
+      "module": "drop_fallback66",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/dx_guard68.lua",
+      "module": "dx_guard68",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/elytra104.lua",
+      "module": "elytra104",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/entry_hold.lua",
+      "module": "entry_hold",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/equipmentK.lua",
+      "module": "equipmentK",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [
+        "item_display66"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/equipment_viewQ3.lua",
+      "module": "equipment_viewQ3",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/farm_capture96.lua",
+      "module": "farm_capture96",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "capture105"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/farm_ground96.lua",
+      "module": "farm_ground96",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "farm_ground96_data"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/farm_ground96_data.lua",
+      "module": "farm_ground96_data",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/feature_flags.lua",
+      "module": "feature_flags",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/fieldFA_data.lua",
+      "module": "fieldFA_data",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/follow86.lua",
+      "module": "follow86",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers",
+        "water86"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/font53.lua",
+      "module": "font53",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/font53_metrics.lua",
+      "module": "font53_metrics",
+      "pack": "hud_skins",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/frame_budget.lua",
+      "module": "frame_budget",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/front_endG.lua",
+      "module": "front_endG",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/gc_budget.lua",
+      "module": "gc_budget",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/gear_balance.lua",
+      "module": "gear_balance",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/golemAc.lua",
+      "module": "golemAc",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/gui_layouts.lua",
+      "module": "gui_layouts",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/hand_motion66.lua",
+      "module": "hand_motion66",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/held66.lua",
+      "module": "held66",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "hand_motion66",
+        "item_display66",
+        "world_poseL"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/held_items.lua",
+      "module": "held_items",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/hitch109.lua",
+      "module": "hitch109",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/hostiles107.lua",
+      "module": "hostiles107",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/input_layout.lua",
+      "module": "input_layout",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/inventory_layout.lua",
+      "module": "inventory_layout",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/inventory_previewM.lua",
+      "module": "inventory_previewM",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "steve_motion"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/island.lua",
+      "module": "island",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "island_actorB",
+        "island_data",
+        "island_x6_data",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/island_actorB.lua",
+      "module": "island_actorB",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/island_data.lua",
+      "module": "island_data",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/island_offsets89.lua",
+      "module": "island_offsets89",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/island_streamB.lua",
+      "module": "island_streamB",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/island_x5_data.lua",
+      "module": "island_x5_data",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "island_x5_manifest"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/island_x5_manifest.lua",
+      "module": "island_x5_manifest",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/island_x6_data.lua",
+      "module": "island_x6_data",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "slice_world_x8"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/island_x6_desert.lua",
+      "module": "island_x6_desert",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/island_x6_jungle.lua",
+      "module": "island_x6_jungle",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/island_x6_mushroom.lua",
+      "module": "island_x6_mushroom",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/island_x6_plains.lua",
+      "module": "island_x6_plains",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/islands88.lua",
+      "module": "islands88",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "island",
+        "island_offsets89",
+        "islands88_data",
+        "islands89_data",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/islands88_data.lua",
+      "module": "islands88_data",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/islands89_data.lua",
+      "module": "islands89_data",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/item_display66.lua",
+      "module": "item_display66",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/item_registry.lua",
+      "module": "item_registry",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [
+        "items104",
+        "items107",
+        "items70",
+        "items88",
+        "items89",
+        "itemsA",
+        "itemsD"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/items104.lua",
+      "module": "items104",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/items107.lua",
+      "module": "items107",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/items70.lua",
+      "module": "items70",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/items88.lua",
+      "module": "items88",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/items89.lua",
+      "module": "items89",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/itemsA.lua",
+      "module": "itemsA",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/itemsD.lua",
+      "module": "itemsD",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/jar_data.lua",
+      "module": "jar_data",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [
+        "data_bindings",
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/json.lua",
+      "module": "json",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/language.lua",
+      "module": "language",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [
+        "npc_text",
+        "strings104",
+        "strings107",
+        "strings57",
+        "strings67",
+        "strings70",
+        "strings71",
+        "strings76",
+        "strings88",
+        "strings89",
+        "stringsA"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/legacy_paths.lua",
+      "module": "legacy_paths",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/loading_cover.lua",
+      "module": "loading_cover",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/local_data.lua",
+      "module": "local_data",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [
+        "jar_data",
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/lookT.lua",
+      "module": "lookT",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/loot88.lua",
+      "module": "loot88",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json",
+        "slice_x8_data",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/Scripts/main.lua",
+      "module": "main",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [
+        "alex",
+        "alex_trade",
+        "beds",
+        "cell_state",
+        "config",
+        "controls68",
+        "cover_release78",
+        "custom_palsA",
+        "death_screen",
+        "entry_hold",
+        "feature_flags",
+        "follow86",
+        "front_endG",
+        "hitch109",
+        "input_layout",
+        "islands88",
+        "json",
+        "language",
+        "legacy_paths",
+        "loading_cover",
+        "loot88",
+        "map111",
+        "mechanics",
+        "menu_input",
+        "mobs",
+        "mount76",
+        "native_pack",
+        "native_prespawnQ2",
+        "outparmK",
+        "owned_travel",
+        "pack_services",
+        "particles73",
+        "pawn_readiness",
+        "phase_a",
+        "phase_b",
+        "phase_c",
+        "phase_d",
+        "possession",
+        "registry",
+        "resource_state",
+        "resources",
+        "restore109",
+        "slice_npcs_x8",
+        "startup_gate",
+        "state_writer",
+        "steve",
+        "tex_runtime",
+        "timers",
+        "title_overlay",
+        "ui_cache",
+        "ui_entry",
+        "ui_kit",
+        "waystones83",
+        "world_identityQ3",
+        "world_scope",
+        "zombie77"
+      ],
+      "stripped_dependencies": [
+        "discovery_finish",
+        "newworld_check65b",
+        "task104",
+        "task12",
+        "task13",
+        "task14",
+        "task15",
+        "task16",
+        "task17",
+        "task23",
+        "task25",
+        "task26",
+        "task27",
+        "task28",
+        "task30",
+        "task31",
+        "task31_stage",
+        "task33",
+        "task34",
+        "task36",
+        "task37",
+        "task41",
+        "task44",
+        "task47",
+        "task48",
+        "task49",
+        "task50",
+        "task52",
+        "task54",
+        "task56",
+        "task57",
+        "task59",
+        "task60",
+        "task61",
+        "task62",
+        "task64",
+        "task65",
+        "task70",
+        "task71",
+        "task72",
+        "task73",
+        "task74",
+        "task83",
+        "task91",
+        "task92",
+        "taskFB",
+        "taskRA"
+      ],
+      "dependency_notes": "Entry dispatch: HUD factories only when hud_skins; native_pack only for islands-only. Optional world factories gated before load."
+    },
+    {
+      "path": "runtime/PalCraft/map111.lua",
+      "module": "map111",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [
+        "map_historyN"
+      ],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/map_historyN.lua",
+      "module": "map_historyN",
+      "pack": "test",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/marker_history.lua",
+      "module": "marker_history",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/mechanics.lua",
+      "module": "mechanics",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "cell_state",
+        "decor70",
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/menu_input.lua",
+      "module": "menu_input",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/mob_models.lua",
+      "module": "mob_models",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/mob_models_x4.lua",
+      "module": "mob_models_x4",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/mob_motion.lua",
+      "module": "mob_motion",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "lookT"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/mob_navigation.lua",
+      "module": "mob_navigation",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/mobs.lua",
+      "module": "mobs",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "cacheL",
+        "costume_runtimeJ",
+        "equipmentK",
+        "gear_balance",
+        "hand_motion66",
+        "item_display66",
+        "mob_motion",
+        "mob_navigation",
+        "model_registryJ",
+        "pal_combat",
+        "poseK",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/model_dimensionsJ.lua",
+      "module": "model_dimensionsJ",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/model_registryJ.lua",
+      "module": "model_registryJ",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "mob_models",
+        "mob_models_x4"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/mount76.lua",
+      "module": "mount76",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "boss_rideP",
+        "native_icons",
+        "ride106",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/mount_camera102.lua",
+      "module": "mount_camera102",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "boss_mountI",
+        "camera_lagT",
+        "orbitZ1"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/native_chest_layout.lua",
+      "module": "native_chest_layout",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/native_harvestR.lua",
+      "module": "native_harvestR",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [
+        "taskS_probe"
+      ],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/native_icons.lua",
+      "module": "native_icons",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/native_inputG4.lua",
+      "module": "native_inputG4",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/native_inventory.lua",
+      "module": "native_inventory",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/native_items.lua",
+      "module": "native_items",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [
+        "item_registry",
+        "native_inventory"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/native_pack.lua",
+      "module": "native_pack",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "config",
+        "language",
+        "map111",
+        "native_items",
+        "outparmK",
+        "pawn_readiness",
+        "phase_c",
+        "registry",
+        "restore109",
+        "tex_runtime",
+        "timers",
+        "world_identityQ3",
+        "world_scope"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/native_prespawnQ2.lua",
+      "module": "native_prespawnQ2",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/native_trade.lua",
+      "module": "native_trade",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json",
+        "slice_journal_x8",
+        "slice_native_x8",
+        "slice_trade_core_x8",
+        "slice_x8_data",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/native_travelV.lua",
+      "module": "native_travelV",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/native_travelW.lua",
+      "module": "native_travelW",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json",
+        "native_widgetG",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/native_widgetG.lua",
+      "module": "native_widgetG",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/newworld_check65b.lua",
+      "module": "newworld_check65b",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/npc_legacy.lua",
+      "module": "npc_legacy",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/npc_text.lua",
+      "module": "npc_text",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/optional_soundZ4.lua",
+      "module": "optional_soundZ4",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/options.lua",
+      "module": "options",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json",
+        "skins_ui71",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/orbitZ1.lua",
+      "module": "orbitZ1",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/ore_probeK.lua",
+      "module": "ore_probeK",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/outparmK.lua",
+      "module": "outparmK",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/owned_travel.lua",
+      "module": "owned_travel",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/pack_services.lua",
+      "module": "pack_services",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/pal_combat.lua",
+      "module": "pal_combat",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/pal_projectiles91.lua",
+      "module": "pal_projectiles91",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/particles73.lua",
+      "module": "particles73",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/passive_flee101.lua",
+      "module": "passive_flee101",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/pawn_readiness.lua",
+      "module": "pawn_readiness",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/phase_a.lua",
+      "module": "phase_a",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "dx_guard68",
+        "gear_balance",
+        "native_icons",
+        "slice_mining_x8",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/phase_b.lua",
+      "module": "phase_b",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "container_layouts",
+        "crafting",
+        "equipment_viewQ3",
+        "inventory_layout",
+        "item_registry",
+        "json",
+        "native_chest_layout",
+        "native_inventory",
+        "native_widgetG",
+        "recipe_book",
+        "recipes",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/phase_c.lua",
+      "module": "phase_c",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [
+        "block_lights",
+        "catalog70",
+        "connected_blocks",
+        "drop_fallback66",
+        "held_items",
+        "optional_soundZ4",
+        "smelting",
+        "snd_runtime",
+        "sounds",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/phase_d.lua",
+      "module": "phase_d",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "armor_visuals",
+        "base_overview",
+        "character67",
+        "cursorG",
+        "native_icons",
+        "native_inputG4",
+        "native_widgetG",
+        "options",
+        "phase_e",
+        "phase_f",
+        "screens67",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/phase_e.lua",
+      "module": "phase_e",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "native_icons",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/phase_f.lua",
+      "module": "phase_f",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "native_icons",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/placement109.lua",
+      "module": "placement109",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/png71.lua",
+      "module": "png71",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/poseK.lua",
+      "module": "poseK",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/possession.lua",
+      "module": "possession",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/recall108b_probe.lua",
+      "module": "recall108b_probe",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/recipe_book.lua",
+      "module": "recipe_book",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/recipes.lua",
+      "module": "recipes",
+      "pack": "hud_skins",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [
+        "recipes104",
+        "recipes70",
+        "recipesA"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/recipes104.lua",
+      "module": "recipes104",
+      "pack": "hud_skins",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/recipes70.lua",
+      "module": "recipes70",
+      "pack": "hud_skins",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/recipesA.lua",
+      "module": "recipesA",
+      "pack": "hud_skins",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/registry.lua",
+      "module": "registry",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [
+        "blocks88",
+        "blocks89",
+        "decor70_data",
+        "decor71_data"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/resource_state.lua",
+      "module": "resource_state",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/resources.lua",
+      "module": "resources",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/restore109.lua",
+      "module": "restore109",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/ride106.lua",
+      "module": "ride106",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [
+        "boss_mountI"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/screens67.lua",
+      "module": "screens67",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json",
+        "timers",
+        "ui67_rules",
+        "ui67_view"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/skin_portraitZ1.lua",
+      "module": "skin_portraitZ1",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/skin_preview71.lua",
+      "module": "skin_preview71",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/skins71.lua",
+      "module": "skins71",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json",
+        "png71",
+        "skin_portraitZ1",
+        "skin_preview71"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/skins_ui71.lua",
+      "module": "skins_ui71",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/slice_alpha_x8.lua",
+      "module": "slice_alpha_x8",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "slice_x8_data"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/slice_journal_x8.lua",
+      "module": "slice_journal_x8",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/slice_mining_x8.lua",
+      "module": "slice_mining_x8",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/slice_native_x8.lua",
+      "module": "slice_native_x8",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/slice_npcs_x8.lua",
+      "module": "slice_npcs_x8",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "alex_pose",
+        "placement109",
+        "slice_x8_data",
+        "steve_skin",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/slice_trade_core_x8.lua",
+      "module": "slice_trade_core_x8",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/slice_trade_x8.lua",
+      "module": "slice_trade_x8",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json",
+        "slice_journal_x8",
+        "slice_native_x8",
+        "slice_trade_core_x8",
+        "slice_x8_data",
+        "ui67_rules",
+        "ui67_view"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/slice_world_x8.lua",
+      "module": "slice_world_x8",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "slice_x8_data"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/slice_x8_data.lua",
+      "module": "slice_x8_data",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/smelting.lua",
+      "module": "smelting",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/snd_runtime.lua",
+      "module": "snd_runtime",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/sounds.lua",
+      "module": "sounds",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/startup_gate.lua",
+      "module": "startup_gate",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/state_writer.lua",
+      "module": "state_writer",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/steve.lua",
+      "module": "steve",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "attachment108c",
+        "elytra104",
+        "held66",
+        "item_registry",
+        "mount_camera102",
+        "skins71",
+        "steve_motion",
+        "steve_pose",
+        "steve_skin",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/steve_math_scratch.lua",
+      "module": "steve_math_scratch",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/steve_motion.lua",
+      "module": "steve_motion",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/steve_native_rest.lua",
+      "module": "steve_native_rest",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/steve_pose.lua",
+      "module": "steve_pose",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "hand_motion66",
+        "steve_math_scratch",
+        "steve_motion",
+        "steve_native_rest",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/steve_skin.lua",
+      "module": "steve_skin",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/strings104.lua",
+      "module": "strings104",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/strings107.lua",
+      "module": "strings107",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/strings57.lua",
+      "module": "strings57",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/strings67.lua",
+      "module": "strings67",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/strings70.lua",
+      "module": "strings70",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/strings71.lua",
+      "module": "strings71",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/strings76.lua",
+      "module": "strings76",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/strings88.lua",
+      "module": "strings88",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/strings89.lua",
+      "module": "strings89",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/stringsA.lua",
+      "module": "stringsA",
+      "pack": "core",
+      "audit_exclusions": [
+        "mojang"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
+      "local_data_adapter": true
+    },
+    {
+      "path": "runtime/PalCraft/task104.lua",
+      "module": "task104",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task12.lua",
+      "module": "task12",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task13.lua",
+      "module": "task13",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task14.lua",
+      "module": "task14",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task15.lua",
+      "module": "task15",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task16.lua",
+      "module": "task16",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task17.lua",
+      "module": "task17",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [
+        "task18",
+        "task19"
+      ],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task18.lua",
+      "module": "task18",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task19.lua",
+      "module": "task19",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task23.lua",
+      "module": "task23",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "recipes"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task25.lua",
+      "module": "task25",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "cell_state",
+        "json",
+        "recipes"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task26.lua",
+      "module": "task26",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task27.lua",
+      "module": "task27",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task28.lua",
+      "module": "task28",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task30.lua",
+      "module": "task30",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task31.lua",
+      "module": "task31",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task31_stage.lua",
+      "module": "task31_stage",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task33.lua",
+      "module": "task33",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task34.lua",
+      "module": "task34",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task36.lua",
+      "module": "task36",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task37.lua",
+      "module": "task37",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [
+        "taskF"
+      ],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task41.lua",
+      "module": "task41",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task44.lua",
+      "module": "task44",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task47.lua",
+      "module": "task47",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task48.lua",
+      "module": "task48",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task49.lua",
+      "module": "task49",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task50.lua",
+      "module": "task50",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task52.lua",
+      "module": "task52",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task54.lua",
+      "module": "task54",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task56.lua",
+      "module": "task56",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task57.lua",
+      "module": "task57",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task59.lua",
+      "module": "task59",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [
+        "taskFA"
+      ],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task60.lua",
+      "module": "task60",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task61.lua",
+      "module": "task61",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task62.lua",
+      "module": "task62",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task64.lua",
+      "module": "task64",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task65.lua",
+      "module": "task65",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [
+        "task67_probe",
+        "task68",
+        "task76",
+        "task77",
+        "task78",
+        "taskZ1"
+      ],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task67_probe.lua",
+      "module": "task67_probe",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task68.lua",
+      "module": "task68",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task70.lua",
+      "module": "task70",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "cell_state",
+        "crafting",
+        "decor70_data",
+        "json",
+        "recipes",
+        "timers"
+      ],
+      "stripped_dependencies": [
+        "task82b"
+      ],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task71.lua",
+      "module": "task71",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task72.lua",
+      "module": "task72",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task73.lua",
+      "module": "task73",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task74.lua",
+      "module": "task74",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task76.lua",
+      "module": "task76",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task77.lua",
+      "module": "task77",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task78.lua",
+      "module": "task78",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task82b.lua",
+      "module": "task82b",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task83.lua",
+      "module": "task83",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "blocks88",
+        "blocks89",
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [
+        "taskB"
+      ],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task91.lua",
+      "module": "task91",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/task92.lua",
+      "module": "task92",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "costume_camera108c",
+        "json",
+        "recipes",
+        "timers"
+      ],
+      "stripped_dependencies": [
+        "recall108b_probe"
+      ],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskB.lua",
+      "module": "taskB",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [
+        "taskB_courses",
+        "taskB_lineup",
+        "taskC_fixture",
+        "taskD_fixture",
+        "taskH",
+        "taskI",
+        "taskJ"
+      ],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskB_courses.lua",
+      "module": "taskB_courses",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskB_lineup.lua",
+      "module": "taskB_lineup",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "custom_sizeB_data",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskC_fixture.lua",
+      "module": "taskC_fixture",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "costume_camera108c",
+        "timers"
+      ],
+      "stripped_dependencies": [
+        "taskB_courses"
+      ],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskD_fixture.lua",
+      "module": "taskD_fixture",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskF.lua",
+      "module": "taskF",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "native_widgetG",
+        "timers"
+      ],
+      "stripped_dependencies": [
+        "taskG2",
+        "taskG5"
+      ],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskFA.lua",
+      "module": "taskFA",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "fieldFA_data",
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskFB.lua",
+      "module": "taskFB",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "slice_x8_data",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskG2.lua",
+      "module": "taskG2",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskG5.lua",
+      "module": "taskG5",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "native_widgetG",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskH.lua",
+      "module": "taskH",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "costume_camera108c",
+        "custom_palsA_data",
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [
+        "taskB_courses"
+      ],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskI.lua",
+      "module": "taskI",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "costume_camera108c",
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskJ.lua",
+      "module": "taskJ",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "model_dimensionsJ",
+        "timers",
+        "variantsJ"
+      ],
+      "stripped_dependencies": [
+        "taskK",
+        "taskO",
+        "taskP",
+        "taskT"
+      ],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskK.lua",
+      "module": "taskK",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [
+        "ore_probeK"
+      ],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskO.lua",
+      "module": "taskO",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [
+        "taskB_courses"
+      ],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskP.lua",
+      "module": "taskP",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskRA.lua",
+      "module": "taskRA",
+      "pack": "test",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json",
+        "tex_runtime"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskS_probe.lua",
+      "module": "taskS_probe",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskT.lua",
+      "module": "taskT",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/taskZ1.lua",
+      "module": "taskZ1",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [
+        "json",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/tex_runtime.lua",
+      "module": "tex_runtime",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [
+        "png71",
+        "tex_runtime_data"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/tex_runtime_data.lua",
+      "module": "tex_runtime_data",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/timer_tests.lua",
+      "module": "timer_tests",
+      "pack": "test",
+      "audit_exclusions": [
+        "test"
+      ],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Excluded development-only file."
+    },
+    {
+      "path": "runtime/PalCraft/timers.lua",
+      "module": "timers",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/title_overlay.lua",
+      "module": "title_overlay",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/tooltip_placement.lua",
+      "module": "tooltip_placement",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/ui20.lua",
+      "module": "ui20",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json",
+        "timers",
+        "ui20_details",
+        "ui_design"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/ui20_details.lua",
+      "module": "ui20_details",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/ui46.lua",
+      "module": "ui46",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers",
+        "tooltip_placement"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/ui54.lua",
+      "module": "ui54",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/ui57.lua",
+      "module": "ui57",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "ui_design",
+        "ui_sprites"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/ui58.lua",
+      "module": "ui58",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers",
+        "ui_design"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/ui67.lua",
+      "module": "ui67",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "ui67_rules"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/ui67_rules.lua",
+      "module": "ui67_rules",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/ui67_view.lua",
+      "module": "ui67_view",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/ui_cache.lua",
+      "module": "ui_cache",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/ui_design.lua",
+      "module": "ui_design",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/ui_entry.lua",
+      "module": "ui_entry",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "capture82",
+        "timers",
+        "ui_preload"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/ui_input.lua",
+      "module": "ui_input",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/ui_kit.lua",
+      "module": "ui_kit",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "font53",
+        "gui_layouts",
+        "json",
+        "timers",
+        "ui20",
+        "ui46",
+        "ui54",
+        "ui57",
+        "ui58",
+        "ui67",
+        "ui_input",
+        "ui_sprites"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/ui_preload.lua",
+      "module": "ui_preload",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/ui_sprites.lua",
+      "module": "ui_sprites",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/vanilla_pose_compiled_x4.lua",
+      "module": "vanilla_pose_compiled_x4",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/vanilla_pose_program_x4.lua",
+      "module": "vanilla_pose_program_x4",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/vanilla_pose_x4.lua",
+      "module": "vanilla_pose_x4",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "vanilla_pose_compiled_x4",
+        "vanilla_pose_program_x4"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/variantsJ.lua",
+      "module": "variantsJ",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "variantsK"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/variantsK.lua",
+      "module": "variantsK",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/wardenC.lua",
+      "module": "wardenC",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/water86.lua",
+      "module": "water86",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/waystones83.lua",
+      "module": "waystones83",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "json",
+        "native_travelW",
+        "placement109",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/world_identityQ3.lua",
+      "module": "world_identityQ3",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/world_poseL.lua",
+      "module": "world_poseL",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "poseK"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/world_scope.lua",
+      "module": "world_scope",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/zombie77.lua",
+      "module": "zombie77",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "asset_queueG",
+        "bossD",
+        "bossFA",
+        "costume108",
+        "costume_events108b",
+        "costume_runtimeJ",
+        "creeper103",
+        "equipmentK",
+        "farm_capture96",
+        "farm_ground96",
+        "hostiles107",
+        "item_display66",
+        "lookT",
+        "mob_motion",
+        "model_registryJ",
+        "pal_projectiles91",
+        "passive_flee101",
+        "ride106",
+        "timers",
+        "variantsJ",
+        "wardenC"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Requires core; optional factories start only with this pack."
+    }
+  ],
+  "schema": [
+    {
+      "path": "schema/PalCraft_CustomPalsA1",
+      "destination": "PalCraft_CustomPalsA1",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Alex",
+      "destination": "PalCraft_Alex",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Blocks",
+      "destination": "PalCraft_Blocks",
+      "pack": "core",
+      "dependency_notes": "Shared item definitions support native island drops/trades and HUD building; asset references stay stable."
+    },
+    {
+      "path": "schema/PalCraft_BossLoot",
+      "destination": "PalCraft_BossLoot",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Camel",
+      "destination": "PalCraft_Camel",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Cat",
+      "destination": "PalCraft_Cat",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Chicken",
+      "destination": "PalCraft_Chicken",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Cow",
+      "destination": "PalCraft_Cow",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Creeper",
+      "destination": "PalCraft_Creeper",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_EnderDragon",
+      "destination": "PalCraft_EnderDragon",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Enderman",
+      "destination": "PalCraft_Enderman",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Fox",
+      "destination": "PalCraft_Fox",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Horse",
+      "destination": "PalCraft_Horse",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Husk",
+      "destination": "PalCraft_Husk",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_IronGolem",
+      "destination": "PalCraft_IronGolem",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Mooshroom",
+      "destination": "PalCraft_Mooshroom",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Ocelot",
+      "destination": "PalCraft_Ocelot",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Panda",
+      "destination": "PalCraft_Panda",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Parrot",
+      "destination": "PalCraft_Parrot",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Pig",
+      "destination": "PalCraft_Pig",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Rabbit",
+      "destination": "PalCraft_Rabbit",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Sheep",
+      "destination": "PalCraft_Sheep",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Skeleton",
+      "destination": "PalCraft_Skeleton",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Slime",
+      "destination": "PalCraft_Slime",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Spider",
+      "destination": "PalCraft_Spider",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Warden",
+      "destination": "PalCraft_Warden",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Witch",
+      "destination": "PalCraft_Witch",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Wither",
+      "destination": "PalCraft_Wither",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Wolf",
+      "destination": "PalCraft_Wolf",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    },
+    {
+      "path": "schema/PalCraft_Zombie",
+      "destination": "PalCraft_Zombie",
+      "pack": "islands_animals",
+      "dependency_notes": "Native Pal/NPC/loot schema; does not depend on replacement HUD or controls."
+    }
+  ],
+  "paks": [],
+  "sanitizers": {
+    "map_historyN": "Empty production marker history; owner GUID fixture excluded."
+  },
+  "asset_rule": "No Mojang/Palworld pixels, sounds or owner skins. Audit exclusions apply before copying. RA clean pak manifest must be hash-bound.",
+  "pak_replacements_manifest": "local/release/paks.json"
+}

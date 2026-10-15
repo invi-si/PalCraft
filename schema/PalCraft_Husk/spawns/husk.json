@@ -1,0 +1,30 @@
+[
+  {
+    "Type": "Sheet",
+    "Location": {
+      "X": -473600.0,
+      "Y": 384700.0,
+      "Z": -297.5
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 0.0,
+      "Roll": 0.0
+    },
+    "SpawnerName": "MC100_Husk",
+    "SpawnGroupList": [
+      {
+        "Weight": 100,
+        "PalList": [
+          {
+            "PalId": "MC_Husk",
+            "Level": 3,
+            "Level_Max": 3,
+            "Num": 2,
+            "Num_Max": 2
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,62 @@
+{
+  "MC_EnderPearl": {
+    "Type": "Generic",
+    "Name": "Ender Pearl",
+    "Description": "Minecraft Ender Pearl",
+    "TypeA": "Material",
+    "TypeB": "MaterialProccessing",
+    "MaxStackCount": 64,
+    "Weight": 0.1,
+    "IconTexture": "/Game/MinecraftHostiles107/T_MC_EnderPearl.T_MC_EnderPearl",
+    "Rank": 1,
+    "Price": 20
+  },
+  "MC_SlimeBall": {
+    "Type": "Generic",
+    "Name": "Slime Ball",
+    "Description": "Minecraft Slime Ball",
+    "TypeA": "Material",
+    "TypeB": "MaterialProccessing",
+    "MaxStackCount": 64,
+    "Weight": 0.1,
+    "IconTexture": "/Game/MinecraftHostiles107/T_MC_SlimeBall.T_MC_SlimeBall",
+    "Rank": 1,
+    "Price": 20
+  },
+  "MC_GlassBottle": {
+    "Type": "Generic",
+    "Name": "Glass Bottle",
+    "Description": "Minecraft Glass Bottle",
+    "TypeA": "Material",
+    "TypeB": "MaterialProccessing",
+    "MaxStackCount": 64,
+    "Weight": 0.1,
+    "IconTexture": "/Game/MinecraftHostiles107/T_MC_GlassBottle.T_MC_GlassBottle",
+    "Rank": 1,
+    "Price": 20
+  },
+  "MC_Redstone": {
+    "Type": "Generic",
+    "Name": "Redstone",
+    "Description": "Minecraft Redstone",
+    "TypeA": "Material",
+    "TypeB": "MaterialProccessing",
+    "MaxStackCount": 64,
+    "Weight": 0.1,
+    "IconTexture": "/Game/MinecraftHostiles107/T_MC_Redstone.T_MC_Redstone",
+    "Rank": 1,
+    "Price": 20
+  },
+  "MC_GlowstoneDust": {
+    "Type": "Generic",
+    "Name": "Glowstone Dust",
+    "Description": "Minecraft Glowstone Dust",
+    "TypeA": "Material",
+    "TypeB": "MaterialProccessing",
+    "MaxStackCount": 64,
+    "Weight": 0.1,
+    "IconTexture": "/Game/MinecraftHostiles107/T_MC_GlowstoneDust.T_MC_GlowstoneDust",
+    "Rank": 1,
+    "Price": 20
+  }
+}

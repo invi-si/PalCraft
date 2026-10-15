@@ -1,0 +1,196 @@
+{
+  "format_version": 1,
+  "author": "Invi",
+  "assets": [
+    {
+      "source": "runtime/PalCraft/Assets/bram.png",
+      "sha256": "665afcd2e6345d7afec214a929bad0aa24e7fb4b8cb341f46573be9e48498c27",
+      "clean": true,
+      "provenance": "ours",
+      "license": "CC-BY-4.0",
+      "pack": "islands_animals",
+      "payload_relative": "Assets/bram.png",
+      "public_path": "runtime/PalCraft/Assets/bram.png"
+    },
+    {
+      "source": "art/source/bram-generated.png",
+      "sha256": "ba0e1263669dc729fbccaee3b26addadd90ea5b0a59745a6f51c1496fd0fcf53",
+      "clean": true,
+      "provenance": "ours",
+      "license": "CC-BY-4.0",
+      "pack": "islands_animals",
+      "payload_relative": null,
+      "public_path": "art/source/bram-generated.png"
+    },
+    {
+      "source": "runtime/PalCraft/Assets/rina.png",
+      "sha256": "945d0b80aa86878ed69318f8e29dbe1bb289ff331d7293045d8ba00e6e606337",
+      "clean": true,
+      "provenance": "ours",
+      "license": "CC-BY-4.0",
+      "pack": "islands_animals",
+      "payload_relative": "Assets/rina.png",
+      "public_path": "runtime/PalCraft/Assets/rina.png"
+    },
+    {
+      "source": "art/source/rina-generated.png",
+      "sha256": "0bc4106641a8010bd3b56e933b3c837e946aec9bfe5897317eb1b94bcbde670e",
+      "clean": true,
+      "provenance": "ours",
+      "license": "CC-BY-4.0",
+      "pack": "islands_animals",
+      "payload_relative": null,
+      "public_path": "art/source/rina-generated.png"
+    },
+    {
+      "source": "release/art/icons/Bed.png",
+      "sha256": "d5670d7e54f0a69a9570ef0ca5a7a7509e23acc6ea4089bc0e23466a430b7445",
+      "clean": true,
+      "provenance": "ours",
+      "license": "CC-BY-4.0",
+      "pack": "core",
+      "payload_relative": null,
+      "public_path": "release/art/icons/Bed.png"
+    },
+    {
+      "source": "release/art/icons/Camel.png",
+      "sha256": "906b920d9a054f8ad6204615ee578aca447a8fa49d91775d6f8820641fda206d",
+      "clean": true,
+      "provenance": "ours",
+      "license": "CC-BY-4.0",
+      "pack": "core",
+      "payload_relative": null,
+      "public_path": "release/art/icons/Camel.png"
+    },
+    {
+      "source": "release/art/icons/Cat.png",
+      "sha256": "43f0006e45fdafbe76da49bee024912f9b707b74757a6eebe3b49c8b7b6d32be",
+      "clean": true,
+      "provenance": "ours",
+      "license": "CC-BY-4.0",
+      "pack": "core",
+      "payload_relative": null,
+      "public_path": "release/art/icons/Cat.png"
+    },
+    {
+      "source": "release/art/icons/EnderDragon.png",
+      "sha256": "1473b160201daa056cefaa52a258f95874224b7555d511ad35fb2d915efe1d29",
+      "clean": true,
+      "provenance": "ours",
+      "license": "CC-BY-4.0",
+      "pack": "core",
+      "payload_relative": null,
+      "public_path": "release/art/icons/EnderDragon.png"
+    },
+    {
+      "source": "release/art/icons/Enderman.png",
+      "sha256": "26f55f328e65a166a578c958ce632f87e329594da6ac01b6c0b39907e1631ea4",
+      "clean": true,
+      "provenance": "ours",
+      "license": "CC-BY-4.0",
+      "pack": "core",
+      "payload_relative": null,
+      "public_path": "release/art/icons/Enderman.png"
+    },
+    {
+      "source": "release/art/icons/Fox.png",
+      "sha256": "d6947fddde92e7dab097ebf830f8152afed24749eba80d4056755807d7e2465a",
+      "clean": true,
+      "provenance": "ours",
+      "license": "CC-BY-4.0",
+      "pack": "core",
+      "payload_relative": null,
+      "public_path": "release/art/icons/Fox.png"
+    },
+    {
+      "source": "release/art/icons/Horse.png",
+      "sha256": "8a5680549eafa62abec32d68de09ce21f36686024ed7b811b5bdda36ff723755",
+      "clean": true,
+      "provenance": "ours",
+      "license": "CC-BY-4.0",
+      "pack": "core",
+      "payload_relative": null,
+      "public_path": "release/art/icons/Horse.png"
+    },
+    {
+      "source": "release/art/icons/IronGolem.png",
+      "sha256": "42572ab67f7dc2eb2adbaa21c654659ba9ad09458033126c6c6cf9ec4e17252c",
+      "clean": true,
+      "provenance": "ours",
+      "license": "CC-BY-4.0",
+      "pack": "core",
+      "payload_relative": null,
+      "public_path": "release/art/icons/IronGolem.png"
+    },
+    {
+      "source": "release/art/icons/Panda.png",
+      "sha256": "2302149a0fcd6429c84a9db7fd8331f6da524ec604cf5d417529f80a1adf1416",
+      "clean": true,
+      "provenance": "ours",
+      "license": "CC-BY-4.0",
+      "pack": "core",
+      "payload_relative": null,
+      "public_path": "release/art/icons/Panda.png"
+    },
+    {
+      "source": "release/art/icons/Parrot.png",
+      "sha256": "a61d09aa4f8a986b901609c22160c5456e1331443046e4ed08e6e67002be16c0",
+      "clean": true,
+      "provenance": "ours",
+      "license": "CC-BY-4.0",
+      "pack": "core",
+      "payload_relative": null,
+      "public_path": "release/art/icons/Parrot.png"
+    },
+    {
+      "source": "release/art/icons/ParrotHead.png",
+      "sha256": "e562c1989ebd0cf27d8cad776cb430c8fc822d0d4bc7d1e70a7bc44c96591ee6",
+      "clean": true,
+      "provenance": "ours",
+      "license": "CC-BY-4.0",
+      "pack": "core",
+      "payload_relative": null,
+      "public_path": "release/art/icons/ParrotHead.png"
+    },
+    {
+      "source": "release/art/icons/Rabbit.png",
+      "sha256": "08c773fd6e36f0db53b8300fe76bec9cb73a08200c8fd366caf4cdf36d090303",
+      "clean": true,
+      "provenance": "ours",
+      "license": "CC-BY-4.0",
+      "pack": "core",
+      "payload_relative": null,
+      "public_path": "release/art/icons/Rabbit.png"
+    },
+    {
+      "source": "release/art/icons/Slime.png",
+      "sha256": "9b192108346eb4db4d910cb9a3b3b4bfc92ca932d473a79ff9599a574f92fb92",
+      "clean": true,
+      "provenance": "ours",
+      "license": "CC-BY-4.0",
+      "pack": "core",
+      "payload_relative": null,
+      "public_path": "release/art/icons/Slime.png"
+    },
+    {
+      "source": "release/art/icons/Witch.png",
+      "sha256": "a5d43d0e178882498f290d95e013ed822b7690f7507bf7d702502a692dcf4e9e",
+      "clean": true,
+      "provenance": "ours",
+      "license": "CC-BY-4.0",
+      "pack": "core",
+      "payload_relative": null,
+      "public_path": "release/art/icons/Witch.png"
+    },
+    {
+      "source": "release/art/icons/Wolf.png",
+      "sha256": "7be8b7833aafff4c542216c74f49273d78cceb70c9a2b2db80c075f894f85230",
+      "clean": true,
+      "provenance": "ours",
+      "license": "CC-BY-4.0",
+      "pack": "core",
+      "payload_relative": null,
+      "public_path": "release/art/icons/Wolf.png"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "DT_PalNameText": {
+    "PAL_NAME_MC_Creeper": "Creeper"
+  },
+  "DT_PalShortDescriptionText": {
+    "PAL_SHORT_DESC_MC_Creeper": "A silent visitor with an explosive temper."
+  },
+  "DT_PalLongDescriptionText": {
+    "PAL_LONG_DESC_MC_Creeper": "A creeper that wanders in the dark. It swells with a warning hiss before bursting into a cloud of smoke."
+  }
+}

@@ -1,0 +1,10 @@
+*.lua text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.uasset binary
+*.uexp binary
+*.ubulk binary
+*.png binary
+
+# Preserve the exact exported manifest bytes in Git.
+* -text

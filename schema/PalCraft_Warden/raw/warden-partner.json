@@ -1,0 +1,43 @@
+{
+  "DT_PartnerSkillParameter": {
+    "MC_Warden": {
+      "RestrictionItems": [
+        {
+          "Key": "MC_Saddle"
+        }
+      ],
+      "ActiveSkill": {
+        "SkillName": "Unknown",
+        "WazaID": "None",
+        "bIdlelCostDecreaseEveryFrame": false,
+        "bIsExecSkillContinuation": false,
+        "bIsOneShotRideAction": false,
+        "ActiveSkill_MainValue_Overview_EditorOnly": "None",
+        "IsRidingActiveSkillNotWeapon": false,
+        "RidingActiveSkillNotWeaponCondition": "None",
+        "bIsToggleRidingActiveSkillNotWeapon": false,
+        "ActiveSkill_MainValueByRank": [],
+        "ActiveSkill_OverWriteCoolTimeByRank": [],
+        "ActiveSkill_OverWriteEffectTimeByRank": []
+      },
+      "PassiveSkills": [
+        {
+          "SkillAndParametersArray": []
+        },
+        {
+          "SkillAndParametersArray": []
+        },
+        {
+          "SkillAndParametersArray": []
+        },
+        {
+          "SkillAndParametersArray": []
+        },
+        {
+          "SkillAndParametersArray": []
+        }
+      ],
+      "TextReferencePassiveSkills": []
+    }
+  }
+}

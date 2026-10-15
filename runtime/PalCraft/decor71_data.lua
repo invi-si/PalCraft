@@ -1,0 +1,3 @@
+-- SPDX-License-Identifier: GPL-3.0-or-later
+-- Copyright Invi
+return {["oak_leaves"]="/Game/MinecraftTask71/SM_OakLeaves.SM_OakLeaves",["spruce_leaves"]="/Game/MinecraftTask71/SM_SpruceLeaves.SM_SpruceLeaves",["birch_leaves"]="/Game/MinecraftTask71/SM_BirchLeaves.SM_BirchLeaves",["jungle_leaves"]="/Game/MinecraftTask71/SM_JungleLeaves.SM_JungleLeaves",["acacia_leaves"]="/Game/MinecraftTask71/SM_AcaciaLeaves.SM_AcaciaLeaves",["dark_oak_leaves"]="/Game/MinecraftTask71/SM_DarkOakLeaves.SM_DarkOakLeaves",["mangrove_leaves"]="/Game/MinecraftTask71/SM_MangroveLeaves.SM_MangroveLeaves",["grass_block"]="/Game/MinecraftTask71/SM_GrassBlock.SM_GrassBlock",["lily_pad"]="/Game/MinecraftTask71/SM_LilyPad.SM_LilyPad",["water"]="/Game/MinecraftTask71/SM_Water.SM_Water"}

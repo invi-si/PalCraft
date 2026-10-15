@@ -1,0 +1,31 @@
+[
+  {
+    "Type": "Sheet",
+    "Location": {
+      "X": -331200.0,
+      "Y": 303900.0,
+      "Z": -1400.0
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 0.0,
+      "Roll": 0.0
+    },
+    "SpawnerName": "A1_PatchworkBrute",
+    "SpawnGroupList": [
+      {
+        "Weight": 100,
+        "PalList": [
+          {
+            "PalId": "CP_PatchworkBrute",
+            "Level": 9,
+            "Level_Max": 12,
+            "Num": 1,
+            "Num_Max": 1
+          }
+        ],
+        "OnlyTime": "Night"
+      }
+    ]
+  }
+]

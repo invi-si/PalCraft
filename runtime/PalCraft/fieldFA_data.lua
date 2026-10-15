@@ -1,0 +1,3 @@
+-- SPDX-License-Identifier: GPL-3.0-or-later
+-- Copyright Invi
+return {["MC_Wither"]={["level"]=35,["island"]="desert",["position"]={["X"]=-474500.0,["Y"]=383800.0,["Z"]=-546.8846054077148},["ground"]={["X"]=-479600.0,["Y"]=390600.0,["Z"]=1400.0},["location"]="native shore beside Desert; high-plateau spawn absent on launch1"},["MC_Warden"]={["level"]=40,["island"]="desert",["position"]={["X"]=-483800.0,["Y"]=386100.0,["Z"]=-1857.0},["ground"]={["X"]=-483800.0,["Y"]=386100.0,["Z"]=-2000.0},["location"]="cave beside torch tunnel"},["MC_EnderDragon"]={["level"]=50,["island"]="native-volcano",["position"]={["X"]=-269720.0,["Y"]=-203690.0,["Z"]=4060.0},["location"]="15m east/5m north of old native Jetragon spawner"}}

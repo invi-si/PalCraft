@@ -1,0 +1,17 @@
+local/
+release/dist/
+release/evidence/
+__pycache__/
+*.pyc
+project/Saved/
+project/Intermediate/
+project/DerivedDataCache/
+project/Binaries/
+runtime/PalCraft/assets/*
+# Original NPC skins and their licenses are cleared release inputs.
+!runtime/PalCraft/Assets/bram.png
+!runtime/PalCraft/Assets/bram.png.license
+!runtime/PalCraft/Assets/rina.png
+!runtime/PalCraft/Assets/rina.png.license
+runtime/PalCraft/skins/*.png
+runtime/PalCraft/skins/_cache/

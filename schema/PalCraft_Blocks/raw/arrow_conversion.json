@@ -1,0 +1,13 @@
+{
+  "DT_ItemRecipeDataTable": {
+    "MC_Arrow": {
+      "Product_Count": 1,
+      "Material1_Id": "MC_Arrow",
+      "Material1_Count": 1,
+      "WorkAmount": 1.0,
+      "WorkableAttribute": 0,
+      "UnlockItemID": "None",
+      "Product_Id": "Arrow"
+    }
+  }
+}

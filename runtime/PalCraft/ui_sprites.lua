@@ -1,0 +1,3 @@
+-- SPDX-License-Identifier: GPL-3.0-or-later
+-- Copyright Invi
+return {["T_MC_UI_tooltip_background"]={0.09,0.09,0.09,0.09},["T_MC_UI_tooltip_frame"]={0.1,0.1,0.1,0.1},["T_MC_UI_widget_button"]={0.015,0.15,0.015,0.15},["T_MC_UI_widget_button_highlighted"]={0.015,0.15,0.015,0.15},["T_MC_UI_widget_button_disabled"]={0.005,0.05,0.005,0.05},["T_MC_UI_widget_slider"]={0.005,0.05,0.005,0.05},["T_MC_UI_widget_slider_handle"]={0.25,0.1,0.25,0.15},["T_MC_UI_widget_slider_handle_highlighted"]={0.25,0.1,0.25,0.15},["T_MC_UI_widget_text_field"]={0.005,0.05,0.005,0.05},["T_MC_UI_widget_text_field_highlighted"]={0.005,0.05,0.005,0.05}}

@@ -1,0 +1,17 @@
+{
+  "DT_PalNameText": {
+    "PAL_NAME_CP_Mossback": "이끼등"
+  },
+  "DT_PalShortDescriptionText": {
+    "PAL_SHORT_DESC_CP_Mossback": "이끼를 두른 희귀한 거인. 세 다리로 묵직하게 걸어간다."
+  },
+  "DT_PalLongDescriptionText": {
+    "PAL_LONG_DESC_CP_Mossback": "이끼를 두른 희귀한 거인. 세 다리로 묵직하게 걸어간다."
+  },
+  "DT_SkillNameText": {
+    "PARTNERSKILL_CP_Mossback": "섬의 수호자"
+  },
+  "DT_PalFirstActivatedInfoText": {
+    "PAL_FIRST_SPAWN_DESC_CP_Mossback": "함께 싸우며 고유 전투 기술을 사용합니다."
+  }
+}

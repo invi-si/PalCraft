@@ -1,0 +1,31 @@
+[
+  {
+    "Type": "Sheet",
+    "Location": {
+      "X": -481000.0,
+      "Y": 381000.0,
+      "Z": -1400.0
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 0.0,
+      "Roll": 0.0
+    },
+    "SpawnerName": "A1_IvoryRattle",
+    "SpawnGroupList": [
+      {
+        "Weight": 100,
+        "PalList": [
+          {
+            "PalId": "CP_IvoryRattle",
+            "Level": 8,
+            "Level_Max": 10,
+            "Num": 1,
+            "Num_Max": 1
+          }
+        ],
+        "OnlyTime": "Night"
+      }
+    ]
+  }
+]

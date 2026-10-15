@@ -1,0 +1,36 @@
+[
+  {
+    "Type": "Sheet",
+    "Location": {
+      "X": -411800.0,
+      "Y": 384600.0,
+      "Z": -1100.0
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 0.0,
+      "Roll": 0.0
+    },
+    "SpawnerName": "A1_Mossback",
+    "SpawnGroupList": [
+      {
+        "Weight": 10,
+        "PalList": [
+          {
+            "PalId": "CP_Mossback",
+            "Level": 14,
+            "Level_Max": 18,
+            "Num": 1,
+            "Num_Max": 1
+          }
+        ],
+        "OnlyTime": "Day"
+      },
+      {
+        "Weight": 90,
+        "OnlyTime": "Day",
+        "PalList": []
+      }
+    ]
+  }
+]

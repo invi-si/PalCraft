@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PalCraft required Minecraft assets",
+  "description": "Lists files the installer extracts from the user's own Minecraft install into <game>/Mods/NativeMods/UE4SS/Mods/PalCraft/assets/. Jar paths and index keys keep their vanilla relative path; a leading 'assets/' (jar) is stripped so both land under assets/minecraft/...",
+  "type": "object",
+  "required": ["schema_version", "entries"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "minecraft_versions": { "type": "string", "description": "Informational, e.g. 1.21.x" },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "path", "packs"],
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "enum": ["jar", "jar_prefix", "sound", "sound_prefix"],
+            "description": "jar: one file inside versions/<v>/<v>.jar (path = 'assets/minecraft/textures/...'). jar_prefix: every file whose jar path starts with path (use a trailing '/'). sound: one key of assets/indexes/<id>.json 'objects' (path = 'minecraft/sounds/mob/creeper/say1.ogg', also 'minecraft/sounds.json', 'minecraft/lang/en_us.json'); resolved to assets/objects/<hash[0:2]>/<hash>. sound_prefix: every index key starting with path."
+          },
+          "path": { "type": "string", "minLength": 1 },
+          "packs": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "enum": ["core", "hud_skins", "islands_animals"] },
+            "description": "Entry is extracted when ANY listed pack is installed (core is always installed)."
+          },
+          "optional": { "type": "boolean", "description": "If true a missing file is reported as informational instead of a warning." },
+          "note": { "type": "string" }
+        }
+      }
+    }
+  }
+}

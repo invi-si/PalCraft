@@ -1,0 +1,11 @@
+{
+  "DT_PalNameText": {
+    "PAL_NAME_MC_Zombie": "좀비"
+  },
+  "DT_PalShortDescriptionText": {
+    "PAL_SHORT_DESC_MC_Zombie": "밤에 나타나 두 팔을 뻗고 다가오는 좀비."
+  },
+  "DT_PalLongDescriptionText": {
+    "PAL_LONG_DESC_MC_Zombie": "낮게 신음하며 어둠 속을 떠도는 좀비. 먹잇감을 발견하면 두 팔을 뻗고 끈질기게 뒤쫓는다."
+  }
+}

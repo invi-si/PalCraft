@@ -1,0 +1,31 @@
+[
+  {
+    "Type": "Sheet",
+    "Location": {
+      "X": -403600.0,
+      "Y": 385700.0,
+      "Z": 645.0
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 0.0,
+      "Roll": 0.0
+    },
+    "SpawnerName": "MC100_Ocelot",
+    "SpawnGroupList": [
+      {
+        "Weight": 100,
+        "PalList": [
+          {
+            "PalId": "MC_Ocelot",
+            "Level": 3,
+            "Level_Max": 3,
+            "Num": 2,
+            "Num_Max": 2
+          }
+        ],
+        "OnlyTime": "Day"
+      }
+    ]
+  }
+]

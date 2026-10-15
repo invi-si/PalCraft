@@ -1,0 +1,199 @@
+{
+  "DT_PartnerSkillParameter": {
+    "MC_Horse": {
+      "RestrictionItems": [
+        {
+          "Key": "MC_Saddle"
+        }
+      ],
+      "ActiveSkill": {
+        "SkillName": "Unknown",
+        "WazaID": "None",
+        "bIdlelCostDecreaseEveryFrame": false,
+        "bIsExecSkillContinuation": false,
+        "bIsOneShotRideAction": false,
+        "ActiveSkill_MainValue_Overview_EditorOnly": "None",
+        "IsRidingActiveSkillNotWeapon": false,
+        "RidingActiveSkillNotWeaponCondition": "None",
+        "bIsToggleRidingActiveSkillNotWeapon": false,
+        "ActiveSkill_MainValueByRank": [],
+        "ActiveSkill_OverWriteCoolTimeByRank": [],
+        "ActiveSkill_OverWriteEffectTimeByRank": []
+      },
+      "PassiveSkills": [
+        {
+          "SkillAndParametersArray": []
+        },
+        {
+          "SkillAndParametersArray": [
+            {
+              "SkillName": {
+                "Key": "MoveSpeed_up_PartnerSkill_Ride_1"
+              },
+              "Parameters": {
+                "DelayTime": 0,
+                "WorkType": "None",
+                "bAssignPassiveIgnoreCurrentWorkType": false,
+                "MapObjectId": [],
+                "ItemId": [],
+                "AssignOthers": false,
+                "TargetElementType": "None",
+                "PalTribeIds": [],
+                "bNotAssignSelf": false,
+                "TriggerParam": {
+                  "TargetTribeIds": []
+                },
+                "ItemParam": {
+                  "ItemTypeA": "None",
+                  "ItemTypeB": "None",
+                  "ItemIds": [],
+                  "ExcludedItemIds": [],
+                  "bIsContainNoItemId": false,
+                  "WeaponType": "None",
+                  "WeaponTypes": [],
+                  "bMeleeOnly": false
+                },
+                "RegeneParam": {
+                  "Interval": 0
+                },
+                "OtherOtomoConditionParam": {
+                  "TargetElementType": "None",
+                  "TargetElementTypes": [],
+                  "PalTribeIds": []
+                },
+                "FloatValue1": 0
+              }
+            }
+          ]
+        },
+        {
+          "SkillAndParametersArray": [
+            {
+              "SkillName": {
+                "Key": "MoveSpeed_up_PartnerSkill_Ride_2"
+              },
+              "Parameters": {
+                "DelayTime": 0,
+                "WorkType": "None",
+                "bAssignPassiveIgnoreCurrentWorkType": false,
+                "MapObjectId": [],
+                "ItemId": [],
+                "AssignOthers": false,
+                "TargetElementType": "None",
+                "PalTribeIds": [],
+                "bNotAssignSelf": false,
+                "TriggerParam": {
+                  "TargetTribeIds": []
+                },
+                "ItemParam": {
+                  "ItemTypeA": "None",
+                  "ItemTypeB": "None",
+                  "ItemIds": [],
+                  "ExcludedItemIds": [],
+                  "bIsContainNoItemId": false,
+                  "WeaponType": "None",
+                  "WeaponTypes": [],
+                  "bMeleeOnly": false
+                },
+                "RegeneParam": {
+                  "Interval": 0
+                },
+                "OtherOtomoConditionParam": {
+                  "TargetElementType": "None",
+                  "TargetElementTypes": [],
+                  "PalTribeIds": []
+                },
+                "FloatValue1": 0
+              }
+            }
+          ]
+        },
+        {
+          "SkillAndParametersArray": [
+            {
+              "SkillName": {
+                "Key": "MoveSpeed_up_PartnerSkill_Ride_3"
+              },
+              "Parameters": {
+                "DelayTime": 0,
+                "WorkType": "None",
+                "bAssignPassiveIgnoreCurrentWorkType": false,
+                "MapObjectId": [],
+                "ItemId": [],
+                "AssignOthers": false,
+                "TargetElementType": "None",
+                "PalTribeIds": [],
+                "bNotAssignSelf": false,
+                "TriggerParam": {
+                  "TargetTribeIds": []
+                },
+                "ItemParam": {
+                  "ItemTypeA": "None",
+                  "ItemTypeB": "None",
+                  "ItemIds": [],
+                  "ExcludedItemIds": [],
+                  "bIsContainNoItemId": false,
+                  "WeaponType": "None",
+                  "WeaponTypes": [],
+                  "bMeleeOnly": false
+                },
+                "RegeneParam": {
+                  "Interval": 0
+                },
+                "OtherOtomoConditionParam": {
+                  "TargetElementType": "None",
+                  "TargetElementTypes": [],
+                  "PalTribeIds": []
+                },
+                "FloatValue1": 0
+              }
+            }
+          ]
+        },
+        {
+          "SkillAndParametersArray": [
+            {
+              "SkillName": {
+                "Key": "MoveSpeed_up_PartnerSkill_Ride_4"
+              },
+              "Parameters": {
+                "DelayTime": 0,
+                "WorkType": "None",
+                "bAssignPassiveIgnoreCurrentWorkType": false,
+                "MapObjectId": [],
+                "ItemId": [],
+                "AssignOthers": false,
+                "TargetElementType": "None",
+                "PalTribeIds": [],
+                "bNotAssignSelf": false,
+                "TriggerParam": {
+                  "TargetTribeIds": []
+                },
+                "ItemParam": {
+                  "ItemTypeA": "None",
+                  "ItemTypeB": "None",
+                  "ItemIds": [],
+                  "ExcludedItemIds": [],
+                  "bIsContainNoItemId": false,
+                  "WeaponType": "None",
+                  "WeaponTypes": [],
+                  "bMeleeOnly": false
+                },
+                "RegeneParam": {
+                  "Interval": 0
+                },
+                "OtherOtomoConditionParam": {
+                  "TargetElementType": "None",
+                  "TargetElementTypes": [],
+                  "PalTribeIds": []
+                },
+                "FloatValue1": 0
+              }
+            }
+          ]
+        }
+      ],
+      "TextReferencePassiveSkills": []
+    }
+  }
+}

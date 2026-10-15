@@ -1,0 +1,32 @@
+[
+  {
+    "Type": "Sheet",
+    "SpawnerName": "FA_MC_Warden_FieldBoss",
+    "SpawnerType": "FieldBoss",
+    "Location": {
+      "X": -483800.0,
+      "Y": 386100.0,
+      "Z": -1857.0
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 180.0,
+      "Roll": 0.0
+    },
+    "SpawnGroupList": [
+      {
+        "Weight": 100,
+        "OnlyTime": "Undefined",
+        "PalList": [
+          {
+            "PalId": "MC_Warden",
+            "Level": 40,
+            "Level_Max": 40,
+            "Num": 1,
+            "Num_Max": 1
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,31 @@
+[
+  {
+    "Type": "Sheet",
+    "Location": {
+      "X": -401900.0,
+      "Y": 386400.0,
+      "Z": 653.0
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 0.0,
+      "Roll": 0.0
+    },
+    "SpawnerName": "MC103_Parrot_Day",
+    "SpawnGroupList": [
+      {
+        "Weight": 100,
+        "OnlyTime": "Day",
+        "PalList": [
+          {
+            "PalId": "MC_Parrot",
+            "Level": 3,
+            "Level_Max": 3,
+            "Num": 2,
+            "Num_Max": 2
+          }
+        ]
+      }
+    ]
+  }
+]

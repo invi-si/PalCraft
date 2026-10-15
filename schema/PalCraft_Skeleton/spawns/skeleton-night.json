@@ -1,0 +1,60 @@
+[
+  {
+    "Type": "Sheet",
+    "Location": {
+      "X": -344650.0,
+      "Y": 267650.0,
+      "Z": 5300.0
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 0.0,
+      "Roll": 0.0
+    },
+    "SpawnerName": "MC91_Night_Base",
+    "SpawnGroupList": [
+      {
+        "Weight": 100,
+        "OnlyTime": "Night",
+        "PalList": [
+          {
+            "PalId": "MC_Skeleton",
+            "Level": 3,
+            "Level_Max": 3,
+            "Num": 2,
+            "Num_Max": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Type": "Sheet",
+    "Location": {
+      "X": -334150.0,
+      "Y": 305650.0,
+      "Z": -1400.0
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 0.0,
+      "Roll": 0.0
+    },
+    "SpawnerName": "MC91_Night_Plains",
+    "SpawnGroupList": [
+      {
+        "Weight": 100,
+        "OnlyTime": "Night",
+        "PalList": [
+          {
+            "PalId": "MC_Skeleton",
+            "Level": 3,
+            "Level_Max": 3,
+            "Num": 1,
+            "Num_Max": 1
+          }
+        ]
+      }
+    ]
+  }
+]

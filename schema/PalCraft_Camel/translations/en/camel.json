@@ -1,0 +1,17 @@
+{
+  "DT_PalNameText": {
+    "PAL_NAME_MC_Camel": "Camel"
+  },
+  "DT_PalShortDescriptionText": {
+    "PAL_SHORT_DESC_MC_Camel": "A Minecraft Camel. Ride with a Direhowl Saddle. Sprint to dash."
+  },
+  "DT_PalLongDescriptionText": {
+    "PAL_LONG_DESC_MC_Camel": "A Minecraft Camel. Ride with a Direhowl Saddle. Sprint to dash."
+  },
+  "DT_SkillNameText": {
+    "PARTNERSKILL_MC_Camel": "Saddled Ride"
+  },
+  "DT_PalFirstActivatedInfoText": {
+    "PAL_FIRST_SPAWN_DESC_MC_Camel": "A Minecraft Camel. Ride with a Direhowl Saddle. Sprint to dash."
+  }
+}

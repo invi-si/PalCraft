@@ -1,0 +1,294 @@
+{
+  "DT_ItemShopCreateData": {
+    "MC_Alex_Stock": {
+      "productDataArray": [
+        {
+          "StaticItemId": "MC_Dirt",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 20,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_Cobblestone",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 20,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_OakLog",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 32,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_OakPlanks",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 20,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_Stone",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 20,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_Glass",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 20,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_CraftingTable",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 88,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_Chest",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 20,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_Furnace",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 20,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_Torch",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 20,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_Coal",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 80,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_RawIron",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 80,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_IronIngot",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 176,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_RawGold",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 80,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_GoldIngot",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 80,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_Diamond",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 800,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_WoodenPickaxe",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 64,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_StonePickaxe",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 120,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_IronPickaxe",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 640,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_DiamondPickaxe",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 2400,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_WoodenSword",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 64,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_StoneSword",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 120,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_IronSword",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 640,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_DiamondSword",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 2400,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_IronAxe",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 640,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_IronShovel",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 640,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_IronHoe",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 640,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_Bread",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 40,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_Apple",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 40,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_Potato",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 40,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_Carrot",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 40,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_Wheat",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 20,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_WheatSeeds",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 20,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_OakSapling",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 20,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_Bone",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 20,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_Gunpowder",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 20,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_Tnt",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 20,
+          "ProductNum": 1,
+          "Stock": 100
+        },
+        {
+          "StaticItemId": "MC_FlintAndSteel",
+          "ProductType": "EPalItemShopProductType::Normal",
+          "OverridePrice": 20,
+          "ProductNum": 1,
+          "Stock": 100
+        }
+      ]
+    }
+  },
+  "DT_ItemShopLotteryData": {
+    "MC_Alex_Lottery": {
+      "lotteryDataArray": [
+        {
+          "ShopGroupName": "MC_Alex_Stock",
+          "Weight": 100
+        }
+      ]
+    }
+  },
+  "DT_ItemShopSettingData": {
+    "MC_Alex_Stock": {
+      "CurrencyItemID": "Money"
+    }
+  },
+  "DT_NPCTalkFlow": {
+    "MC_Alex": {
+      "SoftTalkFlowAsset": "/Game/Pal/Blueprint/FlowGraph/NPCTalkFlow/Graph/FABP_CommonItemShop.FABP_CommonItemShop"
+    }
+  }
+}

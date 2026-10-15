@@ -1,0 +1,17 @@
+{
+  "format_version": 1,
+  "original_box_geometry": true,
+  "scope": "Authored box geometry for blocks, items, creatures and player meshes, including seeded island mesh geometry and geometry-coordinate Lua tables.",
+  "excluded": "Copied textures, sounds, fonts, language, recipes, block/item registry data, Palworld map art, native Palworld skeleton/IK files, personal state and tests remain excluded.",
+  "geometry_lua": [
+    "mob_models.lua",
+    "mob_models_x4.lua"
+  ],
+  "asset_kinds": [
+    "static_mesh",
+    "skeletal_mesh"
+  ],
+  "local_generation_lua": [
+    "smelting.lua"
+  ]
+}

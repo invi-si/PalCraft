@@ -1,0 +1,17 @@
+{
+  "DT_PalNameText": {
+    "PAL_NAME_CP_Mossback": "Mossback"
+  },
+  "DT_PalShortDescriptionText": {
+    "PAL_SHORT_DESC_CP_Mossback": "A rare moss-covered giant with a steady three-legged stride."
+  },
+  "DT_PalLongDescriptionText": {
+    "PAL_LONG_DESC_CP_Mossback": "A rare moss-covered giant with a steady three-legged stride."
+  },
+  "DT_SkillNameText": {
+    "PARTNERSKILL_CP_Mossback": "Island Guardian"
+  },
+  "DT_PalFirstActivatedInfoText": {
+    "PAL_FIRST_SPAWN_DESC_CP_Mossback": "Fights alongside you using its native combat abilities."
+  }
+}

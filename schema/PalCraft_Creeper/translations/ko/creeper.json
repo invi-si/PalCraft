@@ -1,0 +1,11 @@
+{
+  "DT_PalNameText": {
+    "PAL_NAME_MC_Creeper": "크리퍼"
+  },
+  "DT_PalShortDescriptionText": {
+    "PAL_SHORT_DESC_MC_Creeper": "소리 없이 다가오는 크리퍼."
+  },
+  "DT_PalLongDescriptionText": {
+    "PAL_LONG_DESC_MC_Creeper": "어둠 속을 조용히 돌아다니는 크리퍼. 몸을 부풀리며 치익 소리로 경고한 뒤 연기와 함께 폭발한다."
+  }
+}

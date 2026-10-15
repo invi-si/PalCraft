@@ -1,0 +1,31 @@
+[
+  {
+    "Type": "Sheet",
+    "Location": {
+      "X": -473300.0,
+      "Y": 384500.0,
+      "Z": -254.0
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 0.0,
+      "Roll": 0.0
+    },
+    "SpawnerName": "MC106_Camel",
+    "SpawnGroupList": [
+      {
+        "Weight": 100,
+        "OnlyTime": "Day",
+        "PalList": [
+          {
+            "PalId": "MC_Camel",
+            "Level": 3,
+            "Level_Max": 3,
+            "Num": 1,
+            "Num_Max": 1
+          }
+        ]
+      }
+    ]
+  }
+]

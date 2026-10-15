@@ -1,0 +1,17 @@
+{
+  "DT_PalNameText": {
+    "PAL_NAME_CP_PatchworkBrute": "Patchwork Brute"
+  },
+  "DT_PalShortDescriptionText": {
+    "PAL_SHORT_DESC_CP_PatchworkBrute": "A stitched guardian with a mighty glove, watching the plains ruins at night."
+  },
+  "DT_PalLongDescriptionText": {
+    "PAL_LONG_DESC_CP_PatchworkBrute": "A stitched guardian with a mighty glove, watching the plains ruins at night."
+  },
+  "DT_SkillNameText": {
+    "PARTNERSKILL_CP_PatchworkBrute": "Island Guardian"
+  },
+  "DT_PalFirstActivatedInfoText": {
+    "PAL_FIRST_SPAWN_DESC_CP_PatchworkBrute": "Fights alongside you using its native combat abilities."
+  }
+}

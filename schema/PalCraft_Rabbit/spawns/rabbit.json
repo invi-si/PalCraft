@@ -1,0 +1,60 @@
+[
+  {
+    "Type": "Sheet",
+    "Location": {
+      "X": -337800.0,
+      "Y": 311900.0,
+      "Z": -1465.0
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 0.0,
+      "Roll": 0.0
+    },
+    "SpawnerName": "MC105_Rabbit_plains",
+    "SpawnGroupList": [
+      {
+        "Weight": 100,
+        "PalList": [
+          {
+            "PalId": "MC_Rabbit",
+            "Level": 3,
+            "Level_Max": 3,
+            "Num": 1,
+            "Num_Max": 1
+          }
+        ],
+        "OnlyTime": "Day"
+      }
+    ]
+  },
+  {
+    "Type": "Sheet",
+    "Location": {
+      "X": -473600.0,
+      "Y": 384700.0,
+      "Z": -365.0
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 0.0,
+      "Roll": 0.0
+    },
+    "SpawnerName": "MC105_Rabbit_desert",
+    "SpawnGroupList": [
+      {
+        "Weight": 100,
+        "PalList": [
+          {
+            "PalId": "MC_Rabbit",
+            "Level": 3,
+            "Level_Max": 3,
+            "Num": 1,
+            "Num_Max": 1
+          }
+        ],
+        "OnlyTime": "Day"
+      }
+    ]
+  }
+]

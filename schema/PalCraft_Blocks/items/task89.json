@@ -1,0 +1,74 @@
+{
+  "MC_Bamboo": {
+    "Type": "Generic",
+    "Name": "Bamboo",
+    "Description": "Bamboo",
+    "TypeA": "Material",
+    "TypeB": "MaterialProccessing",
+    "MaxStackCount": 64,
+    "Weight": 0.1,
+    "IconTexture": "/Game/MinecraftIslands89/T_MC_Bamboo.T_MC_Bamboo",
+    "Rank": 1,
+    "Price": 8
+  },
+  "MC_Lever": {
+    "Type": "Generic",
+    "Name": "Lever",
+    "Description": "Lever",
+    "TypeA": "Material",
+    "TypeB": "MaterialProccessing",
+    "MaxStackCount": 64,
+    "Weight": 0.1,
+    "IconTexture": "/Game/MinecraftIslands89/T_MC_Lever.T_MC_Lever",
+    "Rank": 1,
+    "Price": 8
+  },
+  "MC_RedstoneWire": {
+    "Type": "Generic",
+    "Name": "Redstone Wire",
+    "Description": "Redstone Wire",
+    "TypeA": "Material",
+    "TypeB": "MaterialProccessing",
+    "MaxStackCount": 64,
+    "Weight": 0.1,
+    "IconTexture": "/Game/MinecraftIslands89/T_MC_RedstoneWire.T_MC_RedstoneWire",
+    "Rank": 1,
+    "Price": 8
+  },
+  "MC_Repeater": {
+    "Type": "Generic",
+    "Name": "Redstone Repeater",
+    "Description": "Redstone Repeater",
+    "TypeA": "Material",
+    "TypeB": "MaterialProccessing",
+    "MaxStackCount": 64,
+    "Weight": 0.1,
+    "IconTexture": "/Game/MinecraftIslands89/T_MC_Repeater.T_MC_Repeater",
+    "Rank": 1,
+    "Price": 8
+  },
+  "MC_Tripwire": {
+    "Type": "Generic",
+    "Name": "Tripwire",
+    "Description": "Tripwire",
+    "TypeA": "Material",
+    "TypeB": "MaterialProccessing",
+    "MaxStackCount": 64,
+    "Weight": 0.1,
+    "IconTexture": "/Game/MinecraftIslands89/T_MC_Tripwire.T_MC_Tripwire",
+    "Rank": 1,
+    "Price": 8
+  },
+  "MC_TripwireHook": {
+    "Type": "Generic",
+    "Name": "Tripwire Hook",
+    "Description": "Tripwire Hook",
+    "TypeA": "Material",
+    "TypeB": "MaterialProccessing",
+    "MaxStackCount": 64,
+    "Weight": 0.1,
+    "IconTexture": "/Game/MinecraftIslands89/T_MC_TripwireHook.T_MC_TripwireHook",
+    "Rank": 1,
+    "Price": 8
+  }
+}

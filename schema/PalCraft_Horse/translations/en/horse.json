@@ -1,0 +1,17 @@
+{
+  "DT_PalNameText": {
+    "PAL_NAME_MC_Horse": "Horse"
+  },
+  "DT_PalShortDescriptionText": {
+    "PAL_SHORT_DESC_MC_Horse": "A Minecraft Horse. Ride with a Direhowl Saddle. Hold Space and release to charge a jump."
+  },
+  "DT_PalLongDescriptionText": {
+    "PAL_LONG_DESC_MC_Horse": "A Minecraft Horse. Ride with a Direhowl Saddle. Hold Space and release to charge a jump."
+  },
+  "DT_SkillNameText": {
+    "PARTNERSKILL_MC_Horse": "Saddled Ride"
+  },
+  "DT_PalFirstActivatedInfoText": {
+    "PAL_FIRST_SPAWN_DESC_MC_Horse": "A Minecraft Horse. Ride with a Direhowl Saddle. Hold Space and release to charge a jump."
+  }
+}

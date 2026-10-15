@@ -1,0 +1,11 @@
+{
+  "DT_PalNameText": {
+    "PAL_NAME_MC_Zombie": "Zombie"
+  },
+  "DT_PalShortDescriptionText": {
+    "PAL_SHORT_DESC_MC_Zombie": "A shambling visitor from a blocky world."
+  },
+  "DT_PalLongDescriptionText": {
+    "PAL_LONG_DESC_MC_Zombie": "A zombie that wanders the darkness with a low groan. When it spots prey, it stretches out its arms and follows relentlessly."
+  }
+}

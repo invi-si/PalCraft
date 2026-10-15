@@ -1,0 +1,17 @@
+{
+  "DT_PalNameText": {
+    "PAL_NAME_CP_FungalHost": "Fungal Host"
+  },
+  "DT_PalShortDescriptionText": {
+    "PAL_SHORT_DESC_CP_FungalHost": "A gentle fungal guardian that tends the mushroom island by day."
+  },
+  "DT_PalLongDescriptionText": {
+    "PAL_LONG_DESC_CP_FungalHost": "A gentle fungal guardian that tends the mushroom island by day."
+  },
+  "DT_SkillNameText": {
+    "PARTNERSKILL_CP_FungalHost": "Island Guardian"
+  },
+  "DT_PalFirstActivatedInfoText": {
+    "PAL_FIRST_SPAWN_DESC_CP_FungalHost": "Fights alongside you using its native combat abilities."
+  }
+}

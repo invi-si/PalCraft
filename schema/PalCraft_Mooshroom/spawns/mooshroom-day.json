@@ -1,0 +1,31 @@
+[
+  {
+    "Type": "Sheet",
+    "Location": {
+      "X": -405900.0,
+      "Y": 304000.0,
+      "Z": -917.0
+    },
+    "Rotation": {
+      "Pitch": 0.0,
+      "Yaw": 0.0,
+      "Roll": 0.0
+    },
+    "SpawnerName": "MC95_Mooshroom_Day",
+    "SpawnGroupList": [
+      {
+        "Weight": 100,
+        "OnlyTime": "Day",
+        "PalList": [
+          {
+            "PalId": "MC_Mooshroom",
+            "Level": 3,
+            "Level_Max": 3,
+            "Num": 2,
+            "Num_Max": 2
+          }
+        ]
+      }
+    ]
+  }
+]

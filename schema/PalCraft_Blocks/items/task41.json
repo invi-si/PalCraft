@@ -1,0 +1,35 @@
+{
+  "MC_RottenFlesh": {
+    "Type": "Generic",
+    "Name": "Rotten Flesh",
+    "Description": "Minecraft rotten flesh.",
+    "TypeA": "Material",
+    "TypeB": "MaterialMonster",
+    "MaxStackCount": 999,
+    "Weight": 0.1,
+    "IconTexture": "/Game/MinecraftMobs/T_rotten_flesh.T_rotten_flesh",
+    "Price": 10
+  },
+  "MC_Bone": {
+    "Type": "Generic",
+    "Name": "Bone",
+    "Description": "Minecraft bone.",
+    "TypeA": "Material",
+    "TypeB": "MaterialMonster",
+    "MaxStackCount": 999,
+    "Weight": 0.1,
+    "IconTexture": "/Game/MinecraftMobs/T_bone.T_bone",
+    "Price": 10
+  },
+  "MC_Gunpowder": {
+    "Type": "Generic",
+    "Name": "Gunpowder",
+    "Description": "Minecraft gunpowder.",
+    "TypeA": "Material",
+    "TypeB": "MaterialMonster",
+    "MaxStackCount": 999,
+    "Weight": 0.1,
+    "IconTexture": "/Game/MinecraftMobs/T_gunpowder.T_gunpowder",
+    "Price": 10
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "DT_PalNameText": {
+    "PAL_NAME_MC_Horse": "말"
+  },
+  "DT_PalShortDescriptionText": {
+    "PAL_SHORT_DESC_MC_Horse": "다크울프 안장으로 탈 수 있습니다. 스페이스를 눌렀다 놓으면 충전 점프를 합니다."
+  },
+  "DT_PalLongDescriptionText": {
+    "PAL_LONG_DESC_MC_Horse": "다크울프 안장으로 탈 수 있습니다. 스페이스를 눌렀다 놓으면 충전 점프를 합니다."
+  },
+  "DT_SkillNameText": {
+    "PARTNERSKILL_MC_Horse": "안장 타기"
+  },
+  "DT_PalFirstActivatedInfoText": {
+    "PAL_FIRST_SPAWN_DESC_MC_Horse": "다크울프 안장으로 탈 수 있습니다. 스페이스를 눌렀다 놓으면 충전 점프를 합니다."
+  }
+}
