@@ -1,7 +1,7 @@
 {
   "format_version": 1,
   "product": "PalCraft",
-  "version": "1.0.1",
+  "version": "1.1",
   "runtime_source_root": "runtime/PalCraft",
   "pack_dependencies": {
     "core": [],
@@ -125,6 +125,18 @@
       ],
       "stripped_dependencies": [],
       "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/arrowsVA.lua",
+      "module": "arrowsVA",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "poseK",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Shared Minecraft arrow flight; native player arrow presentation."
     },
     {
       "path": "runtime/PalCraft/asset_queueG.lua",
@@ -474,6 +486,47 @@
       "dependency_notes": "Requires core; optional factories start only with this pack."
     },
     {
+      "module": "creative_catalog",
+      "path": "runtime/PalCraft/creative_catalog.lua",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Creative catalog presentation; HUD & Skins only; no service in Islands-only.",
+      "dependencies": [
+        "creative_layout",
+        "timers"
+      ]
+    },
+    {
+      "module": "creative_layout",
+      "path": "runtime/PalCraft/creative_layout.lua",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Creative catalog presentation; HUD & Skins only; no service in Islands-only.",
+      "dependencies": []
+    },
+    {
+      "path": "runtime/PalCraft/creative_mode.lua",
+      "module": "creative_mode",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Creative world metadata and bilingual strings are Core; gameplay/UI service loads only with HUD & Skins."
+    },
+    {
+      "path": "runtime/PalCraft/creative_ui.lua",
+      "module": "creative_ui",
+      "pack": "hud_skins",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Creative world metadata and bilingual strings are Core; gameplay/UI service loads only with HUD & Skins."
+    },
+    {
       "path": "runtime/PalCraft/creeper103.lua",
       "module": "creeper103",
       "pack": "islands_animals",
@@ -599,8 +652,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/decor71_data.lua",
@@ -774,8 +826,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Requires core; optional factories start only with this pack.",
-      "local_data_adapter": true
+      "dependency_notes": "Requires core; optional factories start only with this pack."
     },
     {
       "path": "runtime/PalCraft/frame_budget.lua",
@@ -1095,8 +1146,7 @@
         "itemsD"
       ],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/items104.lua",
@@ -1107,8 +1157,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/items107.lua",
@@ -1119,8 +1168,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/items70.lua",
@@ -1131,8 +1179,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/items88.lua",
@@ -1143,8 +1190,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/items89.lua",
@@ -1155,8 +1201,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/itemsA.lua",
@@ -1167,8 +1212,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/itemsD.lua",
@@ -1179,8 +1223,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/jar_data.lua",
@@ -1219,7 +1262,8 @@
         "strings76",
         "strings88",
         "strings89",
-        "stringsA"
+        "stringsA",
+        "stringsCM"
       ],
       "stripped_dependencies": [],
       "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
@@ -1289,6 +1333,8 @@
         "config",
         "controls68",
         "cover_release78",
+        "creative_mode",
+        "creative_ui",
         "custom_palsA",
         "death_screen",
         "entry_hold",
@@ -1336,6 +1382,7 @@
         "ui_kit",
         "waystones83",
         "world_identityQ3",
+        "world_mode",
         "world_scope",
         "zombie77"
       ],
@@ -1495,6 +1542,7 @@
       "pack": "islands_animals",
       "audit_exclusions": [],
       "dependencies": [
+        "arrowsVA",
         "cacheL",
         "costume_runtimeJ",
         "equipmentK",
@@ -1644,7 +1692,8 @@
         "tex_runtime",
         "timers",
         "world_identityQ3",
-        "world_scope"
+        "world_scope",
+        "native_arrowsVD"
       ],
       "stripped_dependencies": [],
       "dependency_notes": "Requires core; optional factories start only with this pack."
@@ -1886,6 +1935,7 @@
       "dependencies": [
         "container_layouts",
         "crafting",
+        "creative_layout",
         "equipment_viewQ3",
         "inventory_layout",
         "item_registry",
@@ -1982,7 +2032,7 @@
       "audit_exclusions": [],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Requires core; optional factories start only with this pack."
+      "dependency_notes": "Shared bounded PNG decoder for skins and BGRA texture cache."
     },
     {
       "path": "runtime/PalCraft/poseK.lua",
@@ -2038,8 +2088,7 @@
         "recipesA"
       ],
       "stripped_dependencies": [],
-      "dependency_notes": "Requires core; optional factories start only with this pack.",
-      "local_data_adapter": true
+      "dependency_notes": "Requires core; optional factories start only with this pack."
     },
     {
       "path": "runtime/PalCraft/recipes104.lua",
@@ -2050,8 +2099,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Requires core; optional factories start only with this pack.",
-      "local_data_adapter": true
+      "dependency_notes": "Requires core; optional factories start only with this pack."
     },
     {
       "path": "runtime/PalCraft/recipes70.lua",
@@ -2062,8 +2110,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Requires core; optional factories start only with this pack.",
-      "local_data_adapter": true
+      "dependency_notes": "Requires core; optional factories start only with this pack."
     },
     {
       "path": "runtime/PalCraft/recipesA.lua",
@@ -2074,8 +2121,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Requires core; optional factories start only with this pack.",
-      "local_data_adapter": true
+      "dependency_notes": "Requires core; optional factories start only with this pack."
     },
     {
       "path": "runtime/PalCraft/registry.lua",
@@ -2091,8 +2137,7 @@
         "decor71_data"
       ],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/resource_state.lua",
@@ -2297,8 +2342,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/snd_runtime.lua",
@@ -2318,8 +2362,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/startup_gate.lua",
@@ -2419,8 +2462,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/strings107.lua",
@@ -2431,8 +2473,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/strings57.lua",
@@ -2443,8 +2484,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/strings67.lua",
@@ -2455,8 +2495,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/strings70.lua",
@@ -2467,8 +2506,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/strings71.lua",
@@ -2479,8 +2517,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/strings76.lua",
@@ -2491,8 +2528,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/strings88.lua",
@@ -2503,8 +2539,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/strings89.lua",
@@ -2515,8 +2550,7 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
       "path": "runtime/PalCraft/stringsA.lua",
@@ -2527,8 +2561,16 @@
       ],
       "dependencies": [],
       "stripped_dependencies": [],
-      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service.",
-      "local_data_adapter": true
+      "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
+    },
+    {
+      "path": "runtime/PalCraft/stringsCM.lua",
+      "module": "stringsCM",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Creative world metadata and bilingual strings are Core; gameplay/UI service loads only with HUD & Skins."
     },
     {
       "path": "runtime/PalCraft/task104.lua",
@@ -3621,6 +3663,7 @@
       "pack": "hud_skins",
       "audit_exclusions": [],
       "dependencies": [
+        "creative_layout",
         "json",
         "timers",
         "ui20_details",
@@ -3762,6 +3805,7 @@
       "pack": "hud_skins",
       "audit_exclusions": [],
       "dependencies": [
+        "creative_catalog",
         "font53",
         "gui_layouts",
         "json",
@@ -3892,6 +3936,15 @@
       "dependency_notes": "Shared pure library or native/audio support; declaring it does not start a HUD or world service."
     },
     {
+      "path": "runtime/PalCraft/world_mode.lua",
+      "module": "world_mode",
+      "pack": "core",
+      "audit_exclusions": [],
+      "dependencies": [],
+      "stripped_dependencies": [],
+      "dependency_notes": "Creative world metadata and bilingual strings are Core; gameplay/UI service loads only with HUD & Skins."
+    },
+    {
       "path": "runtime/PalCraft/world_poseL.lua",
       "module": "world_poseL",
       "pack": "hud_skins",
@@ -3941,6 +3994,20 @@
       ],
       "stripped_dependencies": [],
       "dependency_notes": "Requires core; optional factories start only with this pack."
+    },
+    {
+      "path": "runtime/PalCraft/native_arrowsVD.lua",
+      "module": "native_arrowsVD",
+      "pack": "islands_animals",
+      "audit_exclusions": [],
+      "dependencies": [
+        "arrowsVA",
+        "mob_motion",
+        "poseK",
+        "timers"
+      ],
+      "stripped_dependencies": [],
+      "dependency_notes": "Islands-only bounded pool using the shared arrow flight service."
     }
   ],
   "schema": [

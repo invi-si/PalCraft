@@ -51,6 +51,7 @@ return function(ctx,M,asset)
   return true
  end
  function E:space(env,down)
+  if UE.creativeMode and UE.creativeMode:enabled()then self.spaceDownO=down;self.deployAtO=nil;return end
   local rising=down and not self.spaceDownO;self.spaceDownO=down
   if not rising or env.controller:IsRiding()then return end
   if N:id(N:container(env,4):Get(1))~='MC_Elytra'then return end

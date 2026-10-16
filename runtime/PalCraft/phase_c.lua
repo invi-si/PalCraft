@@ -32,17 +32,20 @@ return function(ctx)
         if valid(assets[path])then log('MC_STALE_CACHE phase-c '..path)end
         local a=StaticFindObject(path)
         if not valid(a)then local p,n=path:match('^(.*)%.([^%.]+)$');a=UE.GetAsset109(UE.Object('/Script/AssetRegistry.Default__AssetRegistryHelpers'),{PackageName=UE.FindOrAddFName(p),AssetName=UE.FindOrAddFName(n)})end
-        assert(valid(a),'Phase C asset absent '..path);assets[path]=a
+        assert(valid(a),'Phase C asset absent '..path)
+
+        if UE.texRuntime then UE.texRuntime:retain(a)end
+        assets[path]=a
         log(string.format('MC109_SOUND_ASSET ms=%.3f path=%s',(os.clock()-begun)*1000,path));return a
     end
     local wardenSoundZ4=dofile(ctx.base..'/optional_soundZ4.lua')(getAsset,valid,log)
     function C:preloadSoundG(path)
-        if not runtimeSound:available()then return runtimeSound:preload(path)end
+        if not runtimeSound:available()or runtimeSound.lazy then return runtimeSound:preload(path)end
         if path:find('/S_mob_warden_',1,true)then return wardenSoundZ4:asset(path)end
         return getAsset(path)
     end
     function C:soundPathsG(kind)
-        if not runtimeSound:available()then return {}end
+        if not runtimeSound:available()or runtimeSound.lazy then return {}end
         local paths={}
         for event,list in pairs(sounds)do if event:sub(1,#kind+8)=='entity.'..kind..'.'then for _,v in ipairs(list)do paths[#paths+1]=v.asset end end end
         return paths
@@ -161,8 +164,8 @@ return function(ctx)
             table.sort(list,function(a,b)local x,y=groups[a.group],groups[b.group];return x==y and a.order<b.order or x<y end);self.catalogList=list
             log('MC_CATALOG_READY blocks='..#ctx.registry..' items='..#R.order..' total='..#list)
         end
-        query=(query or''):lower();local filtered={};local hidden=dofile(ctx.base..'/catalog70.lua');local seen={} 
-          for _,e in ipairs(self.catalogList)do local label=UE.language57 and UE.language57:item(e.id)or e.label;if query==''or label:lower():find(query,1,true)or e.label:lower():find(query,1,true)or e.id:lower():find(query,1,true)then if not hidden[e.id]and not seen[e.id]then filtered[#filtered+1]=e;seen[e.id]=true end end end
+        query=(query or''):lower();local filtered={};local hidden=self.catalogHiddenVE;if not hidden then hidden=dofile(ctx.base..'/catalog70.lua');self.catalogHiddenVE=hidden end;local seen={} 
+          for _,e in ipairs(self.catalogList)do local label=query~=''and(UE.language57 and UE.language57:item(e.id)or e.label)or '';if query==''or label:lower():find(query,1,true)or e.label:lower():find(query,1,true)or e.id:lower():find(query,1,true)then if not hidden[e.id]and not seen[e.id]then filtered[#filtered+1]=e;seen[e.id]=true end end end
         return filtered
     end
     function C:stack(id)return math.min(64,ctx.items:data(id).MaxStackCount)end
@@ -206,6 +209,7 @@ return function(ctx)
     end
     function C:beforeBreak(k,env)
         if not connected:beforeBreak(k,env)then return false end
+        if UE.creativeMode and UE.creativeMode:enabled()then ctx.entities()[k]=nil;self.dirty=true;return true end
         local e=ctx.entities()[k];if not e then return true end
         self:advance(k,self.cachedClock)
         if env then
@@ -238,6 +242,7 @@ return function(ctx)
         return{id=count>0 and slot.id or nil,count=count,kind='entity',index=index,key=k}
     end
     function C:transfer(env,hand,entry,right)
+        if hand.kind=='creative'and not(UE.creativeMode and UE.creativeMode:enabled())then return'cancel'end
         local num=right and 1 or hand.count;local from=hand.kind=='entity'and self:entity(hand.key)or nil
         if entry.kind=='entity'then
             local e=self:entity(entry.key);local target=e.slots[entry.index]

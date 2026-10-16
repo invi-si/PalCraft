@@ -3,7 +3,8 @@
 return function(ctx)
  local C={entries={},parkVisibility=1,names={'WBP_MCInventory2','WBP_MCInventory3','WBP_MCChest','WBP_MCFurnace','WBP_MCProduction','WBP_MCOptions','WBP_MCDeath','WBP_MCGameMenu','WBP_MCPals','WBP_MCPC','WBP_MCTechnology','WBP_MCPalpedia'}}
  local allowed={};for _,n in ipairs(C.names)do allowed[n]=true end
- local warm={'WBP_MCInventory2','WBP_MCInventory3','WBP_MCGameMenu','WBP_MCDeath'}
+ 
+ local warm={'WBP_MCGameMenu','WBP_MCDeath'}
  local T=dofile(ctx.base..'/timers.lua')
  function C:hide(w)
   if not ctx.valid(w)then return end
@@ -28,11 +29,10 @@ return function(ctx)
   if self.started==ctx.epoch()then return end;self.started=ctx.epoch();local epoch=self.started;local i=1
   T.loop(1,function()
    if epoch~=ctx.epoch()or ctx.quiesced()then return true end
-   
+
    local current=ctx.environment();if not current then return false end
    if ctx.primeReady and not ctx.primeReady(current)then return false end
    if i>#warm then
-    if ctx.UE and ctx.UE.alex and not ctx.UE.alex:preloadOB(current)then return false end
     self.ready=true;ctx.log('MC51_UI_PREBUILT count='..#warm..' epoch='..epoch..' opacity=0 plain_graphs_collapsed=true lua_tick=true catalogs_on_first_open=true');return true
    end
    local name=warm[i];local r=self:get(current,name,'inventory',true)

@@ -67,7 +67,11 @@ function P.tickStep(s,move)
  local drag=.91*(s.grounded and(s.friction or .6)or 1);s.vx=s.vx*drag;s.vy=s.vy*drag
  if dx*dx+dy*dy>0 then local facing=s.kind=='skeleton'and s.lookYaw or math.deg(math.atan(dy,dx));s.entityYaw=P.turn(s.entityYaw,facing,.05)end
  P.body(s,actualX,actualY);s.blockedTicks=(dx*dx+dy*dy>0 and distance<.5)and(s.blockedTicks+1)or 0
- if s.blockedTicks>=2 then s.routeReplan=true end;s.simTicks=s.simTicks+1
+
+ if s.blockedTicks>=30 then
+  s.routeReplan=true;s.stuckRepath=true;s.blockedTicks=0
+  if s.grounded then s.vz=.42;s.grounded=false;s.jump=true end
+ end;s.simTicks=s.simTicks+1
 end
 function P.advance(s,now,move)
  local elapsed=math.max(0,now-(s.simAt or now));s.simAt=now;s.accumulator=(s.accumulator or 0)+elapsed;local count=0
@@ -190,6 +194,14 @@ end
 function P.origin(s)
  local b=P.bow(s);local y=math.rad(s.yaw or 0)
  return{X=s.p.X+b.X*math.cos(y)-b.Y*math.sin(y),Y=s.p.Y+b.X*math.sin(y)+b.Y*math.cos(y),Z=s.p.Z+b.Z}
+end
+function P.arrowVelocity(from,target,difficulty,random)
+
+ local dx,dy=target.X-from.X,target.Y-from.Y
+ local dz=target.Z-from.Z+math.sqrt(dx*dx+dy*dy)*.2
+ local n=math.max(.001,math.sqrt(dx*dx+dy*dy+dz*dz));local spread=.0172275*(14-4*(difficulty or 2))
+ random=random or math.random
+ return{X=(dx/n+(random()-random())*spread)*3200,Y=(dy/n+(random()-random())*spread)*3200,Z=(dz/n+(random()-random())*spread)*3200}
 end
 function P.ballistic(from,target,speed,gravity)
  local dx,dy,dz=target.X-from.X,target.Y-from.Y,target.Z-from.Z;local h=math.sqrt(dx*dx+dy*dy)

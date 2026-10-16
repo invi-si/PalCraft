@@ -16,6 +16,35 @@ return function(ctx)
     local widget,nodes,model,nativeRoot,handle,stamp;local uiSerial=0
     local function C()return ctx.phaseC()end
     local uiLayouts=ctx.uiKit and dofile(ctx.base..'/container_layouts.lua')
+    if uiLayouts then uiLayouts.Creative=dofile(ctx.base..'/creative_layout.lua').container end
+    function B:creativeAllowed()return ctx.config.creative~=false and UE.creativeMode and UE.creativeMode:enabled()or false end
+    function B:toggleCatalog(env)
+        if not self.open or self.mode or not self:creativeAllowed()then return false end
+        self.creative=not self.creative;self.recipeBook=false;self.page=0;self.catalogRow=0;self.catalogWheel=0;self.catalogDrag=nil;self.search='';self.category='search';self.filtered=self:catalog('')
+        if self.carry and self.carry.kind=='creative'then self.carry=nil end
+        nodes.CreativeSearch:SetText(UE.GetKismetTextLibrary():Conv_StringToText(''))
+        self.dirty=true;self:refresh(env);log('MCCM_CATALOG enabled='..tostring(self.creative));return true
+    end
+    function B:pickBlock(env)
+        if not self:creativeAllowed()or self.open or not ctx.gameplayInput(env)then return false end
+        local hit=ctx.trace(env,true);local chunk=hit and ctx.hitChunk(hit);local c=chunk and ctx.cells()[chunk.keys[hit.Item]]
+        if not c then return false end
+        local p=env.player:K2_GetActorLocation();local h=hit.ImpactPoint
+        if(p.X-h.X)^2+(p.Y-h.Y)^2+(p.Z-h.Z)^2>600^2 then return false end
+        local id=ctx.registry[c.type].item
+        if N:count(env,id)<1 and not C():grantInto(env,id,1)then return false end
+        self:assign(ctx.phaseA.selected,id);ctx.phaseA:select(ctx.phaseA.selected)
+        log('MCCM_PICK_BLOCK id='..id);return true
+    end
+    function B:catalogChrome()
+        if not self.creative then return end
+
+        nodes.navRects={};nodes.buttons67={};nodes.field67=nil
+        for name,n in pairs(nodes)do
+            if type(name)=='string'and(name:match('^Nav46_')or name:match('^Nav46Icon_')or name:match('^Nav67Label')or name:match('^S67_'))and valid(n)then n:SetRenderOpacity(0)end
+        end
+        if valid(nodes.CreativeSearch)then nodes.CreativeSearch:SetVisibility((self.category or'search')=='search'and 0 or 1)end
+    end
     function B:layout()return uiLayouts and uiLayouts[self.creative and'Creative'or self.mode or tostring(self.size)]or layouts[self.mode or tostring(self.size)]end
     function B:pageSize()return uiLayouts and self.creative and 45 or 27 end
     function B:catalog(query)
@@ -214,7 +243,7 @@ return function(ctx)
             return{id=n>0 and e.id or nil,count=n,slot=e.slot,kind=e.kind,index=e.index}
         end
         if spec.kind=='entity'then return C():entityEntry(self.entityKey,spec.index,self.carry)end
-        if spec.kind=='main'and self.creative then local e=self.filtered[self.page*self:pageSize()+spec.index];return e and{id=e.id,count=C():stack(e.id),kind='catalog',index=spec.index}or{}end
+        if spec.kind=='main'and self.creative then local e=self.filtered[(self.catalogRow or 0)*9+spec.index];return e and{id=e.id,count=C():stack(e.id),kind='catalog',index=spec.index}or{}end
         if spec.kind=='result'then return self.output and{id=self.output.result,count=self.output.count}or{}end
         if spec.kind=='bar'then return self:hotbar(env,spec.index)end
         local view=self:prepareView(env);local kind,index
@@ -284,6 +313,7 @@ return function(ctx)
     end
     function B:refresh(env)
         if not self.open then return end
+        if self.creative and not self:creativeAllowed()then self.creative=false;if self.carry and self.carry.kind=='creative'then self.carry=nil end end
         local guiScale,_,dpi,viewport=ctx.uiKit:metrics(env)
         local layoutSignature=tostring(self.mode)..':'..self.size..':'..tostring(self.creative)..':'..tostring(self.storageSize)..':'..tostring(ctx.config.gui_scale)..':'..viewport.X..':'..viewport.Y..':'..dpi
         if ctx.uiKit and nodes.layoutSignature61~=layoutSignature then ctx.uiKit:container(nodes,self,env);nodes.layoutSignature61=layoutSignature end
@@ -320,7 +350,10 @@ return function(ctx)
             nodes.CookArrowClip.Slot:SetSize({X=24*u*arrow,Y=16*u});nodes.CookArrowFill:SetRenderTransformPivot({X=0,Y=0});nodes.CookArrowFill:SetRenderScale({X=1/arrow,Y=1})end
         local hand=self.carry;image(nodes.LiftIcon,hand and hand.id);text(nodes.LiftCount,hand and hand.count or'')
         if valid(nativeRoot)and nativeRoot:IsActivated()and nativeRoot:GetRenderOpacity()~=0 then nativeRoot:SetRenderOpacity(0)end
-        if ctx.uiKit and ctx.uiKit.recipeBook and not self.mode then ctx.uiKit:recipeBook(nodes,env,self)end
+        if ctx.uiKit and ctx.uiKit.recipeBook and not self.mode and not self.creative then ctx.uiKit:recipeBook(nodes,env,self)end
+        self:catalogChrome()
+        if ctx.uiKit.catalogPaint then ctx.uiKit:catalogPaint(nodes,self,env)end
+        if UE.creativeUI then if not self.mode then UE.creativeUI:paint(nodes,env,'inventory',self.uiUnit,self:layout(),self)else UE.creativeUI:hide(nodes)end end
         log(string.format('MC_INV_REFRESH_MS %.3f',(os.clock()-started)*1000))
     end
     function B:mouse(env)
@@ -333,11 +366,16 @@ return function(ctx)
     end
     function B:hover(env,force)
         local x,y=self:mouse(env)
+        if UE.creativeUI then
+            UE.creativeUI:hover(nodes,x,y)
+            if UE.creativeUI.pending then ctx.uiKit:hideTooltip(nodes);self.hovered=nil;return end
+        end
         if not force and self.mouseX==x and self.mouseY==y then return end
         self.mouseX,self.mouseY=x,y;self.hovered=nil
         for _,spec in ipairs(self:layout().slots)do
             local size=self.uiUnit and 16 or 48;if x>=spec.x and x<spec.x+size and y>=spec.y and y<spec.y+size then self.hovered=spec;break end
         end
+        if ctx.uiKit.catalogHover and ctx.uiKit:catalogHover(nodes,self,x,y)then self.hovered=nil;return end
         local entry=self.hovered and self:entry(env,self.hovered)
         if entry and self.hovered then entry.exclude={x=self.hovered.x,y=self.hovered.y,w=16,h=16}end
         if self.recipeBook then for _,p in ipairs(self.bookSlots or{})do if x>=p.x and x<p.x+24 and y>=p.y and y<p.y+24 then entry={id=p.recipe.result,count=p.recipe.count};break end end end
@@ -346,7 +384,7 @@ return function(ctx)
         if ctx.uiKit and ctx.uiKit.navHover then ctx.uiKit:navHover(nodes,env,x,y)end
         local u=self.uiUnit or 1
         if not ctx.uiKit and entry and entry.id then text(nodes.Tooltip,self:label(entry.id));nodes.TooltipBox.Slot:SetPosition({X=(x+14)*u,Y=(y-48)*u})end
-        nodes.LiftIcon.Slot:SetPosition({X=(x-(self.uiUnit and 8 or 24))*u,Y=(y-(self.uiUnit and 8 or 24))*u});nodes.LiftCount.Slot:SetPosition({X=(x+2)*u,Y=(y+3)*u})
+        nodes.LiftIcon.Slot:SetPosition({X=(x-(self.uiUnit and 8 or 24))*u,Y=(y-(self.uiUnit and 8 or 24))*u});nodes.LiftCount.Slot:SetPosition({X=(x-(self.uiUnit and 8 or 24))*u,Y=(y+2)*u})
         if ctx.uiKit and valid(nodes.GuiHover)then nodes.GuiHover:SetVisibility(self.hovered and 3 or 1);if self.hovered then ctx.uiKit:position(nodes.GuiHover,self.hovered.x,self.hovered.y,16,16,u);nodes.GuiHover:SetColorAndOpacity({R=1,G=1,B=1,A=.5})end end
     end
     function B:quickMove(env,spec,entry)
@@ -360,7 +398,7 @@ return function(ctx)
                 end
             end end;log('MC_G_CHEST_QUICK_REMAIN count='..remaining);return
         end
-        if entry.kind=='catalog'then C():grantInto(env,entry.id,C():stack(entry.id));self.dirty=true;return end
+        if entry.kind=='catalog'then if self:creativeAllowed()then C():grantInto(env,entry.id,C():stack(entry.id));self.dirty=true end;return end
         if entry.kind=='entity'then
             if C():grantInto(env,entry.id,entry.count)then local e=C():entity(entry.key);e.slots[entry.index]=false;C():persist();self.dirty=true end;return end
         if spec.kind=='main'and entry.id then
@@ -379,7 +417,7 @@ return function(ctx)
     end
     function B:validateCarry(env)
         local hand=self.carry;if not hand then return end
-        if hand.kind=='creative'then return end
+        if hand.kind=='creative'then if not self:creativeAllowed()then self.carry=nil end;return end
         if hand.kind=='entity'then local e=C():entity(hand.key);local slot=e and e.slots[hand.index]
             if not slot or slot.id~=hand.id then self.carry=nil else hand.count=math.min(hand.count,slot.count)end;return end
         local c=N:container(env,hand.kind);local s=c:Get(hand.index)
@@ -425,10 +463,12 @@ return function(ctx)
         if self.admitting58 then return end
         if not self.open then return end
         local shift=shiftOverride==true
-        local env=ctx.active();self:validateCarry(env);self:hover(env,true);local x,y=self:mouse(env)
+        local env=ctx.active();local x,y=self:mouse(env)
+        if UE.creativeUI and UE.creativeUI:click(nodes,env,'inventory',x,y,right,self)then self:refresh(env);return end
+        self:validateCarry(env);self:hover(env,true)
         if ctx.config.task20_ui then ctx.uiKit:hideTooltip(nodes)end
         if ctx.uiKit and not self.mode and self.size==2 then local nav=ctx.uiKit:navAt(nodes,x,y);if nav then if nav.kind~='Inventory'then local at=os.clock();self:close();ctx.phaseD():navigate46(nav.kind);log(string.format('MC51_TAB_VISIBLE kind=%s latency_ms=%.3f frame=%d',nav.kind,(os.clock()-at)*1000,Timers.frameCounter))end;return end end
-        if ctx.uiKit and not self.mode and self.size==2 and ctx.uiKit.character67 and ctx.uiKit.character67:click(env,x,y,self)then return end
+        if ctx.uiKit and not self.mode and not self.creative and self.size==2 and ctx.uiKit.character67 and ctx.uiKit.character67:click(env,x,y,self)then return end
         if not ctx.config.task20_ui or not self.hovered then C():play('ui.button.click',env.player:K2_GetActorLocation(),.2)end
         local layout=self:layout()
         if self.recipeBook and not self.mode then
@@ -436,15 +476,16 @@ return function(ctx)
             if y>=66 and y<80 and x>=-236 and x<-110 then self.bookPage=math.max(0,math.min(math.ceil(#self:bookRows()/10)-1,(self.bookPage or 0)+(x<-170 and-1 or 1)));self:refresh(env);return end
             for _,p in ipairs(self.bookSlots or{})do if x>=p.x and x<p.x+24 and y>=p.y and y<p.y+24 then self:fillRecipe(env,p.recipe);return end end
         end
-        if self.creative and ctx.uiKit and x>=82-layout.width/2 and x<162-layout.width/2 and y>=6-layout.height/2 and y<18-layout.height/2 then ctx.uiKit:focusField(env,nodes.CreativeSearch);return end
+        if self.creative and ctx.uiKit.catalogClick and ctx.uiKit:catalogClick(nodes,self,env,x,y,right,shift)then return end
+        if self.creative and ctx.uiKit and(self.category or'search')=='search'and x>=82-layout.width/2 and x<162-layout.width/2 and y>=6-layout.height/2 and y<18-layout.height/2 then ctx.uiKit:focusField(env,nodes.CreativeSearch);return end
         if ctx.uiKit:editing()then ctx.uiKit:clearField()end
         if self.creative and self.tabBoxes then for _,b in ipairs(self.tabBoxes)do if x>=b[1]and x<b[1]+b[3]and y>=b[2]and y<b[2]+b[4]then
             if b[5]=='inventory'then self.creative=false else self.category=b[5];self.page=0;self.filtered=self:catalog(self.search)end;self:refresh(env);log('MC_J_CREATIVE_TAB '..b[5]);return end end end
         for key,delta in pairs({storagePrev=-1,storageNext=1})do local box=layout[key];if box and x>=box[1]and x<box[1]+box[3]and y>=box[2]and y<box[2]+box[4]then self.storagePage=math.max(0,math.min(math.ceil(N.containers.external:Num()/self.storageSize)-1,self.storagePage+delta));self:refresh(env);return end end
         local cb=layout.creative
-        if cb and(not self.mode or ctx.config.creative)and x>=cb[1]and x<cb[1]+cb[3]and y>=cb[2]and y<cb[2]+cb[4]then
+        if cb and not self.mode and x>=cb[1]and x<cb[1]+cb[3]and y>=cb[2]and y<cb[2]+cb[4]then
             if not self.mode and not shift then self.creative=false;self.recipeBook=not self.recipeBook;self.bookSearch='';self.bookPage=0;nodes.CreativeSearch:SetText(UE.GetKismetTextLibrary():Conv_StringToText(''));self:refresh(env);log('MC21_RECIPE_BOOK size='..self.size..' recipes='..#self:bookRows());return end
-            self.creative=not self.creative;self.page=0;self.search='';self.category='search';self.filtered=self:catalog('');nodes.CreativeSearch:SetText(UE.GetKismetTextLibrary():Conv_StringToText(''));self:refresh(env);log('MC_CREATIVE_TOGGLE enabled='..tostring(self.creative));return end
+            self:toggleCatalog(env);return end
         for key,delta in pairs({prev=-1,next=1})do local box=layout[key]
             if x>=box[1]and x<box[1]+box[3]and y>=box[2]and y<box[2]+box[4]then
                 self.page=math.max(0,math.min(math.ceil((self.creative and #self.filtered or #self:prepareView(env).mainQ3)/self:pageSize())-1,self.page+delta));self:refresh(env);return
@@ -454,7 +495,19 @@ return function(ctx)
         self:interactEntry(env,spec,self:entry(env,spec),right,shift)
     end
     
+    function B:deleteCatalogCarry(env)
+        if not self.creative or not self:creativeAllowed()then return false end
+        self:validateCarry(env);local hand=self.carry;if not hand then return false end
+        if hand.kind~='creative'then
+            if type(hand.kind)~='number'or not valid(hand.slot)then return false end
+            N:dispose(env,hand.slot,hand.count)
+        end
+        log('MCVB_CREATIVE_DELETE id='..hand.id..' count='..hand.count..' source='..tostring(hand.kind))
+        self.carry=nil;self.dirty=true;ctx.phaseA.inventoryDirty=true;return true
+    end
+    
     function B:interactEntry(env,spec,entry,right,shift)
+        if(entry.kind=='catalog'or(self.carry and self.carry.kind=='creative'))and not self:creativeAllowed()then self.carry=nil;log('MCCM_CATALOG_REJECT survival');return end
         if spec.kind=='result'then self:craft(shift);return end
         local hand=self.carry
         if spec.kind=='bar'and hand then
@@ -538,7 +591,7 @@ return function(ctx)
                 if valid(N.containers.external)and self.uiTicks%5==0 then self.dirty=true end
                 if self.creative then
                     local raw=UE.GetKismetTextLibrary():Conv_TextToString(nodes.CreativeSearch:GetText());local query=type(raw)=='string'and raw or raw:ToString()
-                    if query~=self.search then self.search=query;self.filtered=self:catalog(query);self.page=0;self.dirty=true;log('MC_CATALOG_SEARCH query='..query..' count='..#self.filtered)end
+                    if query~=self.search then self.search=query;self.filtered=self:catalog(query);self.page=0;self.catalogRow=0;self.dirty=true;log('MC_CATALOG_SEARCH query='..query..' count='..#self.filtered)end
                 end
                 if self.recipeBook then
                     local raw=UE.GetKismetTextLibrary():Conv_TextToString(nodes.CreativeSearch:GetText());local query=type(raw)=='string'and raw or raw:ToString()
@@ -585,6 +638,7 @@ return function(ctx)
     end
     function B:close()
         if not self.open then return end
+        if UE.creativeUI then UE.creativeUI:cancel('inventory')end
         self.escapeUntil=os.clock()+.5
         local env=ctx.active();if self.mode=='Chest'or self.mode=='Furnace'then C():advance(self.entityKey,C():now(env));C():persist();C():play('block.chest.close',env.player:K2_GetActorLocation(),.5)end
         if not self.mode then local before=self:auditInventory('before_close');self:returnGrid(env);local after=self:auditInventory('after_close');for id,count in pairs(before)do assert(after[id]==count,'Close lost '..id)end end
@@ -688,6 +742,7 @@ return function(ctx)
     end
     function B:assignHovered(i)
         if not self.open or i<1 or i>9 then return end
+        if UE.creativeUI and UE.creativeUI.pending then return end
         local env=ctx.active();self:hover(env,true);local hand=self.carry;local entry=self.hovered and self:entry(env,self.hovered)
         local id=hand and hand.id or entry and entry.id
         if id then
@@ -695,6 +750,7 @@ return function(ctx)
             self:assign(i,id);self.carry=nil;self:refresh(env)end
     end
     function B:drop()
+        if UE.creativeUI and UE.creativeUI.pending then return end
         if self.open and self.carry then local env=ctx.active();self:validateCarry(env)
             local hand=self.carry;if hand and(type(hand.kind)~='number')then self.carry=nil;self:refresh(env);return end
             if hand and N:drop(env,hand.slot,hand.count)then self.carry=nil end

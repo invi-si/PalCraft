@@ -38,8 +38,8 @@ return function(ctx)
   assert(texture.Filter==0);return texture
  end
  function K.apply(component,texture,asset,mask)
-  local mesh=component:GetSkinnedAsset();local cut=ctx.valid(mesh)and mesh:GetFullName():find('/MinecraftTask70/',1,true)~=nil
-  for i,name in ipairs({'M_MC27SkinBase',cut and'M_MC27SkinBase'or'M_MC27SkinOverlay'})do
+
+  for i,name in ipairs({'M_MC27SkinBase','M_MC27SkinOverlay'})do
    local path=mask and i==2 and'/Game/MinecraftTask71/M_SkinOverlay71.M_SkinOverlay71'or('/Game/MinecraftSteve/Task27/'..name..'.'..name)
    local parent=asset(path)
 

@@ -1,164 +1,177 @@
 -- SPDX-License-Identifier: GPL-3.0-or-later
 -- Copyright Invi
 return function(ctx,mobs)
- local C={montages={},nextAttack=0,nextSearch=0,searches=0};local timers=dofile(ctx.base..'/timers.lua')
- local function copy(p,old)local q=old or{};q.X=p.X;q.Y=p.Y;q.Z=p.Z;return q end
- local function distance(a,b)return math.sqrt((a.X-b.X)^2+(a.Y-b.Y)^2+(a.Z-b.Z)^2)end
- local function current(env)
-  
-  return env and env.epoch==ctx.epoch()and mobs:guard(env)and ctx.valid(env.world)
+ local UE,V=ctx.UE,ctx.valid;local T=dofile(ctx.base..'/timers.lua')
+ local C={targets={},byAddress={},mobByAddress={},contacts={},skills={},nextSearch=0,searches=0}
+ local function copy(p)return{X=p.X,Y=p.Y,Z=p.Z}end
+ local function dist(a,b)return math.sqrt((a.X-b.X)^2+(a.Y-b.Y)^2)end
+ local function live(e)return e and e.epoch==ctx.epoch()and mobs:guard(e)and V(e.world)end
+ local function unwrap(v)if type(v)~='userdata'then return v end;local ok,r=pcall(function()return v:get()end);return ok and r or v end
+ local function each(a,f)
+  if type(a)=='table'then for _,v in ipairs(a)do f(unwrap(v))end else a:ForEach(function(_,v)f(v:get())end)end
+ end
+ function C:releaseMove()
+  if self.controlled and V(self.controller)then self.controller:WaitForSeconds(0);self.controller:StopMovement()end
+  self.controlled=false;self.controller=nil;self.best=nil;self.targetSerial=nil
  end
  function C:reset()
-  self.pal=nil;self.address=nil;self.identity=nil;self.nativeIdentity=nil;self.speciesP=nil;self.position=nil;self.feet=nil;self.pending=nil;self.targetSerial=nil;self.nextAttack=0;self.approachSerial=nil;self.best=nil;self.nextSearch=0;self.emptySince=nil;self.controlled=false
-  for _,s in ipairs(mobs.slots)do s.palAggro=nil end
- end
- function C:refresh(env)
-  if not current(env)then self:reset();self.playerPosition=nil;self.playerFeet=nil;self.frame=nil;return false end
-  if self.frame==timers.frameCounter and self.epoch==ctx.epoch()and self.playerAddress==env.playerAddress and self.worldIdentity==env.identity then return self.playerPosition~=nil end
-  self.frame=timers.frameCounter;self.epoch=ctx.epoch()
-  self.playerAddress=env.playerAddress;self.worldIdentity=env.identity
-  local previous=self.nativeIdentity
-  if not ctx.valid(env.player)or not ctx.valid(env.controller)then self:reset();self.playerPosition=nil;self.playerFeet=nil;return false end
-  local playerCapsule=env.player.CapsuleComponent
-  if not ctx.valid(playerCapsule)then self:reset();self.playerPosition=nil;self.playerFeet=nil;return false end
-  self.playerPosition=copy(env.player:K2_GetActorLocation(),self.playerPointZ3);self.playerPointZ3=self.playerPosition;self.playerFeet=copy(self.playerPosition,self.playerFeetZ3);self.playerFeetZ3=self.playerFeet
-  self.playerFeet.Z=self.playerFeet.Z-playerCapsule:GetScaledCapsuleHalfHeight()
-  self.pal=nil;self.position=nil;self.feet=nil;self.address=nil
-  if ctx.config.pal_combat==false then self:reset();return true end
-  local h=env.controller.BP_OtomoPalHolderComponent;if not ctx.valid(h)then self:reset();return true end;local a=h:TryGetSpawnedOtomo()
-  if not ctx.valid(a)or not a:GetActiveActorFlag()then self:reset();return true end
-  local world=a:GetWorld();if not ctx.valid(world)or world:GetAddress()~=env.world:GetAddress()then self:reset();return true end
-  local c=a.CharacterParameterComponent;local capsule=a.CapsuleComponent
-  if not ctx.valid(capsule)or not ctx.valid(c)or c:IsDead()or c:GetHP().Value<=0 or c:IsInactiveOtomo()then self:reset();return true end
   
-  if env.controller:IsRiding()then self:reset();return true end
-  local address=a:GetAddress();local identity=previous
-  if self.nativeAddress61~=address or not previous then identity=tostring(ctx.epoch())..':'..address end
-  if previous~=identity then
-   self:reset();self.nativeAddress61=address;self.generation=(self.generation or 0)+1;self.nativeIdentity=identity;self.identity=identity..'#'..self.generation;mobs:event('pal_identity',nil,{previous=previous or false,identity=self.identity})
+  self.pal=nil;self.address=nil;self.position=nil;self.feet=nil;self.speciesP=nil;self.refreshAt=nil
+  self.targets={};self.byAddress={};self.mobByAddress={};self.contacts={};self.skills={};self.nextSearch=0;self.nextScan=0
+  self.best=nil;self.targetSerial=nil;self.controlled=false;self.controller=nil;self.nextAttack=0;self.identity=nil
+ end
+ function C:admit(a,e)
+  if not V(a)or not a:IsA(UE.Object('/Script/Pal.PalCharacter'))or a:GetAddress()==e.playerAddress or not a:GetActiveActorFlag()then return end
+  local w=a:GetWorld();local cp=a.CharacterParameterComponent;local cap=a.CapsuleComponent
+  if not V(w)or w:GetAddress()~=e.world:GetAddress()or not V(cp)or not V(cap)or cp:IsDead()or cp:GetHP().Value<=0 or cp:IsInactiveOtomo()then return end
+  local p=copy(a:K2_GetActorLocation());local feet=copy(p);feet.Z=feet.Z-cap:GetScaledCapsuleHalfHeight()
+  local row={actor=a,address=a:GetAddress(),position=p,feet=feet,radius=cap:GetScaledCapsuleRadius(),height=cap:GetScaledCapsuleHalfHeight()*2,parameter=cp}
+  self.targets[#self.targets+1]=row;self.byAddress[row.address]=row;return row
+ end
+ function C:refresh(e)
+  if not live(e)then self:reset();self.playerPosition=nil;return false end
+  local now=os.clock();if self.refreshAt and now<self.refreshAt then return true end;self.refreshAt=now+.075;self.epoch=ctx.epoch()
+  self.playerPosition=copy(e.player:K2_GetActorLocation());self.playerFeet=copy(self.playerPosition)
+  self.playerFeet.Z=self.playerFeet.Z-e.player.CapsuleComponent:GetScaledCapsuleHalfHeight()
+  local holder=e.controller.BP_OtomoPalHolderComponent;local summoned=V(holder)and holder:TryGetSpawnedOtomo()or nil
+  local address=V(summoned)and summoned:GetAddress()or nil
+  if self.address~=address then self:releaseMove();self.skills={};self.nextAttack=0 end
+  self.pal=nil;self.address=nil;self.position=nil;self.feet=nil;self.targets={};self.byAddress={}
+  if ctx.config.pal_combat==false then return true end
+  local row=self:admit(summoned,e)
+  if row and not e.controller:IsRiding()then
+   self.pal=summoned;self.address=row.address;self.position=row.position;self.feet=row.feet
+   self.speciesP=row.parameter:GetIndividualParameter():GetCharacterID():ToString();self.identity=tostring(self.epoch)..':'..row.address
   end
-  self.pal=a;self.address=address;self.position=copy(a:K2_GetActorLocation(),self.palPointZ3);self.palPointZ3=self.position;self.feet=copy(self.position,self.palFeetZ3);self.palFeetZ3=self.feet
-  if not self.speciesP then self.speciesP=c:GetIndividualParameter():GetCharacterID():ToString()end
-  self.feet.Z=self.feet.Z-capsule:GetScaledCapsuleHalfHeight()
+  
+  if now>=(self.nextScan or 0)then
+   self.nextScan=now+.5;self.nearby={};local out={}
+   _G.MC_OUT_K('SphereOverlapActors',UE.GetKismetSystemLibrary(),e.player,self.playerPosition,3200,{2},UE.Object('/Script/Pal.PalCharacter'),{e.player},out)
+   local owner=e.controller:GetPalPlayerState().PlayerUId
+   for _,v in ipairs(out)do local a=unwrap(v)
+    if V(a)and V(a.CharacterParameterComponent)then
+     local ip=a.CharacterParameterComponent:GetIndividualParameter();local g=V(ip)and ip.SaveParameter.OwnerPlayerUId
+     if g and g.A==owner.A and g.B==owner.B and g.C==owner.C and g.D==owner.D and #self.nearby<8 then self.nearby[#self.nearby+1]=a end
+    end
+   end
+  end
+  for _,a in ipairs(self.nearby or{})do if V(a)and not self.byAddress[a:GetAddress()]then self:admit(a,e)end end
   return true
  end
- function C:target(s,env)
-  if not self:refresh(env)then return end
-  local a=env.player;local p=self.playerPosition;local feet=self.playerFeet;local kind='player'
-  if self.pal and (s.palAggro==self.address or distance(s.p,self.feet)<distance(s.p,feet))and distance(s.p,self.feet)<=3200 then a=self.pal;p=self.position;feet=self.feet;kind='pal' end
-  local address=kind=='pal'and self.address or env.playerAddress
-  if s.targetAddress~=address then s.targetAddress=address;s.targetKind=kind;mobs:event('retarget',s,{target=kind,address=address})end
+ function C:target(s,e)
+  if not self:refresh(e)then return end
+  local a,p,feet,kind=e.player,self.playerPosition,self.playerFeet,'player';local nearest=dist(s.p,feet)
+  for _,r in ipairs(self.targets)do local d=dist(s.p,r.feet)
+   if d<nearest and d<=3200 and math.abs(s.p.Z-r.feet.Z)<400 then a,p,feet,kind,nearest=r.actor,r.position,r.feet,'pal',d end
+  end
+  local address=a:GetAddress()
+  if s.targetAddress~=address then s.targetAddress=address;s.targetKind=kind;mobs:event('retarget',s,{target=kind,address=address,distance=nearest})end
   return a,p,feet,kind
  end
- function C:montage(a)
-  local c=a.CharacterParameterComponent;if not ctx.valid(c)then return end
-  local parameter=c:GetIndividualParameter();if not ctx.valid(parameter)then return end
-  local id=parameter:GetCharacterID():ToString()
-  local clips={CP_IvoryRattle='Pounce',CP_RedstoneRevenant='ChargePunch',CP_FungalHost='SporePuff',CP_PatchworkBrute='GloveSlam'}
-  if clips[id]then
-   local m=self.montages[id];if ctx.valid(m)then return m end
-   local name='AM_A2_'..id:sub(4)..'_'..clips[id]
-   m=ctx.UE.zombie77:asset('/Game/CustomPalsA1/'..name..'.'..name)
-   if ctx.valid(m)then ctx.retain(m);self.montages[id]=m;return m end
-  end
-  
-  local slot=ctx.UE.zombie77 and ctx.UE.zombie77.hosts[a:GetAddress()]
-  local donor=slot and slot.definition and slot.definition.host or(id:sub(1,3)=='CP_'and'PinkCat'or id)
-  local m=self.montages[donor]
-  if ctx.valid(m)then return m end
-  local stem='/Game/Pal/Animation/Character/Monster/'..donor..'/AM_'..donor..'_FarSkill_Action'
-  m=ctx.UE.Object(stem..'.AM_'..id..'_FarSkill_Action')
-  if not ctx.valid(m)then
-   m=ctx.UE.GetAsset109(ctx.UE.Object('/Script/AssetRegistry.Default__AssetRegistryHelpers'),{PackageName=ctx.UE.FindOrAddFName(stem),AssetName=ctx.UE.FindOrAddFName('AM_'..id..'_FarSkill_Action')})
-  end
-  if ctx.valid(m)and m:IsA(ctx.UE.Object('/Script/Engine.AnimMontage'))then ctx.retain(m);self.montages[donor]=m;return m end
+ function C:bind(s)
+  local co
+  each(s.actor:K2_GetComponentsByClass(UE.Object('/Script/Engine.CapsuleComponent')),function(v)
+   if V(v)and v:ComponentHasTag(UE.FindOrAddFName('MCVAContact'))then co=v end
+  end)
+  if not V(co)then co=s.actor:AddComponentByClass(UE.Object('/Script/Engine.CapsuleComponent'),false,{Rotation={X=0,Y=0,Z=0,W=1},Translation={X=0,Y=0,Z=95},Scale3D={X=1,Y=1,Z=1}},false);co.ComponentTags={UE.FindOrAddFName('MCVAContact')}end
+  co:SetMobility(2);co:K2_AttachToComponent(s.actor.RootComponent,UE.FindOrAddFName('None'),2,2,2,false)
+  co:SetCollisionObjectType(2);co:SetCollisionResponseToAllChannels(1);co:SetGenerateOverlapEvents(true);co:SetCollisionEnabled(0)
+  s.contactVA=co;self.mobByAddress[s.actor:GetAddress()]=s
  end
- function C:tick(env,now)
-  if not current(env)or self.epoch~=ctx.epoch()then self:reset();return end
-  if mobs.test65 and(mobs.test65.feature=='bridge'or mobs.test65.mode~='attacking')then self.pending=nil;return end
-  local a=self.pal
-  if a then
-   if not ctx.valid(a)or not ctx.valid(a.CharacterParameterComponent)or not ctx.valid(a.CapsuleComponent)then self:reset();return end
-   local world=a:GetWorld();if not ctx.valid(world)or world:GetAddress()~=env.world:GetAddress()then self:reset();return end
+ function C:activate(s,on)
+  if not V(s.contactVA)then return end
+  if on then local d=mobs.defs[s.kind];local half=math.max(d.radius,d.height/2)
+   s.contactVA:SetCapsuleSize(d.radius,half,false)
+   _G.MC_OUT_K('K2_SetRelativeLocation',s.contactVA,{X=0,Y=0,Z=half},false,{},true)
   end
-  if not a then self.pending=nil;self.targetSerial=nil;return end
-  local golem=self.speciesP=='MC_IronGolem';local nativeSlot=golem and ctx.UE.zombie77 and ctx.UE.zombie77.hosts[self.address]
-  if nativeSlot and nativeSlot.golemAc then self.pending=nil;return end
-  local p=self.position;local pending=self.pending
-  if pending then
-   local s=pending.slot
-   if pending.identity~=self.identity or pending.address~=self.address or not s.active or s.poof or s.serial~=pending.serial or s.generation~=pending.generation or pending.epoch~=ctx.epoch()then self.pending=nil
-   elseif now>=pending.at then
-    self.pending=nil
-    if distance(p,s.p)<=(pending.golem and 360 or 1100)and mobs:los(env,p,{X=s.p.X,Y=s.p.Y,Z=s.p.Z+80})then
-     s.palAggro=self.address
-     mobs:applyHit(s,env,now,'Pal:'..pending.id,pending.damage,{latency=now-pending.start,palAttack=true,pal=self.address,nativeAttack=pending.stat,montage=pending.montage},p,false,true)
-    end
+  s.contactVA:SetCollisionEnabled(on and 1 or 0);s.actor:SetActorEnableCollision(on)
+ end
+ function C:waza(id,e)
+  if self.skills[id]then return self.skills[id]end
+  local raw={};local util=UE.Object('/Script/Pal.Default__PalUtility')
+  if not _G.MC_OUT_K('FindWazaForBP',util:GetWazaDatabase(e.player),id,raw)then return end
+  local d={id=id,category=raw.Category,power=raw.Power or 20,min=raw.MinRange or 0,max=raw.MaxRange or 1200,cool=raw.CoolTime or 2}
+  self.skills[id]=d;return d
+ end
+ function C:drain(e,now)
+  local q=self.contacts;self.contacts={}
+  for _,hit in ipairs(q)do local s=hit.slot;local r=self.byAddress[hit.attacker]
+   if hit.epoch==self.epoch and s.active and not s.poof and s.generation==hit.generation and r and now-hit.at<.4 then
+    local data=self:waza(hit.waza,e);local melee=data and data.category==0
+    local reach=r.radius+mobs.defs[s.kind].radius+85;local distance=dist(r.feet,s.p)
+    if (not melee or distance<=reach)and mobs:los(e,hit.point,{X=s.p.X,Y=s.p.Y,Z=s.p.Z+math.min(80,mobs.defs[s.kind].height/2)})then
+     local stat=melee and r.parameter:GetMeleeAttack()or r.parameter:GetShotAttack()
+     local damage=math.max(1,math.floor(stat/25*math.max(.25,(data and data.power or 20)/40)+.5))
+     mobs:applyHit(s,e,now,'Pal:'..r.parameter:GetIndividualParameter():GetCharacterID():ToString(),damage,
+      {latency=now-hit.at,palAttack=true,pal=hit.attacker,waza=hit.waza,nativeContact=true,contactComponent=hit.component,distance=distance,reach=melee and reach or nil},r.position,false,not melee)
+    else mobs:event('pal_contact_rejected',s,{distance=distance,reach=reach,waza=hit.waza})end
    end
   end
+ end
+ function C:tick(e,now)
+  if not self:refresh(e)then return end;self:drain(e,now)
+  if mobs.test65 and(mobs.test65.feature=='bridge'or mobs.test65.mode~='attacking')then return end
+  local a=self.pal;if not V(a)then return end
+  local nativeSlot=UE.zombie77 and UE.zombie77.hosts[self.address]
+  if nativeSlot and(nativeSlot.golemAc or nativeSlot.kind=='skeleton')then return end
   if now>=self.nextSearch then
-   self.nextSearch=now+.25;self.searches=self.searches+1;self.best=nil;local near
-   for _,s in ipairs(mobs.slots)do if s.active and not s.poof then local d=distance(self.feet,s.p)
-    if d<=1200 and math.abs(self.feet.Z-s.p.Z)<220 and(not near or d<near)and mobs:los(env,p,{X=s.p.X,Y=s.p.Y,Z=s.p.Z+80})then self.best=s;self.bestGeneration=s.generation;near=d end
+   self.nextSearch=now+.25;self.searches=self.searches+1;self.best=nil;local nearest=1600
+   for _,s in ipairs(mobs.slots)do if s.active and not s.poof then local d=dist(self.feet,s.p)
+    if d<nearest and math.abs(self.feet.Z-s.p.Z)<300 then self.best=s;self.bestGeneration=s.generation;nearest=d end
    end end
   end
-  local best=self.best;local near=best and distance(self.feet,best.p)
-  if not best or not best.active or best.poof or best.generation~=self.bestGeneration or near>1200 then
-   self.best=nil;self.targetSerial=nil;self.pending=nil;self.emptySince=self.emptySince or now
-   if self.controlled and now-self.emptySince>=2 then self.controlled=false;self.approachSerial=nil;mobs:event('pal_follow_release',nil,{pal=self.address,emptySeconds=now-self.emptySince})end
-   return
+  local s=self.best
+  if not s or not s.active or s.poof or s.generation~=self.bestGeneration then self:releaseMove();return end
+  local ai=a:GetController();if not V(ai)then return end
+  self.controller=ai;self.controlled=true;self.targetSerial=s.serial
+  local near=dist(self.feet,s.p);local row=self.byAddress[self.address];local reach=row.radius+mobs.defs[s.kind].radius+40
+  local skills={};each(a.CharacterParameterComponent:GetIndividualParameter():GetEquipWaza(),function(id)local d=self:waza(id,e);if d then skills[#skills+1]=d end end)
+  local chosen
+  for _,d in ipairs(skills)do if d.category~=2 and now>=(d.ready or 0)then
+   if not chosen or(d.category==0 and near<=reach)or(chosen.category==0 and near>reach and d.category==1)then chosen=d end
+  end end
+  if not chosen then return end
+  local max=chosen.category==0 and reach or math.min(1400,math.max(300,chosen.max))
+  local point={X=s.p.X,Y=s.p.Y,Z=s.p.Z+80};local sight=mobs:los(e,self.position,point)
+  if now>=(self.steerAt or 0)then
+   self.steerAt=now+.4;ai:WaitForSeconds(1)
+   if near>max or not sight then
+
+    local acceptance=math.max(5,max-row.radius-60)
+    local result=ai:PalMoveToLocation(copy(s.p),acceptance,false,true,true,false,nil,true)
+    if result==0 and sight then result=ai:PalMoveToLocation(copy(s.p),acceptance,false,false,false,false,nil,false)end
+    mobs:event('pal_approach',s,{pal=self.address,distance=near,reach=max,nativeMove=result})
+   else ai:StopMovement()end
   end
-  self.emptySince=nil;self.controlled=true
-  self.targetSerial=best.serial
-  local dx,dy=best.p.X-p.X,best.p.Y-p.Y;local n=math.sqrt(dx*dx+dy*dy)
-  if n<1 then return end
-  local yaw=math.deg(math.atan(dy,dx));a:K2_SetActorRotation({Pitch=0,Yaw=yaw,Roll=0},true)
-  if near>(golem and 280 or 850)then
-
-   a:AddMovementInput({X=dx/n,Y=dy/n,Z=0},1,true)
-   if self.approachSerial~=best.serial then self.approachSerial=best.serial;mobs:event('pal_approach',best,{pal=self.address,distance=near})end
-  elseif now>=self.nextAttack and not self.pending then
-   self.nextAttack=now+(golem and 1.75 or .95)
-   local slot=ctx.UE.zombie77 and ctx.UE.zombie77.hosts[self.address]
-   local m=not golem and self:montage(a)or nil
-   if golem then
-    if not nativeSlot then self.nextAttack=now+.5;return end
-    ctx.UE.zombie77:beginAttack(nativeSlot,env,now,nil)
-   else
-
-   if slot then ctx.UE.zombie77:beginAttack(slot,env,now,nil)end
-   if self.speciesP=='CP_Mossback'then
-    local mesh=a.MossbackVisual
-    if ctx.valid(mesh)then
-     local name='AS_Mossback_Attack';local clip=ctx.UE.zombie77:asset('/Game/CustomPalsA1/'..name..'.'..name)
-     a.A2HoldTicks=60;mesh:PlayAnimation(clip,false)
-    end
-   elseif m then
-    local played=a:PlayAnimMontage(m,1,ctx.UE.FindOrAddFName('None'))
-    if played<=0 and not slot then mobs:event('pal_animation_failed',best,{pal=self.address});self.nextAttack=now+3;return end
-   elseif not slot then mobs:event('pal_animation_missing',best,{pal=self.address});self.nextAttack=now+3;return end
-   if self.speciesP=='CP_FungalHost'and ctx.UE.customPalsA then ctx.UE.customPalsA.fx:queue(a,now)end
-   end
-   local c=a.CharacterParameterComponent;local stat=math.max(c:GetMeleeAttack(),c:GetShotAttack());local id=c:GetIndividualParameter():GetCharacterID():ToString()
-   self.pending={slot=best,serial=best.serial,generation=best.generation,epoch=ctx.epoch(),address=self.address,identity=self.identity,at=now+(id=='MC_Creeper'and 1.5 or golem and .25 or .28),start=now,damage=math.max(1,math.floor(stat/25+.5)),stat=stat,id=id,montage=m and m:GetFullName()or'production costume swing',golem=golem}
-   mobs:event('pal_attack',best,{pal=self.address,distance=near,montage=self.pending.montage,damage=self.pending.damage,cadence=golem and 1.75 or .95})
+  if near<=max and sight and now>=(self.nextAttack or 0)then
+   local action=a:GetActionComponent();local active=V(action)and action:GetCurrentActionType(false)or 0
+   if(active==0 and V(action:GetCurrentAction()))or active==3 or active==7 or active==8 or active==9 or active==10 or active==11 or active==12 then return end
+   local yaw=math.deg(math.atan(s.p.Y-self.position.Y,s.p.X-self.position.X))
+   ai:SetControlRotation({Pitch=0,Yaw=yaw,Roll=0});a:K2_SetActorRotation({Pitch=0,Yaw=yaw,Roll=0},true)
+   local played=UE.Object('/Script/Pal.Default__PalUtility'):PlayActionByWazaID(a,s.actor,chosen.id)
+   self.nextAttack=now+1;chosen.ready=now+math.max(1,chosen.cool)
+   mobs:event('pal_attack',s,{pal=self.address,waza=chosen.id,category=chosen.category,distance=near,reach=max,played=played,damageOnlyOnNativeContact=true})
   end
  end
- function C:damage(a,s,env,fraction)
-  if not current(env)or self.epoch~=ctx.epoch()then self:reset();return false end
-  if not self.pal or not ctx.valid(a)or a:GetAddress()~=self.address then return false end
-  local world=a:GetWorld();if not ctx.valid(world)or world:GetAddress()~=env.world:GetAddress()then return false end
-  local c=a.CharacterParameterComponent;local damage=a.DamageReactionComponent;if not ctx.valid(c)or not ctx.valid(damage)then return false end;local before=c:GetHP().Value
-  if before<=0 or c:IsDead()then return false end
-
-  local max=c:GetMaxHP().Value;local amount=math.max(1,math.floor(max/1000*fraction+.5))
-  damage:SlipDamage(amount,true,1,false)
-  local after=c:GetHP().Value
-  mobs:event('pal_damage',s,{pal=self.address,hp_before=before,hp_after=after,damage=amount,nativePath='PalDamageReactionComponent:SlipDamage',dead=c:IsDead()})
-  if after>=before then ctx.log('MC59_NATIVE_DAMAGE_FAILED before='..before..' after='..after)end
-  return after<before
+ function C:damage(a,s,e,fraction)
+  if not live(e)or not V(a)then return false end
+  local row=self.byAddress[a:GetAddress()];if not row then return false end
+  local cp=row.parameter;local before=cp:GetHP().Value;if before<=0 then return false end
+  local amount=math.max(1,math.floor(cp:GetMaxHP().Value/1000*fraction+.5));a.DamageReactionComponent:SlipDamage(amount,true,1,false)
+  mobs:event('pal_damage',s,{pal=row.address,hp_before=before,hp_after=cp:GetHP().Value,damage=amount,nativePath='PalDamageReactionComponent:SlipDamage'})
+  return cp:GetHP().Value<before
  end
- function C:status()return{pal=self.address or false,identity=self.identity or false,epoch=self.epoch,frame=self.frame,target=self.targetSerial or false,pending=self.pending and self.pending.serial or false,nextAttack=self.nextAttack,controlled=self.controlled or false,emptySince=self.emptySince or false,searches=self.searches}end
- timers.onEpoch('pal-combat',function()C.playerPointZ3=nil;C.playerFeetZ3=nil;C.palPointZ3=nil;C.palFeetZ3=nil;C:reset();C.frame=nil;C.epoch=nil;C.playerPosition=nil;C.playerFeet=nil;C.playerAddress=nil;C.worldIdentity=nil;C.montages={}end)
+ function C:status()return{pal=self.address or false,identity=self.identity,epoch=self.epoch,target=self.targetSerial,controlled=self.controlled,searches=self.searches,targets=#self.targets,queued=#self.contacts,skills=self.skills}end
+ T.hook('/Script/Pal.PalHitFilter:OnBeginOverlap',function(context,my,other)
+  local target=other:get();if not V(target)then return end;local s=C.mobByAddress[target:GetAddress()]
+  if not s or not s.active or s.poof or #C.contacts>=64 then return end
+  local filter=context:get();if not V(filter)or not filter:IsA(UE.Object('/Script/Pal.PalAttackFilter'))then return end
+  local a=filter:GetAttacker();local component=my:get()
+  if V(a)and C.byAddress[a:GetAddress()]and V(component)then
+
+   C.contacts[#C.contacts+1]={slot=s,generation=s.generation,epoch=C.epoch,attacker=a:GetAddress(),waza=filter.Waza,point=copy(component:K2_GetComponentLocation()),component=component:GetFullName(),at=os.clock()}
+  end
+ end)
+ T.onEpoch('pal-combat',function()C:reset();C.epoch=nil;C.nearby=nil;C.playerPosition=nil end)
  return C
 end

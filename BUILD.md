@@ -1,3 +1,9 @@
+> **v1.1 accepted:** current release is PalCraft-v1.1.zip. The VF payload is
+> preserved exactly during RV promotion. Historical candidate instructions below
+> describe earlier build stages; they do not revoke the recorded v1.1 acceptance.
+> Five source texture exclusions and deleted historical cook inputs still prevent
+> a complete clean rebuild. Recover/repack only from a hash-verified baseline.
+
 # Building PalCraft
 
 PalCraft code is licensed GPL-3.0-or-later. Original art is CC BY 4.0; see LICENSE-ART.md.
@@ -30,3 +36,65 @@ For a clean source snapshot run `python tools/release/export_public_repo.py --co
 PalCraft v1.0 promotion accepts the 15.702672-second second cold load under Opus decision SEQ268; the original 14.5-second target remains recorded as failed. All runtime, installer and cooked-asset bytes are bound to the RF native-tested archive. Only documentation and readiness manifests change during promotion.
 
 The v1.0.1 RH promotion uses the exact native-tested OC runtime, installer, assets and schemas; only documentation and metadata change after acceptance. Opus accepts measured 15.928516/15.656792-second cold loads, with the original 14.5-second target still failed. Use the v1.0.1 source and patch manifest together; its five modified blank template paks can be reproduced deterministically from the cleared v1.0 templates with the authored tools. The original v1.0 acceptance above is historical.
+
+## v1.1 candidate recovery and Creative UI (Task VB)
+
+The old RA/RB–RH/OA–OC cook evidence and clean-pak staging directories were
+deleted. The historical editor cook cannot currently be reproduced from those
+inputs. Do not run the old `build_cooked_patch.py` migration as a current rebuild
+recipe: it requires that deleted private evidence. Keep its implementation for
+historical migration only.
+
+Recover the cooked build baseline from a surviving hash-verified candidate:
+
+```powershell
+python tools/release/recover_candidate_inputs.py --candidate release/dist/PalCraft-v1.1-CANDIDATE.zip --output local/taskVB/rebuild
+```
+
+The recovery checks every ZIP member against the candidate manifest, restores
+all clean placeholder paks and the exact cooked texture/font/sound manifests and
+recipes, and independently parses/authenticates/re-emits every pak through the
+owned deterministic v3 writer. `rebuild-proof.json` lists exact differences;
+`paks.json` is a usable replacement for lost staging paths. The CW input with
+SHA256 `460042fc75801140d603e9c31fa77381e8e7ceb647e2dde4fac51d6783ff6c5b`
+recovered 546 files and reproduced all 63 paks byte-for-byte (zero differences).
+This proves recovery and deterministic repacking of candidate cooked inputs;
+it does not recreate deleted editor source/cook history. Retain the baseline
+and proof together. Do not replace an active task's shared candidate ZIP.
+
+For the Creative redesign run:
+
+```powershell
+python tools/release/build_creative_ui_assets.py --baseline local/taskVB/rebuild/baseline --output local/taskVB/creative-assets
+python tools/taskVB_offline.py
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/taskVB_extract.ps1
+python tools/taskVB_preview.py
+python tools/release/stage_creative_ui_candidate.py
+```
+
+`build_creative_ui_assets.py` clones five owned blank Texture2D identities into
+one small HUD-only pak. Jar recipes supply `creative_inventory/tab_items.png`,
+`tab_item_search.png`, the trash slot from `tab_inventory.png`, and compass/iron
+ingot icons. Existing 63 paks stay byte-identical. No extracted pixels or fonts
+are bundled. The installer already extracts the complete textures prefix, so
+its existing extraction/cache/patch pipeline handles the new resources without
+installer code changes. The asset builder is deterministic and can be rerun
+against the immutable recovered baseline.
+
+The source checker uses the existing Lua 5.4 `lupa` checker dependency under
+`MC_LUA54_DIR`; VB restored that deleted tool into its own evidence tools folder
+(`lupa` 2.6, project-local, no global installation). Preview scripts use Pillow.
+Preview PNGs at 2560×1440 show 4× and 6× GUI texels (100% and 150%), Korean and
+English, using production Lua paint/layout operations and the actual installer
+texture/font cache. Native inventory contents are illustrative fixtures.
+`preview-manifest.json` binds source sprites/fonts and all final preview files.
+These previews require Opus's visual approval; Astra must still verify native
+keyboard/search, wheel/drag scrolling, carry/delete and mode controls. Keep
+`CANDIDATE` and `live_verified=false` until those gates pass.
+
+The sparse VB candidate stager overlays only VB-owned source, its new blank
+pak, manifests and docs on the selected candidate. It preserves all other
+payload hashes, creates a separate `PalCraft-v1.1-VB-CANDIDATE.zip`, and refuses
+an incompatible/concurrently changed cooked-manifest baseline. For integration,
+overlay these same listed files onto the game worker's latest candidate; do not
+replace its combat, input, UI-entry or lifecycle edits with the older CW files.

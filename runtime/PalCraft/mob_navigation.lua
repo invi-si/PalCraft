@@ -82,5 +82,25 @@ return function(cells,key,registry)
   while n and n.parent do table.insert(route,1,{X=n.x*100+50,Y=n.y*100+50,Z=n.z,jump=n.jump});n=n.parent end
   return route,visits,best.h==0
  end
+
+ function N:detour(p,target,side,check)
+  local heading=math.atan(target.Y-p.Y,target.X-p.X)
+  for _,radius in ipairs({250,500})do
+   for _,degrees in ipairs({90,135,-90,-135,180,60,-60})do
+    local angle=heading+math.rad(degrees*side)
+    local q=check(p.X+math.cos(angle)*radius,p.Y+math.sin(angle)*radius)
+    if q then return q,degrees<0 and-side or side end
+   end
+  end
+ end
+ function N:direct(p,q,r,h)
+  local n=math.max(1,math.ceil(math.sqrt((q.X-p.X)^2+(q.Y-p.Y)^2)/35))
+  if math.abs(q.Z-p.Z)>100 then return false end
+  local supported=self:supported(p,r)
+  for i=1,n do local t=i/n;local x,y,z=p.X+(q.X-p.X)*t,p.Y+(q.Y-p.Y)*t,p.Z+(q.Z-p.Z)*t
+   if not self:clear(x,y,z,r,h)or(supported and not self:supported({X=x,Y=y,Z=z},r))then return false end
+  end
+  return true
+ end
  return N
 end

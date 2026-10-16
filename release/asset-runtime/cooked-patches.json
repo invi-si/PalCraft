@@ -124507,6 +124507,639 @@
         }
       ],
       "files": 226
+    },
+    {
+      "indexOffset": 226520,
+      "indexSize": 1196,
+      "indexHashOffset": 227740,
+      "sha256": "e353ad890a3e35d3383d62097461922fa2a555c725b52d5ab55d8afb5d6a4374",
+      "name": "pakchunk29990-palcraft-creative-ui_P.pak",
+      "pack": "hud_skins",
+      "patches": [
+        {
+          "package": "/Game/MinecraftBlocks/T_MC_UI_creative_items",
+          "file": "Pal/Content/MinecraftBlocks/T_MC_UI_creative_items.uexp",
+          "kind": "texture",
+          "source": "_palcraft/29f57435b5b19a9a2ac0.png",
+          "sources": [
+            "textures/gui/container/creative_inventory/tab_items.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_B8G8R8A8",
+          "srgb": true,
+          "width": 195,
+          "height": 136,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 379,
+              "size": 106080,
+              "width": 195,
+              "height": 136
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 8513,
+          "fileSize": 106487,
+          "headerHashOffset": 8488,
+          "indexHashOffset": 227221,
+          "forceOpaque": false
+        },
+        {
+          "package": "/Game/MinecraftBlocks/T_MC_UI_creative_search",
+          "file": "Pal/Content/MinecraftBlocks/T_MC_UI_creative_search.uexp",
+          "kind": "texture",
+          "source": "_palcraft/f0337a8f1531a4bca8d5.png",
+          "sources": [
+            "textures/gui/container/creative_inventory/tab_item_search.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_B8G8R8A8",
+          "srgb": true,
+          "width": 195,
+          "height": 136,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 379,
+              "size": 106080,
+              "width": 195,
+              "height": 136
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 116796,
+          "fileSize": 106487,
+          "headerHashOffset": 116771,
+          "indexHashOffset": 227451,
+          "forceOpaque": false
+        },
+        {
+          "package": "/Game/MinecraftBlocks/T_MC_UI_creative_delete",
+          "file": "Pal/Content/MinecraftBlocks/T_MC_UI_creative_delete.uexp",
+          "kind": "texture",
+          "source": "_palcraft/688f5388a4509facd1b5.png",
+          "sources": [
+            "textures/gui/container/creative_inventory/tab_inventory.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_B8G8R8A8",
+          "srgb": true,
+          "width": 18,
+          "height": 18,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 379,
+              "size": 1296,
+              "width": 18,
+              "height": 18
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 1769,
+          "fileSize": 1703,
+          "headerHashOffset": 1744,
+          "indexHashOffset": 226743,
+          "forceOpaque": false
+        },
+        {
+          "package": "/Game/MinecraftBlocks/T_MC_UI_creative_search_icon",
+          "file": "Pal/Content/MinecraftBlocks/T_MC_UI_creative_search_icon.uexp",
+          "kind": "texture",
+          "source": "_palcraft/df94eeea2f4573b42751.png",
+          "sources": [
+            "textures/item/compass_16.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_B8G8R8A8",
+          "srgb": true,
+          "width": 16,
+          "height": 16,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 379,
+              "size": 1024,
+              "width": 16,
+              "height": 16
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 225089,
+          "fileSize": 1431,
+          "headerHashOffset": 225064,
+          "indexHashOffset": 227691,
+          "forceOpaque": false
+        },
+        {
+          "package": "/Game/MinecraftBlocks/T_MC_UI_creative_ingredients_icon",
+          "file": "Pal/Content/MinecraftBlocks/T_MC_UI_creative_ingredients_icon.uexp",
+          "kind": "texture",
+          "source": "_palcraft/7f48df9b6c8069bcd857.png",
+          "sources": [
+            "textures/item/iron_ingot.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_B8G8R8A8",
+          "srgb": true,
+          "width": 16,
+          "height": 16,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 379,
+              "size": 1024,
+              "width": 16,
+              "height": 16
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 5288,
+          "fileSize": 1431,
+          "headerHashOffset": 5263,
+          "indexHashOffset": 226993,
+          "forceOpaque": false
+        }
+      ],
+      "files": 10
+    },
+    {
+      "indexOffset": 66468,
+      "indexSize": 3198,
+      "indexHashOffset": 69690,
+      "sha256": "ba104e7f84b5f811d1248e7a85053fbcb74337c47995d1056886d68d5faeb9c1",
+      "name": "pakchunk29991-palcraft-tab-aliases_P.pak",
+      "pack": "hud_skins",
+      "patches": [
+        {
+          "package": "/Game/MinecraftBlocks/T_MC_UI_creative_tab_bottom_selected_1_VA",
+          "file": "Pal/Content/MinecraftBlocks/T_MC_UI_creative_tab_bottom_selected_1_VA.uexp",
+          "kind": "texture",
+          "source": "textures/gui/sprites/container/creative_inventory/tab_bottom_selected_1.png",
+          "sources": [
+            "textures/gui/sprites/container/creative_inventory/tab_bottom_selected_1.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_B8G8R8A8",
+          "srgb": true,
+          "width": 26,
+          "height": 32,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 379,
+              "size": 3328,
+              "width": 26,
+              "height": 32
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 1805,
+          "fileSize": 3735,
+          "headerHashOffset": 1780,
+          "indexHashOffset": 66727,
+          "forceOpaque": false
+        },
+        {
+          "package": "/Game/MinecraftBlocks/T_MC_UI_creative_tab_bottom_selected_2_VA",
+          "file": "Pal/Content/MinecraftBlocks/T_MC_UI_creative_tab_bottom_selected_2_VA.uexp",
+          "kind": "texture",
+          "source": "textures/gui/sprites/container/creative_inventory/tab_bottom_selected_2.png",
+          "sources": [
+            "textures/gui/sprites/container/creative_inventory/tab_bottom_selected_2.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_B8G8R8A8",
+          "srgb": true,
+          "width": 26,
+          "height": 32,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 379,
+              "size": 3328,
+              "width": 26,
+              "height": 32
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 7345,
+          "fileSize": 3735,
+          "headerHashOffset": 7320,
+          "indexHashOffset": 66993,
+          "forceOpaque": false
+        },
+        {
+          "package": "/Game/MinecraftBlocks/T_MC_UI_creative_tab_bottom_selected_7_VA",
+          "file": "Pal/Content/MinecraftBlocks/T_MC_UI_creative_tab_bottom_selected_7_VA.uexp",
+          "kind": "texture",
+          "source": "textures/gui/sprites/container/creative_inventory/tab_bottom_selected_7.png",
+          "sources": [
+            "textures/gui/sprites/container/creative_inventory/tab_bottom_selected_7.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_B8G8R8A8",
+          "srgb": true,
+          "width": 26,
+          "height": 32,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 379,
+              "size": 3328,
+              "width": 26,
+              "height": 32
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 12885,
+          "fileSize": 3735,
+          "headerHashOffset": 12860,
+          "indexHashOffset": 67259,
+          "forceOpaque": false
+        },
+        {
+          "package": "/Game/MinecraftBlocks/T_MC_UI_creative_tab_bottom_unselected_1_VA",
+          "file": "Pal/Content/MinecraftBlocks/T_MC_UI_creative_tab_bottom_unselected_1_VA.uexp",
+          "kind": "texture",
+          "source": "textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_1.png",
+          "sources": [
+            "textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_1.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_B8G8R8A8",
+          "srgb": true,
+          "width": 26,
+          "height": 32,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 379,
+              "size": 3328,
+              "width": 26,
+              "height": 32
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 18429,
+          "fileSize": 3735,
+          "headerHashOffset": 18404,
+          "indexHashOffset": 67529,
+          "forceOpaque": false
+        },
+        {
+          "package": "/Game/MinecraftBlocks/T_MC_UI_creative_tab_bottom_unselected_2_VA",
+          "file": "Pal/Content/MinecraftBlocks/T_MC_UI_creative_tab_bottom_unselected_2_VA.uexp",
+          "kind": "texture",
+          "source": "textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_1.png",
+          "sources": [
+            "textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_1.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_B8G8R8A8",
+          "srgb": true,
+          "width": 26,
+          "height": 32,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 379,
+              "size": 3328,
+              "width": 26,
+              "height": 32
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 23973,
+          "fileSize": 3735,
+          "headerHashOffset": 23948,
+          "indexHashOffset": 67799,
+          "forceOpaque": false
+        },
+        {
+          "package": "/Game/MinecraftBlocks/T_MC_UI_creative_tab_bottom_unselected_7_VA",
+          "file": "Pal/Content/MinecraftBlocks/T_MC_UI_creative_tab_bottom_unselected_7_VA.uexp",
+          "kind": "texture",
+          "source": "textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_1.png",
+          "sources": [
+            "textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_1.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_B8G8R8A8",
+          "srgb": true,
+          "width": 26,
+          "height": 32,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 379,
+              "size": 3328,
+              "width": 26,
+              "height": 32
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 29517,
+          "fileSize": 3735,
+          "headerHashOffset": 29492,
+          "indexHashOffset": 68069,
+          "forceOpaque": false
+        },
+        {
+          "package": "/Game/MinecraftBlocks/T_MC_UI_creative_tab_top_selected_1_VA",
+          "file": "Pal/Content/MinecraftBlocks/T_MC_UI_creative_tab_top_selected_1_VA.uexp",
+          "kind": "texture",
+          "source": "textures/gui/sprites/container/creative_inventory/tab_top_selected_1.png",
+          "sources": [
+            "textures/gui/sprites/container/creative_inventory/tab_top_selected_1.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_B8G8R8A8",
+          "srgb": true,
+          "width": 26,
+          "height": 32,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 379,
+              "size": 3328,
+              "width": 26,
+              "height": 32
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 35051,
+          "fileSize": 3735,
+          "headerHashOffset": 35026,
+          "indexHashOffset": 68329,
+          "forceOpaque": false
+        },
+        {
+          "package": "/Game/MinecraftBlocks/T_MC_UI_creative_tab_top_selected_2_VA",
+          "file": "Pal/Content/MinecraftBlocks/T_MC_UI_creative_tab_top_selected_2_VA.uexp",
+          "kind": "texture",
+          "source": "textures/gui/sprites/container/creative_inventory/tab_top_selected_2.png",
+          "sources": [
+            "textures/gui/sprites/container/creative_inventory/tab_top_selected_2.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_B8G8R8A8",
+          "srgb": true,
+          "width": 26,
+          "height": 32,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 379,
+              "size": 3328,
+              "width": 26,
+              "height": 32
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 40585,
+          "fileSize": 3735,
+          "headerHashOffset": 40560,
+          "indexHashOffset": 68589,
+          "forceOpaque": false
+        },
+        {
+          "package": "/Game/MinecraftBlocks/T_MC_UI_creative_tab_top_selected_7_VA",
+          "file": "Pal/Content/MinecraftBlocks/T_MC_UI_creative_tab_top_selected_7_VA.uexp",
+          "kind": "texture",
+          "source": "textures/gui/sprites/container/creative_inventory/tab_top_selected_7.png",
+          "sources": [
+            "textures/gui/sprites/container/creative_inventory/tab_top_selected_7.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_B8G8R8A8",
+          "srgb": true,
+          "width": 26,
+          "height": 32,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 379,
+              "size": 3328,
+              "width": 26,
+              "height": 32
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 46119,
+          "fileSize": 3735,
+          "headerHashOffset": 46094,
+          "indexHashOffset": 68849,
+          "forceOpaque": false
+        },
+        {
+          "package": "/Game/MinecraftBlocks/T_MC_UI_creative_tab_top_unselected_1_VA",
+          "file": "Pal/Content/MinecraftBlocks/T_MC_UI_creative_tab_top_unselected_1_VA.uexp",
+          "kind": "texture",
+          "source": "textures/gui/sprites/container/creative_inventory/tab_top_unselected_1.png",
+          "sources": [
+            "textures/gui/sprites/container/creative_inventory/tab_top_unselected_1.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_B8G8R8A8",
+          "srgb": true,
+          "width": 26,
+          "height": 32,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 379,
+              "size": 3328,
+              "width": 26,
+              "height": 32
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 51657,
+          "fileSize": 3735,
+          "headerHashOffset": 51632,
+          "indexHashOffset": 69113,
+          "forceOpaque": false
+        },
+        {
+          "package": "/Game/MinecraftBlocks/T_MC_UI_creative_tab_top_unselected_2_VA",
+          "file": "Pal/Content/MinecraftBlocks/T_MC_UI_creative_tab_top_unselected_2_VA.uexp",
+          "kind": "texture",
+          "source": "textures/gui/sprites/container/creative_inventory/tab_top_unselected_1.png",
+          "sources": [
+            "textures/gui/sprites/container/creative_inventory/tab_top_unselected_1.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_B8G8R8A8",
+          "srgb": true,
+          "width": 26,
+          "height": 32,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 379,
+              "size": 3328,
+              "width": 26,
+              "height": 32
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 57195,
+          "fileSize": 3735,
+          "headerHashOffset": 57170,
+          "indexHashOffset": 69377,
+          "forceOpaque": false
+        },
+        {
+          "package": "/Game/MinecraftBlocks/T_MC_UI_creative_tab_top_unselected_7_VA",
+          "file": "Pal/Content/MinecraftBlocks/T_MC_UI_creative_tab_top_unselected_7_VA.uexp",
+          "kind": "texture",
+          "source": "textures/gui/sprites/container/creative_inventory/tab_top_unselected_1.png",
+          "sources": [
+            "textures/gui/sprites/container/creative_inventory/tab_top_unselected_1.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_B8G8R8A8",
+          "srgb": true,
+          "width": 26,
+          "height": 32,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 379,
+              "size": 3328,
+              "width": 26,
+              "height": 32
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 62733,
+          "fileSize": 3735,
+          "headerHashOffset": 62708,
+          "indexHashOffset": 69641,
+          "forceOpaque": false
+        }
+      ],
+      "files": 24
+    },
+    {
+      "indexOffset": 8522,
+      "indexSize": 620,
+      "indexHashOffset": 9166,
+      "sha256": "5966626f80a49d3b6fc9ede91bfa52ea372308488220c9fe109dee552a5fa5fa",
+      "name": "pakchunk29992-palcraft-shared-item-icons_P.pak",
+      "pack": "core",
+      "patches": [
+        {
+          "package": "/Game/MinecraftMobs/T_bone",
+          "file": "Pal/Content/MinecraftMobs/T_bone.uexp",
+          "kind": "texture",
+          "source": "textures/item/bone.png",
+          "sources": [
+            "textures/item/bone.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_DXT5",
+          "srgb": true,
+          "width": 16,
+          "height": 16,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 312,
+              "size": 1024,
+              "width": 16,
+              "height": 16
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 1455,
+          "fileSize": 1364,
+          "headerHashOffset": 1430,
+          "indexHashOffset": 8707,
+          "forceOpaque": false
+        },
+        {
+          "package": "/Game/MinecraftMobs/T_gunpowder",
+          "file": "Pal/Content/MinecraftMobs/T_gunpowder.uexp",
+          "kind": "texture",
+          "source": "textures/item/gunpowder.png",
+          "sources": [
+            "textures/item/gunpowder.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_DXT5",
+          "srgb": true,
+          "width": 16,
+          "height": 16,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 312,
+              "size": 1024,
+              "width": 16,
+              "height": 16
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 4299,
+          "fileSize": 1364,
+          "headerHashOffset": 4274,
+          "indexHashOffset": 8909,
+          "forceOpaque": false
+        },
+        {
+          "package": "/Game/MinecraftMobs/T_rotten_flesh",
+          "file": "Pal/Content/MinecraftMobs/T_rotten_flesh.uexp",
+          "kind": "texture",
+          "source": "textures/item/rotten_flesh.png",
+          "sources": [
+            "textures/item/rotten_flesh.png"
+          ],
+          "supported": true,
+          "format": "PF_B8G8R8A8",
+          "originalFormat": "PF_DXT5",
+          "srgb": true,
+          "width": 16,
+          "height": 16,
+          "mips": [
+            {
+              "index": 0,
+              "offset": 312,
+              "size": 1024,
+              "width": 16,
+              "height": 16
+            }
+          ],
+          "normalChannels": false,
+          "dataOffset": 7158,
+          "fileSize": 1364,
+          "headerHashOffset": 7133,
+          "indexHashOffset": 9117,
+          "forceOpaque": false
+        }
+      ],
+      "files": 6
     }
   ],
   "originalIconInstances": [

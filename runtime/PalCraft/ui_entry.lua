@@ -7,6 +7,9 @@ return function(ctx)
  local rootClass='/Game/Pal/Blueprint/UI/WBP_PlayerUI.WBP_PlayerUI_C'
  local gauge='/Game/Pal/Blueprint/UI/UserInterface/InGame/PlayerGauge/WBP_Ingame_PlayerGauge_Separated.WBP_Ingame_PlayerGauge_Separated_C'
  local task49Rows={
+  {path='/Game/Pal/Blueprint/UI/WBP_PalInteractiveObjectIndicatorCanvas.WBP_PalInteractiveObjectIndicatorCanvas_C'},
+  {path='/Game/Pal/Blueprint/UI/WBP_PalInteractiveObjectIndicatorUI.WBP_PalInteractiveObjectIndicatorUI_C'},
+  {path='/Game/Pal/Blueprint/UI/DebugInfo/WBP_PalDebugInfo.WBP_PalDebugInfo_C'},
   {path='/Game/Pal/Blueprint/UI/UserInterface/InGame/PalGet/WBP_PalGet_s.WBP_PalGet_s_C'},
   {path='/Game/Pal/Blueprint/UI/UserInterface/InGame/Interact/WBP_Ingame_InteractDurability.WBP_Ingame_InteractDurability_C'},
   {path='/Game/Pal/Blueprint/UI/UserInterface/InGame/Interact/WBP_Ingame_InteractMultiplayModifier.WBP_Ingame_InteractMultiplayModifier_C'},
@@ -143,7 +146,7 @@ return function(ctx)
   
   if not self:allowed()then return false end
   local env=ctx.earlyEnvironment and ctx.earlyEnvironment()or ctx.environment();if not env or not valid(env.controller)then return false end
-  ctx.phaseA:setLife(env.status)
+  ctx.phaseA:setLife(env.status,env)
   local controller=env.controller:GetAddress()
   if self:scoped()and env.status=='alive'then capture82:tick(env)end
   if self.input and env.status=='alive'and self.input.controller~=controller then self.input:start(env)end
@@ -159,7 +162,7 @@ return function(ctx)
    for _,w in ipairs(FindAllOf('WBP_PlayerUI_C')or{})do if transient(w,rootClass)then
     local p=w:GetOwningPlayer();if valid(p)and p:GetAddress()==controller then self:hide(w,'dirty-tick')end
    end end
-   if env.status=='alive'and next(self.roots)~=nil then ctx.phaseA:earlyHUD(env.controller);ctx.phaseA:setLife(env.status)end
+   if env.status=='alive'and next(self.roots)~=nil then ctx.phaseA:earlyHUD(env.controller);ctx.phaseA:setLife(env.status,env)end
   end
   if self.scan~=nil then
    self.scan=self.scan+1;local row=indicatorRows[self.scan]
@@ -199,6 +202,15 @@ return function(ctx)
   return false
  end
  function E:start()
+
+   local kit=ctx.uiKit
+   if not kit.tabAliasesVA then
+    kit.tabAliasesVA=true;local asset=kit.asset
+    function kit:asset(name)
+     if name:match('^T_MC_UI_creative_tab_%a+_%a+_[127]$')then name=name..'_VA'end
+     return asset(self,name)
+    end
+   end
   local index=0;local jobs={};local begun,workMs= nil,0
   
   if ctx.config.ui_preload~=false then
@@ -211,6 +223,7 @@ return function(ctx)
    jobs[#jobs+1]=function()self:retain(ctx.loadWidgetClass('WBP_MCHUD'))end
 
    for _,name in ipairs(dofile(ctx.base..'/ui_preload.lua'))do
+
     if not name:match('_%d+$')then jobs[#jobs+1]=function()
      local texture=ctx.uiKit:asset(name);self:retain(texture)
      ctx.uiKit.titleRetainedOC=ctx.uiKit.titleRetainedOC or{};ctx.uiKit.titleRetainedOC[texture:GetAddress()]=texture

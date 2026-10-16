@@ -46,6 +46,8 @@ return function(ctx)
  end
  function primary:request(key,e)
   local i=assert(all[key],'Unknown island');local stamp=ctx.epoch()
+
+  if ctx.UE.zombie77 then ctx.UE.zombie77:prepareIslandG(key)end
   if i.requested109~=stamp then i.requested109=stamp;ctx.log('MC109_ISLAND_REQUEST key='..key..' epoch='..stamp)end
   starts[key](i,e);return i.admitted and i.footingReady and i.epoch==stamp
  end
@@ -74,7 +76,7 @@ return function(ctx)
   local cover=ctx.UE.loadingCover51
   if cover and(cover.at or cover.armed)then
    local key=nearestAt(p);if not key then return true end;local i=all[key]
-   return i.admitted and i.footingReady and i.epoch==ctx.epoch()
+   return i.admitted and i.footingReady and i.epoch==ctx.epoch()and(not ctx.UE.zombie77 or ctx.UE.zombie77:prepareIslandG(key))
   end
   for _,i in pairs(all)do if nearby(i,p)and(not i.admitted or not i.footingReady or i.epoch~=ctx.epoch())then return false end end
   return true

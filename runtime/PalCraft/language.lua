@@ -9,6 +9,7 @@ return function(ctx)
  for id,row in pairs(dofile(ctx.base..'/strings70.lua'))do data.items[id]=row;data.ui[row.en]=row end
  for key,ko in pairs(dofile(ctx.base..'/strings71.lua'))do data.ui[key]={en=key,ko=ko};data.fragments[key]=ko end
  for key,ko in pairs(dofile(ctx.base..'/strings76.lua'))do data.ui[key]={en=key,ko=ko};data.fragments[key]=ko end
+ for key,ko in pairs(dofile(ctx.base..'/stringsCM.lua'))do data.ui[key]={en=key,ko=ko};data.fragments[key]=ko end
  for id,row in pairs(dofile(ctx.base..'/strings88.lua'))do data.items[id]=row;data.ui[row.en]=row end
  for id,row in pairs(dofile(ctx.base..'/strings104.lua'))do data.items[id]=row;data.ui[row.en]=row end
  for id,row in pairs(dofile(ctx.base..'/strings89.lua'))do data.items[id]=row;data.ui[row.en]=row end

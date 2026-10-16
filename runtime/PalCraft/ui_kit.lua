@@ -8,6 +8,7 @@ return function(ctx)
  local assetIds={};local textureHolders={}
  function U:retainTexture(t)
   if not valid(self.iconCacheRoot)or not valid(t)or not t:IsA(UE.Object('/Script/Engine.Texture'))then return end
+
   local retained=self.titleRetainedOC and self.titleRetainedOC[t:GetAddress()]
   if valid(retained)and retained:GetFullName()==t:GetFullName()then return end
   local k=t:GetAddress();if valid(textureHolders[k])then return end
@@ -130,7 +131,7 @@ return function(ctx)
  U.categoryIcons={'MC_Bricks','MC_RedWool','MC_GrassBlock','MC_CraftingTable','MC_IronPickaxe','MC_IronSword','MC_Bread','IronIngot','MC_Stone','MC_Chest'}
  function U:creativeTabs(nodes,B,unit)
   B.tabBoxes={};for i=1,10 do local x=-97.5+(i<=5 and(i-1)*30 or i==10 and 165 or(i-6)*30);local y=i<=5 and-96 or 68;local category=self.categories[i];local selected=(B.category or'search')==category
-   self:brush(nodes['GuiTab'..i],'T_MC_UI_creative_tab_'..(i<=5 and'top'or'bottom')..'_'..(selected and'selected'or'unselected')..'_1');self:position(nodes['GuiTab'..i],x,y,28,32,unit);nodes['GuiTab'..i].Slot:SetZOrder(2);nodes['GuiTab'..i]:SetVisibility(3)
+   self:brush(nodes['GuiTab'..i],selected and'T_MC_UI_widget_button_highlighted'or'T_MC_UI_widget_button');self:position(nodes['GuiTab'..i],x,y,28,32,unit);nodes['GuiTab'..i].Slot:SetZOrder(2);nodes['GuiTab'..i]:SetVisibility(3)
    local icon=B:icon(self.categoryIcons[i]);nodes['GuiTabIcon'..i]:SetVisibility(valid(icon)and 3 or 1);if valid(icon)then if ctx.config.task20_ui then self:icon(nodes['GuiTabIcon'..i],icon,16,1)else nodes['GuiTabIcon'..i]:SetBrushFromTexture(icon,false)end end;self:position(nodes['GuiTabIcon'..i],x+6,y+8,16,16,unit);nodes['GuiTabIcon'..i].Slot:SetZOrder(3);B.tabBoxes[i]={x,y,28,32,category}
   end
  end
@@ -208,5 +209,6 @@ return function(ctx)
  dofile(ctx.base..'/ui57.lua')(ctx,U)
  dofile(ctx.base..'/ui58.lua')(ctx,U)
  dofile(ctx.base..'/ui67.lua')(ctx,U)
+ dofile(ctx.base..'/creative_catalog.lua')(ctx,U)
  return U
 end

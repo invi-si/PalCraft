@@ -66,6 +66,7 @@ return function(options)
  local function factory(name)return load(name)(ctx)end
  ctx.island=factory('islands88');UE.island=ctx.island
  UE.zombie77=factory('zombie77')
+ UE.nativeArrowsVD=factory('native_arrowsVD')
  UE.customPalsA=factory('custom_palsA')
  UE.alexTrade=factory('native_trade');ctx.trade=UE.alexTrade
  ctx.ui={notify=function(_,title,text)UE.alexTrade:notice(title..': '..text)end}

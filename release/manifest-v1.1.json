@@ -1,0 +1,4718 @@
+{
+  "product": "PalCraft",
+  "version": "1.1",
+  "status": "READY",
+  "incomplete_reasons": [],
+  "files": [
+    {
+      "path": "ARCHITECTURE.md",
+      "bytes": 3448,
+      "sha256": "b7476cc00b7373421d3efd630b42b73158a71037f569a74a1ee8f7d564f7d9b1"
+    },
+    {
+      "path": "ART_PROMPTS.md",
+      "bytes": 1997,
+      "sha256": "4412a4e50457a1c989c35211aa434adb56a5eba6d14b0fb11e6c6270f340a4d1"
+    },
+    {
+      "path": "asset-runtime/Build-TextureCache.ps1",
+      "bytes": 912,
+      "sha256": "fd16435a33dcc75263642e8475ebeb78e93495df765f6a73c998ce884d4e830c"
+    },
+    {
+      "path": "asset-runtime/cooked-patches.json",
+      "bytes": 3934689,
+      "sha256": "55ac3f7556cbbf9d3469d36c86440e12540db837d4cccf41d694a3f8d6885692"
+    },
+    {
+      "path": "asset-runtime/cooked-sounds.json",
+      "bytes": 517947,
+      "sha256": "29cab7ffcd868e446400330aaafbe41f907b8ab615bf73887eed582335cb6bf1"
+    },
+    {
+      "path": "asset-runtime/CookedFontCache.cs",
+      "bytes": 11161,
+      "sha256": "e84f2bd6d1787c0b228bf2ae4796793da485144405a26a6cef16ad858d2987e9"
+    },
+    {
+      "path": "asset-runtime/CookedPakPatch.cs",
+      "bytes": 9079,
+      "sha256": "dbe26af41b7963e97d5d1119688dc35ff57fd5bebeddeed62b881702324ce15a"
+    },
+    {
+      "path": "asset-runtime/CookedSoundPatch.cs",
+      "bytes": 8799,
+      "sha256": "e8a167acd2868fde81cf668846bf24bda4e9351d5ff926a624e183def04ea9e0"
+    },
+    {
+      "path": "asset-runtime/DecodedTextureCache.cs",
+      "bytes": 2285,
+      "sha256": "b9d032d3b8f5a534c8fb43f85a26227fe8bff443a2663cb0b84ff3d3f294af81"
+    },
+    {
+      "path": "asset-runtime/DeterministicBc.cs",
+      "bytes": 4680,
+      "sha256": "be7e929648dee6c135a39150c088b63391952a82dd1be772ead36184a57872d7"
+    },
+    {
+      "path": "asset-runtime/FontCache.cs",
+      "bytes": 8724,
+      "sha256": "98ce320787802603cbf60fe19e8a4ca1c80e537ef8d9371ada43e69f0080a4a9"
+    },
+    {
+      "path": "asset-runtime/Patch-CookedPaks.ps1",
+      "bytes": 1562,
+      "sha256": "56fe293e33a7c55748caa41f9a953d852a06b068bc32e1a109c446f7b4800eff"
+    },
+    {
+      "path": "asset-runtime/Patch-CookedSounds.ps1",
+      "bytes": 1038,
+      "sha256": "c77c31d3264287d75744a9083ec8e565a7f66859d07ce0fc5ff286e3fcf30d45"
+    },
+    {
+      "path": "asset-runtime/texture-recipes.json",
+      "bytes": 2941764,
+      "sha256": "147ff1a44e4714dc27c81b4c5332cbdba5a29e82c7fee80e1860e81bfbd813ee"
+    },
+    {
+      "path": "asset-runtime/TextureCache.cs",
+      "bytes": 8224,
+      "sha256": "5ca507d06407308744fdaaa1a2c9bb65a4829c1cb6d6a6abfeb832f364febbf4"
+    },
+    {
+      "path": "BUILD.md",
+      "bytes": 12309,
+      "sha256": "5a764cdc272958b2843f0c36e9031975a1a6042c1f2ab8a37f082298dfe034e5"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "bytes": 1562,
+      "sha256": "9dae62526153384a16b4b80429a489ced5d2122bb3f1b8e1ef79ed1058dc3ede"
+    },
+    {
+      "path": "CREATIVE_MODE.md",
+      "bytes": 4473,
+      "sha256": "6be02fdf43027035856bdac28c28af2befcf0804b8b411cfbaba30f0be014be8"
+    },
+    {
+      "path": "data_contract.json",
+      "bytes": 4956,
+      "sha256": "892f810e45c63f8b22e5fe25233d928ee085dae1094b62b5b1525b2b5ee20061"
+    },
+    {
+      "path": "INSTALL.md",
+      "bytes": 4731,
+      "sha256": "35d916c6c091c1664035f3bb6b9e3feaf98beb313d9e0eda02700da9b2b51f84"
+    },
+    {
+      "path": "installer/Cutover-Legacy.ps1",
+      "bytes": 5591,
+      "sha256": "32798a3bc3dc7c01a1a23cd17edb48aa277f0649c1c905f1de0ff219976fecb6"
+    },
+    {
+      "path": "installer/Initialize-LocalData.ps1",
+      "bytes": 3774,
+      "sha256": "388e33ce6af5c60db73d7425b9fc8c6b94be2e4f476a1b7ce4a72240ac1a1ed8"
+    },
+    {
+      "path": "installer/Install-PalCraft.bat",
+      "bytes": 296,
+      "sha256": "175bd92f7cc25f3e20a08760013678329fde1d4ef1fe56637d6821c2f77a3ab1"
+    },
+    {
+      "path": "installer/legacy_inventory.json",
+      "bytes": 3457,
+      "sha256": "77bc33b6ab2c125561a0ca499f1f43bcdb5bf9df4e8cd2cfde7ec40fc9e38fc7"
+    },
+    {
+      "path": "installer/migrate-legacy.ps1",
+      "bytes": 5549,
+      "sha256": "0231be1d28e53b44c61428e12681f295e44df267384ec9b0ac1301a47e869e88"
+    },
+    {
+      "path": "installer/PalCraft-Installer.ps1",
+      "bytes": 72573,
+      "sha256": "4e013daef2435736dd2d0f55613c2d3343c0706e8b6e7c3258608b4f03f2c060"
+    },
+    {
+      "path": "installer/README.md",
+      "bytes": 6717,
+      "sha256": "fc2139db4e5b360e0b34bb300321629b36ce7b70cc19752b97c845f016ef0e19"
+    },
+    {
+      "path": "installer/required_assets.json",
+      "bytes": 63029,
+      "sha256": "5050fa9031e038ace7eac205aad67c449a4caaeb1fdce36e7fcc56c5be9f57a5"
+    },
+    {
+      "path": "installer/required_assets.schema.json",
+      "bytes": 1888,
+      "sha256": "461ad5b13ed2cb7197e3234476edde01339142ff787d5b925a42e181b281e0e7"
+    },
+    {
+      "path": "installer/Restore-Legacy.ps1",
+      "bytes": 3943,
+      "sha256": "e5c11a5a2c1113f53db61e94b0f93e1b22ee78cf3acfc6794da90dc76edd81c6"
+    },
+    {
+      "path": "installer/strings.json",
+      "bytes": 12505,
+      "sha256": "bdbee3487a86957923867f91300ba3d8abf67c0b792468c5e2aeaa6bad17dc61"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "LICENSE-ART.md",
+      "bytes": 876,
+      "sha256": "f8b3172a7987c859296a85506c9fee4fef268c553b3c7c0fab5fd118a668f5c7"
+    },
+    {
+      "path": "OA_NOTES.md",
+      "bytes": 2768,
+      "sha256": "d7c3572c60ce5f83b2254146668fa819aca419c1c9b67d9a19ae4f815237e807"
+    },
+    {
+      "path": "OB_NOTES.md",
+      "bytes": 3314,
+      "sha256": "064ab01f1e70430d3ce45c81798ac4d391f80502ac1232d1d3f1748e257a1cc0"
+    },
+    {
+      "path": "OC_NOTES.md",
+      "bytes": 6382,
+      "sha256": "3d6df7a02f977e258141dd2715a34c2850ef2a44c1b44ca6a437d2efd089e1c3"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/asset_queueG.lua",
+      "bytes": 894,
+      "sha256": "222d88001c9925d36132d9a579832cc92161e82156964b56b32fa6908a0c7322"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/block_lights.lua",
+      "bytes": 794,
+      "sha256": "72fb48c2c122edad02cd98303ff450ac8dbc50fae969259f5c1e55132732d715"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/blocks88.lua",
+      "bytes": 4955,
+      "sha256": "e496b63ca16ebc05bec5dffb9d9b09ec0c343fc76d06aae93a26b0fbbe701dd7"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/blocks89.lua",
+      "bytes": 2392,
+      "sha256": "514860f933916ce23522c825cba9ac78e4e20e5fb35741256a8b07807b4cedc4"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/boss_mountI.lua",
+      "bytes": 368,
+      "sha256": "eb512c21eb18c7b272de0a2bb6b5da3a3917acc13806a210d32b580c318e0874"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/boss_rideP.lua",
+      "bytes": 4066,
+      "sha256": "4d1ee8b6a8e7afe64c21c0426bc732c8e3520d581c41e64c4f0f2c228ae67189"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/cacheL.lua",
+      "bytes": 722,
+      "sha256": "d13c8eab738e1fae8cfcae2a0290824583ecfd2abfaf610c497031ab3e848628"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/catalog70.lua",
+      "bytes": 356,
+      "sha256": "e76f1397e45e5b76462de9203d4cecda474c96b4d307090927c3e43f8eaba69e"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/cell_state.lua",
+      "bytes": 2434,
+      "sha256": "3e5516049f8a01311aa6cb92ebade9d93a51b4113ee946757776f92265f4fc85"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/config.ini",
+      "bytes": 155,
+      "sha256": "c20f2429748635e4b59eee50c81b716785de7d268fab4cbd0d261b82bc71ea81"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/config.lua",
+      "bytes": 640,
+      "sha256": "d929317ca566ec05dc8c4bfda1f30d98d075c8969d24b6d47da9b8e5a36ff3db"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/connected_blocks.lua",
+      "bytes": 5319,
+      "sha256": "c534dc03f50a27bf8ade728a656903a14fdc71c6b7b9aba30eb5605ec795517b"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/data_bindings.lua",
+      "bytes": 1481655,
+      "sha256": "54110e60a4e8e5f8f0dc2f0dad2926241243214c17838410c672e9137f46b526"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/decor70_data.lua",
+      "bytes": 263,
+      "sha256": "aff18fbf69bf77f4becbf7ca64c1d9b9ae2edb78d4c9f70e9e96a36156351774"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/decor71_data.lua",
+      "bytes": 767,
+      "sha256": "8c017e90cc717af98790a9c59768e47af4f0e9a18ef6a9aa10b93864944eebd6"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/drop_fallback66.lua",
+      "bytes": 1061,
+      "sha256": "62403938cc210e5ffc5970d6e754e64649e4187d41cf063f4a5ec9f104d3b248"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/enabled.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/equipmentK.lua",
+      "bytes": 1007,
+      "sha256": "2e89b5cefc0d2760ab10e04c4e4e8a2ee49218fe1bdb8d3db7211ebf6fcfc5e2"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/feature_flags.lua",
+      "bytes": 1498,
+      "sha256": "fcc817b11ce533a6b2d133a9500a22cd7afc5d54e85a124f7a4d036dbd6c6922"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/frame_budget.lua",
+      "bytes": 1381,
+      "sha256": "bf15642ab974e0271fc2a90e904cce5457d3ea34c49ea7a7297593aa53e04901"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/gc_budget.lua",
+      "bytes": 1746,
+      "sha256": "a9be6ce5232f2f337b2aef713b06cbc55b887e3e544dcbb1fa044615b5d3befa"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/gear_balance.lua",
+      "bytes": 12105,
+      "sha256": "861f80899c645498f12bd182cd34c45e010e16517f425781ef01cc02b81cbfe1"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/hand_motion66.lua",
+      "bytes": 2423,
+      "sha256": "37d62db4a82d2a52c1632e0c542f1ad574a5e39d1f2afafe8d3d8a4858a95ffd"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/held_items.lua",
+      "bytes": 3171,
+      "sha256": "fbfeaf939f1a6ae83ed4b9fc0c0f877a28921b80039bf99be3c5507f956176a5"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/hitch109.lua",
+      "bytes": 2650,
+      "sha256": "08c329598ed8f6d3c7e30d6515183de8a28a90d5f6838f536c5f6fad20d57b24"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/item_display66.lua",
+      "bytes": 995199,
+      "sha256": "747a1346f36e6a6977ea2499b604942cc81b0fefc9e3ca3041e1dfb6d730463e"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/item_registry.lua",
+      "bytes": 264,
+      "sha256": "b5c732ae13087e5cd949c50284c32452b4ba7f2568d49f176533262f364c9bee"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/items104.lua",
+      "bytes": 259,
+      "sha256": "3ecabd8f61b146098b7a0e585162744c096665aa8e638cc3095496a8885bcb61"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/items107.lua",
+      "bytes": 259,
+      "sha256": "ee8206de9192c26c78837d67a80d96e663023c52c8a0b2b03df84dc5e6ff2eb4"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/items70.lua",
+      "bytes": 258,
+      "sha256": "3cea63dccca1102828839da2e9331acf7ff8a62a417ffee25661ce00acf83a3e"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/items88.lua",
+      "bytes": 258,
+      "sha256": "6de0263562f90542178aabbafd93fa20c64362b62b8502e367a747ce5ef04b42"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/items89.lua",
+      "bytes": 258,
+      "sha256": "711df4f0fcfaa084ab809eede5f0621ebfe7af9b88ea3dc2497389522ada2c6f"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/itemsA.lua",
+      "bytes": 257,
+      "sha256": "6bac1b60563db8e3b93acf2b4df011c87f650a638ca412888f153bddec45204a"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/itemsD.lua",
+      "bytes": 257,
+      "sha256": "14a2f137c9a987fac474857fd1b5009cde250c6408e095d0a3cdf0dcc54d091b"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/jar_data.lua",
+      "bytes": 9116,
+      "sha256": "6026292a87bc4ceafff2930a62fb3ca2ba9966f74d0e040fd03f0cb646fdb8a3"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/json.lua",
+      "bytes": 3439,
+      "sha256": "4b7b4e5c800fdf0908f74bdb3482a8b34ac1150e6df9cd31376641d3ac95f07c"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/language.lua",
+      "bytes": 4083,
+      "sha256": "29da29f06fcc4d590692440d7d0cadf4726b27ce4bacfea861a5f20bb1853d9f"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/legacy_paths.lua",
+      "bytes": 1414,
+      "sha256": "5886973d7f9ec8ec0d0241a2cfba9afe71edac62876b9fcf9a8d44156bdbeb42"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/local_data.lua",
+      "bytes": 2064,
+      "sha256": "415b29adcac2b7568c7a904ce1ccd363c9f28f441aca90c29b05e518e34c4d2f"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/lookT.lua",
+      "bytes": 631,
+      "sha256": "90d34c7139bc0cc2eb28e20e35365b69c9b5ebdb8b2c5431a9a510f96e8dca12"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/marker_history.lua",
+      "bytes": 99,
+      "sha256": "c83e45cd2cfe6f86688c55dbc6fa831811e66f4bb2c2a7a12bd56105d318af0e"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/native_inventory.lua",
+      "bytes": 6315,
+      "sha256": "4d0985098b7526597f4db1acf7eaec9e43ab49ebab727c38c8a88f4140cb0a4e"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/native_items.lua",
+      "bytes": 530,
+      "sha256": "17d7763f5354060b5209cc46e9d357a1062ebacdb04c5a4eb3a4c88afa777c15"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/native_travelW.lua",
+      "bytes": 9676,
+      "sha256": "c74c07e049bd6c675123b3c0287bf46a478c32b4738d1c4997dfe0bb4f45ce35"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/native_widgetG.lua",
+      "bytes": 3674,
+      "sha256": "c539bf3acf157047a690c9f1eba217f337975682683e8fb4626deb6129ea9c3d"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/npc_legacy.lua",
+      "bytes": 1133,
+      "sha256": "9d8ceac84bf4ceefa0f7b062e1ab45c92d1d7abb5d3f8c1e3c9454391b285162"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/npc_text.lua",
+      "bytes": 409,
+      "sha256": "6f87a1cf072a4d557792855c28b6f9293d3ed9df025974ab0d4f1e7ecc69624b"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/optional_soundZ4.lua",
+      "bytes": 849,
+      "sha256": "59d8cdb8d03022f84314c54a0c42c3275b7f90027fb21006e604e3791df555ab"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/outparmK.lua",
+      "bytes": 3453,
+      "sha256": "77da7ed766877e2d01e7b78975bfa772729fa94849eed97d57ab6edec6613357"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/owned_travel.lua",
+      "bytes": 1119,
+      "sha256": "814af2c14e96d9e10b0834f5ce8a6a2390072cf0d7662a5957646d12e0bd3f1a"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/pack_services.lua",
+      "bytes": 490,
+      "sha256": "5cc76a760d96505ff38d0e7eb44cfe5415251246551cd676579483b9ffbd7ec7"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/pawn_readiness.lua",
+      "bytes": 1221,
+      "sha256": "c028a0d9fc3e31820510608609d7ac2730c69cc976314f85b7b70c766af527a0"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/phase_c.lua",
+      "bytes": 27007,
+      "sha256": "b73c231a5ab2f61a0fb2f8fca107e3c33a4dbfe3b640304a4a441ccad9bd77ad"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/placement109.lua",
+      "bytes": 791,
+      "sha256": "3c2ba736c63710290b85a6d595698b0ce17db2f396ecc51fb649b23b3f0bff51"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/png71.lua",
+      "bytes": 8702,
+      "sha256": "d4e7a01a1c190c783acad8da0bedef34263c8075b80de71764c3ecdad7c3cc8f"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/poseK.lua",
+      "bytes": 304,
+      "sha256": "da07826d606d6c2ee909633283e01818d1a90757b4cf3e275098f916dc078362"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/possession.lua",
+      "bytes": 670,
+      "sha256": "051fcafbd81bccb24ecc93d67436272b5eb61267a44dedc35849aff8db18c599"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/registry.lua",
+      "bytes": 259,
+      "sha256": "ae7a17cec9ba4ff37849237b7a01b91ac9213757ddcec1b893d71836140b92bc"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/resource_state.lua",
+      "bytes": 1097,
+      "sha256": "5839c136cf00ea244afc1a6473e4e5bf9c3dd96dce687d0801067d235d312e00"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/restore109.lua",
+      "bytes": 2537,
+      "sha256": "50fba8e6ab05e3e6e47e5f3a1cf6d2bb16ee58a1d651a3f0fb305fddb822603d"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/ride106.lua",
+      "bytes": 6036,
+      "sha256": "570f69e7d2e854cf6009ca35c54b9d6dd8688b81c88ece3ce6a20c292da2960a"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/Scripts/main.lua",
+      "bytes": 160326,
+      "sha256": "923e08be489bc68ad21acfae51489ee31c239706d0f75a6b4493549a00fd9767"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/skins/README.txt",
+      "bytes": 76,
+      "sha256": "9ad2b219cf3726e35ef1609973f90a2e07fcb2fc08fa7713e2676b670eb1176a"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/smelting.lua",
+      "bytes": 259,
+      "sha256": "5e6dc1bfb85f80f68b9c1823b8a0d94cd2b6d0003e11f3ec1cca1f048f8b7e78"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/snd_runtime.lua",
+      "bytes": 546,
+      "sha256": "34435803a3d48e505d5e2a7256ae1d1fea56ed56affa9922565a04fc5960da35"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/sounds.lua",
+      "bytes": 257,
+      "sha256": "51ee56c370a126a90f614a5abc8ff4fc296ac3f90b80f770c085b09254e79c86"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/startup_gate.lua",
+      "bytes": 1923,
+      "sha256": "7cf86755f4b08c55f3cb8ec7f756721307fbd15d3076b90b590b62985f9c9e24"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/state_writer.lua",
+      "bytes": 856,
+      "sha256": "53851c3a2c584150a8ad13e23cf980e48e49b9f3e4d60b04c769ab056bcc113e"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/steve_motion.lua",
+      "bytes": 5391,
+      "sha256": "d683eb6ca69d8866094e07a31960cb23522f0647f159a5213696c182c2e3657a"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/steve_skin.lua",
+      "bytes": 3620,
+      "sha256": "c164a5c7eaa2f82e9f3492783e9ba2821a4731362ab964a581c0f98a208b20e6"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/strings104.lua",
+      "bytes": 261,
+      "sha256": "635c916d945361a103a12f8c0075bb2d80612dc5b66354e71f2ccc3cc097ac29"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/strings107.lua",
+      "bytes": 261,
+      "sha256": "8615189514102c41a00fa5afd4d09f7d720f32709d0a2f963735fbef90616d8a"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/strings57.lua",
+      "bytes": 260,
+      "sha256": "f6cea6723a98e9284b18ded1f13485fe76e86b3842857aace43be88c5fdc5874"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/strings67.lua",
+      "bytes": 260,
+      "sha256": "cf58a8411e288e4650b2dd2a354e188cdbc658a4fb7708a5f85a308addfe01f3"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/strings70.lua",
+      "bytes": 260,
+      "sha256": "22a1418ec3c86b2db213c9440359e4214765e2f286c059fdb529b8a7bf7ed092"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/strings71.lua",
+      "bytes": 260,
+      "sha256": "9dfe7a6c73119e4702804ac98cffdd38b7b2a9163b548694ec07a474b9c36394"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/strings76.lua",
+      "bytes": 260,
+      "sha256": "a2c591eb67d1cd9cd706d750f5caf172877aebf69d3869ef4409893d623f5b7f"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/strings88.lua",
+      "bytes": 260,
+      "sha256": "53d0904976c8ca1741b5435219c6f24219bdbeab16a20450f5fceb9fd986d779"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/strings89.lua",
+      "bytes": 260,
+      "sha256": "379be8dfe8f2be5c12de9c0590361b5f7f185813d9f7c28bad9791a00919759a"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/stringsA.lua",
+      "bytes": 259,
+      "sha256": "36f4c6395e3ae2f624bafae03881ec80e9d89d012eb3d70752a6af9bb9893c56"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/stringsCM.lua",
+      "bytes": 2740,
+      "sha256": "3342bc3b6972a395aca3fb835ab98a0191a27fb3a98c994d503c11f6151d80bc"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/tex_runtime.lua",
+      "bytes": 9091,
+      "sha256": "eb74edf17afd08d1a6835ce5d2ca35d669c2e582383b14e861fd6baf9591b7b6"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/tex_runtime_data.lua",
+      "bytes": 996762,
+      "sha256": "27ae4cf8984bf7a9efdf40f0788d36ae4a060eff216a0f75aef0cec2a89e7ad2"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/timers.lua",
+      "bytes": 15069,
+      "sha256": "f5feb9f5facba04ffd8fe547d246519a80f4840ab4739c6f45eced732015519a"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/ui67_rules.lua",
+      "bytes": 2290,
+      "sha256": "0abb3848cab3de473637545e396b8f329599ce2017c364e76503bc94f2698ff7"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/ui67_view.lua",
+      "bytes": 2845,
+      "sha256": "7138d6c0badba7aa2417b745fd31fede19bad66cc197fe373039239a6e6efda6"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/world_identityQ3.lua",
+      "bytes": 1931,
+      "sha256": "678eb413254909f3ca8f72d1d309fc96d56dd2e99f0536d1af0722bbac173eb5"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/world_mode.lua",
+      "bytes": 323,
+      "sha256": "a4e501469f0b45ff5642c689c28aac4e789a9f5169f9408f7b23192b0c408cf7"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/world_scope.lua",
+      "bytes": 707,
+      "sha256": "96f97aca38ff12e77e451155e832947d8cc27817e7f82a05c066c5a57164a7d4"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Blocks/items/dirt.json",
+      "bytes": 230418,
+      "sha256": "5aeb0515e20d72bf6d29bf16b90679eb80ce07a26175a763f79e635f30ccec8a"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Blocks/items/items_104.json",
+      "bytes": 1632,
+      "sha256": "198ad889eccb5eeb3756a031c585979aed0b71842120b0f981e32b8acc904dcd"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Blocks/items/items_107.json",
+      "bytes": 1753,
+      "sha256": "022f32e4199f8a94167c7c0ae332e9579e2b5593f277cd787a75c37c45e1c199"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Blocks/items/items_23.json",
+      "bytes": 11927,
+      "sha256": "19dd508791104cccf0f7143e0cff63920659b51f6705165cbe336066247f58cd"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Blocks/items/items_25.json",
+      "bytes": 321,
+      "sha256": "8817ecfbbea1878c5c2f2aacb171687ff7994ea1b7a4b0c76acb55e011fa2161"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Blocks/items/items_41.json",
+      "bytes": 927,
+      "sha256": "c86744aac66b759be95a63bc99b93922b6d15b067015830892a53a7d05bcf843"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Blocks/items/items_70.json",
+      "bytes": 21737,
+      "sha256": "be57b4e256f1a3fc7b0b7cf13460fb428403c52c1ec2a4221e832062e4ccdd62"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Blocks/items/items_88.json",
+      "bytes": 4126,
+      "sha256": "ed20b500228adca4cde968e7678a0b8d15baacf77624e5bef4afb820a3222464"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Blocks/items/items_89.json",
+      "bytes": 1986,
+      "sha256": "3ce4371d14531e1867d6b5f4668ea6f972bc2ef7768417cce698b9c7c2e40f4b"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Blocks/items/items_A.json",
+      "bytes": 361,
+      "sha256": "26941b88b583dfc7916c1b5a8ae268e9cd481ab5f7efaca2caafd29b404c59e2"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Blocks/items/phase_b.json",
+      "bytes": 82000,
+      "sha256": "addf4e241c2d7b30c18fb9d9c28ae8e6a74611a58a6f7c44ef5b5a514c99f853"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Blocks/raw/arrow_conversion.json",
+      "bytes": 276,
+      "sha256": "0b7be52acd3a28d68ba84cd3cee4b20f9412bbff82d2f08bdd6f5e8cd0d8c9f4"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Blocks/translations/en/native-islands.json",
+      "bytes": 221,
+      "sha256": "5e324d9a741c4d0ffab7cf34e0e1df58899bf55abea2c356276c60f10357e221"
+    },
+    {
+      "path": "payload/core/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Blocks/translations/ko/native-islands.json",
+      "bytes": 207,
+      "sha256": "d8bfa0958f72f21f4e54dac78404a45962dfcf71032fd0c98f63dd9d7b19d05b"
+    },
+    {
+      "path": "payload/core/Pal/Content/Paks/~mods/PalCraft/pakchunk19992-steve-runtime-assets_P.pak",
+      "bytes": 624630,
+      "sha256": "8e4a7638f3327d3deebfbecca8ea72dc6a48fdd49e70ce8c7d8e1edac23ce586"
+    },
+    {
+      "path": "payload/core/Pal/Content/Paks/~mods/PalCraft/pakchunk19993-minecraft-blocks_P.pak",
+      "bytes": 141543435,
+      "sha256": "5f9fbbe1fcc6f3af485d4352edb3e291ce0e7cb0cc2369213a37ab977ca4a86c"
+    },
+    {
+      "path": "payload/core/Pal/Content/Paks/~mods/PalCraft/pakchunk19995-minecraft-polish_P.pak",
+      "bytes": 107100,
+      "sha256": "65655ab6bcff240ba8c5ff9ebb1f4f5781a336ff32672550dbb8a75f98c97f48"
+    },
+    {
+      "path": "payload/core/Pal/Content/Paks/~mods/PalCraft/pakchunk20000-minecraft-alex_P.pak",
+      "bytes": 250008,
+      "sha256": "eb94ade5ea7ccb3e76d7f29b0b87dba6c58067d7ceb5a2d038acf710e59f9d0c"
+    },
+    {
+      "path": "payload/core/Pal/Content/Paks/~mods/PalCraft/pakchunk20001-minecraft-alex55-Actor_P.pak",
+      "bytes": 3157,
+      "sha256": "06e421b10139800f283cf03b961923a434b2d40e40912391f19633e626d812f6"
+    },
+    {
+      "path": "payload/core/Pal/Content/Paks/~mods/PalCraft/pakchunk20001-minecraft-alex55-Character_P.pak",
+      "bytes": 4351,
+      "sha256": "c15f857af11668ee77e9d6a26548fcee2e9781205a5a50ee1fd7aabb2b96bf62"
+    },
+    {
+      "path": "payload/core/Pal/Content/Paks/~mods/PalCraft/pakchunk20071-minecraft-task70_P.pak",
+      "bytes": 15005317,
+      "sha256": "e2f03906a089a3b36409192788324d01973bf52f5806e762ece69b036a694fcc"
+    },
+    {
+      "path": "payload/core/Pal/Content/Paks/~mods/PalCraft/pakchunk20072-minecraft-task71_P.pak",
+      "bytes": 2002430,
+      "sha256": "c94db07a07a759697be949ad3a3dcde208026f79a27583a06f0482c84b821bd3"
+    },
+    {
+      "path": "payload/core/Pal/Content/Paks/~mods/PalCraft/pakchunk20103-parrot_P.pak",
+      "bytes": 216641,
+      "sha256": "fe2e09471c86784548e58905d94cdb32c93d60d2eefcddfb07bcb6a2f4835cc0"
+    },
+    {
+      "path": "payload/core/Pal/Content/Paks/~mods/PalCraft/pakchunk20120-saddle_P.pak",
+      "bytes": 2856,
+      "sha256": "45bc9fa07516335c47a4b913e77a7778763aaf941ae21b0531cb06bb066ca463"
+    },
+    {
+      "path": "payload/core/Pal/Content/Paks/~mods/PalCraft/pakchunk20127-taskD2-egg_P.pak",
+      "bytes": 46341,
+      "sha256": "0b1cf74d58c9750c1c9a13653c8833f5edee7acbb68aebce9fa7b5831dd567b2"
+    },
+    {
+      "path": "payload/core/Pal/Content/Paks/~mods/PalCraft/pakchunk20141-MinecraftPolishJ_P.pak",
+      "bytes": 3585872,
+      "sha256": "1061950e08b6f3d4a959862b13dbdd284d9b68e11b2e7b824e9d503e45930b64"
+    },
+    {
+      "path": "payload/core/Pal/Content/Paks/~mods/PalCraft/pakchunk20142-MinecraftFinishK_P.pak",
+      "bytes": 7126223,
+      "sha256": "92cd19042656e2411798ed44120d880da86cb2dd6f704390b91c9d9e66961a39"
+    },
+    {
+      "path": "payload/core/Pal/Content/Paks/~mods/PalCraft/pakchunk20208-MinecraftBugfixM_P.pak",
+      "bytes": 1322318,
+      "sha256": "a4bbe34d953d5501726040ee0b1e4babb31d537f09d78db77ce6edfa05efb95e"
+    },
+    {
+      "path": "payload/core/Pal/Content/Paks/~mods/PalCraft/pakchunk20209-MinecraftPolishN_P.pak",
+      "bytes": 806750,
+      "sha256": "1901c030c519c621d6fc7e468f688981a0dc88f76e332836a06583ea54c3279e"
+    },
+    {
+      "path": "payload/core/Pal/Content/Paks/~mods/PalCraft/pakchunk29980-palcraft-shared-dependencies_P.pak",
+      "bytes": 57188184,
+      "sha256": "8a78dff4e158594ba4a74be21270cf319c8addcc0e938bf20d9b1d92541e360c"
+    },
+    {
+      "path": "payload/core/Pal/Content/Paks/~mods/PalCraft/pakchunk29992-palcraft-shared-item-icons_P.pak",
+      "bytes": 9186,
+      "sha256": "5966626f80a49d3b6fc9ede91bfa52ea372308488220c9fe109dee552a5fa5fa"
+    },
+    {
+      "path": "payload/core/Pal/Content/Paks/~mods/PalCraft/pakchunk30010-palcraft-audio-core_P.pak",
+      "bytes": 661730,
+      "sha256": "54d17429e596d04e2b4bff1f3b16f2ab1be887962db9053fb0337032c75fd060"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/armor_meshes.lua",
+      "bytes": 17160,
+      "sha256": "063d19acfffbd362c174f0d750e4f7074482fcf13541159f037dad10b445108a"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/armor_visuals.lua",
+      "bytes": 9241,
+      "sha256": "cb15304ef79e848690699e410682368b5bec10af4f47c478916d592a6a3a9843"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/attachment108c.lua",
+      "bytes": 1651,
+      "sha256": "bb6ae77f76b381b145a4f6e1f70810a2d32de4497e46cfc93ce96f994f0ee76c"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/base_overview.lua",
+      "bytes": 5992,
+      "sha256": "bd8c764ae7a96c740b1a3654295e5500c352863cfdf50e9469e388096fd9250b"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/beds.lua",
+      "bytes": 13665,
+      "sha256": "ea1d0b85146426d87f0d76a07d507286d2852948bd9cd031579d29eb46520dbc"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/camera_lagT.lua",
+      "bytes": 652,
+      "sha256": "c2cdc33cfb4902a90c1130b667a7f8fbc87745cad82035f8d92307daa2ece9c4"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/capture82.lua",
+      "bytes": 1768,
+      "sha256": "dacf1a7888d656913ef37d4cf266929a22fc8ac3b5a6243e29a942cd96111afd"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/character67.lua",
+      "bytes": 5353,
+      "sha256": "202e99359b2281416e23a4b653409cf7e26c77d0a6bfda342dee5eeeff06f0b9"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/container_layouts.lua",
+      "bytes": 29577,
+      "sha256": "49a82afe4d585f1df636b14281703763e64e5c21fc9767d43724e8623c4ec188"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/controls68.lua",
+      "bytes": 8683,
+      "sha256": "2d7d43da97a8d8c86b0d8f1cac8f206d4680520f512d832fa5ea73825ad0afae"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/cover_release78.lua",
+      "bytes": 326,
+      "sha256": "706b67704f2cfef3b85eb695af276eabedb0d39fd1e7664743050642709bb7b3"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/crafting.lua",
+      "bytes": 2566,
+      "sha256": "1b443882f33a1ad76c4f36a987cc41324fe90f15328f0bf3bab4eee542fdddd6"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/creative_catalog.lua",
+      "bytes": 8120,
+      "sha256": "a3bbd5390b639f97c40e0e57956fb02f6a3db90567b2e307a43a5f5fc683a557"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/creative_layout.lua",
+      "bytes": 2323,
+      "sha256": "596b4839286b3fd94d10d7f4223b64d9ff2b24ae62aaf5a8b27c32d998bd287b"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/creative_mode.lua",
+      "bytes": 7701,
+      "sha256": "e107a7013f9a418f1ae5185c185b77038117166f8aab5072aa35c6077e60fc7a"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/creative_ui.lua",
+      "bytes": 5137,
+      "sha256": "b4084f0ff6b776cbdd587865a9a1cd50ac44057cff3605cff971f72724da0694"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/cursorG.lua",
+      "bytes": 2605,
+      "sha256": "402ea4bedf8ed7d1be7b4c9ed42ddeac7169fadc4e06bf91117f576579c47dd8"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/death_screen.lua",
+      "bytes": 5003,
+      "sha256": "a3bcc6ba446ccec3262bccafb0136cef479c446397b6192e5b7ea7008b77841c"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/decor70.lua",
+      "bytes": 9221,
+      "sha256": "ca402e77b0a39002f6eb370418b0cd804eb1fa01ab3fac49edca1e75e91cbce5"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/dx_guard68.lua",
+      "bytes": 600,
+      "sha256": "0c2b30a0b857276165f3146e7046674d84f6bc6ca384895048688c46587c4018"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/elytra104.lua",
+      "bytes": 6266,
+      "sha256": "1a7c0b863c40b29784fe7a4504ba2390f9f765e75d4d5e43269562957446e60a"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/entry_hold.lua",
+      "bytes": 3323,
+      "sha256": "d0d531b0064470cccdd715092d9cd1aee5732761fcf1a0dd81d685ba43a48c1a"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/equipment_viewQ3.lua",
+      "bytes": 999,
+      "sha256": "b637b8f91f89b0b06da689c9d42d13846e609b09c635c25224a3f2d5d6226007"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/font53.lua",
+      "bytes": 1647,
+      "sha256": "6c4ff040b0f97570b0c436d9a5a64df1cb7ed1106f7eac3d33e7e3849984dd4e"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/font53_metrics.lua",
+      "bytes": 265,
+      "sha256": "a425a28f3a5aad46dea61325af36aeaa9e9d505d122a367297d120383e9e1695"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/front_endG.lua",
+      "bytes": 2616,
+      "sha256": "2b4664c405148f76621349a662c51224adf48539a016efcc63169eccd26e0a00"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/gui_layouts.lua",
+      "bytes": 269691,
+      "sha256": "ec2b0fca5111c38ffe09af938ae6ee2fd080642bdb8acc5c37207e92568d2ce2"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/held66.lua",
+      "bytes": 4097,
+      "sha256": "9b080584abadd67ce2ff32cea27fe2d44207b0015a505b378fe280a2935d425f"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/input_layout.lua",
+      "bytes": 7173,
+      "sha256": "4f47cba19c30b0b302c60975bfa786268946c058bc503dd9df5425099a591b06"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/inventory_layout.lua",
+      "bytes": 13860,
+      "sha256": "b942dd69035787cee36a5488738ddc9697648f187f036bfaad772bca4c67a1a2"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/inventory_previewM.lua",
+      "bytes": 1633,
+      "sha256": "65c86e7efb93b38a8a28650ac3234d8d8a22457140905ff3c9a1c3b1bcbf6a63"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/loading_cover.lua",
+      "bytes": 7300,
+      "sha256": "544e9ca90427f12012db1b2f3f4c936812d7989b0ef8bd3e6feaeba082ffc939"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/mechanics.lua",
+      "bytes": 18366,
+      "sha256": "0f17c364143a4096c9397a4296f82852dcd8df88df169009ac29e0c14796a2b6"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/menu_input.lua",
+      "bytes": 4092,
+      "sha256": "d1491893d17e0149754b460e63fef932269d8bc55649f77837f34bae8320d7f8"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/mount76.lua",
+      "bytes": 8530,
+      "sha256": "ea19bdaf8142832ebbda56b032dc1c18da9fe496a9b481fd07c4b38e06033322"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/mount_camera102.lua",
+      "bytes": 9389,
+      "sha256": "36cb5c094d2a002eddd7d183c014d6e7f388d17a73c80a3ff3bc5b689e57f247"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/native_chest_layout.lua",
+      "bytes": 662,
+      "sha256": "23b9b963547db0f9e35e1f7ed0b74d27077791e91dc5fe9f6bb608e4a79eb1de"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/native_harvestR.lua",
+      "bytes": 5884,
+      "sha256": "72bcbf634f4c0586210622c2071a3c1b09f34f53bb29c127b0b6a871c0c122f0"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/native_icons.lua",
+      "bytes": 188763,
+      "sha256": "4e5dbf3a940fcfcd8569dd7215675f72e3b574187b745a99c6b7865c813377a6"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/native_inputG4.lua",
+      "bytes": 1667,
+      "sha256": "ea4447451ac21372de465d3c0ec9c1b00b5cff406e08c646a3f7609423f7ac8a"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/native_prespawnQ2.lua",
+      "bytes": 1902,
+      "sha256": "9f4289823bf274ab6945f8cbdc59cd27e07c044e76656a5a65b8e581e97ddc14"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/native_travelV.lua",
+      "bytes": 8574,
+      "sha256": "1bb1cf41bee3d243690ef3df927bec596b2bb02137b8a4c935a16926d0d8ba02"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/options.lua",
+      "bytes": 9061,
+      "sha256": "e5fd380c002ce59d7fabb335e482667bccd90baff18c72ae32bcb69adb8b0d5e"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/orbitZ1.lua",
+      "bytes": 965,
+      "sha256": "9acc8dc21e2eb808ffd693e03b61c20ee73554685fd56af55381d1eafa765a55"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/particles73.lua",
+      "bytes": 4922,
+      "sha256": "cfbc1b0c61603b448d2bca809f97d5cea75392d69462c7f74ac22e8de118cc10"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/phase_a.lua",
+      "bytes": 46278,
+      "sha256": "33589eb0046dad7261add01734294ddb27a1a1dee758a0ad6e1f8d149b855fc4"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/phase_b.lua",
+      "bytes": 59386,
+      "sha256": "f7f601958ee0be0760111b903e90eb252cbf46eac95d26a4a847bc838ab017bb"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/phase_d.lua",
+      "bytes": 49600,
+      "sha256": "52432a0e01510ff2204ff2a060a1ca5d2eb07d25749e7341804af6a77c1c7838"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/phase_e.lua",
+      "bytes": 23327,
+      "sha256": "6ec3da110e3f903bd0193b416b950d04dc09ea9721069b67a1fad6eba0a99fe6"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/phase_f.lua",
+      "bytes": 32617,
+      "sha256": "581e6b2e9d487e8d4a1d3362506b1a657fd09eb7e89527196e61792c1f2c8866"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/recipe_book.lua",
+      "bytes": 757,
+      "sha256": "f34a6f034b7d9173c8e21bd3072a2ccd7ce1c983e91d1254489ad6da745ca0db"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/recipes.lua",
+      "bytes": 258,
+      "sha256": "f95fc67d79d615e3dbd1f7488db2a55d8163abfb20c23ec87df09a21209624a9"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/recipes104.lua",
+      "bytes": 261,
+      "sha256": "8aa556daab36f59b7b1c2d3cb40cf18a71d88b13d9efbac174f23aac92ef7176"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/recipes70.lua",
+      "bytes": 260,
+      "sha256": "b12793d18481f58423f0c69433bbce8d8d3130c6892194a2edbf1448d14e5e8b"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/recipesA.lua",
+      "bytes": 259,
+      "sha256": "8527eafd48f1f85e4a6ac5a856f3ab549796dd8f78dab1452b1f5b6adb947f3e"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/resources.lua",
+      "bytes": 8690,
+      "sha256": "46a4dc13528fa5a256b92f1cda7b4282704a19a3fc8277c7b1edf29a208c5882"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/screens67.lua",
+      "bytes": 29341,
+      "sha256": "d8e8e0266b9d247485c1f9d98e9a69417475e24789d890b10654c7c8b829e6de"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/skin_portraitZ1.lua",
+      "bytes": 963,
+      "sha256": "be4f0b62dcc3e839a2c619a8d729d168485d8992a34dcb96bf6e73244da1d4f5"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/skin_preview71.lua",
+      "bytes": 2755,
+      "sha256": "52694b477699ae907894175740a313dd8aaf558de70c4da6611d86ca5c8e90d2"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/skins71.lua",
+      "bytes": 5185,
+      "sha256": "8a5edc351ec2dea10b2d273bf0a1baa632d49eba45eba8feee6ecf63bd0855c0"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/skins_ui71.lua",
+      "bytes": 6683,
+      "sha256": "aa89683bc9701e00af8c60cfb6501e3c44ba47a16f7d5d1055bb52786cc9dd74"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/slice_mining_x8.lua",
+      "bytes": 349,
+      "sha256": "60a0d39137b6a3f1d7652c4f9ac5a28948d3f95d5e84844ff80ce4241607527a"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/steve.lua",
+      "bytes": 33690,
+      "sha256": "d64ae9a1d34b84ffa3e803480dc2a86d16d8cf7d328f2e74f7a0c700cb23dd8c"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/steve_math_scratch.lua",
+      "bytes": 1347,
+      "sha256": "5d24d578f2a99e0f4081f4cd4f541b62e523bce9186bfc564e0dabaea0d287ab"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/steve_native_rest.lua",
+      "bytes": 706,
+      "sha256": "b3e818eaa6d9675ea48c6e92327b696ca3ec38d5d9ad385100584c4c466ce8e7"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/steve_pose.lua",
+      "bytes": 9999,
+      "sha256": "873e3586bcf87f3e2688547c3405e748693e6debbae8f0d9cf21570b8d400f7c"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/title_overlay.lua",
+      "bytes": 6179,
+      "sha256": "af866a0cafdc6360022e5bb18a753a7ef99c0b5fcfe6d5b46fbcbae0271b7efd"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/tooltip_placement.lua",
+      "bytes": 1049,
+      "sha256": "d40160b655fb7a8f4e0028c1094300b7ae1c622ec738931277ae58fde163c0c8"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui20.lua",
+      "bytes": 34969,
+      "sha256": "022b4cfb086c435050d37c29bb32760db0570be3ab6dd50acc07e1f19dbc14b2"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui20_details.lua",
+      "bytes": 15011,
+      "sha256": "923fa7b4b7bdd8219eb5fb78621faff49ef654c7a23002efc9f79f0c6ce8ade4"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui46.lua",
+      "bytes": 16727,
+      "sha256": "0c67e5de8439eab8f5b750e8241b955db14d745d9dc3cf51fd8e643d494ce932"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui54.lua",
+      "bytes": 12352,
+      "sha256": "e80bbeb579ecfedc9b76c23a65a643d276f5af7c20384d2637d76bc0f77494ba"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui57.lua",
+      "bytes": 5461,
+      "sha256": "08f658ad2233b7686ad0e0ef7641c65c2eff9254bd8bbc82b5bd93da0a1410eb"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui58.lua",
+      "bytes": 3424,
+      "sha256": "ea7e5028435dc1e74cc62d8db52df82858f9e24c240890f180e4468a2c652657"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui67.lua",
+      "bytes": 2215,
+      "sha256": "5d543d3b0d5c60f131b31878d2618bc1c803b95727f29a00e6ce12977c83ce35"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui_cache.lua",
+      "bytes": 2649,
+      "sha256": "399afd0567404682b126a223b103e1ea3ba610dbdcd26d71c50545e3af38af3a"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui_design.lua",
+      "bytes": 136263,
+      "sha256": "3967f6a0dc2a1af981eaebea235db8de5355a21353b63272e4cf49d931abe8e2"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui_entry.lua",
+      "bytes": 18165,
+      "sha256": "f5b2aef671443950ee86415a82fc6c7ab13ee7eabab51830d706884f70079ea5"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui_input.lua",
+      "bytes": 3322,
+      "sha256": "8442c89bc5843166acf45b36668e49918bf18a08baf3af4748c1c05cc848f99b"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui_kit.lua",
+      "bytes": 23372,
+      "sha256": "299fa4a4f6861a6702e9e539e6864d692a7625302a9e97cf433abd243fe3ebe5"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui_preload.lua",
+      "bytes": 2914,
+      "sha256": "8363cce0aedade96142a4b18f66bdeb95fb0fca57cbff395505b1b8cbaa0163f"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui_sprites.lua",
+      "bytes": 630,
+      "sha256": "1f60e9fd81b0d5348663ac2a131d994a9ae7dcc825d34975769311446f4c39cc"
+    },
+    {
+      "path": "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/world_poseL.lua",
+      "bytes": 1091,
+      "sha256": "11a0c88ea74418503aee7485d64d710b38acd66bc8c172d1b4e5363a26e8ef01"
+    },
+    {
+      "path": "payload/hud_skins/Pal/Content/Paks/~mods/PalCraft/pakchunk19996-minecraft-armor_P.pak",
+      "bytes": 743184,
+      "sha256": "659d79ff0cf18af5faf2db72c5619936f5904fd3afdd37cf97c996a48ce089db"
+    },
+    {
+      "path": "payload/hud_skins/Pal/Content/Paks/~mods/PalCraft/pakchunk20068-minecraft-hurt_P.pak",
+      "bytes": 228004,
+      "sha256": "256d212647d32cc907275fe2607336f580ee5cfbc8f5d3de521bcadb0f5b7ab4"
+    },
+    {
+      "path": "payload/hud_skins/Pal/Content/Paks/~mods/PalCraft/pakchunk20069-minecraft-ui_P.pak",
+      "bytes": 15234,
+      "sha256": "73273a9c2fc798ce4a620d09a82c43d54da7ca4cbb13cd4fc92209fb56b5364f"
+    },
+    {
+      "path": "payload/hud_skins/Pal/Content/Paks/~mods/PalCraft/pakchunk20070-minecraft-selection_P.pak",
+      "bytes": 36800,
+      "sha256": "5f0dbcc54c2408a968c0ea8903e784dad5b057b19746b281f4fb1843cafa271d"
+    },
+    {
+      "path": "payload/hud_skins/Pal/Content/Paks/~mods/PalCraft/pakchunk20077-minecraft-riding_P.pak",
+      "bytes": 6549,
+      "sha256": "5f23a4c1580dec3d8e1e4c1ebc7a0beeba29a5c910106b6d29d3971a32d710bf"
+    },
+    {
+      "path": "payload/hud_skins/Pal/Content/Paks/~mods/PalCraft/pakchunk20104-elytra_P.pak",
+      "bytes": 692903,
+      "sha256": "10b6280f097e72c13f6e581e5129b364015de9793c9a1f1b31305d19ac485136"
+    },
+    {
+      "path": "payload/hud_skins/Pal/Content/Paks/~mods/PalCraft/pakchunk20128-taskE-armor_P.pak",
+      "bytes": 15140,
+      "sha256": "a40b8f1157d1a349a971b33c5c12c5af2d71410adb069c875b304d7304626c2b"
+    },
+    {
+      "path": "payload/hud_skins/Pal/Content/Paks/~mods/PalCraft/pakchunk29990-palcraft-creative-ui_P.pak",
+      "bytes": 227760,
+      "sha256": "e353ad890a3e35d3383d62097461922fa2a555c725b52d5ab55d8afb5d6a4374"
+    },
+    {
+      "path": "payload/hud_skins/Pal/Content/Paks/~mods/PalCraft/pakchunk29991-palcraft-tab-aliases_P.pak",
+      "bytes": 69710,
+      "sha256": "ba104e7f84b5f811d1248e7a85053fbcb74337c47995d1056886d68d5faeb9c1"
+    },
+    {
+      "path": "payload/hud_skins/Pal/Content/Paks/~mods/PalCraft/pakchunk30011-palcraft-audio-hud_skins_P.pak",
+      "bytes": 11808,
+      "sha256": "8bca68c88721f7f0119620b95326c59284cee2d1a4b11106108eddf7932ba1ff"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/alex.lua",
+      "bytes": 8159,
+      "sha256": "7c24a2e30179b4ff4fca932d0911bd263a11902b70187f1cbd94862cf1ac7a8f"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/alex67.lua",
+      "bytes": 8964,
+      "sha256": "ffa2230b80bf13d58f0c2b79d4e32e2fe6ce45e5b8ab1d6b15c5c6256512fb09"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/alex_pose.lua",
+      "bytes": 1880,
+      "sha256": "32b0327bb4e9da30f5cdad58bd7f51485477d0607806fe4b3f5b9151a7c36139"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/alex_prices.lua",
+      "bytes": 62850,
+      "sha256": "2ec03f03248449ad4ae5d3613c6bf7cc870582b962ead06d926ae44c6f9bd6e5"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/alex_trade.lua",
+      "bytes": 15962,
+      "sha256": "0b8c8063af1d3912c52171def433d880d7f395113c6222af50d9e78c67998951"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/arrowsVA.lua",
+      "bytes": 9404,
+      "sha256": "c5a13d68904e8b5806c07c0b47423d300ca19590c23db4a016f5e7684b874657"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/Assets/bram.png",
+      "bytes": 3836,
+      "sha256": "665afcd2e6345d7afec214a929bad0aa24e7fb4b8cb341f46573be9e48498c27"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/Assets/bram.png.license",
+      "bytes": 64,
+      "sha256": "cc60239c0a955c84c1da9fb562f02fb6e7cf26ca8f433bd33f206c3cecd02555"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/Assets/rina.png",
+      "bytes": 3513,
+      "sha256": "945d0b80aa86878ed69318f8e29dbe1bb289ff331d7293045d8ba00e6e606337"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/Assets/rina.png.license",
+      "bytes": 64,
+      "sha256": "cc60239c0a955c84c1da9fb562f02fb6e7cf26ca8f433bd33f206c3cecd02555"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/boss_barF.lua",
+      "bytes": 2314,
+      "sha256": "90eb0052c94f12cf51f3972fe4f9357ea718ffed98efa6088b64f675508a8901"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/boss_motionD.lua",
+      "bytes": 3341,
+      "sha256": "302018829064bb4e42be1075356f0b701e47f0165922a0e824b9903aba1c8590"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/boss_perchE.lua",
+      "bytes": 835,
+      "sha256": "d96b6bfdf6c74f9f91425b97555a25efb5264067328f504eff61089216e2be3e"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/boss_poseE.lua",
+      "bytes": 1624,
+      "sha256": "fff82937bb258fb6fa559a26c074b84c4ff51b79d45d949e64e385b7bca0e4a1"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/bossD.lua",
+      "bytes": 19075,
+      "sha256": "a618820b7560e4aa608bb109101bc13f72af12f4fbdde390a64d0bb670324e93"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/bossD_data.lua",
+      "bytes": 405,
+      "sha256": "3aa07b932b8231497c9708e62016c7b256615f4ab7560a45873f3a717ca2381b"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/bossFA.lua",
+      "bytes": 10299,
+      "sha256": "8983ff91ec51906bf45bb68d03e64bd747edcd93b7d8807e4af3eae530f56edd"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/capture105.lua",
+      "bytes": 2688,
+      "sha256": "9439f194745cb177652048d2b76b5f47c578ecad3d70c7885e0df8c7d327a905"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/costume108.lua",
+      "bytes": 3962,
+      "sha256": "845e3b8d1b0672fda2f2d076bcdcaf12e2a1760c172a9a8765855221d3ac8c75"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/costume_camera108c.lua",
+      "bytes": 3529,
+      "sha256": "e6517d28195f4da7031a32f069f618b2852fb6a7eb373d5807cafe84af45597f"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/costume_events108b.lua",
+      "bytes": 6310,
+      "sha256": "977ec242e8c2c77ca009f1fd4961ac52988d35a1d6b41759f658d5e814814f3a"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/costume_fidelity_x4.lua",
+      "bytes": 7513,
+      "sha256": "94c32ee78339c40eed2c18f4be95f29b4a305b5fcc45d407e2e2633f32fbcd62"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/costume_runtimeJ.lua",
+      "bytes": 6899,
+      "sha256": "34186a728568949d4c91e5f2e27da1179ceb5c261a7b757062d5ba0e3f713925"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/creeper103.lua",
+      "bytes": 3093,
+      "sha256": "ceed2ae96816bc104dddd9858624689e83d51842d31c8c2b2737de8c9886dbbd"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/custom_fxI.lua",
+      "bytes": 4166,
+      "sha256": "d27ddce9a546de06fa4aae84a0c623d993ed1ff756c360d056069e55b805ce95"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/custom_motionAc.lua",
+      "bytes": 5678,
+      "sha256": "57a5ccd1658ac57bd72614206baa1cf5a6c7ad1da0ed5f0d4cf597f8aec5d0a1"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/custom_palsA.lua",
+      "bytes": 5984,
+      "sha256": "410dc3445a93a96e7d6347d1896607bad68a6aaf98fe9fae477484c2c4bfde79"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/custom_palsA_data.lua",
+      "bytes": 1129,
+      "sha256": "721419f5ea145216abad3813ace7ec281c0b47dc0cc87db05a27d41ea94de6aa"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/custom_sizeB.lua",
+      "bytes": 2832,
+      "sha256": "cea1671460c0503a07711d045498da10e8863061676cf5eb6dc9968dc2e6fa66"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/custom_sizeB_data.lua",
+      "bytes": 1264,
+      "sha256": "e9772364b0eb98e190f3818aa5ccd7af1347658a8f4fddd70afc4b261e2437b7"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/farm_capture96.lua",
+      "bytes": 2780,
+      "sha256": "15aad0566e632c6e7973d798088f1705759bfef2eecaf8011757452475bd7df3"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/farm_ground96.lua",
+      "bytes": 3045,
+      "sha256": "4a3b9ebb8e69c687f4b25ccd6d8c7cb3971c566f02d6aa6f77dd382b22f799c3"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/farm_ground96_data.lua",
+      "bytes": 639845,
+      "sha256": "9850afb24911d57fa076ce6b6caaf1539e65fdb456f1aa8c4ba750d93b34608f"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/fieldFA_data.lua",
+      "bytes": 722,
+      "sha256": "28b902502ccb3ab4ae7f11655969ac475d2f53f3d41b3a57148503e3ae5b1191"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/follow86.lua",
+      "bytes": 8069,
+      "sha256": "4339b825cc2d324cb864d6808d9b844c1a9358497e95d07300ea9d0f271683db"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/golemAc.lua",
+      "bytes": 6072,
+      "sha256": "11c2d067aa662010a2fc0574949e6047e8499e050f638134da0e1444070166f8"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/hostiles107.lua",
+      "bytes": 4850,
+      "sha256": "cac0d9d8373caa11a0c10ae72c99c2093d1ee7ef0045f6ccb724db9bb874a884"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/island.lua",
+      "bytes": 10500,
+      "sha256": "4616542ef1cfea46dbc280ce87a901cf43e15ed1ee8725cf627916fdb7194e31"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/island_actorB.lua",
+      "bytes": 1714,
+      "sha256": "a25958e1bb07bf641d023fb557f4b1edf391f4245df485d1881b6bc37c98fa55"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/island_data.lua",
+      "bytes": 63465,
+      "sha256": "81d1bd1b6e867dea1883d836ba469b0090566715a39b0e279f54935793f0cb2f"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/island_offsets89.lua",
+      "bytes": 99,
+      "sha256": "682b9fa2697f2348b2410a03f259bbbc94953f7dbfcf80226503f846e7bdc7c6"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/island_streamB.lua",
+      "bytes": 5519,
+      "sha256": "3e7dedfd4ec570039187232f8839fcf90ee82219e53c4ca28e248fa7ddef8b89"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/island_x5_data.lua",
+      "bytes": 1103,
+      "sha256": "b900e8608286429b29b524c33bce176fe6a21b8e47b1d7f8f4a4faf789ea72b6"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/island_x5_manifest.lua",
+      "bytes": 64526,
+      "sha256": "e604896b416fdebae9dbadf77f674a3839341b0d2c7de5b1343e036cbd9d88f2"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/island_x6_data.lua",
+      "bytes": 556,
+      "sha256": "55c50f3292baef8379b15082700f4b95cf29295d754e10c4b069a30d15ec6128"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/island_x6_desert.lua",
+      "bytes": 198245,
+      "sha256": "d948cd1b5f5b214eca3a0700f78b07ef5135465d2e07ffe0d75b2d10f32ef7e1"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/island_x6_jungle.lua",
+      "bytes": 225568,
+      "sha256": "fa5bc391c8c82952fe4af94f7d67b9f4e18ba7c1c57b33a54cdba07d933c2caa"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/island_x6_mushroom.lua",
+      "bytes": 198950,
+      "sha256": "0ac9b7de55a7671d0c0ca089b250c651f302df152caaa94cf53749f7fe18a267"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/island_x6_plains.lua",
+      "bytes": 203304,
+      "sha256": "866a56601849755f8307a2d680970c961411307906074957968f905fa7d0a3b2"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/islands88.lua",
+      "bytes": 4883,
+      "sha256": "e3814b0230b3d780e1e6e84f7a141acaca66ed43c6ee550d69d6883f57ffc67f"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/islands88_data.lua",
+      "bytes": 138742,
+      "sha256": "597d0e35dd38ebc25ec2184d4b759f5ba91f466195d41a834d1f4307e78e6947"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/islands89_data.lua",
+      "bytes": 75513,
+      "sha256": "46d8de7b1002ca3e3c972a53e34a17ec6288f538d28d68e5c2a00597d3172fbc"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/loot88.lua",
+      "bytes": 5364,
+      "sha256": "26d8117b6547da10a77c65291339744563b3277bfe4ca5eab02901c86b05c22d"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/map111.lua",
+      "bytes": 5618,
+      "sha256": "61f96e93f7bfe5e39d20dc13023610ed56e347447a60c6ab9a9e471ada06d14c"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/mob_models.lua",
+      "bytes": 43276,
+      "sha256": "810683e0a4afb667c7a0f66d295f15d590238fe93fe6c15ee9126970c4bc5e1f"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/mob_models_x4.lua",
+      "bytes": 99166,
+      "sha256": "f0babf821ff2cbee336738a40b30fb1782fd6ea6dac66373063b6194fd6930a5"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/mob_motion.lua",
+      "bytes": 13227,
+      "sha256": "3059dea7c5e60eff861fd6703418418a41370530cf95554ac766c2d6c6af11d4"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/mob_navigation.lua",
+      "bytes": 5359,
+      "sha256": "a1904752d9d019b515c87ccd7961cfaf0327895b5691a131ac6d1324bb1f3ca1"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/mobs.lua",
+      "bytes": 42014,
+      "sha256": "db7f58143e031839511550132b0f8357a01c7005bc860574b9cdb21ae8e64880"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/model_dimensionsJ.lua",
+      "bytes": 2627,
+      "sha256": "1ef2766fd50ffe8b84297e07eb6c9a41e9520d0645bb46cfe1a7feabd98a1446"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/model_registryJ.lua",
+      "bytes": 1604,
+      "sha256": "698a27a5b33c1388b7ba7c1705d13dd888becad9590fcdaea1b2e72e5052c4b3"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/native_arrowsVD.lua",
+      "bytes": 4279,
+      "sha256": "b6ca1b7afc326e6413dd9d563f9b7139308855f55f349ceab19e6349d361ca52"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/native_pack.lua",
+      "bytes": 7620,
+      "sha256": "cc4fb37b45f55675d44abc93af7f0f1d18dba39b76a0846ebb241784cac80e0e"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/native_trade.lua",
+      "bytes": 3191,
+      "sha256": "4ffa55530aabc2e96eb0b58adda460ac88719475673004bf020ca4c345934295"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/pal_combat.lua",
+      "bytes": 12014,
+      "sha256": "e3b4ab139984b1603b8dd799763fe6b24bf96ac3fd808a2fec8658b05e9fb7df"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/pal_projectiles91.lua",
+      "bytes": 9243,
+      "sha256": "5297112bfad5eaea34b02ce89676db80d9c3de178115f3581ad01c84336affb1"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/passive_flee101.lua",
+      "bytes": 4141,
+      "sha256": "f2b5a0f5ddeb0db8c3dbc596e133b298b292587fed10dc4ef5be611a2de52046"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/slice_alpha_x8.lua",
+      "bytes": 6003,
+      "sha256": "6b54756793f23c4eb26f42b33773d86c6e7a726000a73b175e403d8d25d875cb"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/slice_journal_x8.lua",
+      "bytes": 1063,
+      "sha256": "edd105dfe0d32e78f39724f322933509e187a54bbef9c903d98206765ad854e5"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/slice_native_x8.lua",
+      "bytes": 1981,
+      "sha256": "c9c378475a6cd09899f459360f675a2375114c9c90064a8f91eb27457cc6628b"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/slice_npcs_x8.lua",
+      "bytes": 6514,
+      "sha256": "be132517998c096eaafb24d81f8bdca17aecee8f106a36b638f8c51838b81498"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/slice_trade_core_x8.lua",
+      "bytes": 4311,
+      "sha256": "daa5a5c14fab9c4d93c0ba3141346978e6668665977de6329ef57034c8724655"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/slice_trade_x8.lua",
+      "bytes": 7484,
+      "sha256": "1de4307e77f8975a1d8de5205ca07896392b1878a86384e1595556e9e0fa860b"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/slice_world_x8.lua",
+      "bytes": 583,
+      "sha256": "09ec384485f80017718f69e63cce11875a793a39b948db5b0affe472e7fa95cf"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/slice_x8_data.lua",
+      "bytes": 6017,
+      "sha256": "e5d72657fe82205d5f9f37d04913bad2dcd066273a1262c0fd3b25bc54a59b26"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/vanilla_pose_compiled_x4.lua",
+      "bytes": 242192,
+      "sha256": "136c10f3baed80065a77dafcf663465b7b72a11aba75d79e1a97e0a42d7c9da4"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/vanilla_pose_program_x4.lua",
+      "bytes": 797200,
+      "sha256": "8a1e047dd3e1552386549931f0bedd0a3dd35f7b5dd944976d675ec73dd84ef6"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/vanilla_pose_x4.lua",
+      "bytes": 10704,
+      "sha256": "c69256dccbcaec2f64eba222eaf26a5d73897742f234de8826393278df0bba9e"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/variantsJ.lua",
+      "bytes": 1712,
+      "sha256": "df1bd6da41d995057e9322e6583f78cabd286117f793cb6bd62dd04e6bdd9f64"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/variantsK.lua",
+      "bytes": 15675,
+      "sha256": "a6ce0df069c1a373fdb3137b0f51fc198e0ea38e4a54ec91407d42e5f0038ab8"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/wardenC.lua",
+      "bytes": 7648,
+      "sha256": "7e058b04cde0d9c01e99d172501406131984bc2d703f50bbf1fdec22fab85e3e"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/water86.lua",
+      "bytes": 7908,
+      "sha256": "10010dcce79064fcb7556ef9e3aa3ba4f1a50ebe54508ac05c1bb7797e0e9595"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/waystones83.lua",
+      "bytes": 8324,
+      "sha256": "e4a7d37ce11a3b11c65b905e4c5e9527fd103a5639a3cb7e11f901231cc801dd"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/zombie77.lua",
+      "bytes": 32681,
+      "sha256": "d64cce7401c51bd12a90448bbf22ac3f8ac6e9ac37b32e38e4648bed80f8958b"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Alex/blueprints/alex.json",
+      "bytes": 4,
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Alex/raw/alex-character.json",
+      "bytes": 3487,
+      "sha256": "06d7dba9f8ca770cb036d9b1a555ada6da25647996019e807ed904b2225d8aab"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Alex/raw/alex-shop.json",
+      "bytes": 8576,
+      "sha256": "1567d7dab634af1d67fd5a3a6eed019cda64e1bdff6404a90933c6556f18066f"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Alex/spawns/alex.json",
+      "bytes": 4,
+      "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Alex/translations/en/alex.json",
+      "bytes": 64,
+      "sha256": "0e98037b5f4107cddcec95a6f24b7ecaa60402a9e6a7cd83faaef4bc8fbce28a"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Alex/translations/global/alex.json",
+      "bytes": 64,
+      "sha256": "0e98037b5f4107cddcec95a6f24b7ecaa60402a9e6a7cd83faaef4bc8fbce28a"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_BossLoot/items/bosses.json",
+      "bytes": 660,
+      "sha256": "d9c62628c0ad303d6d2a5d53c273ddbf153be4557e8c657accf3ea8657fe0756"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_BossLoot/translations/en/DragonEgg.json",
+      "bytes": 160,
+      "sha256": "faa976d92cd2559770ca36b7ba004a1c197866c94dd65050c75ed9fc14cbf308"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_BossLoot/translations/en/NetherStar.json",
+      "bytes": 164,
+      "sha256": "c287216787553fd31172e67427a65728eb0a861604335a7d949b35fbe27a0915"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_BossLoot/translations/ko/DragonEgg.json",
+      "bytes": 166,
+      "sha256": "37f4f6a212601d13c32609b53f466037227009451474139bcf6aa34799416dfa"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_BossLoot/translations/ko/NetherStar.json",
+      "bytes": 168,
+      "sha256": "4b9697012e5c58622190a439159e8e2ff4104146cccd75bb62a862fbd735bc02"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Camel/enums/camel.json",
+      "bytes": 47,
+      "sha256": "5649bf0039c7661d727fa6c93df9f8b2ccf7bcbe2e010d8d2e3e965f73450615"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Camel/pals/camel.json",
+      "bytes": 3303,
+      "sha256": "e6506f0ca010b64a5db4c5c649878b96b3b11cda695fa85dcbed018388c2af8b"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Camel/raw/camel-partner.json",
+      "bytes": 6544,
+      "sha256": "23a9c57bb2200e6245a5e00ac2bba88a32099f0b8e2a17db62cacea194eb63b6"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Camel/spawns/camel.json",
+      "bytes": 548,
+      "sha256": "0273ae2b73c7504a2841cc8acb38d4f78cea37e9675cb10fa1c8314798d9df53"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Camel/translations/en/camel.json",
+      "bytes": 567,
+      "sha256": "38279ed8fdf0a3d3e8c19c2f16bc9e65be5be8d70189397c05ee5bde6a43b55c"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Camel/translations/ko/camel.json",
+      "bytes": 641,
+      "sha256": "cb9143e7858f68f2a68a039e9ee13fb167640aa0309cccf410dd7e5ebac8ae15"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Cat/enums/cat.json",
+      "bytes": 45,
+      "sha256": "a4364c30ae1044949be76c29425d4a9dc77011e906c56661f6a442ca2215d6ad"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Cat/pals/cat.json",
+      "bytes": 3281,
+      "sha256": "a643be717fea5efcf97ca0fc682943f9dd45304e0a4906d97044c53b1b16e278"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Cat/spawns/cat.json",
+      "bytes": 552,
+      "sha256": "6ae6b4a0f4e3d3457b3facb66f1370d4823e70e85535d0c325c033cf24088701"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Cat/translations/en/cat.json",
+      "bytes": 288,
+      "sha256": "22c3a87efb3d9dcba4d98178addc5bf11a30b9173dc9f3f1f0cb0c6ed7e12922"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Cat/translations/ko/cat.json",
+      "bytes": 392,
+      "sha256": "4e3f4760dc7d23f910fa1d3359038ebd40968b6cad5c06c1631de62b4b0d7457"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Chicken/enums/chicken.json",
+      "bytes": 49,
+      "sha256": "4e66c6f8f7d8b0a2935a951c9826cfac8bbe56041ee4fe1a9c68486244de340f"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Chicken/pals/chicken.json",
+      "bytes": 3437,
+      "sha256": "7292450442b73091c15226759a651df6fb273f980645ec8e77921c85cd599129"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Chicken/spawns/chicken-day.json",
+      "bytes": 556,
+      "sha256": "304e0f5bfa0cb970143038909f41abfbd33e2c223469be2cbd0baaa1e97f0c7c"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Chicken/translations/en/chicken.json",
+      "bytes": 310,
+      "sha256": "1a51c93f613506b412b259ef42fe48001151f0cfc494b080c65cf552b0538d42"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Chicken/translations/ko/chicken.json",
+      "bytes": 310,
+      "sha256": "46de0367b055c0de7f5c395c7db0d0aacc8499cc8957dfd9c6080190ddc517e4"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Cow/enums/cow.json",
+      "bytes": 45,
+      "sha256": "4f13053a154f8a370b442865f79934f3cc61890d389f64268a08dbe59a0165da"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Cow/pals/cow.json",
+      "bytes": 3394,
+      "sha256": "775c3fa391b22c22babb2b89c7f2d91e39d12b6ddffabdd1f565863f78f625d1"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Cow/spawns/cow-day.json",
+      "bytes": 548,
+      "sha256": "4caf051bb89e285996ba3bfecea39710084c5d95456e8c843daefcaa235443ac"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Cow/translations/en/cow.json",
+      "bytes": 286,
+      "sha256": "93417c627ced69cc294966fded0e1fc3dff9ff75be1e32f9e462a5c0c74f391f"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Cow/translations/ko/cow.json",
+      "bytes": 298,
+      "sha256": "e49bb1d4959b6754ce7b2569e2b191dc386a2320d35d7c16c9bbab0f92b35f17"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Creeper/enums/creeper.json",
+      "bytes": 49,
+      "sha256": "d4f16b3eebf1f04b0e7a2aa60b33f2e6bebe114e03262c7cc63f2ea9c5db19fa"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Creeper/pals/creeper.json",
+      "bytes": 3316,
+      "sha256": "5acf5c739fbbdcd61799183df976974e8ba1075ae7c13fe0ad5b07dedc1387bd"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Creeper/spawns/creeper-night.json",
+      "bytes": 556,
+      "sha256": "266d50bb3e3c0037fd50ae37b4f0747c03b1b1c85dc03d07768d06ae9ee5b742"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Creeper/translations/en/creeper.json",
+      "bytes": 372,
+      "sha256": "00c7ce1f33be776d9a3e6aa9fc83ead1794732e55d4a1a1e59469dd63a897643"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Creeper/translations/ko/creeper.json",
+      "bytes": 397,
+      "sha256": "4a31b555b1bfa2d8c6ac4030776b604f5be5504b106bab9d1176ac0c4c690ed3"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/enums/FungalHost.json",
+      "bytes": 52,
+      "sha256": "e4ec5bbf320331b85bb9084026454041e5e3583aa04169a458d261751324b391"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/enums/IvoryRattle.json",
+      "bytes": 53,
+      "sha256": "67079fdcf073757222be64397dad964c8199a38922ebc7f702d48e761bba4f72"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/enums/Mossback.json",
+      "bytes": 50,
+      "sha256": "43f68a62a350c18b380be35387f7b67a5df114f2065a014785f5a3412ebd177f"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/enums/PatchworkBrute.json",
+      "bytes": 56,
+      "sha256": "b04413788d2348708b435c0c98b5e840e1eb3b0c5188d626a616bdb2e1358775"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/enums/RedstoneRevenant.json",
+      "bytes": 58,
+      "sha256": "5b497b64385b30b320796c43106faacc49baf02b4a923808e1faeffcc34e0275"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/pals/FungalHost.json",
+      "bytes": 3456,
+      "sha256": "fde43db970f1949d02e28af5cb5f7ca8289c9398a2bc195c322fe40bcebc9f09"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/pals/IvoryRattle.json",
+      "bytes": 3333,
+      "sha256": "0edb0f402de3a5e43bdb75b47d1866b7a5f4de6cdeba16cdc4b2cd5f2f5d87bc"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/pals/Mossback.json",
+      "bytes": 3414,
+      "sha256": "5ac38bf8d0ba92941ad10127a7fb324b57cebb519734db38bc5e7c0164c24c12"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/pals/PatchworkBrute.json",
+      "bytes": 3499,
+      "sha256": "a1ccf8132ef9bd43e3ec6f4d1f3dbfcdfe635c2a82f17688ed0f6e00a9f019d9"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/pals/PatchworkBruteAlphaX8.json",
+      "bytes": 3510,
+      "sha256": "8f9c6e158bc87a221e7cb992a3eaf5e8c11321400975ed96cad1ee4621f631eb"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/pals/RedstoneRevenant.json",
+      "bytes": 3526,
+      "sha256": "874a6975203437a94337d5dd594aaa274cfa6d22d779ba1e75cdf06a21386ba3"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/spawns/FungalHost.json",
+      "bytes": 556,
+      "sha256": "8aa92fd929d79451e24abb31dbcb2ad3146c7f4200edea2c41f374175e045981"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/spawns/IvoryRattle.json",
+      "bytes": 561,
+      "sha256": "e8d9a2ad4259c4634fb18c7720592cb1db029a30c3567dfcbe9c9fc6873c4792"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/spawns/Mossback.json",
+      "bytes": 646,
+      "sha256": "b5fcd4e66d9ca85f6b5227223a254fde69ee14361549ab1aca775be132208103"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/spawns/PatchworkBrute.json",
+      "bytes": 567,
+      "sha256": "d4014550ad3ae7ac66bf6273ef49b999d03b5083c7a200c0528c2c26f7c4cae9"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/spawns/PatchworkBruteAlphaX8.json",
+      "bytes": 586,
+      "sha256": "4e16b5af62375d3a8269df2b87007a3494846959ca2b77043f10fe03b39ba8ec"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/spawns/RedstoneRevenant.json",
+      "bytes": 540,
+      "sha256": "fa9355f97cf3091ba0d3c121fdebb9d3266ff8322e4cfd5bd3980725e68ce96d"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/translations/en/FungalHost.json",
+      "bytes": 593,
+      "sha256": "6d64d827caa373aa167472f2baf2b2aec5bc0d6b6d559690818fab874e17b3b5"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/translations/en/IvoryRattle.json",
+      "bytes": 581,
+      "sha256": "41243af20babc83be2370f45eb5c1e4ef25cc5f94c90a9fa2e39d34cb858f23a"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/translations/en/Mossback.json",
+      "bytes": 574,
+      "sha256": "feee0c6a7c28c103d36a807a4bd926bf99b3e2adcbf19447363e65fd4c48c271"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/translations/en/PatchworkBrute.json",
+      "bytes": 643,
+      "sha256": "24dc32407dab67d5130ae533c8697c0e67bf1c002671f53176a07b0f6f67f15d"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/translations/en/PatchworkBruteAlphaX8.json",
+      "bytes": 98,
+      "sha256": "e73e076e22981fff0c748b083a5f01cb03aef5d1e17b13583a4dbd25577ef2a5"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/translations/en/RedstoneRevenant.json",
+      "bytes": 617,
+      "sha256": "5a5f8e9c2aed6db0e00efd78212db1f207687a7f235792c801b9b9cdc66df242"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/translations/ko/FungalHost.json",
+      "bytes": 592,
+      "sha256": "05e5c40fb443503d96d034c2687a88c6abc8d2b228966b813cce8b559f94350f"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/translations/ko/IvoryRattle.json",
+      "bytes": 620,
+      "sha256": "e476f56e0a1eb102cd1dbae776019ba5b1370b74404c2e12fc5e3be5bbef744b"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/translations/ko/Mossback.json",
+      "bytes": 608,
+      "sha256": "fbefb68deb8b2a90e6b41687c8cf24d97a901c3f7be7d6a7e0c964fe78c8ca98"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/translations/ko/PatchworkBrute.json",
+      "bytes": 665,
+      "sha256": "c1c2063fce68a1a642d70f7eb946b27d8a8cd566e4c2145080835e42ca89e968"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_CustomPalsA1/translations/ko/RedstoneRevenant.json",
+      "bytes": 646,
+      "sha256": "79184ac8a4ecb1a764c8b1bb5084930bde6f25da5210c30ed1c72fcf60c54840"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_EnderDragon/enums/enderdragon.json",
+      "bytes": 53,
+      "sha256": "d3f7f1fb21b8f595884f86169b68eb32ca1dc584d0d2bc27fbfeeb868fba05aa"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_EnderDragon/pals/enderdragon.json",
+      "bytes": 3360,
+      "sha256": "656ed08f304bf37683b60299e5950231aad7b6b416df7fe5d2f679a8760f6d6d"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_EnderDragon/raw/enderdragon-partner.json",
+      "bytes": 1158,
+      "sha256": "a260d4059f4f4953f2cb3289be8fdb480bf6b153c53bafd3ba88f2346458261c"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_EnderDragon/spawns/enderdragon.json",
+      "bytes": 614,
+      "sha256": "db7c9bc3c1758c42d546953eac90d3ac7b9da4c29b8a22d777aa8a6b4840028a"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_EnderDragon/translations/en/enderdragon.json",
+      "bytes": 517,
+      "sha256": "8f3d8421d3f6024d8c170e36616b0a228876fc003f0ca0b2f719945e3d37927f"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_EnderDragon/translations/ko/enderdragon.json",
+      "bytes": 574,
+      "sha256": "4d8da748f3da8e0de5f9e81fb6fedfcd990720dfb6b8eee05f5c8147ef03b1d2"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Enderman/enums/enderman.json",
+      "bytes": 50,
+      "sha256": "a769ffa4cd3d723b6862c3111de9827517533b519cc95c5c4de42ee1141655ea"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Enderman/pals/enderman.json",
+      "bytes": 3334,
+      "sha256": "890da971cff75f1c163222dd090fb3cb0f56f077d8401c3200d22429c1f55ba5"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Enderman/spawns/enderman.json",
+      "bytes": 1120,
+      "sha256": "a454dae47825d7d9adc919c2cade78ef53e1854658a4ada5b1992949e7865767"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Enderman/translations/en/enderman.json",
+      "bytes": 388,
+      "sha256": "c42738093d5243f27a44c1f315699579d1553950cf4b27e71db6dc21bbca1f9e"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Enderman/translations/ko/enderman.json",
+      "bytes": 443,
+      "sha256": "43039d6cf3de426d132c920d9727d1efbc1f1d722a2e3321e2dd2f914eebfced"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Fox/enums/fox.json",
+      "bytes": 45,
+      "sha256": "92400aacde4c21d3ae566cbad5206e016fec6e4f0cfe953ad1042d0684e87a9e"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Fox/pals/fox.json",
+      "bytes": 3287,
+      "sha256": "98fb41d7669ea592846e848b6d059f5ef3b8fad6e9463607b71e51e176b4d1ba"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Fox/spawns/fox.json",
+      "bytes": 552,
+      "sha256": "690e6170601f317c628d2682c91900c130a72a383bf7853923056bee9c018110"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Fox/translations/en/fox.json",
+      "bytes": 288,
+      "sha256": "0f910afa0b3b726308f293c4cb257de4580b5899374e9e8021b09a0ed728dc27"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Fox/translations/ko/fox.json",
+      "bytes": 369,
+      "sha256": "f85c66b87f94f1e3396097e3a017ecd4cbb1bcdd6fc3eb5fdf6c7cdcc5123ad4"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Horse/enums/horse.json",
+      "bytes": 47,
+      "sha256": "88248db617693a7f80afc50559c1e496b9ec81b5900ab97cc44dd4c8d8e30bab"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Horse/pals/horse.json",
+      "bytes": 3302,
+      "sha256": "3d31c343cad06532b53f2a70b9e5180a458b471ae90a49907608d1cb2d777ab0"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Horse/raw/horse-partner.json",
+      "bytes": 6544,
+      "sha256": "42ccd992616851698c6bd5281c5461fb8937c6284198023d9864c58f8a36b816"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Horse/spawns/horse.json",
+      "bytes": 549,
+      "sha256": "d3377d0b20bf927e0ad2cadf2592c93ef1479a5f1296bc71659a03e8da91b755"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Horse/translations/en/horse.json",
+      "bytes": 642,
+      "sha256": "a1b767c74e7111e19a1323ea91d3bbb3d5d146ee3510ffd8161a4ab2aa9020f9"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Horse/translations/ko/horse.json",
+      "bytes": 710,
+      "sha256": "57dd8e57449376086fb3a1204329a50f82cdeb7c044cfff35061a6c4cb05ec74"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Husk/enums/husk.json",
+      "bytes": 46,
+      "sha256": "1f1b33f835b1bc08501be08f70d31f941349b1f6c4b29ece33de34bf7a9485a9"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Husk/pals/husk.json",
+      "bytes": 3312,
+      "sha256": "3b775caf9510318c0bf408eed89bd860c06cf8d3a1365c9297ad04a42cb4bd89"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Husk/spawns/husk.json",
+      "bytes": 518,
+      "sha256": "7853f18a125a0b1bf9a5467a8c68c6bbc199ff4cd00fde2c9dec6e5f112716a4"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Husk/translations/en/husk.json",
+      "bytes": 274,
+      "sha256": "9b7b1f827634f530d4d229c43e4f8a7e5e0d0125828df77f5b70881dff880401"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Husk/translations/ko/husk.json",
+      "bytes": 281,
+      "sha256": "262d33d8f06cfd99dd889519fd8999471c9ec50b58eddd36222c0ec9f5357e8a"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_IronGolem/enums/irongolem.json",
+      "bytes": 51,
+      "sha256": "982b456c952a038b82245e4ba91b165ab6ab5f6921772d3675f3444b98e64898"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_IronGolem/pals/irongolem.json",
+      "bytes": 3466,
+      "sha256": "291e81a1b97be7bde60e3ccb903ab37696a971b3468b960b5162b055de787962"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_IronGolem/spawns/irongolem.json",
+      "bytes": 536,
+      "sha256": "39994c9837d8b4a47e06cd0aff72099f161514e83ad890cec31c509df8041f02"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_IronGolem/translations/en/irongolem.json",
+      "bytes": 325,
+      "sha256": "3b1ec5b3e6a29e099c33b829879f93b454031963d960c44c4b3992874afe93c1"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_IronGolem/translations/ko/irongolem.json",
+      "bytes": 415,
+      "sha256": "44e4c1035baa53800615093bfcfeccba36eda061d990c682336bf39bb5fbcabb"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Mooshroom/enums/mooshroom.json",
+      "bytes": 51,
+      "sha256": "b030e40fbdeba32460a114ca602325fb0f127f13e752cddacea8e92ffae6c295"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Mooshroom/pals/mooshroom.json",
+      "bytes": 3547,
+      "sha256": "bd36b0f1c0a0ae6aaf7c1464907fdfa0afed7449fbb0be9c91c411363c9c9597"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Mooshroom/spawns/mooshroom-day.json",
+      "bytes": 559,
+      "sha256": "e657054c37ed87c756f0a1ca9853913d3e86d980fa86c7662c3cdf27950c6ef9"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Mooshroom/translations/en/mooshroom.json",
+      "bytes": 326,
+      "sha256": "2d22f21765d13bf2ebd66ea62542deadbecbafec5aca7bfd987fb5194c2116c2"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Mooshroom/translations/ko/mooshroom.json",
+      "bytes": 334,
+      "sha256": "3b51f9bb163acf254a9b086a9b992748954d13ea80c305222138e57268dd357a"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Ocelot/enums/ocelot.json",
+      "bytes": 48,
+      "sha256": "30d87ec6d857d68d2b882d8f5ec621517a28d2831c8a5dba5265bb212052f33d"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Ocelot/pals/ocelot.json",
+      "bytes": 3173,
+      "sha256": "2fce83eb03a352920ab3b55b3de03330ce685380f2228d7ae4d12ac9bd940966"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Ocelot/spawns/ocelot.json",
+      "bytes": 549,
+      "sha256": "97fdc5de8ba4bc7cfa4fd9fd5ba3af08a4781a461ab0beb9f84728bba0bd62f2"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Ocelot/translations/en/ocelot.json",
+      "bytes": 286,
+      "sha256": "d7b53381510a3f12a21f5e2a9b04c6e9514b4c5228ddf906d25e5380430f6d75"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Ocelot/translations/ko/ocelot.json",
+      "bytes": 287,
+      "sha256": "699c00f73ee9f00e7babe7d2487cc7743dd97bd434307f8cb5010d123ab0320a"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Panda/enums/panda.json",
+      "bytes": 47,
+      "sha256": "fd86eea9633b259a91c6543f5b313722c6ee296617c2cc4f9a88ec8e5ef3f399"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Panda/pals/panda.json",
+      "bytes": 3292,
+      "sha256": "ea3b67a9b183b62e9eea93c3839b51c62c58497653d929f247d68e241adcb807"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Panda/spawns/panda.json",
+      "bytes": 555,
+      "sha256": "0598e983b4a24247f45d9e3e419185202488f130d8687e9dbb8fd5689cd6c9af"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Panda/translations/en/panda.json",
+      "bytes": 300,
+      "sha256": "15f3eb5daf503ae773624e932a412f2ee1e6599505c54b79602a37436c2d053c"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Panda/translations/ko/panda.json",
+      "bytes": 419,
+      "sha256": "2adeae0f4921cd0fc80fb043ad1b0e2d0edce6a174fb42a3466055d308670efd"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Parrot/enums/parrot.json",
+      "bytes": 48,
+      "sha256": "a4153ba334bedae71fe095a93c087d0ac79a978608f120e3e863e3b714c8e1d6"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Parrot/pals/parrot.json",
+      "bytes": 3308,
+      "sha256": "d1241c9efaf89bcfb4af1783cf59d35668cab9172d5aba384e7daa59489f4542"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Parrot/spawns/parrot-day.json",
+      "bytes": 553,
+      "sha256": "6dc247a14d8903425ef4bdc5d4a51a823ead42867993d5c33d5229af275c45bf"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Parrot/translations/en/parrot.json",
+      "bytes": 328,
+      "sha256": "6232687de801e86363d2139e998a8968dbf8014a53009e2c65c17912629a282f"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Parrot/translations/ko/parrot.json",
+      "bytes": 353,
+      "sha256": "a027f6f6dfcec7a1ef04ac179e2b6c3eecc9aea3bd9476455d8464eedc54b94f"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Pig/enums/pig.json",
+      "bytes": 45,
+      "sha256": "a943350e4a61a5c94cc1fd6ca95f4327ed4cfb224ba4358cbdb3e2c105d1bcde"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Pig/pals/pig.json",
+      "bytes": 3279,
+      "sha256": "c52d4b184118bbf1996d9c698c7d670ec33d32dece3716164ed9c2a6b509f1c0"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Pig/spawns/pig-day.json",
+      "bytes": 548,
+      "sha256": "90bcb628f913370109671b266b31f642ef227107052146df6db9d755df4a4ce2"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Pig/translations/en/pig.json",
+      "bytes": 286,
+      "sha256": "c155532db3af0e2d3cee8ead297689382b6d2e453993781a3ec20f4240e41e87"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Pig/translations/ko/pig.json",
+      "bytes": 307,
+      "sha256": "c15c34003586347b65c2263819e8d3fc4343c0e078c39be432c115a92be7da45"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Rabbit/enums/rabbit.json",
+      "bytes": 48,
+      "sha256": "c7d0e4ab4eb6e44b2d92f2bca1684d867663978c3e3be6d16ffe9272877821ca"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Rabbit/pals/rabbit.json",
+      "bytes": 3297,
+      "sha256": "bd7a5dad9d5d44cdb867b9ffba086c8a4b200a91ad4c2e1788ef98bceda23ab4"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Rabbit/spawns/rabbit.json",
+      "bytes": 1110,
+      "sha256": "515bd878afa7506688ef892fb2ed8ac8fdebbaf94faac913a8aa68193bacf0fe"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Rabbit/translations/en/rabbit.json",
+      "bytes": 306,
+      "sha256": "716d8aa5b0f9caa1ff741fc02a1d89b28616a451a5654626858964e8b37a30c6"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Rabbit/translations/ko/rabbit.json",
+      "bytes": 436,
+      "sha256": "fe20855810cd336cf3e5556ae11a3e0bba17bfa1d7e9af56acd958513cb5d5f4"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Sheep/enums/sheep.json",
+      "bytes": 47,
+      "sha256": "ca51620270b42685d615c13b0d7d4de4a73601133a0f784c3adb578015b9590a"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Sheep/pals/sheep.json",
+      "bytes": 3408,
+      "sha256": "a53568277166103ab13bd26ab595025eaea227e8f5205d924a4a35353941f328"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Sheep/spawns/sheep-day.json",
+      "bytes": 552,
+      "sha256": "cb1f83599506ff58599d16c02031096761234667045e1b38c3982f6c3cf68072"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Sheep/translations/en/sheep.json",
+      "bytes": 298,
+      "sha256": "f2d9325c31fb0df3b71dbd21c450bcca80833c762e7d9a0e7c1a985238c6cb07"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Sheep/translations/ko/sheep.json",
+      "bytes": 304,
+      "sha256": "ac08ca8fda484f2bd3577c5fe21b7c5834e406e49c3e45c9e76e2e0bad4c4d0b"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Skeleton/enums/skeleton.json",
+      "bytes": 50,
+      "sha256": "360f04343281246da9504ed63a63e65916b46314987099a09e882de555f155e3"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Skeleton/pals/skeleton.json",
+      "bytes": 3453,
+      "sha256": "500293d23230c770d85cc38043536cf2eb5d5a915ab78c7b675f13b177e7d579"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Skeleton/spawns/skeleton-night.json",
+      "bytes": 1112,
+      "sha256": "cee5bfc99c9729f5f95774b83d64b58e7e45b30be0f70d8a5adf58ed16069a2f"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Skeleton/translations/en/skeleton.json",
+      "bytes": 353,
+      "sha256": "331c84f6f8ed1a8dc452636b3f7485db2c65fd5346f60b4c685030b3f8f2bd4b"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Skeleton/translations/ko/skeleton.json",
+      "bytes": 380,
+      "sha256": "a8625a82e77d14e7b3a669d1b34dff50cc5be2f96d63a1acdc6ce7381efd2e78"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Slime/enums/slime.json",
+      "bytes": 47,
+      "sha256": "549a55403e8dbcb525f871372a9acdb10e5380573721276355be9b8843f146b6"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Slime/pals/slime.json",
+      "bytes": 3316,
+      "sha256": "201e0d72efa91c173de1e41eaf58abd85f7d43d2669dbebd5bc0dc2dfb7967fb"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Slime/spawns/slime.json",
+      "bytes": 555,
+      "sha256": "0e0e527f0036d6b1780a5a4cee4eeb16408200463b53bb06c002deebafdf836a"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Slime/translations/en/slime.json",
+      "bytes": 366,
+      "sha256": "80a4b8826199db042394ac4b547b6488f8ca0e93645b298a23a824587e4c7250"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Slime/translations/ko/slime.json",
+      "bytes": 402,
+      "sha256": "b6e1c4a491baad05f6f5bd0646fb2f697910cd1bdbcaad1464742b897cf98488"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Spider/enums/spider.json",
+      "bytes": 48,
+      "sha256": "fc9182e90027762c5b6e78180d4dadf9cabed915778fd9ce53b847a4232fe0f3"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Spider/pals/spider.json",
+      "bytes": 3403,
+      "sha256": "ee65ce93be42d8687818323133ca5a67dea0254b49d9f5bbacc0cf73fe29f3d6"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Spider/spawns/spider-night.json",
+      "bytes": 555,
+      "sha256": "0ed89b7e881f91cf421ef92e3e2f3c763d6f329c6b12683ea5d2bc185d6a3127"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Spider/translations/en/spider.json",
+      "bytes": 350,
+      "sha256": "150ff8790ef3c873d2ff0309c3cfcf045da7903113593e4c0242e4edec88f920"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Spider/translations/ko/spider.json",
+      "bytes": 391,
+      "sha256": "e7c50a0f7d18a4d0383c606dbfad4c6c63427289d43b895813e26d4ddea99f25"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Warden/enums/warden.json",
+      "bytes": 48,
+      "sha256": "189e0742ac96852aed8f8f021c67b3687ebe67f0d55fd3eef95591a4a0ae39c9"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Warden/pals/warden.json",
+      "bytes": 3321,
+      "sha256": "90e0cb7d80bb58b6b8e12b8e0637def8fbdc11637631c7ffbacfcaed115f3f50"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Warden/raw/warden-partner.json",
+      "bytes": 1153,
+      "sha256": "05d707072b51675ed724df27690142a78c4a192abdfa8a5119e787b267cabb13"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Warden/spawns/warden.json",
+      "bytes": 604,
+      "sha256": "9fc61f2b0b26e5c4446f2c26fc74b86623eb9557f5b06befde1d6a366208ca71"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Warden/translations/en/warden.json",
+      "bytes": 684,
+      "sha256": "cee400ff298eefd90062f119c5fd25a9c5b044582c50d4e7620b81689fec85d3"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Warden/translations/ko/warden.json",
+      "bytes": 781,
+      "sha256": "5621f5652b02026eafcb4732ba03e28fd6955fea25aa30eda32438d921d39da4"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Witch/enums/witch.json",
+      "bytes": 47,
+      "sha256": "c717fa89885f47af73876ebca905b99df09ac09cf7bcb09457b260878e616a57"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Witch/pals/witch.json",
+      "bytes": 3579,
+      "sha256": "b3299e9cedb00e31b11c5ad21041e1e2972601cfe7070cd7b3ca1f8568ef1e64"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Witch/spawns/witch.json",
+      "bytes": 555,
+      "sha256": "2894a7fe4d5d19063cc277e4a67253511439dc7976a9b5f82bf441a5d64871ef"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Witch/translations/en/witch.json",
+      "bytes": 324,
+      "sha256": "a1eecc4f988e5de52089fc7c223899542e3dcfdfcedae8b9fb2b24ecb400db21"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Witch/translations/ko/witch.json",
+      "bytes": 339,
+      "sha256": "133743c650572de8000a7d23b2d36ff03ce126689ff459047b35a24fa2f4e6f3"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Wither/enums/wither.json",
+      "bytes": 48,
+      "sha256": "8a8bc87429bdece1c8c89cae82c597dace6b90563b730f0d7a3385f12643a10d"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Wither/pals/wither.json",
+      "bytes": 3539,
+      "sha256": "025239dbc20df0098fb22edf582c7875e7669f7228ab374213bdfde3e737d271"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Wither/raw/wither-partner.json",
+      "bytes": 1153,
+      "sha256": "11bbbaf6418f690638a5e40f3663e58fc719f0570d2880f90e181b91be77de90"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Wither/spawns/wither.json",
+      "bytes": 615,
+      "sha256": "a5fb839783468e5c5ff17377ac7135d08c9510655a71b961df3cbdaf109134b6"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Wither/translations/en/wither.json",
+      "bytes": 474,
+      "sha256": "bde4118e049c13ce8f64fc7ad73e10e44da7cf13d0402d960f81b9cd2bb71a84"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Wither/translations/ko/wither.json",
+      "bytes": 516,
+      "sha256": "6eda9a016f849248734bcf589f47bd12036eecb177b91993fda24a62e4aac010"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Wolf/enums/wolf.json",
+      "bytes": 46,
+      "sha256": "4ee0e6de3ccada257dbf84d38cd75ec630a247c41b9af4452da8e596748f937c"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Wolf/pals/wolf.json",
+      "bytes": 3162,
+      "sha256": "dac6990b4e4b551b4788a4d1ca8548e9303e46bf5618300a4638edab9cbdd4b7"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Wolf/spawns/wolf.json",
+      "bytes": 526,
+      "sha256": "ffc9c3543216f8caa1a5756b9efd6358d2bacabe5c020a7f7bbf948a8db89b00"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Wolf/translations/en/wolf.json",
+      "bytes": 294,
+      "sha256": "1c4c3c4d1a610c4009adbe8a8a11f03828d8f3bfcc5bd3bb470dc5b9cc8d9eee"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Wolf/translations/ko/wolf.json",
+      "bytes": 398,
+      "sha256": "845f3172148d769c44db61ae405a0286c069d0f698f76ed4d03ce03ae8c4f916"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Zombie/enums/zombie.json",
+      "bytes": 48,
+      "sha256": "5d7706b37111c06840517897818aba9925e5705b496dd8944895c4de8a94717c"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Zombie/pals/zombie.json",
+      "bytes": 3427,
+      "sha256": "c118b8048ad31c49963bf3699eb63689deadb88df81bd904b95d62097b8e956f"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Zombie/spawns/zombie-night.json",
+      "bytes": 555,
+      "sha256": "b7c501273ab2c3bcd968036bbffbf52ff590d4b9201eaec0bc955788d36b7411"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Zombie/translations/en/zombie.json",
+      "bytes": 386,
+      "sha256": "d2759dd1859a3cb502ef20731933001b82fea16624d8a462f314f4285482c5db"
+    },
+    {
+      "path": "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalSchema/mods/PalCraft_Zombie/translations/ko/zombie.json",
+      "bytes": 399,
+      "sha256": "dfb398dafba95b3434686b9137e783055e29da51ec37f672e5e4f2ce2ffa8cee"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/L_MC_Desert_T114_P.pak",
+      "bytes": 167347181,
+      "sha256": "0e3ba90fe00293451a2ca95117b8670329bf1aac43fbbed1e5aa9c923a3ec670"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/L_MC_Jungle_T114_P.pak",
+      "bytes": 209473248,
+      "sha256": "91913edb9da48a5f2c6b6b9f517a3d1ffb2dc94aad0d65bfb35cfa06d371816e"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/L_MC_Mushroom_T114_P.pak",
+      "bytes": 210716880,
+      "sha256": "a5802f8c885b43f18e1abc722a129e4cebf53f3a6ce1023f68bdff733b98882c"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/L_MC_Plains_T114_P.pak",
+      "bytes": 217376102,
+      "sha256": "7a77757d5e056287a2e776de4b66cb6faafd8f7cd1e1b5ac6ad24a86d3a080ea"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk19994-minecraft-island_P.pak",
+      "bytes": 5828963,
+      "sha256": "cbd006144d4d761f03bdab4e5ab0cd5b917bebccd092999c2e7179a7d238a1c5"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk19997-minecraft-mobs_P.pak",
+      "bytes": 529216,
+      "sha256": "99a0b3a2a90d92797739c77986220d4b77b58e0a58848c64db524385e6f7d85d"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk19998-minecraft-mob-hit_P.pak",
+      "bytes": 179031,
+      "sha256": "8f239004a2f062c24a8a3515c9fdbf21625538a0505ef3416e2ee9aed8f7015b"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk19999-minecraft-mob-polish_P.pak",
+      "bytes": 905357,
+      "sha256": "ac4d124fb093c551403bbc338be0a164539c8ffbf4adfa91a69ddecc95f7f7b3"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20001-minecraft-island-actor_P.pak",
+      "bytes": 60085,
+      "sha256": "64dccc189d07178283fafb6bc5b2b35a71043fec1534e4b6e4d1986da477d4e2"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20081-zombie-polish_P.pak",
+      "bytes": 78081,
+      "sha256": "fbe14e225da40168a26e7f826d52b54f682e174874515c1fa73a4e0f852226f9"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20083-minecraft-plains_P.pak",
+      "bytes": 198010411,
+      "sha256": "ab78addf4344adbbebd9481caab0e32a9a07c4a06b6b188b2c98c14e3d194d78"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20088-minecraft-islands_P.pak",
+      "bytes": 313970298,
+      "sha256": "ae73913236fb3093aa05b8eb5fbce72a7cf80dd0c59c26d6db42f3b41252d1cb"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20089-minecraft-islands_P.pak",
+      "bytes": 173475554,
+      "sha256": "d707d1e0d11cb4fd37ea8302b29c72a1b1feb5ea0cda8e71b5006bce20ce4186"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20090-minecraft-islands_P.pak",
+      "bytes": 184235248,
+      "sha256": "a0ffe6a011c7306c5f43996788dde064f07f7aa3ef38a177db2c3e5f1adc28e1"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20091-minecraft-islands_P.pak",
+      "bytes": 12223723,
+      "sha256": "52637752e159558e8c691f1ebc4be68db5c8ade4a24e9773835c18458fc7ca9c"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20092-spider_P.pak",
+      "bytes": 76353,
+      "sha256": "405807399944c36c3615303e52a990ca4b9ed6741463b14ce00352bd7bd81877"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20093-creeper_P.pak",
+      "bytes": 85001,
+      "sha256": "c6070bcf792ef615c2af6c1844239b259c1370f931a8420ffdd45ab340386416"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20095-animals_P.pak",
+      "bytes": 1093944,
+      "sha256": "5e2fbe0bb83679ca354c64145059dcc0e4c11572a5afa9099107e734ae252cb5"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20099-hidden-hosts_P.pak",
+      "bytes": 47557,
+      "sha256": "5b0645dc8e65f2f7e02fde0e21959480f88ed7b9232ecb32b07788f904e2f149"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20100-creatures_P.pak",
+      "bytes": 396140,
+      "sha256": "cdabc76f7a9741ad547740439e02ed8d7b048bf483a75883b00ea9fcb32163f5"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20105-creatures_P.pak",
+      "bytes": 1415054,
+      "sha256": "9edd1916d0ab112afc3922218135e20c54c51f91ab21eb1e9b39749a394a3d4b"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20106-creatures_P.pak",
+      "bytes": 793464,
+      "sha256": "4ee8c75949e9ed1f806375cbc369645be8de64173e18603f07d81462515a9262"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20107-creatures_P.pak",
+      "bytes": 1004768,
+      "sha256": "0a0634ba59f744827008a182109c1bd3112aaffde290557fd33b0dc1119ebccd"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20108-host-lifetime_P.pak",
+      "bytes": 67609,
+      "sha256": "872ae19e8cc9ce5a808275a6a83b046c61f65bcb4033a93b4bbad67f00e58fab"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20109-costume-faces_P.pak",
+      "bytes": 8394590,
+      "sha256": "7b2e7c1a0c5291eba376aabfdbc1d6dda292830b527732afc2d7106b4fd9697a"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20123-custom-pals-integrated_P.pak",
+      "bytes": 28634640,
+      "sha256": "69c84e516804f92215349f075b9599ff5431b7ccca04c87c18c605c59cf76f67"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20124-detailed-island-actors_P.pak",
+      "bytes": 5433431,
+      "sha256": "bca20c67afc2ff05aa596b088fc71eaacbdbb62de1d25fa5f54b1b96302fed8f"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20125-taskC-materials-warden_P.pak",
+      "bytes": 15773756,
+      "sha256": "51adf36160b2d6ef014f1b0242f995cd4a02852f0808974b084c998c045423c5"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20126-taskD-bosses_P.pak",
+      "bytes": 2695109,
+      "sha256": "9b701386b723e344a16b19413ae3555af953aadc7093634cd372437edb446e76"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20140-MinecraftFidelityX4_P.pak",
+      "bytes": 7491194,
+      "sha256": "c5219e6a37717b0d8806547d5c6fcb36fb777ca672cd016632aa1c310e08225c"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20140-motion-taskT_P.pak",
+      "bytes": 2507496,
+      "sha256": "7659aa64a7fbc4cdc7c349dca3487b6997b5c3531fab049afd0ce837bda96d07"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20206-MinecraftCoastK_P.pak",
+      "bytes": 1073422,
+      "sha256": "906ccca024225f11c34824a1105705ac9fa217694768ef6c48b83b2b5f726eb9"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20206-x6-desert_P.pak",
+      "bytes": 27149541,
+      "sha256": "f3ca923fa12f2ce9226a3a66ec7fc96f0150a958d56beb36c03d1dc65c97ab7d"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20206-x6-jungle_P.pak",
+      "bytes": 37496688,
+      "sha256": "6641d5a764784dd640980ee6655b5013ab323bd9bd117f0114a0b0af50065dcf"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20206-x6-mushroom_P.pak",
+      "bytes": 28805118,
+      "sha256": "d25a604fe50a92ad33acfce79bf84cf4e506a8cdd6321297c23437d7203a9a67"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20206-x6-plains_P.pak",
+      "bytes": 33592067,
+      "sha256": "6ff364ac618f58169c778e772fd7c106fcfc5bd74f56238ee56a817068b7ce7c"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk20207-MinecraftIslandL_P.pak",
+      "bytes": 4508471,
+      "sha256": "21e4f0a066c4426e00092b429b9a9b1f99a56d56fdeaac37052d9086e7e80a5d"
+    },
+    {
+      "path": "payload/islands_animals/Pal/Content/Paks/~mods/PalCraft/pakchunk30012-palcraft-audio-islands_animals_P.pak",
+      "bytes": 1436280,
+      "sha256": "dd91983cc2efbe5dc6c268e048e079716217ed3ed0f0c344dbfbaeb7e099ecd8"
+    },
+    {
+      "path": "PLAYER_GUIDE.ko.md",
+      "bytes": 3037,
+      "sha256": "64b03ffcbcc6d6d81190c46002a0c0949f549bd43d93261f0bf91fe03bf3f578"
+    },
+    {
+      "path": "PLAYER_GUIDE.md",
+      "bytes": 6931,
+      "sha256": "a2196a3fb0d645df6f4bee65331603f8c7628eedb5c5e11129bbfacae25f4ccf"
+    },
+    {
+      "path": "README.ko.md",
+      "bytes": 4556,
+      "sha256": "bc80e2d07c3589b4dd4338f9bf90ddd77a2043b86c2283e68b2e31f1b0673a55"
+    },
+    {
+      "path": "README.md",
+      "bytes": 8359,
+      "sha256": "8616e54a48afad21dd4a1279fba885a03a5ba09b0ae8fd77c384beb75313656a"
+    },
+    {
+      "path": "RELEASE_NOTES.md",
+      "bytes": 7144,
+      "sha256": "89fcd626443b44c4961edc47f4e7a66b7945fc450ec80160d8946ffe088098ca"
+    },
+    {
+      "path": "RELEASE_v1.1.md",
+      "bytes": 7144,
+      "sha256": "89fcd626443b44c4961edc47f4e7a66b7945fc450ec80160d8946ffe088098ca"
+    },
+    {
+      "path": "RS_REPORT.md",
+      "bytes": 34293,
+      "sha256": "97b5a1d3235f3de21488a34f397c27b28cd037efe995d930b8dd0b39ea29cafe"
+    },
+    {
+      "path": "SA_NOTES.md",
+      "bytes": 2577,
+      "sha256": "a7f29ff73532b163cd44e6a3074c2d3f0b0b3c1af290a7dd7d12f9f76bcc56e8"
+    },
+    {
+      "path": "START-HERE.txt",
+      "bytes": 374,
+      "sha256": "d71a6c67e6cfcaed63ff4d1d834438e4d0936a986916edbb58510ba60268696c"
+    },
+    {
+      "path": "THIRD_PARTY.md",
+      "bytes": 1645,
+      "sha256": "a760fed42cb525d95a0e126dc0d04da3c630c64a3648f10e9cab4cee5c7433b7"
+    }
+  ],
+  "excluded": [
+    {
+      "path": "runtime/MinecraftBlocks/decor70_data.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/discovery.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/discovery_finish.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/font53_metrics.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/item_registry.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/items104.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/items107.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/items70.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/items88.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/items89.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/itemsA.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/itemsD.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/map_historyN.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/newworld_check65b.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/ore_probeK.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/recall108b_probe.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/recipes.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/recipes104.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/recipes70.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/recipesA.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/registry.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/smelting.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/sounds.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/strings104.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/strings107.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/strings57.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/strings67.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/strings70.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/strings71.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/strings76.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/strings88.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/strings89.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/stringsA.lua",
+      "reasons": [
+        "mojang"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task104.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task12.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task13.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task14.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task15.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task16.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task17.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task18.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task19.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task23.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task25.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task26.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task27.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task28.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task30.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task31.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task31_stage.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task33.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task34.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task36.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task37.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task41.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task44.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task47.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task48.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task49.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task50.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task52.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task54.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task56.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task57.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task59.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task60.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task61.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task62.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task64.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task65.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task67_probe.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task68.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task70.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task71.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task72.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task73.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task74.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task76.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task77.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task78.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task82b.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task83.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task91.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/task92.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskB.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskB_courses.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskB_lineup.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskC_fixture.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskD_fixture.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskF.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskFA.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskFB.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskG2.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskG5.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskH.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskI.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskJ.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskK.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskO.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskP.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskRA.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskS_probe.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskT.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/taskZ1.lua",
+      "reasons": [
+        "test"
+      ]
+    },
+    {
+      "path": "runtime/MinecraftBlocks/timer_tests.lua",
+      "reasons": [
+        "test"
+      ]
+    }
+  ],
+  "audit_sha256": "1ca9840c74dc1610b6621e1597ebff04f840506ee6a4df4780d3bcaa4538490f",
+  "modules_sha256": "0a85ab51ed20b0fb06b0b1f88f12e54b80149ec958f99d4783af5efac3d92db8",
+  "missing_runtime_modules": [],
+  "generated_data_modules": [
+    "decor70_data",
+    "font53_metrics",
+    "item_registry",
+    "items104",
+    "items107",
+    "items70",
+    "items88",
+    "items89",
+    "itemsA",
+    "itemsD",
+    "recipes",
+    "recipes104",
+    "recipes70",
+    "recipesA",
+    "registry",
+    "smelting",
+    "sounds",
+    "strings104",
+    "strings107",
+    "strings57",
+    "strings67",
+    "strings70",
+    "strings71",
+    "strings76",
+    "strings88",
+    "strings89",
+    "stringsA"
+  ],
+  "data_generation_ready": true,
+  "legacy_cutover_ready": true,
+  "dependencies_bundled": false,
+  "extracted_assets_bundled": false,
+  "cooked_patch_ready": true,
+  "cooked_patch_unresolved_instances": 0,
+  "pack_split_validated": true,
+  "native_compatibility_ready": true,
+  "live_verified": true,
+  "release_acceptance": {
+    "id": "RV-OPUS-20261017",
+    "decision": "ACCEPTED FOR v1.1",
+    "authorization": "coordination/OPUS_TASK_RS.txt",
+    "authorization_sha256": "622c1f5096b42739162fa68566f1a47a2a59fe5c120958d565a87025b053db57",
+    "candidate_zip_sha256": "7f88c0c15da1a908a3c1f22571888c973eac47c63d52a14a335ac174b3286f83",
+    "tested_zip_sha256": "39b8004dfaced3abea6a565013467ced01e3203737d5da156fdc05221fcf6a07",
+    "evidence": {
+      "coordination/TASKVF_HANDOFF.txt": "56e9fb661e08e1b437ec3c60a27ea16a0fd5efb1e7a3ecad80beaf8c487c54bf",
+      "coordination/TASKVE_HANDOFF.txt": "88daa7b5903bd329cf40692dbc946e3f046f6262fddab83e333e10221ffaae74",
+      "coordination/TASKVD_HANDOFF.txt": "18733d7b50fbe724723d652eb1a474aabce03e8c270612f4415cdeee67a0d50e",
+      "coordination/TASKVA_HANDOFF.txt": "647e7717001cc0344abdc9b6e271c6d7a4e126417f33474f06bc66e13da04b5d",
+      "coordination/TASKVB_HANDOFF.txt": "d9f7849d17dfe865a08a3c3b2c23678b8ff20c8592b862ae1dc710e71e3cef3e",
+      "coordination/TASKVC_HANDOFF.txt": "37219af9ab5c6c306b4ac628c50e07f4ffa5d03fe8affd346c4d166b5e35a116",
+      "coordination/TASKCM_OFF_HANDOFF.txt": "17c7b0f5d35fd874cadbde5b450de994e09199f86c192b3cc37c41ff9722f854",
+      "coordination/TASKSA_HANDOFF.txt": "0119cf9bca55aebd7f1b62af33b78b71443d344af16c89f22f170270636ad257",
+      "coordination/TASKNP_HANDOFF.txt": "6a60a2897390d54f0fbb9047022dcb89fa7d26ea47e28f1f7196150260df1059"
+    },
+    "vf_acceptance_sha256": "4743025b6a72cb77a35f0a6ff2d5459df13e102132b76428bcd4e30cae3b7f94",
+    "runtime_installer_asset_schema_changes": false,
+    "offline": true,
+    "game_launches": 0,
+    "remote_added": false,
+    "pushed": false,
+    "known_limitations": [
+      "exact farm corner",
+      "92.548802 ms soak frame",
+      "native previous-session warning",
+      "rare upstream UE4SS async-load crash",
+      "Alex legacy footing unverified"
+    ]
+  },
+  "oa_parent_sha256": "0f93d4b04ef9bfd40fe81e8690a88ead2bdd0c2d97debf3230e0a7008517434d",
+  "oa_changed_source": [
+    "native_harvestR.lua",
+    "bossFA.lua",
+    "native_travelW.lua",
+    "island.lua",
+    "Scripts/main.lua",
+    "zombie77.lua",
+    "bossD.lua",
+    "controls68.lua",
+    "startup_gate.lua"
+  ],
+  "ob_parent_sha256": "fb0590eafe64a1bb36fd794e279691f017ead94469b1c30411082d97d51a56af",
+  "ob_changed_source": [
+    "alex.lua",
+    "boss_barF.lua",
+    "island.lua",
+    "outparmK.lua",
+    "ui_cache.lua",
+    "Scripts/main.lua"
+  ],
+  "oc_parent_sha256": "8891332527f7b253fb307699d9ecf7bfdd9edbddf12ffd6a4b6216fd00be455f",
+  "oc_changed_source": [
+    "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/alex.lua",
+    "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/island.lua",
+    "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/islands88.lua",
+    "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/timers.lua",
+    "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui_cache.lua",
+    "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui_entry.lua",
+    "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui_kit.lua",
+    "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/Scripts/main.lua"
+  ],
+  "oc_acceptance": {
+    "performance": {
+      "status": "PARTIAL/FAIL",
+      "cold": [
+        {
+          "evidence": "all-entry-20261016-065755-932512-20261016-065817-749495.json",
+          "seconds": 15.928516149520874,
+          "origin": "real LMB release, after focus/cursor preparation",
+          "coverEnd": "[2026-10-16 06:58:12.3960287] [Lua] [PalCraft] MC51_LOADING_COVER_END seconds=6.012",
+          "worldReady": true
+        },
+        {
+          "evidence": "all-entry-20261016-071813-324059-20261016-071835-405632.json",
+          "seconds": 15.656791687011719,
+          "origin": "real LMB release, after focus/cursor preparation",
+          "coverEnd": "[2026-10-16 07:18:29.5195506] [Lua] [PalCraft] MC51_LOADING_COVER_END seconds=5.943",
+          "worldReady": true
+        }
+      ],
+      "coldPass": false,
+      "postCover": [
+        {
+          "source": "final-one-entry-frames.json",
+          "complete": true,
+          "windows": {
+            "10": {
+              "frames": 298,
+              "max": 88.620901107788,
+              "p99": 46.988300979137,
+              "over60": 1,
+              "over100": 0,
+              "hitches": [
+                {
+                  "master": 1028,
+                  "ms": 88.620901107788,
+                  "s": 7.082
+                }
+              ]
+            },
+            "15": {
+              "frames": 446,
+              "max": 88.620901107788,
+              "p99": 43.851997703314,
+              "over60": 2,
+              "over100": 0,
+              "hitches": [
+                {
+                  "master": 1028,
+                  "ms": 88.620901107788,
+                  "s": 7.082
+                },
+                {
+                  "master": 1149,
+                  "ms": 81.799894571304,
+                  "s": 11.175
+                }
+              ]
+            },
+            "60": {
+              "frames": 1793,
+              "max": 88.620901107788,
+              "p99": 33.391200006008,
+              "over60": 2,
+              "over100": 0,
+              "hitches": [
+                {
+                  "master": 1028,
+                  "ms": 88.620901107788,
+                  "s": 7.082
+                },
+                {
+                  "master": 1149,
+                  "ms": 81.799894571304,
+                  "s": 11.175
+                }
+              ]
+            }
+          }
+        },
+        {
+          "source": "final-two-entry-frames.json",
+          "complete": true,
+          "windows": {
+            "10": {
+              "frames": 298,
+              "max": 85.328996181488,
+              "p99": 45.786801725626,
+              "over60": 1,
+              "over100": 0,
+              "hitches": [
+                {
+                  "master": 1134,
+                  "ms": 85.328996181488,
+                  "s": 7.069
+                }
+              ]
+            },
+            "15": {
+              "frames": 447,
+              "max": 85.328996181488,
+              "p99": 44.558998197317,
+              "over60": 2,
+              "over100": 0,
+              "hitches": [
+                {
+                  "master": 1134,
+                  "ms": 85.328996181488,
+                  "s": 7.069
+                },
+                {
+                  "master": 1256,
+                  "ms": 79.824805259705,
+                  "s": 11.195
+                }
+              ]
+            },
+            "60": {
+              "frames": 1793,
+              "max": 85.328996181488,
+              "p99": 33.4776006639,
+              "over60": 2,
+              "over100": 0,
+              "hitches": [
+                {
+                  "master": 1134,
+                  "ms": 85.328996181488,
+                  "s": 7.069
+                },
+                {
+                  "master": 1256,
+                  "ms": 79.824805259705,
+                  "s": 11.195
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "postCoverPass": true,
+      "islandMaxMs": {
+        "desert": 4.0000000000191,
+        "jungle": 4.0000000000191,
+        "mushroom": 3.0000000000427,
+        "plains": 1.9999999999953
+      },
+      "islandPass": true,
+      "coldTiming": "Fresh process, same Plains entry position; actual LMB release to cover end; no OS cache flush",
+      "metric": "Native world delta; not GPU/present timing",
+      "firstCaptureCaveat": "Read-only gate/budget/status probes occurred at56-58s of the first60s capture. Both observed hitches were at7.082 and11.175s. Second60s capture has no input/probe through completion.",
+      "bc": {
+        "instances": 7,
+        "bytesBefore": 8039080,
+        "bytesAfter": 2009824,
+        "savedPercent": 74.99932828134564
+      },
+      "titlePreload": "Final131 jobs; first final elapsed2186ms, work1291ms. This moves work before world-start input; it is not eliminated work.",
+      "remainingDelay": "Final first scene-ready at4.825s of cover; previousRendered remains false until5.745s; cover ended6.012s. Native rendering/restore readiness remains gated. UI prebuild max464ms still occurs behind cover.",
+      "excluded": "second-entry-summary.json is stale prior-process data, superseded by second-fresh-entry-summary.json. First two OC launches are intermediate candidates; third failed at title and is not acceptance."
+    },
+    "soak": {
+      "complete": true,
+      "interrupted": false,
+      "sampledSeconds": 600.021,
+      "frames": 17988,
+      "missedFrames": 0,
+      "maxMs": 50.203800201416,
+      "over60": 0,
+      "gcMaxMs": 4.9999999999955,
+      "minMB": 36.695828437805,
+      "maxMB": 38.578890800476,
+      "registryStart": 115,
+      "registryEnd": 115,
+      "registryGrowth": 0,
+      "minimumMobs": 8,
+      "maximumMobs": 8,
+      "underfilledFrames": 0,
+      "fixtureRespawns": 0,
+      "refsPerSecond": 0.0,
+      "heapSlopeMBPerMinute": 0.01876107462867372,
+      "completedCycleSlopeMBPerMinute": 0.025325763979020265,
+      "cycleFirst": 36.725570678711,
+      "cycleLast": 37.58244228363,
+      "p50": 33.3,
+      "p95": 33.3,
+      "p99": 33.3,
+      "outputPool": {
+        "buffers": 1,
+        "calls": 8068,
+        "errors": 0,
+        "maxDepth": 1,
+        "releasedFields": 160515,
+        "releasedRefs": 8068,
+        "retainedTailCalls": 0
+      },
+      "metric": "Native world delta; not GPU/present timing",
+      "source": "taskK-status-final.json",
+      "workloadPass": true,
+      "framePass": true,
+      "registryPass": true,
+      "heapFlatAssessment": "Absolute completed-cycle least-squares slope <=0.1 MiB/min; finite ten-minute observation, not proof of unlimited stability",
+      "heapPass": true
+    },
+    "regression": {
+      "status": "PASS",
+      "pass": true,
+      "candidateSha256": "72e28d9067c0c1fff689e167570a607213d35095d60abcb6a4d0facf8668595b",
+      "luaErrors": 0,
+      "newCrashes": [],
+      "log": "final-route-20261016-071710-034112.log",
+      "realInput": true,
+      "inventory": {
+        "pass": true,
+        "evidence": "inventory-final-20261016-071023-599244.png"
+      },
+      "technology": {
+        "pass": true,
+        "cycles": 4,
+        "evidence": "technology-cycle-4-20261016-071039-958015.png"
+      },
+      "trades": {
+        "pass": true,
+        "rows": [
+          {
+            "key": "bram_mc_stonepickaxe",
+            "at": 1792095059,
+            "cost": {
+              "Eemerald": 2,
+              "Stone": 12,
+              "Wood": 4
+            },
+            "give": {
+              "MC_StonePickaxe": 1
+            },
+            "before": {
+              "Eemerald": 100,
+              "Glider_Super": 1,
+              "MC_Bow": 1,
+              "MC_IronBoots": 1,
+              "MC_IronHoe": 1,
+              "MC_IronSword": 1,
+              "MC_Saddle": 1,
+              "SkillUnlock_Garm": 1,
+              "SkillUnlock_HawkBird": 1,
+              "Stone": 50,
+              "Sword": 1,
+              "Wood": 50
+            },
+            "after": {
+              "Eemerald": 98,
+              "Glider_Super": 1,
+              "MC_Bow": 1,
+              "MC_IronBoots": 1,
+              "MC_IronHoe": 1,
+              "MC_IronSword": 1,
+              "MC_Saddle": 1,
+              "MC_StonePickaxe": 1,
+              "SkillUnlock_Garm": 1,
+              "SkillUnlock_HawkBird": 1,
+              "Stone": 38,
+              "Sword": 1,
+              "Wood": 46
+            }
+          },
+          {
+            "key": "rina_arrows",
+            "at": 1792095079,
+            "cost": {
+              "Eemerald": 1,
+              "Stone": 4,
+              "Wood": 4
+            },
+            "give": {
+              "Arrow": 16
+            },
+            "before": {
+              "Eemerald": 98,
+              "Glider_Super": 1,
+              "MC_Bow": 1,
+              "MC_IronBoots": 1,
+              "MC_IronHoe": 1,
+              "MC_IronSword": 1,
+              "MC_Saddle": 1,
+              "MC_StonePickaxe": 1,
+              "SkillUnlock_Garm": 1,
+              "SkillUnlock_HawkBird": 1,
+              "Stone": 38,
+              "Sword": 1,
+              "Wood": 46
+            },
+            "after": {
+              "Arrow": 16,
+              "Eemerald": 97,
+              "Glider_Super": 1,
+              "MC_Bow": 1,
+              "MC_IronBoots": 1,
+              "MC_IronHoe": 1,
+              "MC_IronSword": 1,
+              "MC_Saddle": 1,
+              "MC_StonePickaxe": 1,
+              "SkillUnlock_Garm": 1,
+              "SkillUnlock_HawkBird": 1,
+              "Stone": 34,
+              "Sword": 1,
+              "Wood": 42
+            }
+          }
+        ],
+        "screens": [
+          "bram-trade-result-20261016-071101-224624.png",
+          "rina-trade-result-20261016-071120-693446.png"
+        ]
+      },
+      "statueTravel": {
+        "pass": true,
+        "method": "Real F native map, Jungle icon click, native confirmation click",
+        "before": "probe-travel_status-20261016-071131-729189.json",
+        "after": "probe-travel_status-20261016-071253-234316.json",
+        "reviewedBurst": "all-statue-travel-20261016-071142-408353-window-8-20261016-071234-210883.jpg",
+        "helperNote": "Generic capture helper waited for MC51 cover-end, which this same-world native-map transition does not emit. Its worldReady=false is not used as travel acceptance; native position, Jungle admission and actual transition frames establish arrival. No failed game travel."
+      },
+      "bow": {
+        "pass": true,
+        "arrowsBefore": 16,
+        "arrowsAfter": 15,
+        "mounted": false,
+        "video": "bow-real-20261016-071412-246775.mp4",
+        "strip": "bow-real-20261016-071412-246775-strip.jpg",
+        "assessment": "Real LMB bow draw/release and one consumed arrow; hit damage is not claimed."
+      },
+      "deathRespawn": {
+        "pass": true,
+        "cause": "Real Wither skull hits after disabling fixture protection; no synthetic SetHP death command",
+        "deathAt": "2026-10-16 07:14:39.585",
+        "video": "death-real-20261016-071436-234395.mp4",
+        "strip": "death-real-20261016-071436-234395-transition-strip.jpg",
+        "stripStartSeconds": 2.7,
+        "frames": 16,
+        "fps": 10,
+        "reviewedRespawn": "all-respawn-20261016-071511-986479-window-13-20261016-071602-809262.jpg",
+        "assessment": "Actual combat-to-death transition and real respawn click. No0/0 boss bar or native in-world HUD in reviewed frames."
+      },
+      "reload": {
+        "pass": true,
+        "cycles": 1,
+        "epochs": [
+          1,
+          3
+        ],
+        "before": "lifecycle-before-20261016-071548-556330.json",
+        "after": "lifecycle-after-1-20261016-071625-661834.json",
+        "positionAfter": {
+          "X": -340500.0,
+          "Y": 307000.0,
+          "Z": -1409.8500213623
+        },
+        "follow86": 1,
+        "loot88": 1,
+        "limitation": "One functional reload; no claim of multi-cycle leak acceptance."
+      }
+    },
+    "sourceZipSha256": "72e28d9067c0c1fff689e167570a607213d35095d60abcb6a4d0facf8668595b",
+    "ownerHold": false,
+    "priorOwnerHoldSupersededBy": "RH-OPUS-20261016",
+    "coldExceptionAccepted": true
+  },
+  "release_status": "READY",
+  "historical_validation": {
+    "rf_validation": {
+      "status": "ACCEPTED FOR v1.0 by SEQ268; original cold gate FAIL",
+      "original_icon_instances": 16,
+      "original_icon_packages": 15,
+      "islands_alex": "PASS: native appearance and head tracking",
+      "cold_first_seconds": 16.002473,
+      "cold_second_seconds": 15.702672,
+      "cold_limit_seconds": 14.5,
+      "soak_sampled_seconds": 300.008,
+      "soak_frames": 8999,
+      "soak_max_ms": 45.478601008654,
+      "soak_over60": 0,
+      "soak_metric": "Native world delta; not GPU/present timing",
+      "choices_booted": [
+        "all",
+        "hud_skins",
+        "islands_animals"
+      ],
+      "lua_errors": 0,
+      "new_crashes": 0,
+      "motion": "Steve first/third person and Alex/Bram/Rina clips + 16 consecutive frames at 10 fps",
+      "tested_zip_sha256": "7f4550fd212fe1960054209a1248207dc3fbbffea6429efe52779456d26a7b45",
+      "uncompressed_visual_difference": "accepted by owner",
+      "blank_font_fallback": "diagnostic only; unreadable; normal install requires Minecraft",
+      "cold_exception_acceptance": "SEQ268"
+    },
+    "oa_acceptance": {
+      "coldSeconds": [
+        14.498696565628052,
+        14.303584575653076
+      ],
+      "coldPass": true,
+      "soakSeconds": 600.007,
+      "fixed": [
+        "native Wither arrow immunity",
+        "Wither material lifetime",
+        "modal bow click-through"
+      ],
+      "sourceZipSha256": "b5f7a437d3266cf3c5740feb09e29e30de2aaff82b8d5326e6426c2582a3a88d",
+      "ownerHold": true
+    },
+    "ob_acceptance": {
+      "performance": "PASS",
+      "maxPostCoverMs": 78.780502080917,
+      "coldSeconds": 15.888280391693115,
+      "islandMaxMs": {
+        "desert": 20.999999999958,
+        "jungle": 24.000000000001,
+        "mushroom": 19.999999999982,
+        "plains": 19.000000000005
+      },
+      "soak": {
+        "complete": true,
+        "interrupted": false,
+        "sampledSeconds": 600.018,
+        "frames": 17998,
+        "missedFrames": 0,
+        "maxMs": 46.566497534513,
+        "over60": 0,
+        "gcMaxMs": 4.9999999999955,
+        "minMB": 38.099258422852,
+        "maxMB": 46.046424865723,
+        "registryStart": 643,
+        "registryEnd": 2625,
+        "registryGrowth": 1982,
+        "minimumMobs": 8,
+        "maximumMobs": 8,
+        "underfilledFrames": 0,
+        "fixtureRespawns": 0,
+        "refsPerSecond": 3.303234236306244,
+        "heapSlopeMBPerMinute": 0.6009049544329474,
+        "completedCycleSlopeMBPerMinute": 0.6046810757279986,
+        "cycleFirst": 38.314033508301,
+        "cycleLast": 45.143748283386,
+        "p50": 33.3,
+        "p95": 33.3,
+        "p99": 33.3,
+        "outputPool": {
+          "buffers": 1,
+          "calls": 3873,
+          "errors": 0,
+          "maxDepth": 1,
+          "releasedFields": 76539,
+          "releasedRefs": 3873,
+          "retainedTailCalls": 0
+        },
+        "metric": "Native world delta; not GPU/present timing",
+        "source": "taskK-status-final.json",
+        "workloadPass": true,
+        "framePass": true,
+        "registryPass": true,
+        "heapFlatAssessment": "Absolute completed-cycle least-squares slope <=0.1 MiB/min; finite ten-minute observation, not proof of unlimited stability",
+        "heapPass": false
+      },
+      "respawn": "PASS actual death/respawn; no zero/zero bar",
+      "crashClassification": "Probable fixture stale-object dispatch; moderate confidence, exact caller unproven",
+      "sourceZipSha256": "ce4c0cb190314fceddd4aea3919c725abdfd0019a4b87904c88229fd7c52e61b",
+      "ownerHold": true
+    },
+    "pre_rv_incomplete_reasons": [
+      "Footstep sample correlation0.845659 is below the chosen strict0.85 check",
+      "Real player footsteps/bow retain existing native audio routing; patched Minecraft samples were verified separately",
+      "Creative mode native input, flight, combat and visual acceptance pending",
+      "VB Creative UI: Opus ko/en 100%/150% visual approval and native input/delete acceptance pending",
+      "VC Creative UI polish: Opus ko/en 100%/150% visual review and native acceptance pending"
+    ],
+    "previous_release_acceptance": {
+      "id": "RH-OPUS-20261016",
+      "decision": "ACCEPTED FOR v1.0.1",
+      "delegated_release_authority": "Opus",
+      "authorization": "coordination/OPUS_TASK_RS.txt",
+      "authorization_sha256": "2551f307e61d3d7c2d1f5b4a0d97a3b74adb382b851d90c94f0b4f058d31b59c",
+      "evidence": {
+        "local/taskOA/REPORT.json": "ae918d4dd2f9cb2dd7d1ec24ae16505c358c1de226a8c9cec9d828a171ef8d44",
+        "local/taskOB/REPORT.json": "efbdf3956ebac8d85d63ebfe444accd21c34932db924c3835acc42c67731b747",
+        "local/taskOC/REPORT.json": "4801ba6c9ccc458350d751c1f1c94190dba9856a7f98deece3f293b9404db91a"
+      },
+      "tested_zip_sha256": "72e28d9067c0c1fff689e167570a607213d35095d60abcb6a4d0facf8668595b",
+      "candidate_zip_sha256": "a2492eff4c3766b1963265c98304b9fc4a01df750b440dfd1537421fc2f61059",
+      "cold_gate": {
+        "measured_result": "FAIL against original target",
+        "original_limit_seconds": 14.5,
+        "first_seconds": 15.928516149520874,
+        "second_seconds": 15.656791687011719,
+        "exception_accepted": true,
+        "method": "Fresh process, same Plains entry position; actual LMB release to cover end; no OS cache flush"
+      },
+      "readiness": true,
+      "owner_hold_superseded": true,
+      "promotion_payload_changes": false,
+      "timestamp": "2026-10-16T07:35:42.595521"
+    }
+  },
+  "taskSA": {
+    "sounds": 360,
+    "format": "UE5.1 ForceInline OGG",
+    "source": "user Minecraft 1.21.11 asset objects",
+    "fallback": "authored silence",
+    "baseline": "1.0.1",
+    "nativeAcceptance": "PARTIAL: sound payloads, load and logs pass; waveform/player-route limitations documented",
+    "soundsPatched": 360,
+    "silentFallbacks": 0,
+    "robustnessPassed": 118,
+    "eventBindingsUnchanged": 152,
+    "coldSeconds": 15.911653280258179,
+    "baselineSeconds": 16.4563946723938,
+    "regressionSeconds": -0.5447413921356201,
+    "loadPass": true,
+    "strictWaveformPasses": 9,
+    "strictWaveformCases": 10,
+    "launches": 3,
+    "luaErrors": 0,
+    "newCrashes": 0,
+    "cases": [
+      {
+        "label": "zombie",
+        "correlation": 0.9503697937957266,
+        "strictPass": true,
+        "usedTargetedUnityGainRetry": true
+      },
+      {
+        "label": "cow",
+        "correlation": 0.976996044944581,
+        "strictPass": true,
+        "usedTargetedUnityGainRetry": false
+      },
+      {
+        "label": "pig",
+        "correlation": 0.9927228603159761,
+        "strictPass": true,
+        "usedTargetedUnityGainRetry": false
+      },
+      {
+        "label": "block-break",
+        "correlation": 0.8552651521785076,
+        "strictPass": true,
+        "usedTargetedUnityGainRetry": true
+      },
+      {
+        "label": "block-place",
+        "correlation": 0.9257427957013652,
+        "strictPass": true,
+        "usedTargetedUnityGainRetry": false
+      },
+      {
+        "label": "footstep-asset",
+        "correlation": 0.8456588602675754,
+        "strictPass": false,
+        "usedTargetedUnityGainRetry": true
+      },
+      {
+        "label": "bow-asset",
+        "correlation": 0.940546806035303,
+        "strictPass": true,
+        "usedTargetedUnityGainRetry": false
+      },
+      {
+        "label": "ui-click",
+        "correlation": 0.9876800556825617,
+        "strictPass": true,
+        "usedTargetedUnityGainRetry": false
+      },
+      {
+        "label": "warden-sonic",
+        "correlation": 0.9975965093155202,
+        "strictPass": true,
+        "usedTargetedUnityGainRetry": false
+      },
+      {
+        "label": "dragon-growl",
+        "correlation": 0.9785666195903957,
+        "strictPass": true,
+        "usedTargetedUnityGainRetry": false
+      }
+    ]
+  },
+  "taskNP": {
+    "status": "candidate-partial",
+    "fix": "Resolve placement type from current hotbar alias",
+    "notVerified": [
+      "first catch",
+      "partner night combat",
+      "Plains route and trade"
+    ]
+  },
+  "taskCM": {
+    "status": "OFFLINE_PASS_LIVE_PENDING",
+    "pack": "hud_skins",
+    "default": "survival",
+    "sidecar_field": "game_mode",
+    "sidecar_version": 4,
+    "legacy_default": "survival",
+    "no_native_stat_cap_edits": true,
+    "game_launches": 0,
+    "base_candidate_sha256": "781a1dc790f3813d9cc75df1cf7e56798f160837f29f263e1f9ac4b23259bf41",
+    "offline_test": "tools/taskCM_offline.py",
+    "live_verified": false
+  },
+  "taskCV": {
+    "status": "OFFLINE_PASS_LIVE_PENDING",
+    "base_candidate_sha256": "7643f793eecfc337dc2924adeefc792fe8d5921808320dc6264b4035cbf923f0",
+    "changed": [
+      "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/armor_visuals.lua",
+      "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/creative_mode.lua",
+      "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/outparmK.lua",
+      "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/phase_a.lua",
+      "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/Scripts/main.lua",
+      "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/steve.lua",
+      "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui_entry.lua",
+      "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui_kit.lua"
+    ]
+  },
+  "taskCW": {
+    "status": "OFFLINE_PASS_LIVE_PENDING",
+    "base_candidate_sha256": "ccd2f1c460a224852ba4263648b5e1745b9f4b2d4a41bb257f7a52a607be2442",
+    "changed": [
+      "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/menu_input.lua",
+      "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/phase_c.lua",
+      "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/snd_runtime.lua",
+      "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/steve.lua",
+      "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/steve_skin.lua"
+    ]
+  },
+  "taskVB": {
+    "status": "OFFLINE_PASS_VISUAL_AND_LIVE_PENDING",
+    "base_candidate_sha256": "460042fc75801140d603e9c31fa77381e8e7ceb647e2dde4fac51d6783ff6c5b",
+    "added_pak": "pakchunk29990-palcraft-creative-ui_P.pak",
+    "added_blank_texture_identities": 5,
+    "original_63_paks_byte_identical": true,
+    "no_user_pixels_bundled": true,
+    "game_launches": 0,
+    "live_verified": false,
+    "opus_visual_approved": false,
+    "preview_gui_texel_scales": [
+      4,
+      6
+    ],
+    "preview_languages": [
+      "en",
+      "ko"
+    ]
+  },
+  "taskVC": {
+    "status": "OFFLINE_PASS_VISUAL_AND_LIVE_PENDING",
+    "base_candidate_sha256": "5c2b13be89dcb8ac225f088fa3be06f457fb01364044de09f0fbcabcfa257a68",
+    "runtime_files": [
+      "creative_catalog.lua",
+      "creative_layout.lua",
+      "creative_ui.lua",
+      "phase_b.lua",
+      "ui20.lua",
+      "ui46.lua"
+    ],
+    "no_asset_changes": true,
+    "all_64_paks_unchanged": true,
+    "game_launches": 0,
+    "live_verified": false,
+    "opus_visual_approved": false,
+    "preview_languages": [
+      "en",
+      "ko"
+    ],
+    "preview_gui_texel_scales": [
+      4,
+      6
+    ],
+    "source_sha256": {
+      "creative_layout.lua": "86ee67977a95b7fc4b14fce7517baf6352ca9c3775827742810d26703104090b",
+      "creative_catalog.lua": "0fe77ae61a69c39aba28e70fd0e82f7d06f9a52ccac7abeca72e9c6572b33594",
+      "creative_ui.lua": "d11da11f461da281a7a08e7f7db4cb525a1435f61c7a2db95304e034aa1dbab5",
+      "ui46.lua": "ff99c46e5e70fd3ac1c7d52b1f050ea8d555c143f2ad24604f3d23cbb3281e14",
+      "ui20.lua": "ff4614f28edaac2514e53aa3772f1da07c3e8a592b8e731e95e012971a028b94",
+      "phase_b.lua": "af67208d82ad7d3b4bdf8953d908066cd757e3ef35b2ebab99bd8697182fd60a"
+    }
+  },
+  "taskVA": {
+    "status": "NOT_READY_GATES_FAILED",
+    "base_candidate_sha256": "460042fc75801140d603e9c31fa77381e8e7ceb647e2dde4fac51d6783ff6c5b",
+    "vc_candidate_sha256": "2dbc6f3e4c5dfc044c5da02a77ab120e80ce8d1e02635d71a6117a2fe75ba03c",
+    "changed": [
+      "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/outparmK.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/arrowsVA.lua",
+      "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/controls68.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/costume_events108b.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/custom_palsA.lua",
+      "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/equipmentK.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/mob_motion.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/mob_navigation.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/mobs.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/model_registryJ.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/pal_combat.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/pal_projectiles91.lua",
+      "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/screens67.lua",
+      "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui_entry.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/zombie77.lua",
+      "asset-runtime/cooked-patches.json",
+      "payload/hud_skins/Pal/Content/Paks/~mods/PalCraft/pakchunk29991-palcraft-tab-aliases_P.pak",
+      "asset-runtime/cooked-patches.json",
+      "payload/core/Pal/Content/Paks/~mods/PalCraft/pakchunk29992-palcraft-shared-item-icons_P.pak"
+    ],
+    "launchesUsed": 6,
+    "remainingGates": [
+      "HUD-only icon correction cold boot",
+      "obstacle navigation and final melee-stop confirmation",
+      "captured skeleton/native enemy adapter confirmation",
+      "skeleton held-item final side reference",
+      "300-second night8 <=60ms"
+    ],
+    "islandsSkeletonRealArrow": "NOT_IMPLEMENTED; original native attack retained when pooled arrow service is absent",
+    "afterLastLaunch": [
+      "captured skeleton native target intersection",
+      "guard Islands-only attack substitution"
+    ]
+  },
+  "taskVD": {
+    "status": "NOT_READY_GATES_FAILED",
+    "base_candidate_sha256": "406f8994a63aacb1054c0dc61cd7e25bcd55cd56eef6532c9e208da9e0821d5d",
+    "changed": [
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/arrowsVA.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/native_arrowsVD.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/native_pack.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/pal_projectiles91.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/custom_palsA.lua",
+      "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/creative_ui.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/mobs.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/mob_navigation.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/zombie77.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/islands88.lua"
+    ],
+    "sharedArrowService": true,
+    "islandsSkeletonRealArrow": "IMPLEMENTED_FINAL_BRIDGE_NOT_RETESTED_IN_ISLANDS",
+    "acceptance": {
+      "overall": "NOT_READY",
+      "VD1": {
+        "status": "FAIL",
+        "reason": "Native farm border corner remains stuck after one bounded-detour fix and confirmation. Open approach, curb grounding and multiple-Pal contacts observed; tree-vicinity clip does not prove routing around trees."
+      },
+      "VD2": {
+        "status": "PASS_TESTED_TYPES",
+        "types": [
+          "CP_Mossback CatPunch",
+          "Sheepball Roll",
+          "HawkBird AirCanon"
+        ],
+        "receipt": "combat-receipt-analysis.json",
+        "limits": "Native contact receipts and clips/16-frame 10fps strips retained. No claim for every Pal species or skill."
+      },
+      "VD3": {
+        "status": "PARTIAL_NOT_ACCEPTED",
+        "passed": "All-pack hostile arrows hit player and native Pal; owned skeleton shared arrows hit pooled hostile. Stuck arrows follow actor movement.",
+        "remaining": "Islands launch4 used old native skill. Final shared-action bridge emitted physical arrows in All5, but both native-enemy fixtures missed and BowAndArrow carrier was still logged. No final Islands bridge retest; firing-facing visual not conclusive at distant camera."
+      },
+      "VD4": {
+        "status": "PASS_IDLE_HELD_ITEMS",
+        "skeletonComparison": "skeleton-side-reference-final-build5.jpg",
+        "reference": "Retained VA independent vanilla-layer reconstruction, not actual Minecraft screenshot.",
+        "limits": "Idle profile/grip and zombie sword/husk shovel/witch potion views accepted. Firing-facing remains part of VD3."
+      },
+      "VD5": {
+        "status": "PASS_HUD_FIX_AND_OBSERVED_PACK_BOOTS",
+        "all": "native-all5-final-20261017-054035-732780.json",
+        "islands": "native-islands4-world-20261017-050930-456125.json",
+        "hud": "native-hud6-final-20261017-055052-910868.json",
+        "hudInventory": "probe-status-20261017-054904-870037.json",
+        "limits": "All three pack choices reached the disposable world with clean production logs. Final action bridge was not cold-retested in Islands-only. Launch1 private startup instrumentation errored; one later quoted fixture request failed. Whole-task zero errors is false. HUD-only saved Islands-species portraits are blank because that pack is absent."
+      },
+      "VD6": {
+        "status": "PASS_WITH_LIMITS",
+        "tested": "Korean150% and English100% real catalog, tooltip, search hint/caret, carried/native64 counts, full pause and both mode confirmations. Korean slow real-key glass search and held-Escape cancel pass. Header top margin36px at150%.",
+        "limits": "Rapid35ms English harness typing dropped letters. First catalog refresh1603ms outside idle perf window. All1 burst actual~0.55s; HUD6 burst mean0.2498s/max0.266s shows cover-to-customHUD."
+      },
+      "VD7": {
+        "status": "FAIL",
+        "night8": {
+          "status": "PASS",
+          "receipt": "night8-300s-20261017-054022-047949.json",
+          "sampledSeconds": 300.028,
+          "frames": 8999,
+          "missedFrames": 0,
+          "maxMs": 50.385002046824,
+          "over60": 0,
+          "minimumMobs": 8,
+          "maximumMobs": 8,
+          "underfilledFrames": 0,
+          "fixtureRespawns": 0,
+          "gcMaxMs": 4.0000000000191,
+          "rangeMB": 1.8615856170654,
+          "registryGrowth": 0
+        },
+        "postCover": {
+          "status": "FAIL",
+          "receipt": "postcover-final-90s-20261017-052852-758527.json",
+          "complete": true,
+          "sampledSeconds": 90.022,
+          "frames": 2697,
+          "maxMs": 100.09759664536,
+          "over100": 1
+        },
+        "coldLoad": "Clean All samples16.636s/17.005s precede preload change; final All24.203s. No second final-build All cold sample within six-launch cap. HUD-only separate pack is not interchangeable.",
+        "metric": "Native world delta, not GPU/present timing. 2560x1440, lowest graphics,30FPS; capture active. Native HP recovery once/second during soak kept attacks active. Exactly8 pooled mobs throughout; nearby native creatures may also be active."
+      }
+    },
+    "sourceVerifiedArchiveSha256": "4e9d9ac9f77542fc64f93a4e7a7291abbd939539c214b4767ad2353c81c1b870"
+  },
+  "taskVE": {
+    "status": "NOT_READY_GATES_FAILED",
+    "base_candidate_sha256": "f2794b9aecc4b5be498a4578719f11745f30d32ba90d339f6026205e31560c15",
+    "changed": [
+      "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/asset_queueG.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/zombie77.lua",
+      "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/phase_c.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/mobs.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/pal_projectiles91.lua",
+      "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/ui_cache.lua",
+      "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/Scripts/main.lua"
+    ],
+    "sharedArrowService": true,
+    "islandsSkeletonRealArrow": "PASS_TESTED_NATIVE_ENEMY_HITS",
+    "acceptance": {
+      "task": "VE",
+      "overall": "NOT_READY",
+      "live_verified": false,
+      "testedArchiveSha": "d3449654fc4b0e6f01843ae2949a133d0635ca4713b1d6001b33822556a4e2a3",
+      "VE1": {
+        "status": "FAIL",
+        "coldPairSeconds": [
+          17.694916248321533,
+          17.34978747367859
+        ],
+        "postcoverMaxMs": [
+          175.53070187569,
+          217.04660356045
+        ],
+        "evidence": "cold-load-summary-final.json"
+      },
+      "VE2": {
+        "status": "FAIL_EXACT_CORNER",
+        "implemented": "Validated wall slide, jump/step, repath, six-second progress failure gives target up for five seconds. Penetration correction failed confirmation and was reverted.",
+        "exactCorner": [
+          -340683.343,
+          303620.809,
+          -1504.25
+        ],
+        "otherSpots": [
+          "farm-border approach near(-340800,303450)",
+          "road curb near(-340050,304350)"
+        ],
+        "evidence": [
+          "clip-exact-corner-before-correction*",
+          "clip-exact-corner-correction-failed*",
+          "clip-farm-border-approach*",
+          "clip-road-curb-final*"
+        ],
+        "limit": "Other two approaches reach contact; exact trapped corner still cannot escape; no full tree routing claim."
+      },
+      "VE3": {
+        "status": "PASS_TESTED_ROUTES",
+        "evidence": "native-arrow-acceptance-final.json"
+      },
+      "VE4": {
+        "status": "PASS_TESTED_REGRESSION_WITH_LIMITS",
+        "packBoots": [
+          {
+            "pack": "all",
+            "receipt": "native-all3-final-20261017-071525-156241.json",
+            "loggedLuaErrors": 0,
+            "newCrashFolders": 0
+          },
+          {
+            "pack": "all_repeat",
+            "receipt": "native-all4-final-20261017-071931-118694.json",
+            "loggedLuaErrors": 0,
+            "newCrashFolders": 0
+          },
+          {
+            "pack": "islands_animals",
+            "receipt": "native-islands5-final-20261017-072846-182085.json",
+            "loggedLuaErrors": 0,
+            "newCrashFolders": 0
+          },
+          {
+            "pack": "hud_skins",
+            "receipt": "native-hud6-final-20261017-073953-648905.json",
+            "loggedLuaErrors": 0,
+            "newCrashFolders": 0
+          }
+        ],
+        "night8": {
+          "file": "night8-300s-20261017-071507-963789.json",
+          "maxMs": 45.451801270247,
+          "seconds": 300.028,
+          "minimumMobs": 8,
+          "maximumMobs": 8,
+          "registryGrowth": 0
+        },
+        "bow": "Real RMB/native MC_Bow fired: Arrow reserve64->63",
+        "creative": "Real Esc confirmation to Creative, Tab/catalog, real confirmation back to Survival; saved Survival",
+        "trades": "Rina Arrow16 and Bram StonePickaxe1 committed once with exact costs; trade-verification-final*.json",
+        "limits": [
+          "Alex old-base trade not verified: native ground absent at legacy anchor; no footing added (restore expansion parked).",
+          "HUD-only custom-species portraits absent without Islands assets, as in VD.",
+          "No fresh death/respawn scenario: immediate Death screen warm gate retained unchanged; VA evidence not counted as a new VE test.",
+          "Inventory/crafting/trade construction now occurs on first open; idle performance results do not prove hitch-free menu opening."
+        ]
+      }
+    },
+    "sourceVerifiedArchiveSha256": "d3449654fc4b0e6f01843ae2949a133d0635ca4713b1d6001b33822556a4e2a3"
+  },
+  "taskVF": {
+    "status": "VERIFIED_VF1_VF2_WITH_DOCUMENTED_REGRESSION_LIMITS",
+    "base_candidate_sha256": "bfecf8773c18d259cdb6e5af746a2c2a9f81f3a7ac861d9b63d395145ac0981a",
+    "changed": [
+      "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/phase_a.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/zombie77.lua",
+      "payload/islands_animals/Mods/NativeMods/UE4SS/Mods/PalCraft/mobs.lua",
+      "payload/hud_skins/Mods/NativeMods/UE4SS/Mods/PalCraft/title_overlay.lua",
+      "payload/core/Mods/NativeMods/UE4SS/Mods/PalCraft/Scripts/main.lua"
+    ],
+    "performance": "Per-slot covered hotbar warmup, in-world title-scan fence, first-input-gated sound prewarm; final title geometry registration correction rolled back",
+    "corner": "jump/strafe/repath/drop at 1/1.5/2.6/4s",
+    "acceptance": {
+      "task": "VF",
+      "overall": "PERFORMANCE_PASS_WITH_DOCUMENTED_REGRESSION_LIMITS",
+      "live_verified": true,
+      "testedArchiveSha": "39b8004dfaced3abea6a565013467ced01e3203737d5da156fdc05221fcf6a07",
+      "VF1": {
+        "status": "PASS",
+        "postCoverMaxMs": [
+          87.321802973747,
+          61.863198876381
+        ],
+        "islandAdmissionMs": [
+          3,
+          2
+        ],
+        "windowSeconds": 60,
+        "evidence": "cold-load-summary-final.json"
+      },
+      "VF2": {
+        "status": "PASS",
+        "coldPairSeconds": [
+          15.152178287506104,
+          15.348524570465088
+        ],
+        "identicalArchiveSha": "39b8004dfaced3abea6a565013467ced01e3203737d5da156fdc05221fcf6a07",
+        "evidence": "cold-load-summary-final.json"
+      },
+      "VF3": {
+        "status": "KNOWN_LIMITATION_ACCEPTED_BY_TASK",
+        "exactCorner": [
+          -340683.343,
+          303620.809,
+          -1504.25
+        ],
+        "result": "One targeted native attempt executes jump at1s, swept1.5-block strafe at1.5s, repath at2.6s, drop at4s/cooldown5s; exact penetrating corner remains stuck. Road-curb route reaches contact. No penetration teleport added.",
+        "evidence": [
+          "clip-exact-corner-recovery*",
+          "clip-road-curb-regression*",
+          "recovery-offline-*"
+        ]
+      },
+      "VF4": {
+        "status": "FUNCTIONAL_PASS_SOAK_FRAME_REFERENCE_MISS",
+        "packs": [
+          {
+            "pack": "all",
+            "receipt": "local/taskVF/native-all4-final-20261017-083924-270894.json",
+            "loggedLuaErrors": 0,
+            "newCrashFolders": 0
+          },
+          {
+            "pack": "islands_animals",
+            "receipt": "local/taskVF/native-islands5-final-20261017-084727-682381.json",
+            "loggedLuaErrors": 0,
+            "newCrashFolders": 0
+          },
+          {
+            "pack": "hud_skins",
+            "receipt": "local/taskVF/native-hud6-final-20261017-085448-354767.json",
+            "loggedLuaErrors": 0,
+            "newCrashFolders": 0
+          }
+        ],
+        "night8": {
+          "file": "local/taskVF/night8-300s-20261017-083604-661898.json",
+          "seconds": 300.02,
+          "maxMs": 92.548802495003,
+          "minimumMobs": 8,
+          "maximumMobs": 8,
+          "missedFrames": 0,
+          "registryGrowth": 0,
+          "heapRangeMB": 2.8072357177734,
+          "gcMaxMs": 4.9999999999955,
+          "over60": 1,
+          "prior60msReferencePass": false
+        },
+        "bow": "Real RMB MC_Bow reserve110->109; native Arrow class and native weapon retained",
+        "creative": "Real Esc confirm Creative; Tab inventory and real catalog click; real confirm back to Survival; saved Survival",
+        "trades": {
+          "file": "local/taskVF/trade-verification-final-20261017-082943-061439.json",
+          "rows": [
+            {
+              "key": "rina_arrows",
+              "at": 1792186150,
+              "serial": 10,
+              "delta": {
+                "Arrow": 16,
+                "Stone": -4,
+                "Eemerald": -1,
+                "Wood": -4
+              },
+              "pass": true
+            },
+            {
+              "key": "bram_mc_stonepickaxe",
+              "at": 1792186157,
+              "serial": 11,
+              "delta": {
+                "Stone": -12,
+                "Eemerald": -2,
+                "MC_StonePickaxe": 1,
+                "Wood": -4
+              },
+              "pass": true
+            },
+            {
+              "key": "alex_oakplanks",
+              "at": 1792186181,
+              "serial": 12,
+              "delta": {
+                "MC_OakPlanks": 8,
+                "Wood": -1
+              },
+              "pass": true
+            }
+          ]
+        },
+        "limits": [
+          "Night8 has one92.5488ms frame, above prior60ms reference; no owner attribution captured for that frame. Alex trade verified with disposable placement on existing owned floor. Original legacy anchor still lacks footing; no production relocation or terrain added.",
+          "HUD-only custom-species portraits unavailable without Islands assets, as before.",
+          "First-use menu construction still happens on opening; idle frame gate does not establish hitch-free menus."
+        ]
+      }
+    },
+    "sourceVerifiedArchiveSha256": "39b8004dfaced3abea6a565013467ced01e3203737d5da156fdc05221fcf6a07"
+  },
+  "known_limitations": [
+    "- A mob can remain trapped in one penetrating farm-border corner. Recovery and\n  bounded give-up run; no penetration teleport is used. Other tested curb and\n  farm-border approaches reached contact.",
+    "The 300-second soak includes one 92.55 ms frame above the earlier 60 ms\n  reference. No owner attribution was captured for that frame.",
+    "Palworld's native previous-session/mod warning can appear after a normal\n  save/title return. Its cause is unresolved. A rare upstream UE4SS async-load\n  crash remains a known limitation; the final VF pack runs recorded no new crash.",
+    "Alex's original full-pack legacy anchor still lacks verified footing. VF\n  verified her trade using a disposable placement on existing owned floor;\n  production terrain and the legacy anchor were unchanged.",
+    "Minecraft sounds are reconstructed locally for existing sound bindings. Real\n  player footsteps and bow retain their native audio routes. SA's isolated\n  footstep sample correlation was 0.845659, below its strict 0.85 check.",
+    "HUD-only custom-species portraits require assets from Islands & Animals.",
+    "New-player coverage is partial: basic crafting, harvesting, statue, two\n  deaths/respawns and save/reload were exercised; a complete shelter, first\n  capture, natural-night mob encounter and full village route were not completed.\n  First-person aim/table selection, empty-armor display, intermittent shoulder\n  artifacts and native UI remnants remain reported issues. No complete new-player\n  or zero-native-HUD-frame claim is made.",
+    "Five original source texture packages remain excluded. Deleted historical cook\n  inputs have not been recovered; source is not a complete clean-rebuild kit.\n  Candidate recovery and deterministic repacking preserve existing cooked bytes.",
+    "Initial installation and first-use setup can take several minutes. The\n  blank-font diagnostic fallback is unreadable and is not normal play."
+  ],
+  "taskRV": {
+    "status": "READY",
+    "promotion": "documentation and metadata only",
+    "candidate_sha256": "7f88c0c15da1a908a3c1f22571888c973eac47c63d52a14a335ac174b3286f83",
+    "vf_acceptance": {
+      "task": "VF",
+      "overall": "PERFORMANCE_PASS_WITH_DOCUMENTED_REGRESSION_LIMITS",
+      "live_verified": true,
+      "testedArchiveSha": "39b8004dfaced3abea6a565013467ced01e3203737d5da156fdc05221fcf6a07",
+      "VF1": {
+        "status": "PASS",
+        "postCoverMaxMs": [
+          87.321802973747,
+          61.863198876381
+        ],
+        "islandAdmissionMs": [
+          3,
+          2
+        ],
+        "windowSeconds": 60,
+        "evidence": "cold-load-summary-final.json"
+      },
+      "VF2": {
+        "status": "PASS",
+        "coldPairSeconds": [
+          15.152178287506104,
+          15.348524570465088
+        ],
+        "identicalArchiveSha": "39b8004dfaced3abea6a565013467ced01e3203737d5da156fdc05221fcf6a07",
+        "evidence": "cold-load-summary-final.json"
+      },
+      "VF3": {
+        "status": "KNOWN_LIMITATION_ACCEPTED_BY_TASK",
+        "exactCorner": [
+          -340683.343,
+          303620.809,
+          -1504.25
+        ],
+        "result": "One targeted native attempt executes jump at1s, swept1.5-block strafe at1.5s, repath at2.6s, drop at4s/cooldown5s; exact penetrating corner remains stuck. Road-curb route reaches contact. No penetration teleport added.",
+        "evidence": [
+          "clip-exact-corner-recovery*",
+          "clip-road-curb-regression*",
+          "recovery-offline-*"
+        ]
+      },
+      "VF4": {
+        "status": "FUNCTIONAL_PASS_SOAK_FRAME_REFERENCE_MISS",
+        "packs": [
+          {
+            "pack": "all",
+            "receipt": "local/taskVF/native-all4-final-20261017-083924-270894.json",
+            "loggedLuaErrors": 0,
+            "newCrashFolders": 0
+          },
+          {
+            "pack": "islands_animals",
+            "receipt": "local/taskVF/native-islands5-final-20261017-084727-682381.json",
+            "loggedLuaErrors": 0,
+            "newCrashFolders": 0
+          },
+          {
+            "pack": "hud_skins",
+            "receipt": "local/taskVF/native-hud6-final-20261017-085448-354767.json",
+            "loggedLuaErrors": 0,
+            "newCrashFolders": 0
+          }
+        ],
+        "night8": {
+          "file": "local/taskVF/night8-300s-20261017-083604-661898.json",
+          "seconds": 300.02,
+          "maxMs": 92.548802495003,
+          "minimumMobs": 8,
+          "maximumMobs": 8,
+          "missedFrames": 0,
+          "registryGrowth": 0,
+          "heapRangeMB": 2.8072357177734,
+          "gcMaxMs": 4.9999999999955,
+          "over60": 1,
+          "prior60msReferencePass": false
+        },
+        "bow": "Real RMB MC_Bow reserve110->109; native Arrow class and native weapon retained",
+        "creative": "Real Esc confirm Creative; Tab inventory and real catalog click; real confirm back to Survival; saved Survival",
+        "trades": {
+          "file": "local/taskVF/trade-verification-final-20261017-082943-061439.json",
+          "rows": [
+            {
+              "key": "rina_arrows",
+              "at": 1792186150,
+              "serial": 10,
+              "delta": {
+                "Arrow": 16,
+                "Stone": -4,
+                "Eemerald": -1,
+                "Wood": -4
+              },
+              "pass": true
+            },
+            {
+              "key": "bram_mc_stonepickaxe",
+              "at": 1792186157,
+              "serial": 11,
+              "delta": {
+                "Stone": -12,
+                "Eemerald": -2,
+                "MC_StonePickaxe": 1,
+                "Wood": -4
+              },
+              "pass": true
+            },
+            {
+              "key": "alex_oakplanks",
+              "at": 1792186181,
+              "serial": 12,
+              "delta": {
+                "MC_OakPlanks": 8,
+                "Wood": -1
+              },
+              "pass": true
+            }
+          ]
+        },
+        "limits": [
+          "Night8 has one92.5488ms frame, above prior60ms reference; no owner attribution captured for that frame. Alex trade verified with disposable placement on existing owned floor. Original legacy anchor still lacks footing; no production relocation or terrain added.",
+          "HUD-only custom-species portraits unavailable without Islands assets, as before.",
+          "First-use menu construction still happens on opening; idle frame gate does not establish hitch-free menus."
+        ]
+      }
+    }
+  }
+}

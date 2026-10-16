@@ -184,6 +184,7 @@ return function(ctx)
     end
     function D:close(deactivate,keepParent)
         if not self.open then return end;local env=ctx.environment();self.open=false
+        if UE.creativeUI then UE.creativeUI:cancel('game')end
         ctx.items.escapeUntil=os.clock()+.5
         if mode=='Death'or mode=='Respawn'then self:restoreDeath()end
         ctx.uiKit:releaseInput(widget)
@@ -225,6 +226,7 @@ return function(ctx)
         ctx.uiKit:ownInput(env,widget,{nodes.Search,nodes.Ui20Search});self:hideFooter(env,true)
         if S67:supports(kind)then widget:SetRenderTranslation({X=0,Y=0});if valid(nodes.Dim)then nodes.Dim:SetRenderTranslation({X=0,Y=0})end;S67:show(env,kind,nodes,root)
         elseif option then O:show(env,kind,nodes,root)elseif kind=='Base'then H:show(env,nodes,root)elseif kind=='Production'then F:show(env,kind,nodes,root)elseif kind=='Death'then text(nodes.Level,'Level: '..env.player.CharacterParameterComponent:GetIndividualParameter():GetLevel())end
+        if UE.creativeUI then if kind=='Game'then local _,unit=ctx.uiKit:metrics(env);UE.creativeUI:paint(nodes,env,'game',unit)else UE.creativeUI:hide(nodes)end end
         uiSerial=uiSerial+1;local ownedSerial,ownedStamp=uiSerial,stamp
         local tick=0;handle=Timers.loop(100,function()
             if ctx.config.task20b_disable_d_pollers or ownedSerial~=uiSerial or ownedStamp~=ctx.epoch()or ctx.quiesced()then return true end;if ctx.busy()then return false end
@@ -246,7 +248,7 @@ return function(ctx)
                 if mode=='Base'then H:tick(current,tick)end
                 if mode=='Production'or mode=='Palpedia'then F:tick(current,tick)end
                 if mode=='Pals'and tick%10==0 then self:party(current)end
-                if ctx.uiKit then local x,y=ctx.items:mouse(current);if option then O:hover(x,y)else ctx.uiKit:hoverButtons(nodes,kind=='Game'and'WBP_MCGameMenu'or kind=='Death'and'WBP_MCDeath'or kind=='Pals'and'WBP_MCPals'or'',x,y);self:hover46(current,x,y);ctx.uiKit:navHover(nodes,current,x/3,y/3)end end
+                if ctx.uiKit then local x,y=ctx.items:mouse(current);if UE.creativeUI and mode=='Game'then UE.creativeUI:hover(nodes,x/3,y/3)end;if UE.creativeUI and UE.creativeUI.pending then ctx.uiKit:hideTooltip(nodes)elseif option then O:hover(x,y)else ctx.uiKit:hoverButtons(nodes,kind=='Game'and'WBP_MCGameMenu'or kind=='Death'and'WBP_MCDeath'or kind=='Pals'and'WBP_MCPals'or'',x,y);self:hover46(current,x,y);ctx.uiKit:navHover(nodes,current,x/3,y/3)end end
                 self:hideFooter(current,true)
             end);if not ok then log('MC_D_ERROR poll '..tostring(err));self:close();return true end;return not self.open
         end);log('MC_D_MENU_OPEN mode='..kind)
@@ -336,8 +338,12 @@ return function(ctx)
             end)
         end
     end
+    function D:refreshCreativeMode(env)
+        if mode=='Game'and UE.creativeUI then local _,unit=ctx.uiKit:metrics(env);UE.creativeUI:paint(nodes,env,'game',unit)end
+    end
     function D:click(shift,right)
         if not self.open then return end;local env=ctx.active();local x,y=ctx.items:mouse(env);local chosen
+        if mode=='Game'and UE.creativeUI and UE.creativeUI:click(nodes,env,'game',x/3,y/3,right)then self:refreshCreativeMode(env);return end
         if ctx.config.task20_ui then ctx.uiKit:hideTooltip(nodes)end
         if ctx.uiKit then local nav=ctx.uiKit:navAt(nodes,x/3,y/3);if nav then if nav.kind~=mode then self:navigate46(nav.kind)end;return end end
         if S67:supports(mode)then S67:click(env,x/3,y/3,shift,right);return end

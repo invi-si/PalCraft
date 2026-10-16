@@ -1,9 +1,9 @@
 -- SPDX-License-Identifier: GPL-3.0-or-later
 -- Copyright Invi
 return function()
- local indices={K2_SetRelativeLocation={3},K2_SetRelativeRotation={3},K2_SetWorldLocation={3},K2_SetWorldRotation={3},K2_SetRelativeTransform={3},K2_SetWorldTransform={3},K2_SetActorLocation={3},GetActorBounds={2,3},LineTraceSingle={8},CapsuleTraceSingle={10},BoxTraceSingle={10},SphereTraceSingleForObjects={9},GetAllActorsWithTag={3},GetAllActorsOfClass={3},GetInstanceTransform={2},K2_ProjectPointToNavigation={3}}
+ local indices={K2_SetRelativeLocation={3},K2_SetRelativeRotation={3},K2_SetWorldLocation={3},K2_SetWorldRotation={3},K2_SetRelativeTransform={3},K2_SetWorldTransform={3},K2_SetActorLocation={3},GetActorBounds={2,3},LineTraceSingle={8},LineTraceSingleForObjects={8},CapsuleTraceSingle={10},BoxTraceSingle={10},SphereTraceSingleForObjects={9},GetAllActorsWithTag={3},GetAllActorsOfClass={3},GetInstanceTransform={2},K2_ProjectPointToNavigation={3}}
  indices['GetSlots']={1};indices['TryGetDynamicItemData']={1};indices['IsAnyMenuOpened']={1};indices['TryGetContainerFromInventoryType']={2};indices['GetLocalizedCharacterName']={2};indices['GetDisplayNickName']={4};indices['GetItemName']={3};indices['GetItemDescription']={3};indices['FindWazaForBP']={2};indices['GetRequiredMaterialInfos']={1};indices['GetDropItemData']={3};indices['TryGetConcreteModel']={1};indices['GetTechnologyIcon']={3};
- indices['CalcDamageCharacter']={4}
+ indices['CalcDamageCharacter']={4};indices['SphereOverlapActors']={7}
  local pools={};local depth=0;local stats={calls=0,buffers=0,maxDepth=0,releasedFields=0,errors=0,releasedRefs=0,retainedTailCalls=0}
  local function clear(t)for k in pairs(t)do t[k]=nil end end
  local function call(method,object,...)
@@ -21,6 +21,7 @@ return function()
   local registry=debug.getregistry();local before=rawlen(registry)
   local result=table.pack(pcall(object[method],object,table.unpack(args,1,args.n)))
   local after=rawlen(registry);local released=0
+
   if result[1]then
    for index=after,before+1,-1 do
     local value=rawget(registry,index);local ours=false

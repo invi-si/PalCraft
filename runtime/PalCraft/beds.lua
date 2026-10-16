@@ -48,8 +48,9 @@ return function(ctx)
  function B:place(c,env)
   local a,b=self:plan(c,env);if not a then ctx.log('MC25_BED_PLACE_REJECT '..tostring(b));return false end
   local before=N:count(env,'MC_Bed');local slot=N:find(env,'MC_Bed');if before<1 or not slot then return false end
-  assert(ctx.mutate(key(a),a,env));assert(ctx.mutate(key(b),b,env));N:dispose(env,slot,1);ctx.save()
-  assert(N:count(env,'MC_Bed')==before-1);ctx.items.dirty=true
+  local consume=not(ctx.UE.creativeMode and ctx.UE.creativeMode:enabled())
+  assert(ctx.mutate(key(a),a,env));assert(ctx.mutate(key(b),b,env));if consume then N:dispose(env,slot,1)end;ctx.save()
+  assert(N:count(env,'MC_Bed')==before-(consume and 1 or 0));ctx.items.dirty=true
   ctx.log('MC25_BED_PLACED foot='..key(a)..' head='..key(b)..' facing='..a.state.facing..' before='..before..' after='..N:count(env,'MC_Bed'));return true
  end
  function B:remove(k,env,drop)

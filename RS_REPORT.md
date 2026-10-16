@@ -1,3 +1,67 @@
+# RV offline v1.1 promotion — 17 October 2026
+
+**READY under the explicit Opus RV acceptance.** The accepted candidate is VF
+SHA256 `7f88c0c15da1a908a3c1f22571888c973eac47c63d52a14a335ac174b3286f83`,
+with `live_verified=true` under VF1/VF2. RV preserves all tested runtime,
+installer, asset and schema bytes. Only documents and readiness metadata change.
+Historical candidate holds below are superseded only within this authorization.
+
+VF measured two fresh-process All world entries at **15.152178 s** and
+**15.348525 s**, from actual world-start mouse release to cover end. Their first
+60-second post-cover native simulation maxima were **87.321803 ms** and
+**61.863199 ms**; first-visible deltas are included. Island admission measured
+3/2 ms. These are acceptance-machine observations, without OS-cache flushing,
+not GPU/present latency or a promise of hitch-free menus.
+
+The final night scene held four zombies, two skeletons and two spiders for
+**300.02 s**, with exactly eight mobs, zero missed frames and zero registry
+growth. Maximum native delta was **92.548802 ms**, with **one frame above 60 ms**;
+the earlier 60 ms soak reference was missed. Heap range was 2.807236 MiB and
+maximum GC time about 5 ms. This bounded observation does not prove unlimited
+stability. First-use menus can still pause while their UI is built.
+
+Accepted limitations remain explicit in RELEASE_v1.1.md:
+
+- A mob can remain trapped in one penetrating farm-border corner. Recovery and
+  bounded give-up run; no penetration teleport is used. Other tested curb and
+  farm-border approaches reached contact.
+- The 300-second soak includes one 92.55 ms frame above the earlier 60 ms
+  reference. No owner attribution was captured for that frame.
+- Palworld's native previous-session/mod warning can appear after a normal
+  save/title return. Its cause is unresolved. A rare upstream UE4SS async-load
+  crash remains a known limitation; the final VF pack runs recorded no new crash.
+- Alex's original full-pack legacy anchor still lacks verified footing. VF
+  verified her trade using a disposable placement on existing owned floor;
+  production terrain and the legacy anchor were unchanged.
+- Minecraft sounds are reconstructed locally for existing sound bindings. Real
+  player footsteps and bow retain their native audio routes. SA's isolated
+  footstep sample correlation was 0.845659, below its strict 0.85 check.
+- HUD-only custom-species portraits require assets from Islands & Animals.
+- New-player coverage is partial: basic crafting, harvesting, statue, two
+  deaths/respawns and save/reload were exercised; a complete shelter, first
+  capture, natural-night mob encounter and full village route were not completed.
+  First-person aim/table selection, empty-armor display, intermittent shoulder
+  artifacts and native UI remnants remain reported issues. No complete new-player
+  or zero-native-HUD-frame claim is made.
+- Five original source texture packages remain excluded. Deleted historical cook
+  inputs have not been recovered; source is not a complete clean-rebuild kit.
+  Candidate recovery and deterministic repacking preserve existing cooked bytes.
+- Initial installation and first-use setup can take several minutes. The
+  blank-font diagnostic fallback is unreadable and is not normal play.
+
+The public source retains the cleared 13,136-package content snapshot and five
+explicit source texture exclusions. Sound builder/template and Creative/runtime
+sources are updated from the tested package and authored source. No extracted
+Minecraft resources, private probes, raw recordings or owner history are added.
+
+RV is entirely offline: no game launch/install write, remote addition, push or
+publication. CODEX_RESULT.txt and OPUS_INTERRUPT.txt are never written. Final
+archive, leak-scan, source-binding and Git verification receipts are recorded in
+private RV evidence. This packaged report is frozen before ZIP/Git hashing; the
+external release report supplies the final hashes after sealing.
+
+---
+
 # RH offline v1.0.1 promotion - 16 October 2026
 
 **Current delivery status: READY for v1.0.1 under the Opus RH acceptance.** This supersedes the historical candidate/publication holds in OA, OB and OC. The original 14.5-second cold target remains failed: OC measured 15.928516 and 15.656792 seconds from actual world-start mouse release to cover end in fresh processes, without flushing the OS cache. Opus explicitly accepts those times for this release.
@@ -152,3 +216,15 @@ Public Git attributes preserve the manifest's exact bytes, including existing li
 Receipts: `../local/taskRG/acceptance.json`, `final-tested-payload-binding.json`, `package-full-leak-scan.json`, `public-full-leak-scan.json`, `public-git-verification.json`, candidate guard/matrix and policy receipts, and `REPORT.json`. The packaged/public reports and public release document are frozen acceptance snapshots; this external section adds final hashes after ZIP sealing and Git commit creation, avoiding circular self-hashes.
 
 RG never launched the game, changed its installation, added a remote, pushed, or wrote CODEX_RESULT.txt / OPUS_INTERRUPT.txt. Both prohibited coordination files retain their initial RG hashes. Existing unrelated root-worktree changes were left in place. The RF candidate and native-tested archives remain retained.
+
+## RH final delivery verification
+
+Final archive: `dist/PalCraft-v1.0.1.zip` (352,939,982 bytes), SHA256 `30dc070ba35fb8abf7c29798cc761cf2b581563173a05f9aa67bb70919f4cbad`. Checksum: `dist/PalCraft-v1.0.1.zip.sha256`. Manifest SHA256 `72b043810130211c4d2f6e143192db9bd955e0c9b0b039479f22a7f528176ca3`. ZIP CRC, all 533 inventoried hashes, archive-to-disk equality and the exact 517-file tested runtime/installer/asset/schema binding PASS. Changes after native testing are limited to documentation and metadata. All 60 paks are cleared; five changed atlas templates were independently reproduced byte-for-byte from cleared v1.0 with seven zero-payload BC3 conversions.
+
+Full package scan: 534 files; full public scan: 27018 files, 13,136 cleared source packages and 13352 license sidecars. Identity, path, email, binary-provenance and hash checks PASS. Public production/installer/patch files match the tested archive; exported Python sources compile. All offline verification in `../local/taskRH/verification.json` PASS.
+
+Public repository has exactly two commits. New commit `15320bee008fb1f17884fea456fc6b939b6f3409` is authored and committed by **Invi <invi@users.noreply.github.com>**, directly above unchanged v1.0 commit `4f0eb87ddb59f365dcad676c3b64fd969c1aed8b`. Annotated v1.0.1 tag `82a2e5353c889ad20657f03fe0969fcd3d760748` and original v1.0 tag are present. All 27018 tracked blobs match the full scanned export; working tree clean; `git fsck --full` PASS; zero remotes; nothing pushed.
+
+`PUBLISH_PalCraft.ps1` now verifies the v1.0.1 checksum, pushes main and both tags when the owner runs it, and attaches the v1.0.1 ZIP/checksum through GitHub CLI or names both files in its browser fallback. RH did not execute it. Released v1.0 ZIP/checksum/notes, prior v1.0 candidate, OC candidate/native-tested ZIPs and both prohibited coordination-file hashes are unchanged. No game launch/install write, remote, push, deletion or external network operation occurred.
+
+Receipts: `../local/taskRH/acceptance.json`, `clean-paks-receipt.json`, `final-tested-payload-binding.json`, `package-full-leak-scan.json`, `public-full-leak-scan.json`, `public-tested-source-binding.json`, `public-git-verification.json`, `verification.json` and `REPORT.json`. In-archive/public reports are frozen before archive hashing and Git creation; this external section supplies final verification without circular hashes.

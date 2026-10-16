@@ -59,7 +59,9 @@ return function(ctx)
   local tag=(arrow and'MC41Arrow:'or'MC41Mob:')..index;local a=retained;local parts={}
   if a then
    local result=a:K2_GetComponentsByClass(ctx.UE.Object('/Script/Engine.StaticMeshComponent'))
-   result:ForEach(function(_,v)local comp=v:get();for i=1,arrow and 1 or 16 do if comp:ComponentHasTag(ctx.UE.FindOrAddFName('MC41Part:'..i))then assert(not parts[i],'Duplicate pooled part tag');parts[i]=comp;break end end end)
+    local function keep(comp)for i=1,arrow and 1 or 16 do if comp:ComponentHasTag(ctx.UE.FindOrAddFName('MC41Part:'..i))then assert(not parts[i],'Duplicate pooled part tag');parts[i]=comp;break end end end
+    if type(result)=='table'then for _,v in ipairs(result)do local ok,c=pcall(function()return v:get()end);keep(ok and c or v)end
+    else result:ForEach(function(_,v)keep(v:get())end)end
    assert(#parts==(arrow and 1 or 16),'Retained mob component count')
   else
    local g=ctx.UE.Object('/Script/Engine.Default__GameplayStatics');local transform=tf(env.player:K2_GetActorLocation())
@@ -71,6 +73,7 @@ return function(ctx)
   end
   local s={index=index,actor=a,tag=tag,parts=parts};(arrow and self.arrows or self.slots)[index]=s
   self:validate(s,env);a:SetActorEnableCollision(false);a:SetActorHiddenInGame(true)
+  if not arrow then self.combat:bind(s)end
   self:event('pool_created',s,{arrow=arrow,retained=retained~=nil,actor=a:GetAddress()});return s
  end
  function M:paint(s,kind,env,first,last)
@@ -85,10 +88,10 @@ return function(ctx)
     c:K2_AttachToComponent(s.actor.RootComponent,ctx.UE.FindOrAddFName('None'),2,2,2,false)
     ownedPose(c,{location=d.location,rotation=d.rotation,scale=vec(1,1,1)})
     if d.parent then assert(c:K2_AttachToComponent(s.parts[d.parent],ctx.UE.FindOrAddFName('None'),2,2,2,false))end
-    if d.name=='bow'then
-     local left;for j,p in ipairs(models[kind])do if p.name=='left_arm'then left=s.parts[j]end end
-     assert(left);assert(c:K2_AttachToComponent(left,ctx.UE.FindOrAddFName('None'),2,2,2,false))
-     local t=display66.skeleton_bow.left;local p=t.Translation
+    if d.name=='bow'and not d.heldK then
+     local right;for j,p in ipairs(models[kind])do if p.name=='right_arm'then right=s.parts[j]end end
+     assert(right);assert(c:K2_AttachToComponent(right,ctx.UE.FindOrAddFName('None'),2,2,2,false))
+     local t=display66.skeleton_bow.right;local p=t.Translation
      _G.MC_OUT_K('K2_SetRelativeTransform',c,{Rotation=t.Rotation,Translation=vec(p.X,p.Y,p.Z-75),Scale3D=t.Scale3D},false,ignoredHitJ(),true)
     end
    end
@@ -147,7 +150,30 @@ return function(ctx)
    else
     v.X=p.X+(v.X-p.X)*t;v.Y=p.Y+(v.Y-p.Y)*t;v.Z=p.Z+(v.Z-p.Z)*t
     hx=math.abs(normal.X)>.1 or hx;hy=math.abs(normal.Y)>.1 or hy;hz=math.abs(normal.Z)>.1 or hz
-    s.routeReplan=true;s.nativeBlocked=true
+    s.nativeBlocked=true
+    s.lastWallVE={normal=copy(normal),time=hit.Time or 0,penetrating=hit.bStartPenetrating or false}
+    local nx,ny=normal.X,normal.Y;local length=math.sqrt(nx*nx+ny*ny)
+    if length>.2 then
+     nx,ny=nx/length,ny/length
+     local dx,dy=q.X-p.X,q.Y-p.Y;local inward=math.min(0,dx*nx+dy*ny)
+
+     local start=vec(p.X+nx*.75,p.Y+ny*.75,p.Z+half+.25)
+     local finish=vec(start.X+dx-inward*nx,start.Y+dy-inward*ny,start.Z+math.max(0,q.Z-p.Z))
+     local sideHit={};local blocked=_G.MC_OUT_K('CapsuleTraceSingle',ctx.UE.GetKismetSystemLibrary(),env.player,start,finish,d.radius-.5,half-.5,0,false,ignored,0,sideHit,true,color,color,0)
+     local point=vec(finish.X,finish.Y,finish.Z-half)
+     if not blocked and navigation:clear(point.X,point.Y,point.Z,d.radius,d.height)then
+      v=point
+      if q.Z>p.Z+1 then ground=false;hz=false end
+      if not s.slideLoggedVE or now-s.slideLoggedVE>1 then s.slideLoggedVE=now;self:event('wall_slide',s,{jump=q.Z>p.Z+1,validatedCapsule=true})end
+     end
+    end
+
+    if not ground and b.Z<=a.Z then
+     local floor={};local top=vec(v.X,v.Y,p.Z+14);local bottom=vec(v.X,v.Y,p.Z-14)
+     if _G.MC_OUT_K('LineTraceSingle',ctx.UE.GetKismetSystemLibrary(),env.player,top,bottom,0,false,ignored,0,floor,true,color,color,0)and floor.ImpactNormal.Z>.65 and math.abs(floor.ImpactPoint.Z-p.Z)<=12 then
+      v.Z=floor.ImpactPoint.Z+2;ground=true;hz=true;s.nativeFloor=v.Z
+     end
+    end
    end
   end
   s.ownedTerrain=s.ownedTerrain or navigation:supported(v,d.radius)
@@ -155,22 +181,38 @@ return function(ctx)
  end
  function M:plan(s,env,target,now)
   local def=defs[s.kind]
+  if s.recoveryVF and now<s.recoveryVF.untilAt then s.route=nil;s.goal=s.recoveryVF.goal;return end
+  s.recoveryVF=nil
   if self.test65 and self.test65.feature=='astar'then s.goal=copy(target);s.route=nil;return end
-  if motion.holdRoute(s)then return end
+  if not s.stuckRepath and motion.holdRoute(s)then return end
+  if s.detourUntil and now<s.detourUntil and s.route and s.route[s.routeAt]and dist(s.p,s.route[s.routeAt])>30 and not s.stuckRepath then return end
   if not s.routeReplan and s.routeTarget and dist(target,s.routeTarget)<110 and now<(s.replanAt or 0)then return end
-  local route,visited,complete=navigation:path(s,target,def)
+  local direct=not s.nativeBlocked and navigation:direct(s.p,target,def.radius,def.height)and self:los(env,vec(s.p.X,s.p.Y,s.p.Z+def.height*.5),vec(target.X,target.Y,target.Z+def.height*.5))
+  local route,visited,complete
+  if direct then route={};visited=0;complete=true else route,visited,complete=navigation:path(s,target,def)end
 
   s.climbIntent=s.kind=='spider'and target.Z>s.p.Z+2
   if s.climbIntent then route={};complete=false end
 
   if s.nativeBlocked then
-   local dx,dy=target.X-s.p.X,target.Y-s.p.Y;local n=math.max(1,math.sqrt(dx*dx+dy*dy));local side=s.detourSide or(s.index%2==0 and 1 or-1)
-   local q=self:ground(env,s.p.X-dy/n*250*side,s.p.Y+dx/n*250*side,s.p.Z)
-   if q and math.abs(q.Z-s.p.Z)<=102 and navigation:clear(q.X,q.Y,q.Z,def.radius,def.height)then route={{X=q.X,Y=q.Y,Z=q.Z}};s.detourUntil=now+1 else s.detourSide=-side end
+   local side=s.detourSide or(s.index%2==0 and 1 or-1)
+   if s.stuckRepath then side=-side;self:event('stuck_repath',s,{seconds=1.5,jump=true})end
+   local half=math.max(def.radius,def.height/2);local color={R=0,G=0,B=0,A=0};local ignored={env.player,s.actor}
+   for _,r in ipairs(self.combat.targets)do ignored[#ignored+1]=r.actor end
+   local q,newSide=navigation:detour(s.p,target,side,function(x,y)
+    local point=self:ground(env,x,y,s.p.Z)
+    if not point or math.abs(point.Z-s.p.Z)>102 or not navigation:direct(s.p,point,def.radius,def.height)then return end
+    local hit={};local a=vec(s.p.X,s.p.Y,s.p.Z+half+4);local b=vec(point.X,point.Y,point.Z+half+4)
+    local blocked=_G.MC_OUT_K('CapsuleTraceSingle',ctx.UE.GetKismetSystemLibrary(),env.player,a,b,def.radius-.5,half-.5,0,false,ignored,0,hit,true,color,color,0)
+    if not blocked then return point end
+   end)
+   if q then route={q};s.detourSide=newSide;s.detourUntil=now+2.5;self:event('native_detour',s,{waypoint=copy(q),validatedCapsule=true})
+   else s.detourSide=-side end
    s.nativeBlocked=nil
   elseif s.detourUntil and now<s.detourUntil then return end
   s.route=#route>0 and route or nil;s.routeAt=1;s.goal=#route==0 and copy(target)or nil;s.routeTarget=copy(target);s.routeReplan=false;s.replanAt=now+.7
   s.plannedNodes=visited;s.routeComplete=complete
+  s.stuckRepath=nil
  end
  function M:los(env,a,b)
   local pal=self.combat and self.combat.pal
@@ -190,11 +232,12 @@ return function(ctx)
   local player=env.player:K2_GetActorLocation();local initialYaw=math.deg(math.atan(player.Y-p.Y,player.X-p.X))
   s.bornAt=os.clock();s.attackStart=nil;s.hurtStart=nil;s.jump=nil;s.climbing=nil;s.goal=nil;s.groundZ=p.Z;s.vz=0;s.yaw=initialYaw;s.targetYaw=initialYaw;s.visualAt=os.clock();s.walk=0;s.walkWeight=0;s.draw=nil;s.deathAt=nil;s.poofPainted=nil;s.materialVariant=nil;s.white=nil;s.attackPose=nil;s.poseCache={};s.scaleCache=1;s.knockUntil=nil;s.shootAt=nil;s.drawStart=nil;s.drawRelease=nil
   s.palAggro=nil;s.targetAddress=nil;s.targetKind=nil;s.dropTo=nil;s.dropFromZ=nil;s.actor:SetActorScale3D(vec(1,1,1))
-  motion.reset(s,os.clock(),defs[kind]);s.moveIntent=false;s.nativeFloor=p.Z;s.sweeps=0;s.nativeBlocked=nil;s.detourUntil=nil;s.ownedTerrain=nil;s.lastRenderP=nil;s.lastRenderR=nil
-  _G.MC_OUT_K('K2_SetActorLocation',s.actor,s.p,true,{},false);s.actor:K2_SetActorRotation({Pitch=0,Yaw=0,Roll=0},true);s.actor:SetActorHiddenInGame(false);self:event('spawn',s,{night=self:night(env)});return s
+  motion.reset(s,os.clock(),defs[kind]);s.moveIntent=false;s.progressVE=nil;s.recoveryVF=nil;s.giveUpVE=nil;s.lastWallVE=nil;s.slideLoggedVE=nil;s.nativeFloor=p.Z;s.sweeps=0;s.nativeBlocked=nil;s.detourUntil=nil;s.ownedTerrain=nil;s.lastRenderP=nil;s.lastRenderR=nil
+  _G.MC_OUT_K('K2_SetActorLocation',s.actor,s.p,false,{},false);s.actor:K2_SetActorRotation({Pitch=0,Yaw=0,Roll=0},true);s.actor:SetActorHiddenInGame(false);self.combat:activate(s,true);self:event('spawn',s,{night=self:night(env)});return s
  end
  function M:hide(s,env,why)
   self:validate(s,env);s.actor:SetActorHiddenInGame(true);s.active=false;s.pickupZ3=nil;s.fuse=nil;s.poof=nil;s.flashUntil=nil;self:event('despawn',s,{reason=why})
+  if s.contactVA then self.combat:activate(s,false)end
  end
  function M:night(env)
   local tm=ctx.UE.Object('/Script/Pal.Default__PalUtility'):GetTimeManager(env.player);if not ctx.valid(tm)then return false end
@@ -205,6 +248,7 @@ return function(ctx)
   if target:GetAddress()==env.player:GetAddress()then self:damage(env,fraction,s.kind)else self.combat:damage(target,s,env,fraction)end
  end
  function M:damage(env,fraction,why)
+  if ctx.UE.creativeMode and ctx.UE.creativeMode:protects(env)then return end
   local c=env.player.CharacterParameterComponent;local hp,max=c:GetHP().Value,c:GetMaxHP().Value
   if hp<=0 or max<=0 then return end
   if hp/max>fraction then ctx.mechanics:damage(env,fraction,why)
@@ -214,41 +258,13 @@ return function(ctx)
   end
  end
  function M:shoot(s,env,now)
-  local arrow;for _,a in ipairs(self.arrows)do if not a.active then arrow=a;break end end;if not arrow then return end
-  local target,p=self.combat:target(s,env);if not target then return end
-  self:paint(arrow,'arrow',env);local from=motion.origin(s);local n=dist(from,p);if n<1 then return end
-  self.activation=self.activation+1;arrow.generation=self.activation;arrow.p=from;arrow.velocity=motion.ballistic(from,p,1800,600);arrow.active=true;arrow.untilAt=now+3;arrow.updated=now;arrow.kind='arrow'
-  arrow.nativeProbeM=nil;arrow.nativeImpactM=nil
-  ownedPose(arrow.actor.RootComponent,{location=from,rotation={Pitch=math.deg(math.atan(arrow.velocity.Z,math.sqrt(arrow.velocity.X^2+arrow.velocity.Y^2))),Yaw=math.deg(math.atan(arrow.velocity.Y,arrow.velocity.X)),Roll=0},scale=vec(1,1,1)});arrow.actor:SetActorHiddenInGame(false);self:event('shoot',s,{arrow=arrow.index,origin=copy(from),velocity=copy(arrow.velocity),ballistic=true,drawSeconds=1})
+  local target=self.combat:target(s,env);if not target then return end
+  local from=motion.origin(s)
+  for i,d in ipairs(s.models or{})do if d.name=='bow'then from=copy(s.parts[i]:K2_GetComponentLocation());break end end
+  self.arrowsVA:fire(env,s,target,from)
  end
- function M:projectiles(env,now)
-  local p
-  for _,a in ipairs(self.arrows)do if a.active then
-   
-   p=p or env.player:K2_GetActorLocation()
-   if a.pickupZ3 then self:pickupArrowZ3(env,a,now,p)else
-   self:validate(a,env);local dt=math.min(.15,now-a.updated);a.updated=now;local old=a.p;local q=vec(old.X+a.velocity.X*dt,old.Y+a.velocity.Y*dt,old.Z+a.velocity.Z*dt-300*dt*dt);a.velocity.Z=a.velocity.Z-600*dt
-   local vx,vy,vz=q.X-old.X,q.Y-old.Y,q.Z-old.Z;local denom=vx*vx+vy*vy+vz*vz;local t=denom>0 and math.max(0,math.min(1,((p.X-old.X)*vx+(p.Y-old.Y)*vy+(p.Z-old.Z)*vz)/denom))or 0
-   local near=dist(p,vec(old.X+t*vx,old.Y+t*vy,old.Z+t*vz))<60;local victim=near and env.player or nil
-   if self.combat.pal then local pp=self.combat.position;local pt=denom>0 and math.max(0,math.min(1,((pp.X-old.X)*vx+(pp.Y-old.Y)*vy+(pp.Z-old.Z)*vz)/denom))or 0
-    if dist(pp,vec(old.X+pt*vx,old.Y+pt*vy,old.Z+pt*vz))<80 and(not victim or pt<t)then victim=self.combat.pal;near=true end
-   end
-
-   if not a.nativeImpactM and(not a.nativeProbeM or now>=a.nativeProbeM)then
-    local horizon=.35;local hit={};local c={R=0,G=0,B=0,A=0}
-    local endp=vec(q.X+a.velocity.X*horizon,q.Y+a.velocity.Y*horizon,q.Z+a.velocity.Z*horizon-300*horizon*horizon)
-    local blocked=_G.MC_OUT_K('LineTraceSingle',ctx.UE.GetKismetSystemLibrary(),env.player,q,endp,0,false,self.combat.pal and{env.player,self.combat.pal}or{env.player},0,hit,true,c,c,0)
-    a.nativeProbeM=now+horizon
-    if blocked then a.nativeImpactM=now+math.max(0,math.min(1,hit.Time or 0))*horizon end
-   end
-   if a.nativeImpactM and now>=a.nativeImpactM or not navigation:clear(q.X,q.Y,q.Z,1,1)then self:hide(a,env,'arrow_ground')
-   elseif near then self:hide(a,env,'arrow_hit');if victim:GetAddress()==env.player:GetAddress()then self:damage(env,.05,'skeleton')else self.combat:damage(victim,a,env,.05)end;self:event('arrow_hit',a,{target=victim:GetAddress()==env.player:GetAddress()and'player'or'pal'});return
-   elseif now>a.untilAt then self:hide(a,env,'arrow_timeout')
-   else a.p=q;local root=a.actor.RootComponent;ownedPose(root,{location=q,rotation={Pitch=math.deg(math.atan(a.velocity.Z,math.sqrt(a.velocity.X^2+a.velocity.Y^2))),Yaw=math.deg(math.atan(a.velocity.Y,a.velocity.X)),Roll=0},scale=root.RelativeScale3D})end
-   end
-  end end
- end
- function M:visual(s,env,now)
+ function M:projectiles(env,now)self.arrowsVA:tick(env,now)end
+  function M:visual(s,env,now)
   if timers.test54 and timers.test54.mob==false then return end
   if not self:guard(env)or not ctx.valid(s.actor)then return end
   if s.poof then
@@ -305,7 +321,36 @@ return function(ctx)
    if s.moveIntent then local q=s.fixtureOrigin65;local direction=math.floor(now/2)%2==0 and 1 or -1;s.goal=vec(q.X+direction*350,q.Y,q.Z)else s.goal=nil end
    return
   end
+  if not night or dist(s.p,self.combat.playerPosition)>8000 then self:hide(s,env,not night and'day'or'far');return end
   local target,p,feet,targetKind=self.combat:target(s,env);if not target then return end
+  if s.giveUpVE and now<s.giveUpVE.untilAt and s.giveUpVE.target==target:GetAddress()then
+   s.chasing=false;s.aggressive=false;s.moveIntent=false;s.route=nil;s.goal=nil;return
+  end
+  if s.moveIntent and s.chasing then
+   local progress=s.progressVE
+   if not progress or (s.p.X-progress.p.X)^2+(s.p.Y-progress.p.Y)^2>24^2 then s.progressVE={p=copy(s.p),at=now,stage=0};s.recoveryVF=nil
+   elseif now-progress.at>=4 then
+    s.giveUpVE={target=target:GetAddress(),untilAt=now+5};s.progressVE=nil;s.palAggro=nil;s.chasing=false;s.aggressive=false;s.moveIntent=false;s.route=nil;s.goal=nil;s.fuse=nil;s.drawStart=nil;s.shootAt=nil
+    self:event('stuck_give_up',s,{seconds=4,retrySeconds=5,target=target:GetAddress()});s.recoveryVF=nil;return
+   elseif now-progress.at>=2.6 and progress.stage<3 then
+    progress.stage=3;s.recoveryVF=nil;s.route=nil;s.routeReplan=true;s.stuckRepath=true;s.detourUntil=nil
+    self:event('stuck_repath_vf',s,{seconds=now-progress.at})
+   elseif now-progress.at>=1.5 and progress.stage<2 then
+    progress.stage=2
+    local dx,dy=p.X-s.p.X,p.Y-s.p.Y;local n=math.sqrt(dx*dx+dy*dy)
+    if n>1 then
+     local side=s.index%2==0 and 1 or-1;local q
+     for _,sign in ipairs({side,-side})do
+      q=self:ground(env,s.p.X-dy/n*150*sign,s.p.Y+dx/n*150*sign,s.p.Z)
+      if q and math.abs(q.Z-s.p.Z)<=102 then break else q=nil end
+     end
+     if q then s.recoveryVF={goal=q,untilAt=now+1.1};s.route=nil;s.goal=q;self:event('stuck_strafe_vf',s,{blocks=1.5,waypoint=copy(q),sweptMotion=true})end
+    end
+   elseif now-progress.at>=1 and progress.stage<1 then
+    progress.stage=1;if s.grounded then s.vz=.42;s.grounded=false;s.jump=true end
+    self:event('stuck_jump_vf',s,{seconds=now-progress.at})
+   end
+  else s.progressVE=nil end
   s.lookPoint=copy(p);s.lookYaw=math.deg(math.atan(p.Y-s.p.Y,p.X-s.p.X));local d=dist(s.p,feet);local playerDistance=dist(s.p,self.combat.playerPosition)
   if not night or playerDistance>8000 then self:hide(s,env,not night and'day'or'far');return end
   local def=defs[s.kind];local eye=vec(s.p.X,s.p.Y,s.p.Z+math.min(def.height*.75,140));local sight=self:los(env,eye,p)
@@ -320,7 +365,7 @@ return function(ctx)
      if now>=s.fuse then local center={x=math.floor(s.p.X/100),y=math.floor(s.p.Y/100),z=math.floor(s.p.Z/100)};self:event('explode',s);ctx.mechanics:blast(center,env,function(e,fraction)self:damage(e,fraction,'creeper')end);if self.combat.pal and dist(s.p,self.combat.feet)<=600 then self.combat:damage(self.combat.pal,s,env,.35)end;self:hide(s,env,'explode');return end
     elseif s.fuse then s.fuse=nil;self:event('fuse_cancel',s)end
    elseif s.kind=='skeleton'then
-    if d<1600 and sight and now>=s.attackAt then s.attackAt=now+2;s.drawStart=now;s.shootAt=now+1;self:event('bow_draw',s)end
+    if d<1600 and sight and now>=s.attackAt then s.attackAt=now+3;s.drawStart=now;s.shootAt=now+1;self:event('bow_draw',s,{draw=1,recovery=2})end
    elseif d<=150 and math.abs(s.p.Z-feet.Z)<100 and sight and now>=s.attackAt then
     s.attackAt=now+1;s.attackStart=now;s.attackPose=now+.3;s.moveIntent=false;self:event('attack',s,{damage=def.damage});self:damageTarget(target,s,env,def.damage);return
    end
@@ -389,7 +434,7 @@ return function(ctx)
    ctx.phaseC:play('entity.'..best.kind..'.death',best.p,.7,env)
    self:event('kill',best,{weapon=id,sword=sword,ranged=ranged});local center={x=math.floor(best.p.X/100),y=math.floor(best.p.Y/100),z=math.floor(best.p.Z/100)}
    for id,n in pairs(defs[best.kind].loot)do local item,amount=id,n;ctx.mechanics:enqueue(function(e)ctx.mechanics:drop(e,item,amount,center)end)end
-   best.deathAt=now;best.poof=now+1.3;best.goal=nil;best.shootAt=nil;best.draw=nil
+   best.deathAt=now;best.poof=now+1.3;best.goal=nil;best.shootAt=nil;best.draw=nil;self.combat:activate(best,false)
   end
   return true
  end
@@ -470,7 +515,7 @@ return function(ctx)
  end
  function M:status(env)
   local rows={};local active=0
-  for _,s in ipairs(self.slots)do self:validate(s,env);if s.active then active=active+1 end;rows[#rows+1]={index=s.index,actor=s.actor:GetAddress(),active=s.active or false,kind=s.kind,hp=s.hp,position=s.p,hidden=s.actor.bHidden,parts=#s.parts,yaw=s.yaw,speed=s.speed,draw=s.draw,groundZ=s.groundZ,goal=s.goal,deathAt=s.deathAt,poof=s.poof,pose=s.poseCache,velocity={X=s.vx,Y=s.vy,Z=s.vz},grounded=s.grounded,simTicks=s.simTicks,droppedSeconds=s.droppedSeconds,sweeps=s.sweeps,route=s.route,routeAt=s.routeAt,blockedTicks=s.blockedTicks,walk=s.walk,walkWeight=s.walkWeight,headYaw=s.headYaw}end
+  for _,s in ipairs(self.slots)do self:validate(s,env);if s.active then active=active+1 end;rows[#rows+1]={index=s.index,actor=s.actor:GetAddress(),active=s.active or false,kind=s.kind,hp=s.hp,position=s.p,hidden=s.actor.bHidden,parts=#s.parts,yaw=s.yaw,speed=s.speed,draw=s.draw,groundZ=s.groundZ,goal=s.goal,deathAt=s.deathAt,poof=s.poof,pose=s.poseCache,velocity={X=s.vx,Y=s.vy,Z=s.vz},grounded=s.grounded,simTicks=s.simTicks,droppedSeconds=s.droppedSeconds,sweeps=s.sweeps,route=s.route,routeAt=s.routeAt,blockedTicks=s.blockedTicks,wall=s.lastWallVE,giveUp=s.giveUpVE,walk=s.walk,walkWeight=s.walkWeight,headYaw=s.headYaw}end
   return{combat=self.combat:status(),enabled=ctx.config.mobs,epoch=self.epoch,pool=#self.slots,active=active,arrows=#self.arrows,rows=rows,events=self.events,max_update_ms=self.maxMs,nativeCharacters=0,timerFinished=self.handle and self.handle.finished or false,timerCancelled=self.handle and self.handle.cancelled or false}
  end
  function M:start(env)
@@ -490,8 +535,10 @@ return function(ctx)
   self.handle=timers.loop(1,function()
    if epoch~=ctx.epoch()or ctx.quiesced()then return true end;local alive=ctx.environment();if not self:guard(alive)then return false end
    local begin=os.clock();local now=begin;self.combat:refresh(alive);self:consumeShot(alive)
-   if #self.slots<8 then self:create(alive,#self.slots+1,false)
-   elseif #self.arrows<8 then self:create(alive,#self.arrows+1,true)
+   if #self.slots<8 or #self.arrows<8 then
+    repeat
+     if #self.slots<8 then self:create(alive,#self.slots+1,false)else self:create(alive,#self.arrows+1,true)end
+    until #self.arrows>=8 or(os.clock()-begin)*1000>=6
    else
     if not self.poolReady then self.poolReady=true;ctx.log('MC41_POOL_READY mobs=8 arrows=8')end
 
@@ -540,5 +587,5 @@ return function(ctx)
   end end
  end)
  ctx.UE.mobs66=M
- M.navigation=navigation;M.defs=defs;M.motion=motion;M.combat=dofile(ctx.base..'/pal_combat.lua')(ctx,M);return M
+ M.navigation=navigation;M.defs=defs;M.motion=motion;M.combat=dofile(ctx.base..'/pal_combat.lua')(ctx,M);M.arrowsVA=dofile(ctx.base..'/arrowsVA.lua')(ctx,M);return M
 end

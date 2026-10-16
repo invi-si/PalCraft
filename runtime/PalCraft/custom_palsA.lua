@@ -31,7 +31,11 @@ return function(ctx)
   local needle=(id=='MC_Wither'or id=='MC_EnderDragon')and'BP_ActionAirCanon_C'or id=='MC_Warden'and'BP_Action_Unique_Gorilla_GroundPunch_C'or'BP_Action_Unique_PinkCat_CatPunch_C'
   local originalName=original:GetFullName()
   local modern=needle:gsub('BP_Action_Unique_','BP_UniqueAction_')
-  if not originalName:find(needle,1,true)and not originalName:find(modern,1,true)and not originalName:find('BP_DebugMissWaza_C',1,true)then return end
+   if id=='MC_Skeleton'then
+    
+    if not UE.mobs66 or not UE.mobs66.arrowsVA then return end
+    if not(originalName:find('RobinHood',1,true)and originalName:find('Snipe',1,true))then return end
+   elseif not originalName:find(needle,1,true)and not originalName:find(modern,1,true)and not originalName:find('BP_DebugMissWaza_C',1,true)then return end
   actionClass:set(replacement);record('ATTACK_SELECTED',id,{actor=actor:GetAddress()})
   if id=='CP_FungalHost'then C.fx:queue(actor,os.clock(),true)end
  end
@@ -71,7 +75,7 @@ return function(ctx)
    end
    C.startupJobsX7=nil;C.startupIndexX7=nil
    C.classes.MC_Wither=C.classes.MC_IronGolem;C.classes.MC_EnderDragon=C.classes.MC_IronGolem
-   C.classes.MC_Warden=C.classes.MC_IronGolem
+   C.classes.MC_Warden=C.classes.MC_IronGolem;C.classes.MC_Skeleton=C.classes.MC_IronGolem
    C.ready=true;C.fx:install();record('READY','all')
   end
   C.fx:tick(e,os.clock())

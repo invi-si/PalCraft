@@ -6,7 +6,7 @@ return function(ctx)
   T.key(Key.TAB,function()if self.alive then self.tab=true;self.tabAt=os.clock()end end)
   T.key(Key.ESCAPE,function()if self.alive then self.escape=true;self.escapeAt=os.clock()end end)
   T.frame('menu-input',function()self:tick()end)
-  T.onEpoch('menu-input',function()self.alive=false;ctx.items.inputAlive=false;ctx.menu.inputAlive=false;self.tab=nil;self.escape=nil;self.fallback=nil;self.serial=(self.serial or 0)+1 end)
+  T.onEpoch('menu-input',function()self.alive=false;ctx.items.inputAlive=false;ctx.menu.inputAlive=false;self.tab=nil;self.escape=nil;self.fallback=nil;self.modalDismiss=nil;self.serial=(self.serial or 0)+1 end)
   ctx.log('MC50_MENU_KEYS_READY initial_state=true callbacks=flags_only master_tick=true')
  end
  function I:tick()
@@ -16,6 +16,19 @@ return function(ctx)
   self.alive=env~=nil;ctx.items.inputAlive=self.alive;ctx.menu.inputAlive=self.alive
   if not env then self.fallback=nil;ctx.items.nativeInventoryDirty=nil;ctx.items.openRequest=nil;ctx.items.intent=nil;ctx.menu.escapeDirty=nil;ctx.menu.escapeDue=nil;ctx.menu.pendingNav46=nil;ctx.menu.intent=nil;return end
   local b,d,now=ctx.items,ctx.menu,os.clock()
+
+  if self.modalDismiss then
+   local held=env.controller:IsInputKeyDown(self.modalDismiss.key)
+   b.nativeInventoryDirty=nil;d.escapeDirty=nil;d.escapeDue=nil;self.fallback=nil
+   if not held and now>=self.modalDismiss.untilAt then self.modalDismiss=nil end
+   return
+  end
+  if(escape or tab)and ctx.UE.creativeUI and ctx.UE.creativeUI.pending then
+   self.modalDismiss={key={KeyName=ctx.UE.FindOrAddFName(escape and'Escape'or'Tab')},untilAt=now+.25}
+   ctx.UE.creativeUI:cancel();b.nativeInventoryDirty=nil;d.escapeDirty=nil;d.escapeDue=nil
+   if b.open then b:refresh(env)elseif d.open and d.refreshCreativeMode then d:refreshCreativeMode(env)end
+   return
+  end
   local native=ctx.UE.nativeInputG4
   if native then
    native:tick(env)

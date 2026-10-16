@@ -90,6 +90,7 @@ local cells, chunks, session, sequence = {}, {}, nil, 0
 local entities,entityClock={},0
 local J=UE.dofileJ(base..'/json.lua')
 local CellState=UE.dofileJ(base..'/cell_state.lua')
+UE.worldModeStateCM=UE.dofileJ(base..'/world_mode.lua');UE.worldModeCM='survival'
 local mechanics,beds,deathScreen,resources
 local resourceState
 local ResourceState=UE.dofileJ(base..'/resource_state.lua')
@@ -274,7 +275,7 @@ local function decode(text)
     end
     local nodes=ResourceState.validate(doc.resources)
     if not nodes then return nil end
-    return result,doc.sequence,storage,tonumber(doc.clock)or 0,nodes
+    return result,doc.sequence,storage,tonumber(doc.clock)or 0,nodes,UE.worldModeStateCM.read(doc)
 end
 local function read(file)
     local f=io.open(file,'rb')
@@ -284,18 +285,20 @@ local function read(file)
     return text
 end
 local function restoreData()
-    local best,seq,bestEntities,bestClock,bestResources=nil,-1,nil,0,nil
+    local best,seq,bestEntities,bestClock,bestResources,bestMode=nil,-1,nil,0,nil,'survival'
     local any=false
     for _,suffix in ipairs({'','.tmp','.bak'}) do
         local text=read(path..suffix)
         if text then any=true end
-        local data,n,e,c,r=decode(text)
-        if data and n>seq then best,seq,bestEntities,bestClock,bestResources=data,n,e,c,r end
+        local data,n,e,c,r,m=decode(text)
+        if data and n>seq then best,seq,bestEntities,bestClock,bestResources,bestMode=data,n,e,c,r,m end
     end
     assert(best or not any,'Sidecar invalid; preserve files and repair before changes')
     cells,sequence=best or {},math.max(seq,0);UE.placementCount68=count(cells)
     entities,entityClock=bestEntities or{},bestClock or 0
     resourceState=bestResources or ResourceState.empty()
+    UE.worldModeCM=bestMode
+    log('MCCM_RESTORE world='..WORLD..' mode='..UE.worldModeCM)
     if island and island.data.resourcesStatic then
         local removed=0
         for k,c in pairs(cells)do local id=c.state and c.state.resource
@@ -314,7 +317,7 @@ local function save()
         rows[#rows+1]=CellState.row(c,registry[c.type or 1].name)
     end
     sequence=sequence+1
-    local text=J.encode({version=4,world=WORLD,sequence=sequence,cells=rows,entities=entities,clock=entityClock,resources=resourceState or ResourceState.empty()})..'\n'
+    local text=J.encode({version=4,world=WORLD,sequence=sequence,cells=rows,entities=entities,clock=entityClock,resources=resourceState or ResourceState.empty(),game_mode=UE.worldModeCM})..'\n'
     local f=assert(io.open(path..'.tmp','wb'));assert(f:write(text));assert(f:flush());assert(f:close())
     assert(decode(assert(read(path..'.tmp'))),'Temporary sidecar validation failed')
     if read(path)then assert(os.remove(path))end;assert(os.rename(path..'.tmp',path))
@@ -325,7 +328,7 @@ end
 local saveCommit
 mechanicsWriter=UE.dofileJ(base..'/state_writer.lua')({json=J,state=CellState,cells=function()return cells end,
     name=function(c)return registry[c.type or 1].name end,
-    metadata=function()return{entities=J.encode(entities),clock=entityClock,resources=J.encode(resourceState or ResourceState.empty())}end,
+    metadata=function()return{entities=J.encode(entities),clock=entityClock,resources=J.encode(resourceState or ResourceState.empty()),game_mode=J.encode(UE.worldModeCM)}end,
     cancelCommit=function()saveCommit=nil end,
     commitStep=function(parts,meta)
         if saveCommit then
@@ -339,7 +342,7 @@ mechanicsWriter=UE.dofileJ(base..'/state_writer.lua')({json=J,state=CellState,ce
         end
         local nextSequence=sequence+1
         local text='{"version":4,"world":'..J.encode(WORLD)..',"sequence":'..nextSequence..
-            ',"cells":['..table.concat(parts,',')..'],"entities":'..meta.entities..',"clock":'..J.encode(meta.clock)..',"resources":'..meta.resources..'}\n'
+            ',"cells":['..table.concat(parts,',')..'],"entities":'..meta.entities..',"clock":'..J.encode(meta.clock)..',"resources":'..meta.resources..',"game_mode":'..meta.game_mode..'}\n'
         assert(#text<3000000,'Sidecar exceeds size limit')
         saveCommit={stage=1,text=text,temporary=path..'.mechanics.tmp',sequence=nextSequence};return false
     end})
@@ -640,6 +643,28 @@ local function trace(env,quiet,previewOnly)
         ignored[#ignored+1]=actor
         if not quiet then log('TRACE_IGNORE_NATIVE_DROP '..actor:GetFullName()) end
     end
+
+    local nativeHit={};local nativeFound=false
+    for _=1,16 do
+        nativeHit={}
+        nativeFound=_G.MC_OUT_K('LineTraceSingleForObjects',system,env.player,start,finish,{0,1,2},false,ignored,0,nativeHit,true,color,color,0)
+        if not nativeFound then break end
+        local component=nativeHit.Component:Get();local actor=valid(component)and component:GetOwner()
+        if not valid(actor)or not actor:GetClass():GetFullName():find('BP_MapObject_CommonDropItem3D',1,true)then break end
+        ignored[#ignored+1]=actor
+    end
+    if nativeFound then
+        local a=nativeHit.ImpactPoint;local b=found and hit.ImpactPoint
+        local nd=(a.X-start.X)^2+(a.Y-start.Y)^2+(a.Z-start.Z)^2
+        local bd=b and((b.X-start.X)^2+(b.Y-start.Y)^2+(b.Z-start.Z)^2)or math.huge
+        if nd+0.01<bd then
+            if not previewOnly and os.clock()>=(UE.nativePriorityCVAt or 0)then
+                UE.nativePriorityCVAt=os.clock()+.5
+                log(string.format('MCCV_NATIVE_TARGET native_cm=%.2f building_cm=%.2f',math.sqrt(nd),math.sqrt(bd)))
+            end
+            hit=nativeHit;found=true
+        end
+    end
     if not quiet then log('PHASE TRACE_END found='..tostring(found)) end
     if previewOnly then UE.previewTraceL={epoch=epoch,revision=UE.geometryRevisionL,untilAt=os.clock()+5,x=start.X,y=start.Y,z=start.Z,pitch=rot.Pitch,yaw=rot.Yaw,hit=found and hit or nil}end
     if not found then if not quiet then log('TRACE_MISS') end;return nil end
@@ -760,7 +785,7 @@ local function beginInventoryChange(action,c,env,before,quantity)
     assert(type(Timers.loop)=='function' and type(IsInGameThread)=='function'
         and IsInGameThread(),'Inventory settlement must run on the game thread')
     local w={action=action,cell=c,key=key(c.x,c.y,c.z),before=before,epoch=epoch,
-        delta=action=='PLACE' and -1 or (action=='DROP' and 0 or(quantity or 1)),identity=env.identity,blockType=c.type or selectedType,
+        delta=action=='PLACE' and UE.worldModeStateCM.placementDelta(UE.creativeMode and UE.creativeMode:enabled()and'creative'or'survival')or (action=='DROP' and 0 or(quantity or 1)),identity=env.identity,blockType=c.type or selectedType,
         playerAddress=env.player:GetAddress(),ticks=0}
     local f=assert(io.open(pendingPath,'wb'))
     assert(f:write(string.format('{"version":1,"world":"%s","action":"%s","cell":[%d,%d,%d],"before":%d,"sequence":%d}\n',
@@ -836,7 +861,7 @@ placeCell=function(c,env)
     if intersectsPlayer(c,env) then log('PLACE_REJECT player '..k);return end
     assert(UE.placementCount68<20000,'Prototype cell limit reached')
     
-    local network,request,slotInfo=nativeDirtRemoval(env,inventory,item)
+    if not(UE.creativeMode and UE.creativeMode:enabled())then nativeDirtRemoval(env,inventory,item)end
     local w=beginInventoryChange('PLACE',c,env,before);w.replaced=replaced
     if replaced then remove(k)end
     c.merge=nil;addVisual(c,env);cells[k]=c
@@ -846,8 +871,9 @@ placeCell=function(c,env)
     w.handle=Timers.after(1,function()
         if w.epoch~=epoch or quiesced or transitioning then return end
         local current=environment();assert(current and current.identity==w.identity,'Placement owner changed')
-        local inv,id=nativeDirtInventory(current,w.blockType);local net,req,slot=nativeDirtRemoval(current,inv,id)
-        net:RequestDispose_ToServer(req,slot);settleInventoryChange(w,current,inv,id)
+        local inv,id=nativeDirtInventory(current,w.blockType)
+        if w.delta~=0 then local net,req,slot=nativeDirtRemoval(current,inv,id);net:RequestDispose_ToServer(req,slot)end
+        settleInventoryChange(w,current,inv,id)
     end,'placement-inventory68')
     return cells[k]~=nil
 end
@@ -884,6 +910,13 @@ local function breakBlock()
     return returnCell(k,env)
 end
 returnCell=function(k,env)
+    if UE.creativeMode and UE.creativeMode:enabled()then
+        local c=cells[k];if not c then return false end
+        if beds and registry[c.type].kind=='bed'then return beds:remove(k,env,false)end
+        if remove(k)==false then return false end
+        phaseC:changed(c,env);phaseC:dropUnsupported(env);save()
+        log('MCCM_BREAK cell='..k..' drops=0');return true
+    end
     if beds and cells[k]and registry[cells[k].type].kind=='bed'then return beds:remove(k,env)end
     if mechanics and not directReturns then local result=mechanics:harvest(k,env,'mine');if result~=nil then return result end end
     local c=assert(cells[k])
@@ -1813,6 +1846,21 @@ phaseD=UE.dofileJ(base..'/phase_d.lua')({UE=UE,valid=valid,log=log,base=base,con
     epoch=function()return epoch end,quiesced=function()return quiesced or transitioning end,busy=function()return busy end,gameplayInput=gameplayInput,createUI=createUI,hideUI=UE.hideUI51,uiWidgets=uiWidgets,beginTransition=function(...)return beginTransition(...)end})
 phaseD.menuInput=UE.dofileJ(base..'/menu_input.lua')({base=base,UE=UE,log=log,uiKit=uiKit,environment=environment,items=phaseB,menu=phaseD,trade=function()return UE.waystones83 and UE.waystones83.open and UE.waystones83 or UE.alexTrade end,epoch=function()return epoch end,quiesced=function()return quiesced or transitioning end})
 phaseD.menuInput:install()
+UE.creativeMode=UE.dofileJ(base..'/creative_mode.lua')({base=base,UE=UE,valid=valid,log=log,config=config,
+    world=function()return WORLD end,epoch=function()return epoch end,environment=environment,
+    quiesced=function()return quiesced or transitioning end,ready=function()return worldReady and not restoring end,gameplayInput=gameplayInput,
+    readMode=function()return UE.worldModeCM end,writeMode=function(value)
+        assert(UE.worldModeStateCM.valid(value),'Invalid world mode');local previous=UE.worldModeCM;UE.worldModeCM=value
+        local ok,err=pcall(save);if not ok then UE.worldModeCM=previous;error(err)end
+
+    end,canSwitch=function()return not inventoryTransaction end,
+    changed=function(mode,env)
+        phaseA:cancelMining('game-mode',true)
+        if mode=='survival'then phaseB.creative=false;phaseB.recipeBook=false;if phaseB.carry and phaseB.carry.kind=='creative'then phaseB.carry=nil end end
+        phaseB.dirty=true;phaseB.layoutSignature=nil
+    end,pickBlock=function(env)phaseB:pickBlock(env)end})
+UE.creativeUI=UE.dofileJ(base..'/creative_ui.lua')({mode=UE.creativeMode,uiKit=uiKit,valid=valid,log=log,timers=Timers,
+    world=function()return WORLD end,epoch=function()return epoch end})
 uiKit.recoverInputZ1=function(reason)
     if phaseD.open then phaseD:close()end
     if phaseB and phaseB.open then phaseB:close()end
@@ -1847,7 +1895,7 @@ else resources={start=function()end,scan=1}end
 local task34=config.test_mode and (function()return nil end)()
 phaseA.menuOpen=function()return phaseD.open or phaseD.nativeVisibleG or deathScreen.open or(UE.alexTrade and UE.alexTrade.open)or(UE.waystones83 and(UE.waystones83.open or UE.waystones83.busy))end
 local uiEntry=UE.dofileJ(base..'/ui_entry.lua')({base=base,UE=UE,valid=valid,log=log,config=config,world=WORLD,phaseA=phaseA,items=phaseB,uiKit=uiKit,startup=Startup,loadWidgetClass=loadWidgetClass,preloadSteve=function(retain)steve:preload(retain)end,
-    preloadIslands=function(add,retain)if island then island:preloadAssetsOC(add,retain)end end,
+    preloadIslands=function(add,retain)if island then island:preloadAssetsOC(add,retain)end;if UE.zombie77 then UE.zombie77:preloadAssetsVF(add,retain)end end,
     preloadAlex=function(retain)if UE.alex then UE.alex:preloadStaticOC(retain)end end,
     ready=function()return worldReady and Startup.open and not transitioning and not quiesced and not disabled end,
     earlyReady=function()return Startup.uiOpen and not quiesced and not disabled end,
@@ -1865,7 +1913,8 @@ local uiEntry=UE.dofileJ(base..'/ui_entry.lua')({base=base,UE=UE,valid=valid,log
 phaseA.uiEntry=uiEntry;uiEntry:start()
 UE.entryHold51=UE.dofileJ(base..'/entry_hold.lua')({valid=valid,epoch=function()return epoch end,log=log,timers=Timers})
 UE.loadingCover51=UE.dofileJ(base..'/loading_cover.lua')({valid=valid,UE=UE,uiKit=uiKit,create=UE.createRawUI51,loadClass=loadWidgetClass,widgets=uiWidgets,dirt=function()return UE.loadingDirt51 end,log=log,resetReady=function()UE.sceneReady52=nil;UE.coverStable52=nil end})
-Timers.coveredBudget=function()return Startup.open and UE.loadingCover51.at and not UE.leaving62 and 24 or nil end
+
+Timers.coveredBudget=function()return Startup.open and UE.loadingCover51.at and not UE.leaving62 and 40 or nil end
 UE.prespawnQ2=UE.dofileJ(base..'/native_prespawnQ2.lua')({valid=valid,log=log})
 Timers.onEpoch('native-prespawn-Q2',function()UE.prespawnQ2:reset();UE.prespawnNextQ2=nil;UE.prespawnActiveQ2=nil end)
 function UE.observePrespawnQ2()
@@ -1966,8 +2015,8 @@ Timers.frame('entry-loading',function()
         Startup.probing=true;transitioning=false;init(e)
     elseif restoring then UE.loadingCover51:show(e);steve:early(e)
     elseif UE.loadingCover51.at and not(UE.waystones83 and UE.waystones83.busy)then
-            local release,reason=UE.coverRelease78.ready({alive=e.status=='alive',controlled=valid(e.controller.Pawn),hudReady=phaseA:ready78(e),seconds=os.clock()-UE.loadingCover51.at,sceneReady=UE.sceneReady52 and UE.uiCache51.ready and(not island or island:nearbyReady(e)),held=UE.entryHold51.active})
-        if release and UE.sceneReady52 and(not island or island:nearbyReady(e))and UE.restoreReady109(e.player:K2_GetActorLocation())and UE.sceneRenderedM(e)and(config.steve==false or steve.state and steve.state.epoch==epoch and steve.state.player==e.player:GetAddress()and valid(steve.mesh))then
+            local release,reason=UE.coverRelease78.ready({alive=e.status=='alive',controlled=valid(e.controller.Pawn),hudReady=phaseA:ready78(e),seconds=os.clock()-UE.loadingCover51.at,sceneReady=UE.sceneReady52 and UE.uiCache51.ready and phaseA.hotbarReadyVF==epoch and(not island or island:nearbyReady(e)),held=UE.entryHold51.active})
+        if release and UE.sceneReady52 and phaseA.hotbarReadyVF==epoch and(not island or island:nearbyReady(e))and UE.restoreReady109(e.player:K2_GetActorLocation())and UE.sceneRenderedM(e)and(config.steve==false or steve.state and steve.state.epoch==epoch and steve.state.player==e.player:GetAddress()and valid(steve.mesh))then
             if reason=='alive-hud-timeout15s'and not UE.loadingCover51.safety78 then
                 UE.loadingCover51.safety78=true;UE.entryHold51:release(e,reason);log('MC78_COVER_SAFETY_RELEASE alive=true controlled=true hud=true')
             end
@@ -2035,7 +2084,7 @@ uiEntry.input=task44.input
 task44.task49=config.test_mode and (function()return nil end)()
 task44.task50=config.test_mode and (function()return nil end)()
 local task37=config.test_mode and (function()return nil end)()
-local titleOverlay=UE.dofileJ(base..'/title_overlay.lua')({base=base,valid=valid,log=log,UE=UE,widgets=uiWidgets,uiKit=uiKit,environment=environment,world=WORLD})
+local titleOverlay=UE.dofileJ(base..'/title_overlay.lua')({base=base,valid=valid,log=log,UE=UE,widgets=uiWidgets,uiKit=uiKit,environment=environment,world=WORLD,inWorld=function()return worldReady and not UE.leaving62 end})
 startupJobs[#startupJobs+1]=function()titleOverlay:install()end
 local task17=config.test_mode and (function()return nil end)()
 UE.worldIdentityQ3=UE.dofileJ(base..'/world_identityQ3.lua')({UE=UE,valid=valid,log=log,validId=function(id)return UE.worldScope65:valid(id)end})
@@ -2052,7 +2101,7 @@ function UE.selectWorld65(instance)
         assert(not session,'World switch before lifecycle quiescence')
         mechanicsWriter:cancel();WORLD=selected
         path=UE.worldScope65:path('blocks');pendingPath=UE.worldScope65:path('inventory-pending')
-        cells={};entities={};entityClock=0;resourceState=ResourceState.empty();sequence=0
+        cells={};entities={};entityClock=0;resourceState=ResourceState.empty();sequence=0;UE.worldModeCM='survival'
         inventoryTransaction=nil;inventoryTransactionsReady=true;dirtGranted=false;testGranted=false;selectedType=1
         phaseB:setWorld(selected);beds:setWorld(selected)
         resources.job=nil;resources.last=nil;resources.scan=1
@@ -2116,6 +2165,7 @@ for _,name in ipairs({'OnUpdateInventoryContainer','OnUpdateEssentialContainer'}
 end
 
 beginTransition=function(reason,cleanup,env)
+    if reason=='own-save-quit'and not transitioning and UE.creativeMode then UE.creativeMode:release(env,'save-quit')end
 
     if reason=='own-save-quit'and not transitioning and UE.map111 then UE.map111:beforeExit(env)end
     UE.leaving62=reason=='own-save-quit'
@@ -2295,6 +2345,7 @@ function UE.restartWorld65b()
         if Startup.open and deathScreen.open then deathScreen:close(ready)end
 
         if aliveAddress~=ready.playerAddress then aliveAddress=ready.playerAddress;aliveSince=os.clock();log('MCH_PAWN_READY_BEGIN address='..tostring(aliveAddress))end
+        
         if os.clock()-aliveSince<.25 then restoreHandle=Timers.after(125,boot,'startup-probe');return end
         log(string.format('MCH_PAWN_READY_STABLE seconds=%.3f',os.clock()-aliveSince))
             local env=environment(true)
@@ -2344,6 +2395,7 @@ Timers.frame('startup-probe',function()
 end)
 local function quiesce()
     assert(IsInGameThread(),'Quiesce must run on the game thread')
+    if UE.creativeMode then UE.creativeMode:release(environment(),'quiesce')end
     quiesced=true;epoch=epoch+1
     phaseA:cancel()
     if phaseC then phaseC:cancel(true)end

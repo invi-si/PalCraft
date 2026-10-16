@@ -54,9 +54,10 @@ return function(ctx,U)
  end
  local palette={white={R=1,G=1,B=1,A=1},gray={R=.667,G=.667,B=.667,A=1},darkgray={R=.333,G=.333,B=.333,A=1},blue={R=.333,G=.333,B=1,A=1},aqua={R=.333,G=1,B=1,A=1},yellow={R=1,G=1,B=.333,A=1},red={R=1,G=.333,B=.333,A=1},green={R=0,G=.667,B=0,A=1},purple={R=1,G=.333,B=1,A=1},gold={R=1,G=.667,B=0,A=1}}
  function U:richTooltip(ns,data,x,y,unit)
-  local signature={tostring(x),tostring(y),tostring(unit),data and data.title or'',data and data.source or'',data and data.color or''}
+  local signature={tostring(x),tostring(y),tostring(unit),tostring(ns.creativeCatalog),data and data.title or'',data and data.source or'',data and data.color or''}
   for _,r in ipairs(data and data.lines or{})do signature[#signature+1]=type(r)=='string'and r or tostring(r.text)..':'..tostring(r.color)end
   local ex=data and data.exclude;if ex then signature[#signature+1]=table.concat({ex.x,ex.y,ex.w,ex.h},':')end
+  local search=ns.creativeSearchBounds;if search then signature[#signature+1]=table.concat({search.x,search.y,search.w,search.h},':')end
   local key=table.concat(signature,'|');if ns.tip46Key==key then return end
   self:hideTooltip(ns)
   ns.tip46Key=key
@@ -69,17 +70,19 @@ return function(ctx,U)
    if r.text==''then lines[#lines+1]={text='',color='gray'}else for _,s in ipairs(self:wrap46(r.text,170,5))do if #lines<16 then lines[#lines+1]={text=s,color=r.color or'gray'}end end end
   end
   if data.source then lines[#lines+1]={text=data.source,color='blue',italic=true}end
-  local w=32;for _,r in ipairs(lines)do local n=0;for _,cp in utf8.codes(r.text)do n=n+self:glyphAdvance53(cp)end;w=math.max(w,n)end;w=math.min(178,w+8)
-  local h=#lines*10+8+2;local _,_,dpi,size=self:metrics(self.env);local right,bottom=size.X/(unit*dpi)/2,size.Y/(unit*dpi)/2;local offset=not ns.ui67 and(ns.navKind=='PC'or ns.navKind=='Palpedia')and 14 or 0
+  local w=32;for _,r in ipairs(lines)do w=math.max(w,self:textWidth53(r.text)*(r.italic and .75 or 1))end;w=math.min(178,w+8)
+  local h=#lines*10+8+2-(data.source and 2 or 0);local _,_,dpi,size=self:metrics(self.env);local right,bottom=size.X/(unit*dpi)/2,size.Y/(unit*dpi)/2;local offset=not ns.ui67 and(ns.navKind=='PC'or ns.navKind=='Palpedia')and 14 or 0
   local shift=ns.navKind=='Inventory'and(ctx.UE.drawer67Shift or 0)or 0
-  local ex=data.exclude;local exclusions={};if ex then exclusions[1]=ex end
+  
+  local ex=not ns.creativeCatalog and data.exclude or nil;local exclusions={};if ex then exclusions[1]=ex end
+  if search then exclusions[#exclusions+1]=search end
   local portrait=({Pals={x=-36,y=-58,w=60,h=60},PC={x=67,y=-77,w=60,h=60},Palpedia={x=-4,y=-80,w=64,h=64}})[ns.navKind]
   if portrait then exclusions[#exclusions+1]=portrait end
   local bounds=dofile(ctx.base..'/tooltip_placement.lua')(x,y,w,h,{left=-right-shift+2,right=right-shift-2,top=-bottom-offset+2,bottom=bottom-offset-2},exclusions)
   if not bounds then return end;local xx,yy=bounds.x,bounds.y
   local bg=self:makeNode(ns,'Tip46BG','Image');local frame=self:makeNode(ns,'Tip46Frame','Image')
-  self:brush(bg,'T_MC_UI_tooltip_background');self:brush(frame,'T_MC_UI_tooltip_frame');self:position(bg,xx,yy,w,h,unit);self:position(frame,xx,yy,w,h,unit);bg.Slot:SetZOrder(100);frame.Slot:SetZOrder(101);bg:SetVisibility(3);frame:SetVisibility(3);bg:SetRenderOpacity(1);frame:SetRenderOpacity(1)
-  for i,r in ipairs(lines)do local n=self:makeNode(ns,'Tip46Line'..i,'TextBlock');self:setMeta(n,{dark=false});self:textStyle(n,unit,false,palette[r.color]or palette.white);self:putText(n,r.text);self:position(n,xx+4,yy+4+(i-1)*10+(i>1 and 2 or 0),w-8,10,unit);n.Slot:SetZOrder(102);n:SetRenderShear({X=r.italic and-.15 or 0,Y=0});n:SetVisibility(3);n:SetRenderOpacity(1)end
+  self:brush(bg,'T_MC_UI_tooltip_background');self:brush(frame,'T_MC_UI_tooltip_frame');self:position(bg,xx,yy,w,h,unit);self:position(frame,xx,yy,w,h,unit);bg.Slot:SetZOrder(1000);frame.Slot:SetZOrder(1001);bg:SetVisibility(3);frame:SetVisibility(3);bg:SetRenderOpacity(1);frame:SetRenderOpacity(1)
+  for i,r in ipairs(lines)do local n=self:makeNode(ns,'Tip46Line'..i,'TextBlock');self:setMeta(n,{dark=false});self:textStyle(n,unit,false,palette[r.color]or palette.white);local f=n.Font;local points=r.italic and 4.5 or 6;f.Size=self:fontSize(points,unit);n:SetFont(f);self:putText(n,r.text);self:position(n,xx+4,yy+4+(i-1)*10+(i>1 and 2 or 0),w-8,r.italic and 8 or 10,unit);n:SetClipping(1);n.Slot:SetZOrder(1002);n:SetRenderShear({X=r.italic and-.15 or 0,Y=0});n:SetVisibility(3);n:SetRenderOpacity(1)end
   ns.tip46Bounds={x=xx,y=yy,w=w,h=h,exclude=ex and{x=ex.x,y=ex.y,w=ex.w,h=ex.h},title=data.title}
  end
  local hide=U.hideTooltip

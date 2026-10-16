@@ -44,7 +44,14 @@ return function(ctx,h)
         if env.player.CharacterParameterComponent:GetIndividualParameter():IsDead()then self:clear(true);return end
         local native=ctx.items.native;local c=native:container(env,4);local ids={}
         for i=0,c:Num()-1 do local id=native:id(c:Get(i));if meshes[id]then ids[#ids+1]=id end end
-        table.sort(ids);local cosmetic=ctx.steve and ctx.steve.mesh
+        table.sort(ids)
+        local equipToken=env.player:GetAddress()..':'..table.concat(ids,',')
+        if self.equipmentCV~=equipToken then
+            self.equipmentCV=equipToken;self.equipmentAtCV=os.clock();self:clear(true)
+            log('MCCV_ARMOR_PENDING ids='..table.concat(ids,','));return
+        end
+        if os.clock()-(self.equipmentAtCV or 0)<.25 then return end
+        local cosmetic=ctx.steve and ctx.steve.mesh
         local fp=ctx.steve and ctx.steve.firstPerson or false
         for _,v in pairs(self.segments)do if valid(v.component)then v.component:SetOwnerNoSee(fp and not(v.bone:find('arm')or v.bone:find('hand'))or false)end end
         local token=table.concat(ids,',')..'@'..(valid(cosmetic)and cosmetic:GetAddress()or 0);if token==self.token then return end
@@ -60,11 +67,11 @@ return function(ctx,h)
                 local asset=h.asset(path..'.SK_MC36'..piece);assert(valid(asset)and not valid(asset.PhysicsAsset),'Steve armor physics forbidden')
                 local identity={Rotation={X=0,Y=0,Z=0,W=1},Translation={X=0,Y=0,Z=0},Scale3D={X=1,Y=1,Z=1}}
                 local comp=env.player:AddComponentByClass(UE.Object('/Script/Engine.SkeletalMeshComponent'),true,identity,false);assert(valid(comp))
-                comp:SetCollisionEnabled(0);assert(comp:K2_AttachToComponent(cosmetic,UE.FindOrAddFName('None'),2,2,2,false));comp:SetSkeletalMeshAsset(asset);comp:SetLeaderPoseComponent(cosmetic,true,false);comp:AddTickPrerequisiteComponent(cosmetic);comp:SetComponentTickEnabled(true)
+                comp:SetVisibility(false,false);comp:SetCollisionEnabled(0);assert(comp:K2_AttachToComponent(cosmetic,UE.FindOrAddFName('None'),2,2,2,false));comp:SetSkeletalMeshAsset(asset);comp:SetLeaderPoseComponent(cosmetic,true,false);comp:AddTickPrerequisiteComponent(cosmetic);comp:SetComponentTickEnabled(true)
                 local layer=piece=='Leggings'and 2 or 1;local material='/Game/MinecraftSteve/Task36/M_MC36_'..tier:lower()..'_'..layer
                 local mat=h.asset(material..'.M_MC36_'..tier:lower()..'_'..layer);assert(valid(mat),'Steve armor material unavailable')
                 for i=0,comp:GetNumMaterials()-1 do comp:SetMaterial(i,mat)end
-                comp:SetOwnerNoSee(fp);comp:SetOnlyOwnerSee(cosmetic.bOnlyOwnerSee);n=n+1;self.segments[n]={component=comp,item=id,bone='all',steve=true}
+                comp:SetOwnerNoSee(fp);comp:SetOnlyOwnerSee(cosmetic.bOnlyOwnerSee);comp:SetVisibility(true,false);n=n+1;self.segments[n]={component=comp,item=id,bone='all',steve=true}
             end
             log('MC36_STEVE_ARMOR_READY pieces='..n..' native_ids='..token..' leader_pose=true defense_unchanged=true');return
         end
@@ -95,6 +102,6 @@ return function(ctx,h)
         log('MC_H_ARMOR_READY native_ids='..token..' segments='..n..' cosmetic_steve='..tostring(valid(cosmetic))..' defense_unchanged=true')
     end
     function A:cancel(touch)self:clear(touch);self.bonesLogged=nil end
-    dofile(ctx.base..'/timers.lua').onEpoch('armor-visuals',function()A:clear(false);A.bonesLogged=nil;mathlib=nil end)
+    dofile(ctx.base..'/timers.lua').onEpoch('armor-visuals',function()A:clear(false);A.bonesLogged=nil;A.equipmentCV=nil;A.equipmentAtCV=nil;mathlib=nil end)
     return A
 end

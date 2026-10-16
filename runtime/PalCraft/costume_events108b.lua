@@ -53,7 +53,9 @@ return function(ctx,Z)
  function E:bind(s)
   s.attackObject108b=nil;s.windup108b=nil
   E.golem:clear(s)
-  local path=(s.kind=='irongolem'or s.kind=='warden'or s.definition.bossD)and golemAction or actions[s.definition.host];if path then self:hookAction(path,(s.kind=='irongolem'or s.kind=='warden'or s.definition.bossD)and'golem'or'attack')end
+  local archer=s.kind=='skeleton'and UE.mobs66 and UE.mobs66.arrowsVA
+  local special=s.kind=='irongolem'or s.kind=='warden'or archer or s.definition.bossD
+  local path=special and golemAction or actions[s.definition.host];if path then self:hookAction(path,special and'golem'or'attack')end
   if s.kind=='irongolem'then
    self:hookAction(encounter,'encounter')
 
@@ -117,7 +119,7 @@ return function(ctx,Z)
        event('GOLEM_QUICK_READY',s)
       end
      elseif row.kind=='golem'then
-      if s.definition.bossD then Z.bossD:engage(s,a:GetActionTarget(),now)elseif s.kind=='warden'then Z.wardenC:engage(s,a:GetActionTarget(),now)else self.golem:engage(s,a:GetActionTarget(),now)end
+       if s.kind=='skeleton'then Z.projectiles:engage(s,a:GetActionTarget(),now)elseif s.definition.bossD then Z.bossD:engage(s,a:GetActionTarget(),now)elseif s.kind=='warden'then Z.wardenC:engage(s,a:GetActionTarget(),now)else self.golem:engage(s,a:GetActionTarget(),now)end
       event('GOLEM_TIMER_TARGET',s,{nativeAt=row.at})
      elseif s.kind~='irongolem'then
       s.attackObject108b=a:GetAddress();s.windup108b={nativeAt=row.at,observedAt=now,object=s.attackObject108b}

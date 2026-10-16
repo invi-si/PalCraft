@@ -82,6 +82,7 @@ return function(ctx)
  T.frame('bow-input-Z1',function()
   local e=ctx.environment();if not e then C.bowHeldZ1=nil;return end
   local shooter=e.player.ShooterComponent
+
   local uiBlocked=not ctx.gameplayInput(e);local address=shooter:GetAddress()
   if C.uiShooterOA~=address or C.uiBlockedOA~=uiBlocked then
    shooter:SetDisableShootFlag(ctx.UE.FindOrAddFName('MinecraftModalOA'),uiBlocked)
@@ -91,6 +92,23 @@ return function(ctx)
   local selected=ctx.items:hotbar(e,ctx.phaseA.selected).id
   local weapon=shooter:GetHasWeapon()
   local available=selected=='MC_Bow'and ctx.valid(weapon)and weapon:GetItemId().StaticId:ToString()=='MC_Bow'and not e.controller:IsRiding()and not uiBlocked
+
+  local now=os.clock()
+  if available and now>=(C.ammoCheckVA or 0)then
+   C.ammoCheckVA=now+.25
+   local n=ctx.items.native;local slot=n:find(e,'MC_Arrow')
+   if slot then
+    local count=slot:GetStackCount();local before=n:count(e,'Arrow')
+    n:dispose(e,slot,count)
+    local ok,err=pcall(n.add,n,e,'Arrow',count)
+    if not ok then
+     local added=n:count(e,'Arrow')-before
+     if added==0 then n:add(e,'MC_Arrow',count)end
+     C.ammoCheckVA=now+30;ctx.log('MCVA_AMMO_CONVERSION_REJECT '..tostring(err))
+    else ctx.log('MCVA_AMMO_CONVERT MC_Arrow='..count..' Arrow_before='..before..' Arrow_after='..n:count(e,'Arrow'))end
+   end
+   if weapon:GetRemainBulletCount()==0 and weapon:GetInventoryBulletCount()>0 and not shooter:IsReloading()and shooter:CanReload()then shooter:ReloadWeapon()end
+  end
   C.bowKeysZ1=C.bowKeysZ1 or{{KeyName=ctx.UE.FindOrAddFName('LeftMouseButton')},{KeyName=ctx.UE.FindOrAddFName('RightMouseButton')}}
   local down=available and(e.controller:IsInputKeyDown(C.bowKeysZ1[1])or e.controller:IsInputKeyDown(C.bowKeysZ1[2]))
   if down and not C.bowHeldZ1 and shooter:CanShoot()then

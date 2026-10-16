@@ -11,7 +11,9 @@ for kind,parts in pairs(models)do
  
  for _,p in ipairs(old[kind]or{})do if p.name=='bow'then
   local copy={};for k,v in pairs(p)do copy[k]=v end
-  for i,arm in ipairs(parts)do if arm.name=='left_arm'then copy.parent=i end end
+
+  copy.mesh='/Game/MinecraftBlocks/SM_MC_HeldBow.SM_MC_HeldBow';copy.heldK='MC_Bow'
+  for i,arm in ipairs(parts)do if arm.name=='right_arm'then copy.parent=i end end
   assert(copy.parent);copy.equipmentJ=true;parts[#parts+1]=copy
  end end
 end

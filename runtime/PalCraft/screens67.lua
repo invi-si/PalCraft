@@ -291,7 +291,21 @@ return function(ctx,D,E,F,h)
     if not target:IsLocked()then self.swapChoice=nil;st.selected[job.key]=nil;self:move(e,job.source,target)end
    elseif p then st.pal=p.key;if st.multi or shift then st.multi=true;st.selected[p.key]=not st.selected[p.key]else self.drag={pal=p,x=x,y=y,index=i}end end
   elseif a:match('^box:')then local p=hit.pal;st.pal=p.key;if st.multi or shift then st.multi=true;st.selected[p.key]=not st.selected[p.key]end
-  elseif a=='summon'then local p=self:selectedPal();if p and p.party then local holder=env.controller.BP_OtomoPalHolderComponent;for _=1,5 do if holder:GetSelectedOtomoID()==p.index then break end;env.controller:OnOtomoChangeIncrement()end;D:close();env.controller:OnOtomo_Pressed();env.controller:OnOtomo_ShortReleased();return end
+  elseif a=='summon'then local p=self:selectedPal();if p and p.party then
+    
+   local controller=e.controller;local holder=controller.BP_OtomoPalHolderComponent
+   for _=1,5 do if holder:GetSelectedOtomoID()==p.index then break end;controller:OnOtomoChangeIncrement()end
+    local timers=dofile(ctx.base..'/timers.lua');local epoch=ctx.epoch();local wanted=p.index
+    D:close()
+
+    timers.after(450,function()
+     if ctx.epoch()~=epoch or D.open or ctx.items.open then return end
+     local current=ctx.environment();if not current or current.status~='alive'then return end
+     local pc=current.controller;if pc.BP_OtomoPalHolderComponent:GetSelectedOtomoID()~=wanted then return end
+      local h=pc.BP_OtomoPalHolderComponent
+      if not h:IsDeadSelectedOtomo()then h:ActivateCurrentOtomoNearThePlayer()end
+    end,'pals-screen-summon-press');return
+  end
   elseif a=='compare'then st.compare=not st.compare
   elseif a=='category'then self:cycle(st,'category',{'Buildings','Items','Ancient'})
   elseif a=='available'then st.available=not st.available;st.page=0

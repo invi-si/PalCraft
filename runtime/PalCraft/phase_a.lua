@@ -156,12 +156,12 @@ return function(ctx)
         end
         weaponTextures[item]=false
     end
-    function P:updateHotbar(env)
+    function P:updateHotbar(env,onlySlotVF)
         if not hud.widget or not valid(hud.widget) then return end
         if valid(nodes.Crosshair)then nodes.Crosshair:SetVisibility(((self.items and self.items.open)or(self.menuOpen and self.menuOpen()))and 1 or 3)end
         for i=1,9 do nodes['Select'..i]:SetVisibility(i==self.selected and 3 or 1) end
         local counts={}
-        for i=1,9 do
+        for i=onlySlotVF or 1,onlySlotVF or 9 do
             if self.items then
                 local entry=self.items:hotbar(env,i);local present=entry.id and entry.count>0;local data=present and self.items:data(entry.id);local stack=present and entry.count>1 and not(valid(data)and data.TypeA==1);text(nodes['Count'..i],stack and entry.count or '');counts[#counts+1]=tostring(entry.count)
                 local token=present and entry.id or false;self.hotbarVisual=self.hotbarVisual or{}
@@ -177,13 +177,13 @@ return function(ctx)
             icon(nodes['Icon'..i],'/Game/MinecraftBlocks/T_MC_'..def.item:sub(4)..'.T_MC_'..def.item:sub(4))
             end
         end
-        if self.items and ctx.uiKit then
+        if not onlySlotVF and self.items and ctx.uiKit then
             local current={};for i=1,9 do local e=self.items:hotbar(env,i);if e.id then current[e.id]=e.count end end
             if self.toastCounts then for id,count in pairs(current)do local previous=self.toastCounts[id];if previous and count>previous then ctx.uiKit:nativePickup(env,id,count-previous)end end end
             self.toastCounts=current
         end
         local summary=table.concat(counts,',')
-        if summary~=self.lastCounts then log('MC_HOTBAR_COUNTS '..summary);self.lastCounts=summary end
+        if not onlySlotVF and summary~=self.lastCounts then log('MC_HOTBAR_COUNTS '..summary);self.lastCounts=summary end
     end
     function P:updateWeapons(env,selection)
         if self.attackSync68 then self.attackSync68(env)end
@@ -264,6 +264,7 @@ return function(ctx)
         rowValues[prefix]=halves
         for i=1,10 do
             local n=halves-(i-1)*2;local node=nodes[prefix..i]
+            if prefix=='Armor'and valid(nodes['ArmorEmpty'..i])then nodes['ArmorEmpty'..i]:SetRenderOpacity(halves>0 and 1 or 0)end
             node:SetVisibility(n>0 and 3 or 1)
             if n>0 then icon(node,'/Game/MinecraftBlocks/T_MCHUD_'..prefix..(n>=2 and 'Full' or 'Half')..'.T_MCHUD_'..prefix..(n>=2 and 'Full' or 'Half')) end
         end
@@ -296,7 +297,21 @@ return function(ctx)
         local hp,maxhp=parameter:GetHP().Value,parameter:GetMaxHP().Value;row('Heart',hp/math.max(1,maxhp));self:profileStep('stats_hp',measured);measured=os.clock()
         if not self.foodAt or os.clock()>=self.foodAt then self.foodAt=os.clock()+1;local food,maxfood=parameter:GetFullStomach(),parameter:GetMaxFullStomach();row('Food',food/math.max(1,maxfood))end;self:profileStep('stats_food',measured);measured=os.clock()
         if not self.defenseAt or os.clock()>=self.defenseAt or self.defenseDirty then self.defense=parameter:GetDefense();self.defenseAt=os.clock()+.5;self.defenseDirty=false end
-        row('Armor',self.defense/(10*registry.defense_per_chestplate));self:profileStep('stats_armor',measured);measured=os.clock()
+
+        local armor=0
+        if self.items then
+            local native=self.items.native;local container=native:container(env,4)
+            for i=0,container:Num()-1 do
+                local id=native:id(container:Get(i));local def=id and self.items.registry.items[id]
+                if def and def.armor_points then armor=armor+def.armor_points
+                elseif id then
+                    local data=self.items:data(id)
+                    if valid(data)and data:IsA(UE.Object('/Script/Pal.PalStaticArmorItemData'))then armor=armor+math.max(0,data:GetDefenseValue())/(registry.defense_per_chestplate or 1)*2 end
+                end
+            end
+        end
+        self.armorPointsCV=armor
+        row('Armor',armor/20);self:profileStep('stats_armor',measured);measured=os.clock()
         local sp,maxsp=parameter:GetSP().Value,parameter:GetMaxSP().Value;local stamina=clamp(sp/math.max(1,maxsp))
         if self.shownStamina~=stamina then self.shownStamina=stamina;nodes.Stamina:SetPercent(stamina)end;self:profileStep('stats_stamina',measured);measured=os.clock()
         local lv,xp=individual:GetLevel(),individual:GetExp()
@@ -420,6 +435,10 @@ return function(ctx)
         if not ctx.gameplayInput(env)then return end
         self:cancelMining('new-press',true)
         local k,c=target(env);if not c then return end
+        if UE.creativeMode and UE.creativeMode:enabled()then
+            if ctx.returnCell(k,env)and UE.effects66 then UE.effects66:emit(env,'break',{X=c.x*100+50,Y=c.y*100+50,Z=c.z*100+50},c.type)end
+            log('MCCM_INSTANT_BREAK cell='..k..' removed='..tostring(ctx.cells()[k]==nil));return
+        end
         local def=registry[c.type];if not oreToolX8(env,def)then log('MCX8_ORE_REJECT Minecraft_pickaxe_required');return end;local kind,speed=tool(env)
         local harvest=not def.requires_tool or kind==def.tool
         local correct=kind==def.tool
@@ -464,7 +483,8 @@ return function(ctx)
         if not self.items and self.selected<5 then return end
         if self.items then
             local item=self.items:hotbar(env,self.selected).id;local block=false
-            for _,d in ipairs(registry)do if d.item==item then block=true end end
+
+            for i,d in ipairs(registry)do if d.item==item then block=true;ctx.setType(i);break end end
             if not block then return end
         end
         ctx.place()
@@ -529,7 +549,7 @@ return function(ctx)
         if statHandle then Timers.cancel(statHandle);statHandle=nil end
         if mining and mining.handle then Timers.cancel(mining.handle) end
         self.cooldownNodes66=nil;self.cooldownBucket66=nil;UE.attack66=nil
-        mining=nil;overlay=nil;hud={};nodes={};hidden={};hiddenOrder={};hideCursor=0;owner=nil;weaponUpdatePending=false;self.weaponDirty65=nil;self.hudAlive=nil
+        mining=nil;overlay=nil;hud={};nodes={};hidden={};hiddenOrder={};hideCursor=0;owner=nil;weaponUpdatePending=false;self.weaponDirty65=nil;self.hudAlive=nil;self.cinematicCV=nil;self.armorPointsCV=nil
         self.nativeDiscovered=false;self.hudProfile=nil;self.nativeWeightText=nil;self.weightAt=nil;self.shownWeight=nil;self.nativePalName=nil;self.nativeThermometer=nil;self.palNames=nil;weaponTextures={}
         assets={};assetIds={};rowValues={};iconPaths={};selfHide=nil;self.toastCounts=nil
         self.statLogged=false;self.partyLogged=false;self.partySeen73=nil;self.lastPartyAt=nil;self.partySlotsL=nil;self.partyHolderL=nil;self.weaponIDs=nil;self.displayedXP=nil;self.displayedLevel=nil;self.weaponVisual=nil;self.hotbarVisual=nil
@@ -540,16 +560,26 @@ return function(ctx)
         if valid(hud.widget)then hud.widget:RemoveFromParent()end
         local e={player=controller,controller=controller,identity='ui-entry'}
         hud=assert(ctx.createUI(e,'WBP_MCHUD','phase_a'));hud.controller=controller:GetAddress();hud.early=true;nodes=ctx.uiWidgets(hud.widget);self.uiUnit=(hud.uiFactor or 1)*3
-        hud.widget:SetVisibility(3);if ctx.uiKit then ctx.uiKit:bindIconCacheRoot(nodes.Crosshair:GetParent())end
+        hud.widget:SetRenderOpacity(0);hud.widget:SetVisibility(3);if ctx.uiKit then ctx.uiKit:bindIconCacheRoot(nodes.Crosshair:GetParent())end
         for i=1,5 do for _,prefix in ipairs({'Party','PalIcon','PalLevel','PalHP','PalName'})do if valid(nodes[prefix..i])then nodes[prefix..i]:SetVisibility(1)end end end
         log('MC36_HUD_UI_PRESENT pawn_reads=0')
     end
-    function P:setLife(status)
+    function P:setLife(status,env)
         local alive=status=='alive'
+        local cinematic=false
+        if env and valid(env.controller)then
+            local cut=env.controller.CutsceneComponent
+            cinematic=valid(cut)and cut:IsPlayingCutscene()or false
+            if not cinematic then
+                local view=env.controller:GetViewTarget()
+                cinematic=valid(view)and view:IsA(UE.Object('/Script/Engine.CameraActor'))
+            end
+        end
+        if self.cinematicCV~=cinematic then self.cinematicCV=cinematic;log('MCCV_CINEMATIC_HUD hidden='..tostring(cinematic))end
         local modal=(self.items and self.items.open)or(self.menuOpen and self.menuOpen())
         local cover=UE.loadingCover51
         local covered=cover and(cover.armed or cover.at)
-        local alpha=alive and self.visible and not modal and not covered and 1 or 0
+        local alpha=alive and self.visible and not modal and not covered and not cinematic and 1 or 0
         if valid(hud.widget)and hud.widget:GetRenderOpacity()~=alpha then hud.widget:SetRenderOpacity(alpha)end
         if self.hudAlive~=alive then self.hudAlive=alive;log('MC44_HUD_LIFE alive='..tostring(alive)..' pawn_reads=0')end
     end
@@ -573,6 +603,15 @@ return function(ctx)
         self.visible=ctx.config.hud;hud.widget:SetVisibility(self.visible and 3 or 1)
         setNative(env,self.visible);self:updateStats(env);self:select(5)
         local stamp=ctx.epoch()
+
+        local slotVF=1;self.hotbarReadyVF=nil
+        Timers.loop(1,function()
+            if stamp~=ctx.epoch()or ctx.quiesced()then return true end
+            local current=live(stamp);if not current then return false end
+            self:updateHotbar(current,slotVF);slotVF=slotVF+1
+            if slotVF>9 then self.hotbarReadyVF=stamp;return true end
+            return false
+        end,'hotbar-prewarm-vf')
         statHandle=Timers.loop(200,function()
             local current=live(stamp);if not current then return true end
             local ok=guarded('stats',function() P:updateStats(current);if P.captureHUD then P.captureHUD(current,P.visible)end end)

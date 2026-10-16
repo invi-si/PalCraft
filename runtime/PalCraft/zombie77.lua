@@ -31,6 +31,7 @@ return function(ctx)
  species.MC_EnderDragon={kind='enderdragon',host='HawkBird',attack='Ac_Golem',radius=200,half=220,bossD=true,material='/Game/MinecraftBossD/MI_MC_enderdragon_hit.MI_MC_enderdragon_hit'}
  local rootPoseOA=dofile(ctx.base..'/poseK.lua')
  local function rotateRootOA(root,rotation)
+
   local p,s=root.RelativeLocation,root.RelativeScale3D
   rootPoseOA(root,{location={X=p.X,Y=p.Y,Z=p.Z},rotation=rotation,scale={X=s.X,Y=s.Y,Z=s.Z}})
  end
@@ -49,7 +50,7 @@ return function(ctx)
   ctx.log('MC77_COSTUME_'..kind..' host='..tostring(s and s.address)..' species='..tostring(s and s.species))
  end
  function Z:asset(path)
-  local a=self.assets[path];if valid(a)then return a end
+  local a=self.assets[path]or(self.titleAssetsVF and self.titleAssetsVF[path]);if valid(a)then self.assets[path]=a;return a end
   local begun=os.clock()
   local p,n=path:match('^(.*)%.([^%.]+)$')
   a=UE.GetAsset109(UE.Object('/Script/AssetRegistry.Default__AssetRegistryHelpers'),{PackageName=UE.FindOrAddFName(p),AssetName=UE.FindOrAddFName(n)})
@@ -61,14 +62,30 @@ return function(ctx)
   assert(valid(a),'MC77 owned asset missing '..path);ctx.retain(a);self.assets[path]=a
   ctx.log(string.format('MC109_COSTUME_ASSET ms=%.3f path=%s',(os.clock()-begun)*1000,path));return a
  end
+
+ function Z:preloadAssetsVF(add,retain)
+  self.titleAssetsVF=self.titleAssetsVF or{}
+  local paths,seen={},{}
+  local function include(path)if path and not seen[path]then seen[path]=true;paths[#paths+1]=path end end
+  for _,spec in pairs(species)do
+   for _,part in ipairs(modelTable[spec.kind])do include(part.mesh)end
+   include(spec.material)
+  end
+  include('/Game/MinecraftCreatures105/MI_MC_rabbitdesert.MI_MC_rabbitdesert')
+  include('/Game/MinecraftCreatures105/MI_MC_rabbitdesert_hit.MI_MC_rabbitdesert_hit')
+  table.sort(paths)
+  for _,path in ipairs(paths)do add(function()local a=self:asset(path);retain(a);self.titleAssetsVF[path]=a end)end
+ end
  local function warmLoadG(path)if path:sub(1,6)=='sound:'then ctx.sound:preloadSoundG(path:sub(7))else Z:asset(path)end end
  local warmG=dofile(ctx.base..'/asset_queueG.lua')(warmLoadG,valid)
+ local soundWarmVE=dofile(ctx.base..'/asset_queueG.lua')(warmLoadG,valid)
  function Z:prepareG(id)
   local spec=species[id];if not spec then return true end
   if warmG.ready[id]==nil then
    local paths={};for _,part in ipairs(modelTable[spec.kind])do if part.mesh then paths[#paths+1]=part.mesh end end
    if spec.material then paths[#paths+1]=spec.material end
-   for _,path in ipairs(ctx.sound:soundPathsG(spec.kind))do paths[#paths+1]='sound:'..path end
+   local soundPaths={};for _,path in ipairs(ctx.sound:soundPathsG(spec.kind))do soundPaths[#soundPaths+1]='sound:'..path end
+   soundWarmVE:add(id,soundPaths)
    if spec.kind=='rabbit'then paths[#paths+1]='/Game/MinecraftCreatures105/MI_MC_rabbitdesert.MI_MC_rabbitdesert';paths[#paths+1]='/Game/MinecraftCreatures105/MI_MC_rabbitdesert_hit.MI_MC_rabbitdesert_hit'end
    warmG:add(id,paths)
   end
@@ -157,7 +174,7 @@ return function(ctx)
    c:SetVisibility(true,false)
    if d.parent then assert(c:K2_AttachToComponent(s.parts[d.parent],UE.FindOrAddFName('None'),2,2,2,false))end
    _G.MC_OUT_K('K2_SetRelativeLocation',c,d.location,false,ignoredHitJ(),true);_G.MC_OUT_K('K2_SetRelativeRotation',c,d.rotation,false,ignoredHitJ(),true)
-   if d.equipmentJ and not d.heldK then local h=dofile(ctx.base..'/item_display66.lua').skeleton_bow.left;local p=h.Translation;_G.MC_OUT_K('K2_SetRelativeTransform',c,{Rotation=h.Rotation,Translation=vec(p.X,p.Y,p.Z-75),Scale3D=h.Scale3D},false,ignoredHitJ(),true)end
+   if d.equipmentJ and not d.heldK then local h=dofile(ctx.base..'/item_display66.lua').skeleton_bow.right;local p=h.Translation;_G.MC_OUT_K('K2_SetRelativeTransform',c,{Rotation=h.Rotation,Translation=vec(p.X,p.Y,p.Z-75),Scale3D=h.Scale3D},false,ignoredHitJ(),true)end
   end
   dofile(ctx.base..'/equipmentK.lua').apply(s,UE)
   for i=#s.models+1,#s.parts do s.parts[i]:SetVisibility(false,false)end
@@ -182,7 +199,7 @@ return function(ctx)
   if s.address then self.hosts[s.address]=nil end
   record('RELEASE_'..reason,s)
   s.host=nil;s.address=nil;s.mesh=nil;s.parameter=nil;s.action=nil;s.capsule=nil;s.sound=nil;s.sample=nil;s.pose=nil;s.red=nil;s.lastAction=nil;s.deadAt=nil;s.lastHP=nil;s.capturing=nil
-  s.recall108=nil;s.footing108=nil;s.owned108=nil;s.x4=nil
+  s.recall108=nil;s.footing108=nil;s.owned108=nil;s.x4=nil;s.archerVA=nil
   s.ak=nil;s.oldAttenuation=nil;s.fuseStart=nil;s.fuseScale=nil;s.materialVariant=nil
  end
  function Z:mute(s)
@@ -205,7 +222,7 @@ return function(ctx)
   if self.bossD then self.bossD:clear(s)end
   if self.wardenC then self.wardenC:clear(s)end
   if self.hostiles107 then self.hostiles107:clear(s)end
-  s.species=id;s.definition=species[id];s.bowEquipped=s.kind=='skeleton';s.usingBow=false;s.bowDraw=nil
+  s.archerVA=nil;s.species=id;s.definition=species[id];s.bowEquipped=s.kind=='skeleton';s.usingBow=false;s.bowDraw=nil
   s.host=a;s.address=a:GetAddress();s.mesh=a.Mesh;s.parameter=a.CharacterParameterComponent;s.action=a:GetActionComponent();s.capsule=a.CapsuleComponent
   s.nativeVisible=s.mesh:IsVisible();s.bornAt=os.clock();s.walk=0;s.walkWeight=0;s.pose={};s.sampleDue=0;s.soundDue=0;s.hp=nil;s.lastHP=nil;s.deadAt=nil;s.lastAction=nil;s.scale=nil
   if s.kind=='sheep'or s.kind=='cat'or s.kind=='wolf'or s.kind=='horse'then
@@ -302,6 +319,12 @@ return function(ctx)
   local actionObject=valid(current)and current:GetAddress()or 0
   local actionName=valid(current)and current:GetClass():GetFullName()or ''
   local attacking=action==10 or action==11 or action==12 or actionName:find((s.definition or species.MC_Zombie).attack,1,true)~=nil
+
+  if s.kind=='skeleton'and UE.mobs66 and UE.mobs66.arrowsVA and valid(current)
+   and actionName:find('RobinHood',1,true)and actionName:find('Snipe',1,true)then
+   self.projectiles:engage(s,current:GetActionTarget(),now)
+   current.bIsEndAction=true
+  end
   local p=s.host:K2_GetActorLocation()
   if not s.owned108 and(s.kind=='warden'or s.definition.bossD)and now-s.bornAt>1 then
    local scale=s.host:GetActorScale3D();local half=s.capsule:GetScaledCapsuleHalfHeight()
@@ -325,6 +348,7 @@ return function(ctx)
   passiveFlee:sample(s,e,now,hp,dead,capturing,p)
   if UE.customPalsA and UE.customPalsA.motion then UE.customPalsA.motion:sample(s.host,e,s.species,s)end
   s.aggressive=attacking;s.usingBow=s.bowEquipped and attacking
+  if s.kind=='skeleton'and self.projectiles then self.projectiles:archer(s,e,now)end
   if s.lastHP and hp<s.lastHP then s.hitUntil=now+.5;s.panicUntil=now+(s.flee101 and 5 or 3);ctx.sound:play('entity.'..(s.kind or 'zombie')..'.hurt',p,1,e);record('HURT',s)end
   if dead and not s.deadAt then s.deadAt=now;ctx.sound:play('entity.'..(s.kind or 'zombie')..'.death',p,1,e);record('FAINT',s)
   elseif not dead and s.deadAt then s.deadAt=nil;record('RECOVER',s)end
@@ -343,11 +367,15 @@ return function(ctx)
   s.motionHistory=s.motionHistory or{};s.motionHistory[#s.motionHistory+1]={at=now,speed=s.speed,walk=s.walk,hp=hp,panic=s.panic}
   if #s.motionHistory>30 then table.remove(s.motionHistory,1)end
   if s.definition and valid(e.player)then
-   local q=e.player:K2_GetActorLocation();local dx,dy=q.X-p.X,q.Y-p.Y;local distance=math.sqrt(dx*dx+dy*dy)
+
+   local archer=s.kind=='skeleton'and s.archerVA and s.archerVA.target
+   local aiming=valid(archer)and s.aggressive
+   local q=(aiming and archer or e.player):K2_GetActorLocation();local dx,dy=q.X-p.X,q.Y-p.Y;local distance=math.sqrt(dx*dx+dy*dy)
+   local looking=aiming or distance<600
    local yaw=(math.deg(math.atan(dy,dx))-s.host:K2_GetActorRotation().Yaw+180)%360-180
-   s.headYaw=distance<600 and math.max(-75,math.min(75,yaw))or 0
-   s.lookTargetT=distance<600 and math.deg(math.atan(dy,dx))or nil
-   s.headPitch=distance<600 and math.max(-25,math.min(25,math.deg(math.atan(q.Z-p.Z,math.max(1,distance)))))or 0
+   s.headYaw=looking and math.max(-75,math.min(75,yaw))or 0
+   s.lookTargetT=looking and math.deg(math.atan(dy,dx))or nil
+   s.headPitch=looking and math.max(-25,math.min(25,math.deg(math.atan(q.Z-p.Z,math.max(1,distance)))))or 0
   end
   local ratio=math.max(0,math.min(1,math.abs(s.mesh.RelativeScale3D.Z)/s.baseMeshScale))
   local rootScale=s.host:GetActorScale3D();local scale=vec(ratio/math.max(.01,math.abs(rootScale.X)),ratio/math.max(.01,math.abs(rootScale.Y)),ratio/math.max(.01,math.abs(rootScale.Z)))
@@ -389,14 +417,29 @@ return function(ctx)
  end end
  T.onEpoch('zombie77',function()
   farmGround:reset()
-  warmG=dofile(ctx.base..'/asset_queueG.lua')(warmLoadG,valid);Z.lastBindG=nil;Z.bindFrameG=nil;Z.candidateCursorG=nil;Z.reacquireG=nil
+  warmG=dofile(ctx.base..'/asset_queueG.lua')(warmLoadG,valid);soundWarmVE=dofile(ctx.base..'/asset_queueG.lua')(warmLoadG,valid);Z.lastBindG=nil;Z.bindFrameG=nil;Z.candidateCursorG=nil;Z.reacquireG=nil
   Z.slots={};Z.hosts={};Z.assets={};Z.poolReady=nil;Z.pending={};Z.candidates={};Z.reacquire=true
   Z.hostDue=0;Z.due=0;Z.readyAt=nil;Z.at=nil;Z.visualAtT=nil
+ end)
+ 
+ T.onEpoch('first-input-vf',function()UE.firstInputVF=nil;UE.inputKeysVF=nil end)
+ T.frame('first-input-vf',function()
+  if UE.firstInputVF or not ctx.ready()then return end
+  local cover=UE.loadingCover51;if cover and(cover.at or cover.armed)then return end
+  local e=ctx.environment();if not e then return end
+  if not UE.inputKeysVF then UE.inputKeysVF={};for _,name in ipairs({'W','A','S','D','SpaceBar','LeftMouseButton','RightMouseButton','Tab','Escape','E','F'})do UE.inputKeysVF[#UE.inputKeysVF+1]={KeyName=UE.FindOrAddFName(name)}end end
+  for _,key in ipairs(UE.inputKeysVF)do if e.controller:IsInputKeyDown(key)then UE.firstInputVF=true;ctx.log('MCVF_FIRST_INPUT');break end end
  end)
  T.frame('zombie77',function()
   local now=os.clock()
   if not ctx.ready()then Z.readyAt=nil;return end
-  warmG:tick()
+  local loading=UE.loadingCover51 and(UE.loadingCover51.at or UE.loadingCover51.armed)
+  warmG:tick(loading and 20 or 4,loading and 24 or 6)
+
+  local cover=UE.loadingCover51
+  if UE.firstInputVF and Z.readyAt and now-Z.readyAt>20 and not warmG:pending()and not(cover and(cover.at or cover.armed))and now>=(Z.soundWarmAtVE or 0)then
+   Z.soundWarmAtVE=now+.3;soundWarmVE:tick()
+  end
   if not Z.readyAt then Z.readyAt=now;return end
   if now-Z.readyAt<10 then return end
   if #Z.events108b.pending>0 then local e=ctx.environment();if e then Z.events108b:drain(e,now)end end

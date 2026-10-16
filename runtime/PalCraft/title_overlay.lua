@@ -10,6 +10,7 @@ return function(ctx)
         self.widget,self.owner,self.panel,self.uiFactor,self.nodes=nil,nil,nil,nil,nil;self.allowTitleDialog=nil;log('MC_H_TITLE_CLOSED refs=0')
     end
     function T:show(force)
+        if ctx.inWorld and ctx.inWorld()then return end
         if not force then for _,w in ipairs(FindAllOf('PalActivatableWidget')or{})do if valid(w)and w:IsActivated()and w:GetClass():GetFullName():lower():find('dialog',1,true)then log('MC_H_TITLE_WAIT_NATIVE_DIALOG dismiss_key=ESC timeout_s=10');return false end end end
         self:close();local root
         for _,w in ipairs(FindAllOf('WBP_TItle_C')or{})do if valid(w)and w:IsActivated()then root=w;break end end

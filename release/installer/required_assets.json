@@ -483,7 +483,8 @@
       "kind": "sound",
       "path": "minecraft/sounds/random/pop.ogg",
       "packs": [
-        "hud_skins"
+        "hud_skins",
+        "core"
       ]
     },
     {
@@ -504,28 +505,32 @@
       "kind": "sound",
       "path": "minecraft/sounds/step/grass1.ogg",
       "packs": [
-        "hud_skins"
+        "hud_skins",
+        "core"
       ]
     },
     {
       "kind": "sound",
       "path": "minecraft/sounds/step/stone1.ogg",
       "packs": [
-        "hud_skins"
+        "hud_skins",
+        "core"
       ]
     },
     {
       "kind": "sound",
       "path": "minecraft/sounds/dig/grass1.ogg",
       "packs": [
-        "hud_skins"
+        "hud_skins",
+        "core"
       ]
     },
     {
       "kind": "sound",
       "path": "minecraft/sounds/dig/stone1.ogg",
       "packs": [
-        "hud_skins"
+        "hud_skins",
+        "core"
       ]
     },
     {
@@ -619,6 +624,2369 @@
         "core"
       ],
       "note": "Vanilla recipes, tags and loot data for local Lua adapters; never bundled."
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/random/explode1.ogg",
+      "packs": [
+        "core",
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/random/explode2.ogg",
+      "packs": [
+        "core",
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/random/explode3.ogg",
+      "packs": [
+        "core",
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/random/explode4.ogg",
+      "packs": [
+        "core",
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/chest/close1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/chest/close2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/chest/close3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/chest/open.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/fence_gate/close1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/fence_gate/close2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/fence_gate/open1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/fence_gate/open2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/iron_trapdoor/close1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/iron_trapdoor/close2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/iron_trapdoor/close3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/iron_trapdoor/close4.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/iron_trapdoor/open1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/iron_trapdoor/open2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/iron_trapdoor/open3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/iron_trapdoor/open4.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/wooden_door/close1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/wooden_door/close2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/wooden_door/close3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/wooden_door/open1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/wooden_door/open2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/wooden_trapdoor/close1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/wooden_trapdoor/close2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/wooden_trapdoor/close3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/wooden_trapdoor/open1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/wooden_trapdoor/open2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/wooden_trapdoor/open3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/wooden_trapdoor/open4.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/block/wooden_trapdoor/open5.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/cloth1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/cloth2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/cloth3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/cloth4.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/grass2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/grass3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/grass4.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/gravel1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/gravel2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/gravel3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/gravel4.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/sand1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/sand2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/sand3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/sand4.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/stone2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/stone3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/stone4.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/wood1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/wood2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/wood3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/dig/wood4.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/random/click_stereo.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/random/glass1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/random/glass2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/random/glass3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/cloth1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/cloth2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/cloth3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/cloth4.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/grass2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/grass3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/grass4.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/grass5.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/grass6.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/gravel1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/gravel2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/gravel3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/gravel4.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/sand1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/sand2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/sand3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/sand4.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/sand5.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/stone2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/stone3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/stone4.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/stone5.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/stone6.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/wood1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/wood2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/wood3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/wood4.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/wood5.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/step/wood6.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/death1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/death2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/death3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/death4.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/fly1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/fly2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/fly3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/fly4.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/fly5.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/fly6.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/fly7.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/fly8.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/hurt1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/hurt2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/idle1.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/idle2.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/idle3.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/idle4.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/idle5.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/parrot/idle6.ogg",
+      "packs": [
+        "core"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/fireworks/launch1.ogg",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/item/elytra/elytra_loop.ogg",
+      "packs": [
+        "hud_skins"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/chicken/hurt1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/chicken/hurt2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/chicken/say1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/chicken/say2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/chicken/say3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/cow/hurt1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/cow/hurt2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/cow/hurt3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/cow/say1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/cow/say2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/cow/say3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/cow/say4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/pig/death.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/pig/say1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/pig/say2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/pig/say3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/sheep/say1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/sheep/say2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/sheep/say3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/ambient_1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/ambient_10.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/ambient_11.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/ambient_12.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/ambient_2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/ambient_3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/ambient_4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/ambient_5.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/ambient_6.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/ambient_7.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/ambient_8.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/ambient_9.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/attack_impact_1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/attack_impact_2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/death_1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/death_2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/heartbeat_1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/heartbeat_2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/heartbeat_3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/heartbeat_4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/hurt_1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/hurt_2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/hurt_3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/hurt_4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/roar_1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/roar_2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/roar_3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/roar_4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/roar_5.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/sonic_boom1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/sonic_boom2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/sonic_boom3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/sonic_boom4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/sonic_charge1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/sonic_charge2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/sonic_charge3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/warden/sonic_charge4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/enderdragon/end.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/enderdragon/growl1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/enderdragon/growl2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/enderdragon/growl3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/enderdragon/growl4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/enderdragon/hit1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/enderdragon/hit2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/enderdragon/hit3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/enderdragon/hit4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/enderdragon/wings1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/enderdragon/wings2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/enderdragon/wings3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/enderdragon/wings4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/enderdragon/wings5.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/enderdragon/wings6.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/ghast/fireball4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/wither/death.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/wither/hurt1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/wither/hurt2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/wither/hurt3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/wither/hurt4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/wither/idle1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/wither/idle2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/wither/idle3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/wither/idle4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/wither/shoot.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/wither/spawn.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/cat/hitt1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/cat/hitt2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/cat/hitt3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/cat/meow1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/cat/meow2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/cat/meow3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/cat/meow4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/husk/death1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/husk/death2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/husk/hurt1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/husk/hurt2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/husk/idle1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/husk/idle2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/husk/idle3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/fox/death1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/fox/death2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/fox/hurt1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/fox/hurt2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/fox/hurt3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/fox/hurt4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/fox/idle1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/fox/idle2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/fox/idle3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/fox/idle4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/fox/idle5.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/fox/idle6.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/irongolem/death.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/irongolem/hit1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/irongolem/hit2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/irongolem/hit3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/irongolem/hit4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/irongolem/throw.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/irongolem/walk1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/irongolem/walk2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/irongolem/walk3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/irongolem/walk4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/panda/death1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/panda/death2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/panda/death3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/panda/death4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/panda/hurt1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/panda/hurt2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/panda/hurt3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/panda/hurt4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/panda/hurt5.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/panda/hurt6.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/panda/idle1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/panda/idle2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/panda/idle3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/panda/idle4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/panda/nosebreath1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/panda/nosebreath2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/panda/nosebreath3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/panda/pant1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/panda/pant2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/rabbit/attack1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/rabbit/attack2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/rabbit/attack3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/rabbit/attack4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/rabbit/bunnymurder.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/rabbit/hurt1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/rabbit/hurt2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/rabbit/hurt3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/rabbit/hurt4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/rabbit/idle1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/rabbit/idle2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/rabbit/idle3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/rabbit/idle4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/wolf/classic/bark1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/wolf/classic/bark2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/wolf/classic/bark3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/wolf/classic/death.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/wolf/classic/hurt1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/wolf/classic/hurt2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/wolf/classic/hurt3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/creeper/say2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/creeper/say3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/creeper/say4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/random/fuse.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/entity/witch/ambient1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/entity/witch/ambient2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/entity/witch/ambient3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/entity/witch/ambient4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/entity/witch/ambient5.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/entity/witch/death1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/entity/witch/death2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/entity/witch/death3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/entity/witch/hurt1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/entity/witch/hurt2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/entity/witch/hurt3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/endermen/death.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/endermen/hit1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/endermen/hit2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/endermen/hit3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/endermen/hit4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/endermen/idle2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/endermen/idle3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/endermen/idle4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/endermen/idle5.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/slime/attack1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/slime/attack2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/slime/big1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/slime/big2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/slime/big3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/slime/big4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/camel/ambient1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/camel/ambient2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/camel/ambient3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/camel/ambient4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/camel/ambient5.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/camel/ambient6.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/camel/ambient7.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/camel/ambient8.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/camel/death1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/camel/death2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/camel/hurt1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/camel/hurt2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/camel/hurt3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/camel/hurt4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/horse/death.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/horse/hit1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/horse/hit2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/horse/hit3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/horse/hit4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/horse/idle1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/horse/idle2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/horse/idle3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/skeleton/death.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/skeleton/hurt1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/skeleton/hurt2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/skeleton/hurt3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/skeleton/hurt4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/skeleton/say2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/skeleton/say3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/random/bow.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/spider/death.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/spider/say2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/spider/say3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/spider/say4.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/zombie/death.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/zombie/hurt1.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/zombie/hurt2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/zombie/say2.ogg",
+      "packs": [
+        "islands_animals"
+      ]
+    },
+    {
+      "kind": "sound",
+      "path": "minecraft/sounds/mob/zombie/say3.ogg",
+      "packs": [
+        "islands_animals"
+      ]
     }
   ]
 }

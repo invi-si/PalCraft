@@ -17,3 +17,10 @@ $report=[PalCraftCookedPakPatch]::Apply([IO.Path]::GetFullPath($PaksRoot),[IO.Pa
 [IO.File]::WriteAllText($Receipt,$report,(New-Object Text.UTF8Encoding($false)))
 $r=$report | ConvertFrom-Json
 Write-Output ("PalCraft cooked paks: {0} textures, {1} font faces, {2} blank fallback asset sources" -f $r.textures,$r.fonts,$r.blankFallbackAssets)
+
+# Audio has variable-sized compressed payloads, so its bounded patcher rebuilds
+# only the dedicated audio paks after the fixed-range texture/font patches.
+$soundManifest=Join-Path $PSScriptRoot 'cooked-sounds.json'
+if (Test-Path -LiteralPath $soundManifest -PathType Leaf) {
+ & (Join-Path $PSScriptRoot 'Patch-CookedSounds.ps1') -PaksRoot $PaksRoot -AssetsRoot $AssetsRoot -Manifest $soundManifest
+}

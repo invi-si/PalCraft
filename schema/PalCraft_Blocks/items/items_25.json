@@ -1,0 +1,14 @@
+{
+  "MC_Bed": {
+    "Type": "Generic",
+    "Name": "Red Bed",
+    "Description": "Minecraft red bed.",
+    "TypeA": "Material",
+    "TypeB": "MaterialProccessing",
+    "MaxStackCount": 64,
+    "Weight": 0.1,
+    "IconTexture": "/Game/MinecraftBlocks/T_MC_Bed.T_MC_Bed",
+    "Rank": 1,
+    "Price": 10
+  }
+}

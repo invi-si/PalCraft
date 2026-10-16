@@ -124,8 +124,9 @@ return function(ctx)
   return err==nil,err
  end
  function S:meshPath(arms)
-  local format=self.choice and self.choice.format or 'wide';local cut=self.choice and not self.choice.custom71 and self.choice.file=='steve-'..format..'.png';local name=(cut and'SK_MC70'or'SK_MC27')..(format=='slim'and'Slim'or'Wide')..(arms and'Arms'or'Body')
-  return (cut and'/Game/MinecraftTask70/'or'/Game/MinecraftSteve/Task27/')..name..'.'..name
+
+  local format=self.choice and self.choice.format or 'wide';local name='SK_MC27'..(format=='slim'and'Slim'or'Wide')..(arms and'Arms'or'Body')
+  return '/Game/MinecraftSteve/Task27/'..name..'.'..name
  end
  function S:clearViewWeapons(env,touch)
   if touch then for _,v in ipairs(self.viewWeapons or{})do
@@ -344,13 +345,15 @@ return function(ctx)
   self.state={player=env.player:GetAddress(),epoch=ctx.epoch(),tick=source.VisibilityBasedAnimTickOption,tickEnabled=source:IsComponentTickEnabled(),pauseAnims=source.bPauseAnims,visibility={},nativeAnimation=source:GetAnimInstance():GetFullName()}
   for _,p in ipairs(parts(env))do if valid(p)then self.state.visibility[p:GetFullName()]=p:IsVisible()end end
   self.mesh=env.player:AddComponentByClass(UE.Object('/Script/Engine.PoseableMeshComponent'),true,id,false);assert(valid(self.mesh))
-  self.mesh:SetCollisionEnabled(0);assert(self.mesh:K2_AttachToComponent(source,UE.FindOrAddFName('None'),0,0,0,false))
+  self.mesh:SetVisibility(false,false);self.mesh:SetCollisionEnabled(0);assert(self.mesh:K2_AttachToComponent(source,UE.FindOrAddFName('None'),0,0,0,false))
   self.mesh:SetSkinnedAssetAndUpdate(mesh,true);self.mesh:AddTickPrerequisiteComponent(source);self.mesh:SetComponentTickEnabled(true)
   assert(self.mesh:GetNumBones()==17);rigid:bind(self.mesh);self.rigid=rigid
   self.texture=self.pendingTexture or self.titleTexture or(self.choice and not self.choice.default71 and skin.load(env,self.choice));self.pendingTexture=nil
   if not self.texture and UE.texRuntime then self.texture=UE.texRuntime:load('textures/entity/player/'..(self.choice and self.choice.format=='slim'and'slim/alex.png'or'wide/steve.png'),nil)end
   if self.texture then skin.apply(self.mesh,self.texture,asset,self.titleMask71);log('MC27_SKIN_LIVE format='..self.choice.format..' file='..self.choice.file..' filter='..self.texture.Filter..' pixels=64 pixel_centres=true')end
   self.mesh:SetOwnerNoSee(source.bOwnerNoSee);self.mesh:SetOnlyOwnerSee(source.bOnlyOwnerSee)
+  
+  self.mesh:SetVisibility(true,false)
   source.VisibilityBasedAnimTickOption=0;source:SetComponentTickEnabled(true);source.bPauseAnims=false;self.pose=false
   log('MC36_STEVE_SOURCE_TICK before_enabled='..tostring(self.state.tickEnabled)..' before_paused='..tostring(self.state.pauseAnims))
   log('MC26_STEVE_READY bones=17 native_animation='..self.state.nativeAnimation..' refs='..T.nativeRefCount)

@@ -70,6 +70,7 @@ return function(ctx)
   self.dirty=true;ctx.log('MC23_HARVEST cell='..k..' name='..n..' cause='..(cause or'mine'));return true
  end
  function M:damage(env,fraction,why)
+  if ctx.UE.creativeMode and ctx.UE.creativeMode:protects(env)then return end
   local p=env.player.CharacterParameterComponent;local hp,max=p:GetHP().Value,p:GetMaxHP().Value
   if hp<=0 or max<=0 then return end
   

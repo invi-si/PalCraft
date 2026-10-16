@@ -2,8 +2,8 @@
 # Copyright Invi
 """Export a fresh public PalCraft tree with no private history or asset payloads."""
 from __future__ import annotations
-import pathlib
 import os
+import pathlib
 import argparse
 import ast
 import os
@@ -15,7 +15,7 @@ def portable_python(source):
     tree = ast.parse(source)
     _scrub = pathlib.Path(__file__).resolve().parents[2] / 'local' / 'release' / 'scrub_private.txt'
     _frag = [l.strip() for l in _scrub.read_text(encoding='utf-8').splitlines() if l.strip()] if _scrub.exists() else []
-    private = '(?:' + '|'.join(map(re.escape, _frag)) + ')' if _frag else r'(?!x)x'
+    private = '(?:' + '|'.join(map(re.escape, _frag)) + ')' if _frag else '(?!x)x'
     roots = [('UE_5.1', 'PALCRAFT_UE_ROOT'), ('PalworldModdingKit', 'PALCRAFT_KIT_ROOT'), ('MinecraftModEvidence', 'PALCRAFT_EVIDENCE_ROOT'), ('PalworldSteveDev', 'PALCRAFT_PROJECT_ROOT')]
 
     class Paths(ast.NodeTransformer):

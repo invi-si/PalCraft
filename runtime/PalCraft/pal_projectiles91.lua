@@ -3,6 +3,56 @@
 return function(ctx,costume)
  local UE,valid=ctx.UE,ctx.valid;local T=dofile(ctx.base..'/timers.lua')
  local P={pending={},rows={},events={}}
+ function P:engage(s,target,now)
+  if valid(target)then s.archerVA=s.archerVA or{next=now};s.archerVA.target=target;s.archerVA.seen=now end
+ end
+ function P:archer(s,e,now)
+  local mobs=UE.mobs66
+  if not mobs or not mobs.arrowsVA then return end
+  if not mobs.poolReady or not mobs:guard(e)or not valid(s.host)or s.parameter:IsDead()or s.parameter:GetIsCapturedProcessing()then s.archerVA=nil;s.usingBow=false;return end
+  local p=s.host:K2_GetActorLocation();local feet={X=p.X,Y=p.Y,Z=p.Z-s.capsule:GetScaledCapsuleHalfHeight()}
+  local g=s.archerVA or{next=now};s.archerVA=g
+  if now>=(g.search or 0)then
+   g.search=now+.4;local target,nearest=nil,1600
+   if s.owned108 and valid(g.target)and now-(g.seen or 0)<15 and g.target:IsA(UE.Object('/Script/Pal.PalCharacter'))and not g.target.CharacterParameterComponent:IsDead()then target=g.target
+   elseif s.owned108 then
+    for _,m in ipairs(mobs.slots)do if m.active and not m.poof then local d=math.sqrt((p.X-m.p.X)^2+(p.Y-m.p.Y)^2)
+     if d<nearest then target=m.actor;nearest=d end
+    end end
+   else target=mobs.combat:target({p=feet},e)end
+   if not target and valid(g.target)and now-(g.seen or 0)<15 then target=g.target end
+   g.target=target
+  end
+  local target=g.target
+  if not valid(target)then s.usingBow=false;g.draw=nil;return end
+  local q=target:K2_GetActorLocation();local dx,dy=q.X-p.X,q.Y-p.Y;local distance=math.sqrt(dx*dx+dy*dy)
+  local cp=target:IsA(UE.Object('/Script/Pal.PalCharacter'))and target.CharacterParameterComponent
+  if distance>1800 or(valid(cp)and cp:IsDead())then s.usingBow=false;g.draw=nil;return end
+  local aim={X=q.X,Y=q.Y,Z=q.Z+(valid(cp)and 0 or 90)}
+  
+  if now>=(g.sightAt or 0)then
+   local hit={};local color={R=0,G=0,B=0,A=0};local ignore={e.player,s.host,target}
+   for _,r in ipairs(mobs.combat.targets)do ignore[#ignore+1]=r.actor end
+   g.sight=not _G.MC_OUT_K('LineTraceSingle',UE.GetKismetSystemLibrary(),e.player,p,aim,0,false,ignore,0,hit,true,color,color,0);g.sightAt=now+.1
+  end
+  local sight=g.sight;local ai=s.host:GetController()
+  if valid(ai)then
+   ai:WaitForSeconds(1)
+   local yaw=math.deg(math.atan(dy,dx));ai:SetControlRotation({Pitch=0,Yaw=yaw,Roll=0});s.host:K2_SetActorRotation({Pitch=0,Yaw=yaw,Roll=0},true)
+   if now>=(g.steer or 0)then g.steer=now+.5
+    if distance>1400 or not sight then ai:PalMoveToLocation({X=q.X,Y=q.Y,Z=q.Z},1100,false,true,true,false,nil,true)
+    else ai:StopMovement()end
+   end
+  end
+  if not sight then g.draw=nil;s.usingBow=false;return end
+  if not g.draw and now>=g.next then g.draw=now;g.release=now+1;s.attackStart=now end
+  s.usingBow=g.draw~=nil;s.aggressive=true
+  if g.draw and now>=g.release then
+   local from={X=p.X,Y=p.Y,Z=feet.Z+150}
+   for i,d in ipairs(s.models or{})do if d.name=='bow'then local b=s.parts[i]:K2_GetComponentLocation();from={X=b.X,Y=b.Y,Z=b.Z};break end end
+   if mobs.arrowsVA:fire(e,s,target,from)then g.next=now+2;g.draw=nil;s.usingBow=false end
+  end
+ end
  for _,kind in ipairs({'BowAndArrow','Arrow'})do
   local effectKind=kind
   NotifyOnNewObject('/Game/Pal/Blueprint/Skill/RobinHood_Snipe/BP_SkillEffect_Unique_RobinHood_Snipe_'..kind..'.BP_SkillEffect_Unique_RobinHood_Snipe_'..kind..'_C',function(object)
@@ -34,6 +84,25 @@ return function(ctx,costume)
     if valid(owner)and valid(owner.CharacterParameterComponent)then
      local ip=owner.CharacterParameterComponent:GetIndividualParameter()
      local id=valid(ip)and ip:GetCharacterID():ToString();witch=id=='MC_Witch';ours=id=='MC_Skeleton'or witch
+    end
+    if ours and not witch and UE.mobs66 and UE.mobs66.arrowsVA then
+     if not row.collisionVE then
+      row.collisionVE={actor=a:GetActorEnableCollision(),parts={}}
+      for _,v in ipairs(a:K2_GetComponentsByClass(UE.Object('/Script/Engine.PrimitiveComponent')))do
+       local co=unwrap(v);if valid(co)then row.collisionVE.parts[#row.collisionVE.parts+1]={co=co,collision=co:GetCollisionEnabled(),overlap=co:GetGenerateOverlapEvents()}end
+      end
+     end
+     a:SetActorEnableCollision(false)
+     for _,part in ipairs(row.collisionVE.parts)do if valid(part.co)then part.co:SetCollisionEnabled(0);part.co:SetGenerateOverlapEvents(false)end end
+     if not row.suppressedVE then
+      row.suppressedVE=true;P.events[#P.events+1]={kind='native_carrier_suppressed',carrier=row.kind,at=os.clock(),owner=owner:GetAddress()}
+      ctx.log('MCVE_NATIVE_CARRIER_SUPPRESSED kind='..row.kind..' collision=false shared_arrow_damage=true')
+     end
+    elseif row.collisionVE then
+
+     a:SetActorEnableCollision(row.collisionVE.actor)
+     for _,part in ipairs(row.collisionVE.parts)do if valid(part.co)then part.co:SetCollisionEnabled(part.collision);part.co:SetGenerateOverlapEvents(part.overlap)end end
+     row.collisionVE=nil;row.suppressedVE=nil
     end
     if ours and not row.meshes then
      row.meshes={}

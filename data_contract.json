@@ -1,0 +1,169 @@
+{
+  "format_version": 1,
+  "encoding": "palcraft-lua-table-v1",
+  "envelope": {
+    "format": "palcraft-lua-table-v1",
+    "value": {
+      "entries": [
+        {
+          "key": "string-or-number",
+          "value": "scalar-or-recursive-table"
+        }
+      ]
+    }
+  },
+  "purpose": "Runtime Lua converts user-extracted vanilla JSON with original integration bindings. JSON envelopes below remain an optional legacy fallback/testing interface; no generated values ship.",
+  "validation": {
+    "registry": "Array starts with name=dirt; unique names and mesh strings; preserve saved block/variant bindings.",
+    "item_registry": "items map and order list; preserve original mod item identifiers.",
+    "strings57": "items, ui and fragments maps.",
+    "font53_metrics": "Numeric codepoint keys; can be unused when native font fallback is selected."
+  },
+  "modules": [
+    {
+      "module": "decor70_data",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/decor70_data.json"
+    },
+    {
+      "module": "font53_metrics",
+      "pack": "hud_skins",
+      "output": "assets/minecraft/_palcraft/data/font53_metrics.json"
+    },
+    {
+      "module": "item_registry",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/item_registry.json"
+    },
+    {
+      "module": "items104",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/items104.json"
+    },
+    {
+      "module": "items107",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/items107.json"
+    },
+    {
+      "module": "items70",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/items70.json"
+    },
+    {
+      "module": "items88",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/items88.json"
+    },
+    {
+      "module": "items89",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/items89.json"
+    },
+    {
+      "module": "itemsA",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/itemsA.json"
+    },
+    {
+      "module": "itemsD",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/itemsD.json"
+    },
+    {
+      "module": "recipes",
+      "pack": "hud_skins",
+      "output": "assets/minecraft/_palcraft/data/recipes.json"
+    },
+    {
+      "module": "recipes104",
+      "pack": "hud_skins",
+      "output": "assets/minecraft/_palcraft/data/recipes104.json"
+    },
+    {
+      "module": "recipes70",
+      "pack": "hud_skins",
+      "output": "assets/minecraft/_palcraft/data/recipes70.json"
+    },
+    {
+      "module": "recipesA",
+      "pack": "hud_skins",
+      "output": "assets/minecraft/_palcraft/data/recipesA.json"
+    },
+    {
+      "module": "registry",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/registry.json"
+    },
+    {
+      "module": "sounds",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/sounds.json"
+    },
+    {
+      "module": "strings104",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/strings104.json"
+    },
+    {
+      "module": "strings107",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/strings107.json"
+    },
+    {
+      "module": "strings57",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/strings57.json"
+    },
+    {
+      "module": "strings67",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/strings67.json"
+    },
+    {
+      "module": "strings70",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/strings70.json"
+    },
+    {
+      "module": "strings71",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/strings71.json"
+    },
+    {
+      "module": "strings76",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/strings76.json"
+    },
+    {
+      "module": "strings88",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/strings88.json"
+    },
+    {
+      "module": "strings89",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/strings89.json"
+    },
+    {
+      "module": "stringsA",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/stringsA.json"
+    },
+    {
+      "module": "smelting",
+      "pack": "core",
+      "output": "assets/minecraft/_palcraft/data/smelting.json"
+    }
+  ],
+  "runtime_cache": {
+    "file": "cache/data-<mc_version>-<jar_sha256_first16>-<converter_sha256_first16>-tables.lua",
+    "envelope": [
+      "identity",
+      "value"
+    ],
+    "identity": "Full mc_version, jar SHA256, converter SHA256, asset-index SHA256 and indexed-resource SHA256",
+    "modules": "value[module_name]",
+    "first_use": "all tables converted once; later starts load a single cache file"
+  }
+}

@@ -24,8 +24,13 @@ param(
   [switch]$LibraryOnly      # dot-source: define functions only (used by tests)
 )
 
-$script:InstallerVersion = '1.0.1'
+$script:InstallerVersion = '1.1-CANDIDATE'
 $script:SteamAppId = '1623730'
+$script:SupportedMcVersions = @('1.21.11')   # versions whose data bindings passed equivalence (Initialize-LocalData enforces it)
+$script:MinPalSchema = [version]'0.6.71'
+$script:BaselineUe4ss = '2281fa31'
+$script:Ue4ssUrl = 'https://github.com/Okaetsu/RE-UE4SS/releases/tag/experimental-palworld'
+$script:PalSchemaUrl = 'https://github.com/Okaetsu/PalSchema/releases'
 $script:Dry = [bool]$WhatIf
 $script:UiLog = $null
 $script:UiProgress = $null
@@ -127,7 +132,7 @@ function Copy-Tracked {
   param([string]$Src, [string]$Dst, [string]$Kind)
   if ($script:Dry) { Write-Log "[dry-run] copy $Src -> $Dst"; Add-Record $Dst $Kind '(dry-run)'; return }
   Ensure-Dir (Split-Path -Parent $Dst)
-  Copy-Item -LiteralPath $Src -Destination $Dst -Force
+  Copy-FileAtomic $Src $Dst
   Add-Record $Dst $Kind (Get-Sha256 $Dst)
 }
 
@@ -135,7 +140,7 @@ function Write-TextTracked {
   param([string]$Path, [string]$Text, [string]$Kind)
   if ($script:Dry) { Write-Log "[dry-run] write $Path ($($Text.Length) chars)"; Add-Record $Path $Kind '(dry-run)'; return }
   Ensure-Dir (Split-Path -Parent $Path)
-  [IO.File]::WriteAllText($Path, $Text, $script:Utf8NoBom)
+  Write-TextAtomic $Path $Text
   Add-Record $Path $Kind (Get-Sha256 $Path)
 }
 
@@ -153,6 +158,9 @@ function Remove-EmptyDirChain {
 # ----------------------------------------------------------------- Palworld / Steam
 function Get-SteamRoots {
   $r = @()
+  if ($env:PALCRAFT_STEAM_ROOTS) {   # semicolon list; replaces registry/default detection (tests, portable Steam)
+    return @($env:PALCRAFT_STEAM_ROOTS -split ';' | Where-Object { $_ -and (Test-Path -LiteralPath $_) } | Select-Object -Unique)
+  }
   foreach ($k in 'HKCU:\Software\Valve\Steam', 'HKLM:\SOFTWARE\WOW6432Node\Valve\Steam', 'HKLM:\SOFTWARE\Valve\Steam') {
     try {
       $p = Get-ItemProperty -Path $k -ErrorAction Stop
@@ -167,7 +175,7 @@ function Read-LibraryFolders {
   # Parses Steam libraryfolders.vdf (new and old format). Returns @{Path; HasApp} objects.
   param([string]$Vdf)
   $libs = @(); $cur = $null
-  foreach ($line in [IO.File]::ReadAllLines($Vdf)) {
+  foreach ($line in [IO.File]::ReadAllLines($Vdf, [Text.Encoding]::UTF8)) {
     if ($line -match '^\s*"path"\s+"(.+)"\s*$') {
       $cur = [pscustomobject]@{ Path = ($Matches[1] -replace '\\\\', '\'); HasApp = $false }; $libs += $cur
     } elseif ($line -match '^\s*"\d+"\s+"([A-Za-z]:\\\\.+)"\s*$') {   # old format: "1" "D:\\Games\\Steam"
@@ -198,14 +206,34 @@ function Find-Palworld {
       $dir = $null
       $acf = Join-Path $sa "appmanifest_$($script:SteamAppId).acf"
       if (Test-Path -LiteralPath $acf) {
-        $m = [regex]::Match([IO.File]::ReadAllText($acf), '"installdir"\s+"([^"]+)"')
+        $m = [regex]::Match([IO.File]::ReadAllText($acf, [Text.Encoding]::UTF8), '"installdir"\s+"([^"]+)"')
         if ($m.Success) { $dir = Join-Path $sa ('common\' + $m.Groups[1].Value) }
       }
       if (-not $dir) { $dir = Join-Path $sa 'common\Palworld' }
       if (Test-PalworldDir $dir) { if ($l.HasApp) { $pref += $dir } else { $other += $dir } }
     }
   }
-  @(($pref + $other) | Select-Object -Unique)
+  @(($pref + $other) | ForEach-Object { $_.TrimEnd('\') } | Select-Object -Unique)
+}
+
+function Test-XboxPalworld {
+  # Xbox / Microsoft Store (Game Pass) build: GDK layout (WinGDK binaries); UE4SS cannot be installed like on Steam.
+  param([string]$Dir)
+  if (-not $Dir) { return $false }
+  foreach ($m in 'MicrosoftGame.config', 'gamelaunchhelper.exe', 'appxmanifest.xml', 'Pal\Binaries\WinGDK') {
+    if (Test-Path -LiteralPath (Join-Path $Dir $m)) { return $true }
+  }
+  if ($Dir -match '\\(WindowsApps|XboxGames)\\' -and -not (Test-Path -LiteralPath (Join-Path $Dir 'Pal\Binaries\Win64\Palworld-Win64-Shipping.exe'))) { return $true }
+  return $false
+}
+
+function Get-PalworldProblem {
+  # '' when the folder is usable, else the strings.json key that explains why not.
+  param([string]$Dir)
+  if (-not $Dir) { return $(if (@(Get-SteamRoots).Count) { 'game_notfound' } else { 'game_nosteam' }) }
+  if (Test-XboxPalworld $Dir) { return 'game_xbox' }
+  if (-not (Test-PalworldDir $Dir)) { return 'game_invalid' }
+  return ''
 }
 
 # ----------------------------------------------------------------- dependencies
@@ -229,53 +257,187 @@ function Get-DependencyInfo {
     }
   }
   if ($info.Ue4ssOk) { $info.PalSchemaOk = Test-Path -LiteralPath (Join-Path $info.ModsDir 'PalSchema') -PathType Container }
+  $info.Ue4ssName = $null; $info.Ue4ssVersion = $null; $info.PalSchemaVersion = $null
+  if ($info.Ue4ssOk) {
+    $ij = Join-Path $info.Ue4ssDir 'Info.json'
+    if (Test-Path -LiteralPath $ij -PathType Leaf) {
+      try { $o = [IO.File]::ReadAllText($ij, [Text.Encoding]::UTF8) | ConvertFrom-Json; $info.Ue4ssName = [string]$o.ModName; $info.Ue4ssVersion = [string]$o.Version } catch { }
+    }
+  }
+  if ($info.PalSchemaOk) {
+    $dll = Join-Path $info.ModsDir 'PalSchema\dlls\main.dll'
+    if (Test-Path -LiteralPath $dll -PathType Leaf) {
+      try { $info.PalSchemaVersion = [version](Get-Item -LiteralPath $dll).VersionInfo.FileVersion } catch { }
+    }
+  }
   [pscustomobject]$info
 }
 
-# ----------------------------------------------------------------- Minecraft discovery
-function Get-McRoots {
-  param([string[]]$Extra)
-  $r = @()
-  if ($Extra) { $r += $Extra }
-  if ($env:APPDATA) { $r += (Join-Path $env:APPDATA '.minecraft') }
-  if ($env:USERPROFILE) { $r += (Join-Path $env:USERPROFILE 'curseforge\minecraft\Install') }
-  @($r | Where-Object { $_ -and (Test-Path -LiteralPath (Join-Path $_ 'versions') -PathType Container) } | Select-Object -Unique)
-}
-
-function Find-MinecraftInstall {
-  # Only the vanilla version whose data bindings have passed equivalence.
-  param([string[]]$ExtraRoots)
-  $cands = @()
-  $roots = @(Get-McRoots $ExtraRoots)
-  foreach ($root in $roots) {
-    foreach ($d in (Get-ChildItem -LiteralPath (Join-Path $root 'versions') -Directory -ErrorAction SilentlyContinue)) {
-      if ($d.Name -ne '1.21.11') { continue }
-      $jar = Join-Path $d.FullName ($d.Name + '.jar'); $json = Join-Path $d.FullName ($d.Name + '.json')
-      if (-not ((Test-Path -LiteralPath $jar) -and (Test-Path -LiteralPath $json))) { continue }
-      $idx = $null
-      try {
-        $j = [IO.File]::ReadAllText($json, [Text.Encoding]::UTF8) | ConvertFrom-Json
-        if ($j.assetIndex -and $j.assetIndex.id) { $idx = [string]$j.assetIndex.id } elseif ($j.assets) { $idx = [string]$j.assets }
-      } catch { Write-Log "bad version json $json : $($_.Exception.Message)" 'WARN'; continue }
-      $assets = Join-Path $root 'assets'
-      $indexPath = if ($idx) { Join-Path $assets "indexes\$idx.json" } else { $null }
-      if ($indexPath -and -not (Test-Path -LiteralPath $indexPath)) {   # fall back to other roots' asset stores
-        foreach ($o in $roots) {
-          $alt = Join-Path $o "assets\indexes\$idx.json"
-          if (Test-Path -LiteralPath $alt) { $assets = Join-Path $o 'assets'; $indexPath = $alt; break }
-        }
-      }
-      $cands += [pscustomobject]@{
-        Root = $root; Version = $d.Name; VersionObj = [version]$d.Name; JarPath = $jar
-        AssetIndexId = $idx; IndexPath = $indexPath; IndexOk = [bool]($indexPath -and (Test-Path -LiteralPath $indexPath))
-        ObjectsDir = (Join-Path $assets 'objects')
+function Get-DependencyProblems {
+  # Level 'error' blocks installation; 'warn' is shown and logged only. Dep = which download link applies.
+  param($Dep)
+  $p = New-Object System.Collections.ArrayList
+  if (-not $Dep.Ue4ssOk) { [void]$p.Add([pscustomobject]@{ Level = 'error'; Key = 'deps_missing_ue4ss'; Args = @(); Dep = 'ue4ss' }) }
+  else {
+    if ($Dep.Ue4ssName -and $Dep.Ue4ssName -notmatch 'Palworld') {
+      [void]$p.Add([pscustomobject]@{ Level = 'warn'; Key = 'deps_ue4ss_vanilla'; Args = @($Dep.Ue4ssName); Dep = 'ue4ss' })
+    } elseif ($Dep.Ue4ssVersion -and $Dep.Ue4ssVersion -ne $script:BaselineUe4ss) {
+      [void]$p.Add([pscustomobject]@{ Level = 'warn'; Key = 'deps_ue4ss_version'; Args = @($Dep.Ue4ssVersion, $script:BaselineUe4ss); Dep = 'ue4ss' })
+    }
+    if (-not $Dep.PalSchemaOk) { [void]$p.Add([pscustomobject]@{ Level = 'error'; Key = 'deps_missing_palschema'; Args = @(); Dep = 'palschema' }) }
+    elseif (-not $Dep.PalSchemaVersion) { [void]$p.Add([pscustomobject]@{ Level = 'warn'; Key = 'deps_palschema_unknown'; Args = @(); Dep = 'palschema' }) }
+    else {
+      $pv = $Dep.PalSchemaVersion   # file versions are 4-part (0.6.71.0); compare major.minor.build only
+      $pv3 = New-Object Version($pv.Major, $pv.Minor, [Math]::Max(0, $pv.Build))
+      if ($pv3 -lt $script:MinPalSchema) {
+        [void]$p.Add([pscustomobject]@{ Level = 'error'; Key = 'deps_palschema_old'; Args = @($pv3.ToString(), $script:MinPalSchema.ToString()); Dep = 'palschema' })
+      } elseif ($pv3 -gt $script:MinPalSchema) {
+        [void]$p.Add([pscustomobject]@{ Level = 'warn'; Key = 'deps_palschema_newer'; Args = @($pv3.ToString(), $script:MinPalSchema.ToString()); Dep = 'palschema' })
       }
     }
   }
+  if (-not $Dep.Ue4ssOk -and -not $Dep.PalSchemaOk) { [void]$p.Add([pscustomobject]@{ Level = 'error'; Key = 'deps_missing_palschema'; Args = @(); Dep = 'palschema' }) }
+  return @($p)
+}
+
+function Format-DependencyProblem {
+  param($P)
+  $url = if ($P.Dep -eq 'palschema') { $script:PalSchemaUrl } else { $script:Ue4ssUrl }
+  return ((T $P.Key $P.Args) + ' ' + $url)
+}
+
+
+# ----------------------------------------------------------------- Minecraft discovery
+function Get-McRoots {
+  # Launcher data folders that can hold versions\<v>\<v>.jar + assets\ (official launcher, CurseForge, Modrinth App,
+  # Prism/MultiMC-style libraries\com\mojang\minecraft layout, or any folder the user browses to).
+  # PALCRAFT_MC_ROOTS (semicolon list) replaces the default locations (tests / unusual setups).
+  param([string[]]$Extra)
+  $r = @()
+  foreach ($e in @($Extra)) {
+    if (-not $e) { continue }
+    $r += $e
+    foreach ($sub in '.minecraft', 'minecraft') { $r += (Join-Path $e $sub) }   # an instance / launcher folder was picked
+  }
+  if ($env:PALCRAFT_MC_ROOTS) { $r += @($env:PALCRAFT_MC_ROOTS -split ';' | Where-Object { $_ }) }
+  else {
+    if ($env:APPDATA) {
+      $r += (Join-Path $env:APPDATA '.minecraft')
+      $r += (Join-Path $env:APPDATA 'PrismLauncher')
+      $r += (Join-Path $env:APPDATA 'PolyMC')
+      $r += (Join-Path $env:APPDATA 'ModrinthApp\meta')
+    }
+    if ($env:USERPROFILE) {
+      $r += (Join-Path $env:USERPROFILE 'curseforge\minecraft\Install')
+      $r += (Join-Path $env:USERPROFILE 'Documents\curseforge\minecraft\Install')
+    }
+  }
+  @($r | Where-Object {
+    $_ -and ((Test-Path -LiteralPath (Join-Path $_ 'versions') -PathType Container) -or
+             (Test-Path -LiteralPath (Join-Path $_ 'libraries\com\mojang\minecraft') -PathType Container))
+  } | ForEach-Object { (Get-FullPath $_) } | Select-Object -Unique)
+}
+
+function Get-McVersions {
+  # Every plain release (1.N[.M]) found in the roots, with jar/asset-index facts. Modded or snapshot profiles
+  # (1.21.11-fabric..., OptiFine, 24w14a, anything with inheritsFrom) are never candidates.
+  param([string[]]$ExtraRoots)
+  $roots = @(Get-McRoots $ExtraRoots)
+  $raw = @()
+  foreach ($root in $roots) {
+    $vdir = Join-Path $root 'versions'
+    if (Test-Path -LiteralPath $vdir -PathType Container) {
+      foreach ($d in (Get-ChildItem -LiteralPath $vdir -Directory -ErrorAction SilentlyContinue)) {
+        if ($d.Name -notmatch '^\d+\.\d+(\.\d+)?$') { continue }
+        $raw += [pscustomobject]@{ Root = $root; Version = $d.Name; Jar = (Join-Path $d.FullName ($d.Name + '.jar')); Json = (Join-Path $d.FullName ($d.Name + '.json')) }
+      }
+    }
+    $lib = Join-Path $root 'libraries\com\mojang\minecraft'
+    if (Test-Path -LiteralPath $lib -PathType Container) {
+      foreach ($d in (Get-ChildItem -LiteralPath $lib -Directory -ErrorAction SilentlyContinue)) {
+        if ($d.Name -notmatch '^\d+\.\d+(\.\d+)?$') { continue }
+        $raw += [pscustomobject]@{ Root = $root; Version = $d.Name; Jar = (Join-Path $d.FullName ('minecraft-' + $d.Name + '-client.jar')); Json = (Join-Path $root ('meta\net.minecraft\' + $d.Name + '.json')) }
+      }
+    }
+  }
+  $out = @()
+  foreach ($c in $raw) {
+    $idx = $null
+    if (Test-Path -LiteralPath $c.Json -PathType Leaf) {
+      try {
+        $j = [IO.File]::ReadAllText($c.Json, [Text.Encoding]::UTF8) | ConvertFrom-Json
+        if ($j.PSObject.Properties['inheritsFrom'] -and $j.inheritsFrom) { continue }   # modded profile
+        if ($j.assetIndex -and $j.assetIndex.id) { $idx = [string]$j.assetIndex.id } elseif ($j.assets) { $idx = [string]$j.assets }
+      } catch { Write-Log "bad version json $($c.Json) : $($_.Exception.Message)" 'WARN'; continue }
+    }
+    $hasJar = Test-Path -LiteralPath $c.Jar -PathType Leaf
+    if (-not $hasJar -and -not (Test-Path -LiteralPath $c.Json -PathType Leaf)) { continue }   # leftover empty folder
+    $assets = Join-Path $c.Root 'assets'
+    $indexPath = if ($idx) { Join-Path $assets "indexes\$idx.json" } else { $null }
+    if ($indexPath -and -not (Test-Path -LiteralPath $indexPath)) {   # fall back to other roots' asset stores
+      foreach ($o in $roots) {
+        $alt = Join-Path $o "assets\indexes\$idx.json"
+        if (Test-Path -LiteralPath $alt) { $assets = Join-Path $o 'assets'; $indexPath = $alt; break }
+      }
+    }
+    $out += [pscustomobject]@{
+      Root = $c.Root; Version = $c.Version; VersionObj = [version]$c.Version; JarPath = $c.Jar; HasJar = $hasJar
+      Supported = ($script:SupportedMcVersions -contains $c.Version)
+      AssetIndexId = $idx; IndexPath = $indexPath; IndexOk = [bool]($indexPath -and (Test-Path -LiteralPath $indexPath))
+      ObjectsDir = (Join-Path $assets 'objects')
+    }
+  }
+  return $out
+}
+
+function Select-McBest {
+  param($All)
+  $cands = @($All | Where-Object { $_.Supported -and $_.HasJar })
   if (-not $cands) { return $null }
   # prefer versions whose index is present, then newest
-  $best = $cands | Sort-Object @{ Expression = { $_.IndexOk }; Descending = $true }, @{ Expression = { $_.VersionObj }; Descending = $true } | Select-Object -First 1
-  return $best
+  return ($cands | Sort-Object @{ Expression = { $_.IndexOk }; Descending = $true }, @{ Expression = { $_.VersionObj }; Descending = $true } | Select-Object -First 1)
+}
+
+function Find-MinecraftInstall {
+  # Only vanilla versions whose data bindings have passed equivalence ($script:SupportedMcVersions).
+  param([string[]]$ExtraRoots)
+  return (Select-McBest @(Get-McVersions $ExtraRoots))
+}
+
+function Test-McReady {
+  # $null when the install can supply every user-owned file the installer needs; otherwise @{Key; Args}.
+  param($Mc)
+  if (-not $Mc.IndexOk) { return [pscustomobject]@{ Key = 'mc_noindex'; Args = @($Mc.Version) } }
+  $ko = $null
+  try {
+    $m = [regex]::Match([IO.File]::ReadAllText($Mc.IndexPath, [Text.Encoding]::UTF8), '"minecraft/lang/ko_kr\.json"\s*:\s*\{[^}]*?"hash"\s*:\s*"([0-9a-fA-F]{40})"')
+    if ($m.Success) { $ko = $m.Groups[1].Value }
+  } catch { }
+  if (-not $ko) { return [pscustomobject]@{ Key = 'mc_noindex'; Args = @($Mc.Version) } }
+  if (-not (Test-Path -LiteralPath (Join-Path $Mc.ObjectsDir ($ko.Substring(0, 2) + '\' + $ko)) -PathType Leaf)) {
+    return [pscustomobject]@{ Key = 'mc_noobjects'; Args = @($Mc.Version) }
+  }
+  return $null
+}
+
+function Get-McDiagnosis {
+  # What to tell the user: Status ok|notfound|unsupported|nojar|noindex|noobjects, Message (localized), Mc (when ok).
+  param([string[]]$ExtraRoots)
+  $all = @(Get-McVersions $ExtraRoots)
+  $sup = @($all | Where-Object { $_.Supported })
+  $want = ($script:SupportedMcVersions -join ', ')
+  if ($sup.Count) {
+    $best = Select-McBest $all
+    if (-not $best) { return [pscustomobject]@{ Status = 'nojar'; Mc = $null; Message = (T 'mc_nojar' @($sup[0].Version, $sup[0].Root)) } }
+    $why = Test-McReady $best
+    if ($why) { return [pscustomobject]@{ Status = ($why.Key -replace '^mc_', ''); Mc = $best; Message = (T $why.Key $why.Args) } }
+    return [pscustomobject]@{ Status = 'ok'; Mc = $best; Message = (T 'mc_found' @($best.Version, $best.Root)) }
+  }
+  if ($all.Count) {
+    $vs = (@($all | Sort-Object VersionObj -Descending | ForEach-Object { $_.Version } | Select-Object -Unique) -join ', ')
+    return [pscustomobject]@{ Status = 'unsupported'; Mc = $null; Message = (T 'mc_unsupported' @($vs, $want)) }
+  }
+  return [pscustomobject]@{ Status = 'notfound'; Mc = $null; Message = (T 'mc_notfound') }
 }
 
 # ----------------------------------------------------------------- required assets + extraction
@@ -311,7 +473,14 @@ function Export-McAssets {
     if ($script:Dry) { Write-Log "[dry-run] extract $origin -> $dst"; $script:AssetsCounter++; Add-Record $dst 'asset' '(dry-run)'; return }
     Ensure-Dir (Split-Path -Parent $dst)
     $in = & $Open
-    try { $out = [IO.File]::Create($dst); try { $in.CopyTo($out) } finally { $out.Dispose() } } finally { $in.Dispose() }
+    $tmp = $dst + '.palcraft-tmp'
+    try {
+      try { $out = [IO.File]::Create($tmp); try { $in.CopyTo($out) } finally { $out.Dispose() } } finally { $in.Dispose() }
+      Move-IntoPlace $tmp $dst
+    } catch {
+      if (Test-Path -LiteralPath $tmp) { Remove-Item -LiteralPath $tmp -Force -ErrorAction SilentlyContinue }
+      throw (Convert-IoError $_.Exception $dst)
+    }
     Add-Record $dst 'asset' (Get-Sha256 $dst)
     $script:AssetsCounter++
   }
@@ -399,7 +568,7 @@ function Edit-ModsTxt {
     else { $at = $lines.Count; if ($at -gt 0 -and $lines[$at - 1] -eq '') { $at-- }; $lines.Insert($at, $new) }
   }
   if ($script:Dry) { Write-Log "[dry-run] mods.txt $Mode $Name"; return $true }
-  [IO.File]::WriteAllText($Path, ($lines -join $nl), (New-Object Text.UTF8Encoding($bom)))
+  Write-UserFileText $Path ($lines -join $nl) (New-Object Text.UTF8Encoding($bom))
   Write-Log "mods.txt: $Mode $Name"
   return $true
 }
@@ -422,7 +591,7 @@ function Edit-ModsJson {
   if (-not $found -and $Mode -eq 'enable') { [void]$list.Add([pscustomobject]@{ mod_name = $Name; mod_enabled = $true }); $changed = $true }
   if (-not $changed) { return $false }
   if ($script:Dry) { Write-Log "[dry-run] mods.json $Mode $Name"; return $true }
-  [IO.File]::WriteAllText($Path, (ConvertTo-Json -InputObject @($list) -Depth 5), $script:Utf8NoBom)
+  Write-UserFileText $Path (ConvertTo-Json -InputObject @($list) -Depth 5) $script:Utf8NoBom
   Write-Log "mods.json: $Mode $Name"
   return $true
 }
@@ -462,6 +631,139 @@ function Test-IsAdmin {
   (New-Object Security.Principal.WindowsPrincipal($id)).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
+# ----------------------------------------------------------------- preflight (robustness)
+function New-InstallError {
+  # Exception whose Data['ExitCode'] becomes the -Silent process exit code.
+  param([int]$Code, [string]$Message)
+  $e = New-Object System.Exception($Message)
+  $e.Data['ExitCode'] = $Code
+  return $e
+}
+
+function Convert-IoError {
+  # Disk-full IOExceptions become a clear message; everything else passes through unchanged.
+  param([Exception]$Ex, [string]$Path)
+  $x = $Ex
+  while ($x) {
+    if (($x -is [IO.IOException]) -and (($x.HResult -band 0xFFFF) -in 112, 39)) { return (New-InstallError 7 (T 'disk_full' @($Path))) }
+    if ($x.Message -match 'not enough space on the disk') { return (New-InstallError 7 (T 'disk_full' @($Path))) }
+    $x = $x.InnerException
+  }
+  return $Ex
+}
+
+function Copy-FilePrimitive {
+  param([string]$Src, [string]$Tmp)
+  if (Test-Path -LiteralPath $Tmp) { [IO.File]::SetAttributes($Tmp, [IO.FileAttributes]::Normal) }
+  [IO.File]::Copy($Src, $Tmp, $true)
+  [IO.File]::SetAttributes($Tmp, [IO.FileAttributes]::Normal)   # a read-only payload must not make the game copy read-only
+}
+
+function Move-IntoPlace {
+  # Rename a finished temp file over $Dst (read-only or not); the target is never left half-written.
+  param([string]$Tmp, [string]$Dst)
+  if (Test-Path -LiteralPath $Dst -PathType Leaf) { [IO.File]::SetAttributes($Dst, [IO.FileAttributes]::Normal) }
+  Move-Item -LiteralPath $Tmp -Destination $Dst -Force
+}
+
+function Copy-FileAtomic {
+  param([string]$Src, [string]$Dst)
+  $tmp = $Dst + '.palcraft-tmp'
+  try {
+    Copy-FilePrimitive $Src $tmp
+    Move-IntoPlace $tmp $Dst
+  } catch {
+    if (Test-Path -LiteralPath $tmp) { Remove-Item -LiteralPath $tmp -Force -ErrorAction SilentlyContinue }
+    throw (Convert-IoError $_.Exception $Dst)
+  }
+}
+
+function Write-TextAtomic {
+  param([string]$Path, [string]$Text)
+  $tmp = $Path + '.palcraft-tmp'
+  try {
+    if (Test-Path -LiteralPath $tmp) { [IO.File]::SetAttributes($tmp, [IO.FileAttributes]::Normal) }
+    [IO.File]::WriteAllText($tmp, $Text, $script:Utf8NoBom)
+    Move-IntoPlace $tmp $Path
+  } catch {
+    if (Test-Path -LiteralPath $tmp) { Remove-Item -LiteralPath $tmp -Force -ErrorAction SilentlyContinue }
+    throw (Convert-IoError $_.Exception $Path)
+  }
+}
+
+function Write-UserFileText {
+  # Rewrite a user-owned file (mods.txt / mods.json) in place, tolerating the read-only attribute.
+  param([string]$Path, [string]$Text, $Encoding)
+  $attr = [IO.File]::GetAttributes($Path)
+  $ro = [bool]($attr -band [IO.FileAttributes]::ReadOnly)
+  if ($ro) { [IO.File]::SetAttributes($Path, ($attr -band (-bnot [IO.FileAttributes]::ReadOnly))) }
+  try { [IO.File]::WriteAllText($Path, $Text, $Encoding) }
+  finally { if ($ro) { [IO.File]::SetAttributes($Path, $attr) } }
+}
+
+function Test-LongPathSupport {
+  # Windows PowerShell 5.1 only handles paths over 259 characters when the OS "LongPathsEnabled" policy is on; probe it.
+  $base = Join-Path ([IO.Path]::GetTempPath()) ('palcraft_lp_' + [guid]::NewGuid().ToString('N'))
+  try {
+    $p = $base
+    while ($p.Length -lt 275) { $p = Join-Path $p ('d' * 50) }
+    [void][IO.Directory]::CreateDirectory($p)
+    [IO.File]::WriteAllText((Join-Path $p 'probe.txt'), 'x')
+    return $true
+  } catch { return $false }
+  finally { try { if (Test-Path -LiteralPath $base) { Remove-Item -LiteralPath $base -Recurse -Force -ErrorAction SilentlyContinue } } catch { } }
+}
+
+function Get-FreeBytes {
+  param([string]$Path)
+  try {
+    $root = [IO.Path]::GetPathRoot((Get-FullPath $Path))
+    if (-not $root -or $root.StartsWith('\\')) { return [long]::MaxValue }
+    return [long](New-Object IO.DriveInfo($root)).AvailableFreeSpace
+  } catch { return [long]::MaxValue }
+}
+
+function Assert-InstallPreflight {
+  # Everything that can be known before the first byte is written. Throws a localized error (with exit code) or 'NOT_WRITABLE'.
+  param([string]$Game, $Dep, $Mc, [string[]]$Packs, [bool]$MapOn, [string]$PayloadDir, [string]$ListPath)
+  if (Test-XboxPalworld $Game) { throw (New-InstallError 5 (T 'game_xbox')) }
+  $probs = @(Get-DependencyProblems $Dep)
+  $errs = @($probs | Where-Object { $_.Level -eq 'error' })
+  foreach ($w in @($probs | Where-Object { $_.Level -eq 'warn' })) { Write-Log (Format-DependencyProblem $w) 'WARN' }
+  if ($errs.Count) { throw (New-InstallError 2 ((@($errs | ForEach-Object { Format-DependencyProblem $_ }) -join ' '))) }
+  $bad = Test-McReady $Mc
+  if ($bad) { throw (New-InstallError 3 (T $bad.Key $bad.Args)) }
+
+  $pc = Resolve-UnderRoot $Game ($Dep.ModsPrefix + '/PalCraft')
+  $paks = Resolve-UnderRoot $Game 'Pal/Content/Paks/~mods/PalCraft'
+  foreach ($d in $pc, $paks) { if (-not (Test-DirWritable $d)) { throw 'NOT_WRITABLE' } }
+
+  # payload size + longest destination path
+  $bytes = [long]0; $longest = 0
+  $gl = (Get-FullPath $Game).Length + 1
+  $want = @('core') + $Packs; if ($MapOn) { $want += 'map_art' }
+  foreach ($pk in $want) {
+    $root = Join-Path $PayloadDir $pk
+    if (-not (Test-Path -LiteralPath $root -PathType Container)) { continue }
+    foreach ($f in (Get-ChildItem -LiteralPath $root -Recurse -File)) {
+      $bytes += $f.Length
+      $rel = Convert-PayloadRel (Get-RelPath $root $f.FullName) $Dep
+      $longest = [Math]::Max($longest, $gl + $rel.Length + 12)   # + ".palcraft-tmp"
+    }
+  }
+  try {
+    foreach ($e in (Get-RequiredAssets $ListPath $Packs)) {
+      $extra = if ($e.kind -like '*_prefix') { 60 } else { 0 }
+      $longest = [Math]::Max($longest, $pc.Length + 8 + ([string]$e.path).Length + $extra + 13)
+    }
+  } catch { }
+  if ($longest -ge 259 -and -not (Test-LongPathSupport)) { throw (New-InstallError 6 (T 'path_too_long' @($longest))) }
+
+  $need = $bytes + 700MB
+  $free = Get-FreeBytes $Game
+  if ($free -lt $need) { throw (New-InstallError 7 (T 'disk_low' @([int]($need / 1MB), [int]($free / 1MB)))) }
+}
+
 # ----------------------------------------------------------------- install
 function Resolve-PackList {
   param([string]$Choice)
@@ -486,12 +788,20 @@ function Copy-PayloadPack {
     Write-Log "payload pack '$Pack' not present at $root (skipped)" 'WARN'; return 0
   }
   $n = 0
+  $plan = @()
   foreach ($f in (Get-ChildItem -LiteralPath $root -Recurse -File)) {
     $rel = Convert-PayloadRel (Get-RelPath $root $f.FullName) $Dep
     # Enable only after extraction and checked legacy migration have succeeded.
     if ($rel -match '(^|/)PalCraft/enabled\.txt$') { continue }
-    $dst = Resolve-UnderRoot $Game $rel
-    Copy-Tracked $f.FullName $dst "pack:$Pack"
+    $plan += [pscustomobject]@{ Src = $f.FullName; Dst = (Resolve-UnderRoot $Game $rel) }
+  }
+  # Register every file of the pack in the manifest BEFORE copying, so even a killed process can be uninstalled.
+  if (-not $script:Dry -and $script:St.Game) {
+    foreach ($e in $plan) { Add-Record $e.Dst "pack:$Pack" '(pending)' }
+    if ($script:ManifestSaver) { & $script:ManifestSaver }
+  }
+  foreach ($e in $plan) {
+    Copy-Tracked $e.Src $e.Dst "pack:$Pack"
     $n++
   }
   Write-Log "payload '$Pack': $n files"
@@ -543,6 +853,15 @@ function Remove-ManifestFiles {
   }
   Add-RemovalPath (Join-Path $pc 'install-manifest.json')
   Add-RemovalPath (Join-Path $pc 'lifecycle-breadcrumbs.txt')
+  foreach ($own in 'config.ini', 'enabled.txt', 'missing-assets.txt') { Add-RemovalPath (Join-Path $pc $own) }   # written after the last checkpoint
+  # Leftovers of an interrupted install: temp files and anything under our own pak folder.
+  $ownedPakDir = Join-Path $Game 'Pal/Content/Paks/~mods/PalCraft'
+  if (Test-Path -LiteralPath $ownedPakDir -PathType Container) {
+    foreach ($entry in @(Get-ChildItem -LiteralPath $ownedPakDir -Recurse -Force -File)) { Add-RemovalPath $entry.FullName }
+  }
+  if (Test-Path -LiteralPath $pc -PathType Container) {
+    foreach ($entry in @(Get-ChildItem -LiteralPath $pc -Recurse -Force -File -Filter '*.palcraft-tmp')) { Add-RemovalPath $entry.FullName }
+  }
   $rows = @($paths.Values | Sort-Object | ForEach-Object {
     [ordered]@{ path = (Get-RelPath $Game $_); sha256 = (Get-Sha256 $_); bytes = (Get-Item -LiteralPath $_).Length }
   })
@@ -619,9 +938,9 @@ function Invoke-Install {
   Write-Log "INSTALL v$($script:InstallerVersion) game=$Game packs=$Choice mapArt=$WithMapArt mc=$($Mc.Version) dry=$($script:Dry)"
   $pcRel = $Dep.ModsPrefix + '/PalCraft'
   $pc = Resolve-UnderRoot $Game $pcRel
-  if (-not (Test-DirWritable $pc)) { throw 'NOT_WRITABLE' }
   $packs = Resolve-PackList $Choice
   $mapOn = ($WithMapArt -and ($packs -contains 'islands_animals'))
+  Assert-InstallPreflight $Game $Dep $Mc $packs $mapOn $PayloadDir $ListPath
 
   # replace an earlier install cleanly (also handles switching packs); saves are never touched here
   $old = Find-Manifest $Game
@@ -635,12 +954,31 @@ function Invoke-Install {
   $script:St.Game = (Get-FullPath $Game)
   $assetResult = $null
   $ok = $false
+  $script:ManifestSaver = $null
+  $mpath = Join-Path $pc 'install-manifest.json'
+  # Checkpointed manifest: an interrupted or failed install can always be uninstalled from the last checkpoint.
+  $saveManifest = {
+    $manifest = [ordered]@{
+      schema = 1; installer_version = $script:InstallerVersion
+      installed_at = (Get-Date).ToString('yyyy-MM-ddTHH:mm:sszzz')
+      game_dir = $script:St.Game; palcraft_dir = $pcRel
+      mc_version = $Mc.Version; packs = $packs; map_art = $mapOn; complete = $ok
+      missing_assets = @($(if ($assetResult) { $assetResult.Missing } else { @() }))
+      dirs_created = @($script:St.Dirs)
+      files = @($script:St.Files.Values)
+    }
+    if ($script:Dry) { Write-Log "[dry-run] manifest would list $($script:St.Files.Count) files"; return }
+    Ensure-Dir $pc
+    Write-TextAtomic $mpath (ConvertTo-Json -InputObject $manifest -Depth 6)
+  }
+  $script:ManifestSaver = $saveManifest
   try {
     Set-Progress 5 'core'
     [void](Copy-PayloadPack $Game $Dep $PayloadDir 'core' $true)
     $i = 0
     foreach ($p in $packs) { $i++; Set-Progress (10 + 10 * $i) $p; [void](Copy-PayloadPack $Game $Dep $PayloadDir $p $false) }
     if ($mapOn) { Set-Progress 30 'map_art'; [void](Copy-PayloadPack $Game $Dep $PayloadDir 'map_art' $false) }
+    & $saveManifest
 
     Set-Progress 40 'assets'
     $assetsRoot = Join-Path $pc 'assets'
@@ -651,6 +989,7 @@ function Invoke-Install {
       Write-TextTracked (Join-Path $pc 'missing-assets.txt') ("These Minecraft files were not found in your install (" + $Mc.Version + "):`r`n" + ($assetResult.Missing -join "`r`n") + "`r`n") 'report'
     }
 
+    & $saveManifest
     Set-Progress 82 'assets'
     $cacheBuilder=Join-Path (Split-Path -Parent $script:ScriptDir) 'asset-runtime/Build-TextureCache.ps1'
     if (-not (Test-Path -LiteralPath $cacheBuilder -PathType Leaf)) { throw 'Minecraft texture/font cache builder missing from release' }
@@ -673,6 +1012,12 @@ function Invoke-Install {
       }
       $patchReceipt=Join-Path $assetsRoot 'minecraft/_palcraft/cooked-patch-receipt.json'
       Add-Record $patchReceipt 'asset' (Get-Sha256 $patchReceipt)
+      $soundReceipt=Join-Path $assetsRoot 'minecraft/_palcraft/cooked-sound-receipt.json'
+      if (Test-Path -LiteralPath $soundReceipt -PathType Leaf) {
+        Add-Record $soundReceipt 'asset' (Get-Sha256 $soundReceipt)
+        $soundPatched=[IO.File]::ReadAllText($soundReceipt,[Text.Encoding]::UTF8) | ConvertFrom-Json
+        if (-not $soundPatched.complete) { Write-Log 'Some Minecraft sounds remain silent; see the cooked sound receipt.' 'WARN' }
+      }
       $patched=[IO.File]::ReadAllText($patchReceipt,[Text.Encoding]::UTF8) | ConvertFrom-Json
       if (-not $patched.complete) { Write-Log 'Some cooked assets remain blank; see the cooked patch receipt.' 'WARN' }
     }
@@ -690,6 +1035,7 @@ function Invoke-Install {
       ('; written by PalCraft-Installer ' + $script:InstallerVersion),
       ('packs = ' + ($packs -join ',')),
       ('map_art = ' + $(if ($mapOn) { '1' } else { '0' })),
+      ('creative_mode = ' + $(if ($packs -contains 'hud_skins') { '1' } else { '0' })),
       ('mc_version = ' + $Mc.Version),
       ('mc_jar_sha256 = ' + $(if ($dataSource) { $dataSource.jar_sha256 } else { 'dry-run' })),
       ('installed_at = ' + (Get-Date).ToString('yyyy-MM-ddTHH:mm:sszzz'))
@@ -701,22 +1047,8 @@ function Invoke-Install {
     $ok = $true
   } finally {
     # always write the manifest (even after a failure) so a partial install can be uninstalled
-    $manifest = [ordered]@{
-      schema = 1; installer_version = $script:InstallerVersion
-      installed_at = (Get-Date).ToString('yyyy-MM-ddTHH:mm:sszzz')
-      game_dir = $script:St.Game; palcraft_dir = $pcRel
-      mc_version = $Mc.Version; packs = $packs; map_art = $mapOn; complete = $ok
-      missing_assets = @($(if ($assetResult) { $assetResult.Missing } else { @() }))
-      dirs_created = @($script:St.Dirs)
-      files = @($script:St.Files.Values)
-    }
-    $mpath = Join-Path $pc 'install-manifest.json'
-    if ($script:Dry) { Write-Log "[dry-run] manifest would list $($script:St.Files.Count) files" }
-    else {
-      Ensure-Dir $pc
-      [IO.File]::WriteAllText($mpath, (ConvertTo-Json -InputObject $manifest -Depth 6), $script:Utf8NoBom)
-      Write-Log "manifest written: $mpath ($($script:St.Files.Count) files)"
-    }
+    try { & $saveManifest; if (-not $script:Dry) { Write-Log "manifest written: $mpath ($($script:St.Files.Count) files, complete=$ok)" } }
+    catch { Write-Log "manifest could not be written: $($_.Exception.Message)" 'ERROR' }
   }
   Set-Progress 100 'done'
   return [pscustomobject]@{ Files = $script:St.Files.Count; AssetsWritten = $assetResult.Written; Missing = $assetResult.Missing; ManifestPath = $mpath; Packs = $packs; MapArt = $mapOn }
@@ -771,36 +1103,41 @@ function Select-GuiFolder {
 
 function Update-GuiState {
   $u = $script:Ui
-  $g = $u.Game.Text.Trim(); $u.LinkUe.Visible = $false; $u.LinkPs.Visible = $false
+  $g = $u.Game.Text.Trim(); $u.LinkUe.Visible = $false; $u.LinkPs.Visible = $false; $u.WantUe = $false; $u.WantPs = $false
   $u.G = $null; $u.Dep = $null; $u.Mc_ = $null
   $ready = $true
-  if (-not $g) { $u.GameStatus.Text = T 'game_notfound'; $ready = $false }
-  elseif (-not (Test-PalworldDir $g)) { $u.GameStatus.Text = T 'game_invalid'; $ready = $false }
+  $gp = Get-PalworldProblem $g
+  if ($gp) { $u.GameStatus.Text = T $gp; $u.DepStatus.Text = ''; $ready = $false }
   else {
     $u.G = $g; $u.GameStatus.Text = T 'game_found'
     $dep = Get-DependencyInfo $g; $u.Dep = $dep
-    if ($dep.Ue4ssOk -and $dep.PalSchemaOk) { $u.DepStatus.Text = T 'deps_ok' }
+    $probs = @(Get-DependencyProblems $dep)
+    if ($probs.Count -eq 0) { $u.DepStatus.Text = T 'deps_ok' }
     else {
-      $t = @()
-      if (-not $dep.Ue4ssOk) { $t += (T 'deps_missing_ue4ss'); $u.LinkUe.Visible = $true }
-      if (-not $dep.PalSchemaOk) { $t += (T 'deps_missing_palschema'); $u.LinkPs.Visible = $true }
-      $u.DepStatus.Text = ($t -join ' ') + "`r`n" + (T 'deps_stop')
-      $ready = $false
+      $t = @($probs | ForEach-Object { T $_.Key $_.Args })
+      if (@($probs | Where-Object { $_.Level -eq 'error' }).Count) { $t += (T 'deps_stop'); $ready = $false }
+      $u.DepStatus.Text = $t -join "`r`n"
+      if (@($probs | Where-Object { $_.Dep -eq 'ue4ss' }).Count) { $u.LinkUe.Visible = $true; $u.WantUe = $true }
+      if (@($probs | Where-Object { $_.Dep -eq 'palschema' }).Count) { $u.LinkPs.Visible = $true; $u.WantPs = $true }
     }
   }
   $mcDir = $u.Mc.Text.Trim()
-  $mc = if ($mcDir) { Find-MinecraftInstall @($mcDir) } else { Find-MinecraftInstall }
-  if ($mc) {
-    $u.Mc_ = $mc; $u.McStatus.Text = T 'mc_found' @($mc.Version, $mc.Root)
-    if (-not $mc.IndexOk) { $u.McStatus.Text += "`r`n" + (T 'mc_noindex' @($mc.Version)) }
-  } else { $u.McStatus.Text = T 'mc_notfound'; $ready = $false }
+  $dg = if ($mcDir) { Get-McDiagnosis @($mcDir) } else { Get-McDiagnosis }
+  $u.McStatus.Text = $dg.Message
+  if ($dg.Status -eq 'ok') { $u.Mc_ = $dg.Mc } else { $ready = $false }
   $u.BtnInstall.Enabled = $ready
   $hasInst = [bool]($u.G -and (Find-Manifest $u.G))
   $u.BtnUninstall.Enabled = $hasInst
   $leg = [bool]($u.Dep -and $u.Dep.ModsDir -and (Get-LegacyDir $u.Dep))
-  $u.BtnMigrate.Visible = $leg
+  $u.BtnMigrate.Visible = $leg; $u.WantMigrate = $leg
   $u.BtnMigrate.Enabled = $leg -and $hasInst
   Sync-MapArt
+  Update-GuiLayout
+}
+
+function Get-NotWritableAction {
+  # 'stop' when already elevated (nothing more we can do), else 'prompt' to relaunch elevated.
+  if (Test-IsAdmin) { return 'stop' } else { return 'prompt' }
 }
 
 function Invoke-GuiWork {
@@ -813,9 +1150,10 @@ function Invoke-GuiWork {
   catch {
     Write-Log "ERROR: $($_.Exception.Message)" 'ERROR'
     if ($_.Exception.Message -eq 'NOT_WRITABLE') {
-      if (Test-IsAdmin) { [void][Windows.Forms.MessageBox]::Show((T 'need_admin_stop'), (T 'title')) }
+      if ((Get-NotWritableAction) -eq 'stop') { [void][Windows.Forms.MessageBox]::Show((T 'need_admin_stop'), (T 'title')) }
       elseif ([Windows.Forms.MessageBox]::Show((T 'need_admin'), (T 'title'), 'YesNo') -eq 'Yes') {
-        $a = @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', ('"' + $PSCommandPath + '"'), '-GameDir', ('"' + $u.G + '"'))
+        $a = @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', ('"' + $PSCommandPath + '"'), '-GameDir', ('"' + $u.G.TrimEnd('\') + '"'), '-Language', $script:Lang)
+        if ($u.Mc.Text.Trim()) { $a += @('-MinecraftDir', ('"' + $u.Mc.Text.Trim().TrimEnd('\') + '"')) }
         Start-Process powershell.exe -ArgumentList $a -Verb RunAs; $u.Form.Close()
       }
     } else { [void][Windows.Forms.MessageBox]::Show((T 'error' @($_.Exception.Message, $script:LogFile)), (T 'title'), 'OK', 'Error') }
@@ -859,91 +1197,131 @@ function Start-GuiMigrate {
 }
 
 # ----------------------------------------------------------------- GUI
+function Update-GuiLayout {
+  # Flow layout computed from measured text so no localized message is ever clipped (Korean and English, any DPI scale).
+  $u = $script:Ui
+  if (-not $u -or $script:InGuiLayout) { return }
+  $script:InGuiLayout = $true
+  try {
+    $f = $u.Form; $S = [double]$u.S
+    $P = { param([double]$n) [int][Math]::Round($n * $S) }
+    $m = & $P 12; $gap = & $P 6
+    $w = $f.ClientSize.Width - 2 * $m
+    $fl = [Windows.Forms.TextFormatFlags]::WordBreak -bor [Windows.Forms.TextFormatFlags]::NoPrefix
+    $fit = { param($c, [int]$width, [int]$minH)
+      if ([string]::IsNullOrEmpty($c.Text)) { return 0 }
+      $sz = [Windows.Forms.TextRenderer]::MeasureText($c.Text, $c.Font, (New-Object Drawing.Size(($width - (& $P 8)), 0)), $fl)
+      return [Math]::Max($minH, $sz.Height + (& $P 4)) }
+    $y = & $P 10
+    $h = & $fit $u.Intro $w (& $P 20); $u.Intro.SetBounds($m, $y, $w, $h); $y += $h + $gap
+    $u.LblGame.SetBounds($m, $y, $w, (& $P 20)); $y += (& $P 22)
+    $bw = [Math]::Max((& $P 98), [Windows.Forms.TextRenderer]::MeasureText($u.GameBrowse.Text, $u.GameBrowse.Font).Width + (& $P 24))
+    $u.GameBrowse.SetBounds($f.ClientSize.Width - $m - $bw, $y - (& $P 2), $bw, (& $P 27))
+    $u.Game.SetBounds($m, $y, $w - $bw - $gap, (& $P 24)); $y += (& $P 28)
+    $h = & $fit $u.GameStatus $w (& $P 20); $u.GameStatus.SetBounds($m, $y, $w, $h); $y += $h + $gap
+    $h = & $fit $u.DepStatus $w 0; $u.DepStatus.SetBounds($m, $y, $w, $h); if ($h) { $y += $h + $gap }
+    # Control.Visible is false for children of a form that is not shown yet, so layout uses the Want* flags.
+    if ($u.WantUe -or $u.WantPs) {
+      $x = $m
+      foreach ($pair in @(@($u.LinkUe, $u.WantUe), @($u.LinkPs, $u.WantPs))) {
+        if ($pair[1]) { $lk = $pair[0]; $lk.AutoSize = $true; $lk.Location = New-Object Drawing.Point($x, $y); $x += $lk.PreferredWidth + (& $P 24) }
+      }
+      $y += (& $P 26)
+    }
+    $u.LblMc.SetBounds($m, $y, $w, (& $P 20)); $y += (& $P 22)
+    $bw2 = [Math]::Max((& $P 98), [Windows.Forms.TextRenderer]::MeasureText($u.McBrowse.Text, $u.McBrowse.Font).Width + (& $P 24))
+    $u.McBrowse.SetBounds($f.ClientSize.Width - $m - $bw2, $y - (& $P 2), $bw2, (& $P 27))
+    $u.Mc.SetBounds($m, $y, $w - $bw2 - $gap, (& $P 24)); $y += (& $P 28)
+    $h = & $fit $u.McStatus $w (& $P 20); $u.McStatus.SetBounds($m, $y, $w, $h); $y += $h + $gap
+    # pack group (inner stack measured too)
+    $gw = $w - (& $P 28); $iy = & $P 22
+    foreach ($c in $u.RAll, $u.RHud, $u.RIsl) { $ch = & $fit $c ($gw - (& $P 24)) (& $P 22); $c.SetBounds((& $P 14), $iy, $gw, $ch); $iy += $ch + (& $P 2) }
+    $ch = & $fit $u.CMap ($gw - (& $P 44)) (& $P 22); $u.CMap.SetBounds((& $P 34), $iy, $gw - (& $P 20), $ch); $iy += $ch + (& $P 8)
+    $u.Group.SetBounds($m, $y, $w, $iy); $y += $iy + $gap
+    foreach ($c in $u.Dry, $u.Saves) { $ch = & $fit $c ($w - (& $P 28)) (& $P 22); $c.SetBounds($m + (& $P 2), $y, $w - (& $P 2), $ch); $y += $ch + (& $P 2) }
+    $y += $gap
+    # buttons
+    $bh = & $P 34; $x = $m
+    foreach ($b in $u.BtnInstall, $u.BtnUninstall, $u.BtnMigrate) {
+      $bwid = [Math]::Max((& $P 130), [Windows.Forms.TextRenderer]::MeasureText($b.Text, $b.Font).Width + (& $P 32))
+      $b.SetBounds($x, $y, $bwid, $bh); if (($b -ne $u.BtnMigrate) -or $u.WantMigrate) { $x += $bwid + $gap }
+    }
+    $cw = [Math]::Max((& $P 130), [Windows.Forms.TextRenderer]::MeasureText($u.BtnClose.Text, $u.BtnClose.Font).Width + (& $P 32))
+    $u.BtnClose.SetBounds($f.ClientSize.Width - $m - $cw, $y, $cw, $bh); $y += $bh + $gap
+    $u.Progress.SetBounds($m, $y, $w, (& $P 14)); $y += (& $P 20)
+    $minLog = & $P 70
+    $need = $y + $minLog + $m
+    if ($need -gt $f.ClientSize.Height) { $f.ClientSize = New-Object Drawing.Size($f.ClientSize.Width, $need) }
+    $u.Log.SetBounds($m, $y, $w, ($f.ClientSize.Height - $y - $m))
+  } finally { $script:InGuiLayout = $false }
+}
+
 function New-MainForm {
+  param([double]$TestScale = 1.0)   # tests only: emulate a DPI-aware window at 125/150/200 percent
   Add-Type -AssemblyName System.Windows.Forms
   Add-Type -AssemblyName System.Drawing
   try { [Windows.Forms.Application]::EnableVisualStyles() } catch { }
-  $fontName = if ($script:Lang -eq 'ko') { 'Malgun Gothic' } else { 'Segoe UI' }
-  $font = New-Object Drawing.Font($fontName, 9)
-  $f = New-Object Windows.Forms.Form
-  $f.Text = T 'title'; $f.Font = $font; $f.StartPosition = 'CenterScreen'
-  $f.ClientSize = New-Object Drawing.Size(740, 700); $f.MinimumSize = New-Object Drawing.Size(640, 620)
-  $u = @{}; $script:Ui = $u; $u.Form = $f
-  $script:GuiGame = $null; $script:GuiDep = $null; $script:GuiMc = $null
-
-  function Add-Ctl($c, $x, $y, $w, $h, $anchor) {
-    $c.Location = New-Object Drawing.Point($x, $y); $c.Size = New-Object Drawing.Size($w, $h)
-    if ($anchor) { $c.Anchor = $anchor }
-    $f.Controls.Add($c); return $c
+  $S = $TestScale
+  if ($TestScale -eq 1.0) {
+    try { $g0 = [Drawing.Graphics]::FromHwnd([IntPtr]::Zero); $S = [Math]::Max(1.0, $g0.DpiX / 96.0); $g0.Dispose() } catch { $S = 1.0 }
   }
-  $AW = [Windows.Forms.AnchorStyles]
-  $topLR = $AW::Top -bor $AW::Left -bor $AW::Right
+  $fontName = if ($script:Lang -eq 'ko') { 'Malgun Gothic' } else { 'Segoe UI' }
+  # With a DPI-aware process, a point size already renders larger at 125/150/200 percent; TestScale emulates that.
+  $font = New-Object Drawing.Font($fontName, (9 * $TestScale))
+  $f = New-Object Windows.Forms.Form
+  $f.Text = T 'title'; $f.Font = $font; $f.StartPosition = 'CenterScreen'; $f.AutoScaleMode = [Windows.Forms.AutoScaleMode]::None
+  $f.ClientSize = New-Object Drawing.Size([int](740 * $S), [int](620 * $S)); $f.MinimumSize = New-Object Drawing.Size([int](640 * $S), [int](560 * $S))
+  $u = @{}; $script:Ui = $u; $u.Form = $f; $u.S = $S
+  $script:GuiGame = $null; $script:GuiDep = $null; $script:GuiMc = $null; $script:InGuiLayout = $false
 
-  $l = New-Object Windows.Forms.Label; $l.Text = T 'intro'
-  [void](Add-Ctl $l 12 10 716 52 $topLR)
+  function New-Lbl([string]$text) { $c = New-Object Windows.Forms.Label; $c.Text = $text; $c.UseMnemonic = $false; $f.Controls.Add($c); return $c }
+  $u.Intro = New-Lbl (T 'intro')
+  $u.LblGame = New-Lbl (T 'game_path')
+  $u.Game = New-Object Windows.Forms.TextBox; $f.Controls.Add($u.Game)
+  $u.GameBrowse = New-Object Windows.Forms.Button; $u.GameBrowse.Text = T 'browse'; $f.Controls.Add($u.GameBrowse)
+  $u.GameStatus = New-Lbl ''
+  $u.DepStatus = New-Lbl ''
+  $u.LinkUe = New-Object Windows.Forms.LinkLabel; $u.LinkUe.Text = T 'link_ue4ss'; $u.LinkUe.Visible = $false; $u.LinkUe.UseMnemonic = $false; $f.Controls.Add($u.LinkUe)
+  $u.LinkPs = New-Object Windows.Forms.LinkLabel; $u.LinkPs.Text = T 'link_palschema'; $u.LinkPs.Visible = $false; $u.LinkPs.UseMnemonic = $false; $f.Controls.Add($u.LinkPs)
+  $u.LblMc = New-Lbl (T 'mc_path')
+  $u.Mc = New-Object Windows.Forms.TextBox; $f.Controls.Add($u.Mc)
+  $u.McBrowse = New-Object Windows.Forms.Button; $u.McBrowse.Text = T 'browse'; $f.Controls.Add($u.McBrowse)
+  $u.McStatus = New-Lbl ''
 
-  $l = New-Object Windows.Forms.Label; $l.Text = T 'game_path'
-  [void](Add-Ctl $l 12 70 300 20 $null)
-  $u.Game = New-Object Windows.Forms.TextBox; [void](Add-Ctl $u.Game 12 92 610 24 $topLR)
-  $u.GameBrowse = New-Object Windows.Forms.Button; $u.GameBrowse.Text = T 'browse'
-  [void](Add-Ctl $u.GameBrowse 630 90 98 27 ($AW::Top -bor $AW::Right))
-  $u.GameStatus = New-Object Windows.Forms.Label; [void](Add-Ctl $u.GameStatus 12 120 716 20 $topLR)
-
-  $u.DepStatus = New-Object Windows.Forms.Label; [void](Add-Ctl $u.DepStatus 12 144 716 36 $topLR)
-  $u.LinkUe = New-Object Windows.Forms.LinkLabel; $u.LinkUe.Text = T 'link_ue4ss'; $u.LinkUe.Visible = $false
-  [void](Add-Ctl $u.LinkUe 12 180 200 20 $null)
-  $u.LinkPs = New-Object Windows.Forms.LinkLabel; $u.LinkPs.Text = T 'link_palschema'; $u.LinkPs.Visible = $false
-  [void](Add-Ctl $u.LinkPs 220 180 200 20 $null)
-
-  $l = New-Object Windows.Forms.Label; $l.Text = T 'mc_path'
-  [void](Add-Ctl $l 12 208 300 20 $null)
-  $u.Mc = New-Object Windows.Forms.TextBox; [void](Add-Ctl $u.Mc 12 230 610 24 $topLR)
-  $u.McBrowse = New-Object Windows.Forms.Button; $u.McBrowse.Text = T 'browse'
-  [void](Add-Ctl $u.McBrowse 630 228 98 27 ($AW::Top -bor $AW::Right))
-  $u.McStatus = New-Object Windows.Forms.Label; [void](Add-Ctl $u.McStatus 12 258 716 50 $topLR)
-
-  $g = New-Object Windows.Forms.GroupBox; $g.Text = T 'packs_title'
-  [void](Add-Ctl $g 12 312 716 128 $topLR)
+  $g = New-Object Windows.Forms.GroupBox; $g.Text = T 'packs_title'; $f.Controls.Add($g); $u.Group = $g
   $u.RAll = New-Object Windows.Forms.RadioButton; $u.RAll.Text = T 'pack_all'; $u.RAll.Checked = $true
   $u.RHud = New-Object Windows.Forms.RadioButton; $u.RHud.Text = T 'pack_hud'
   $u.RIsl = New-Object Windows.Forms.RadioButton; $u.RIsl.Text = T 'pack_islands'
   $u.CMap = New-Object Windows.Forms.CheckBox; $u.CMap.Text = T 'map_art'; $u.CMap.Checked = $true
-  $y = 22
-  foreach ($c in $u.RAll, $u.RHud, $u.RIsl) { $c.Location = New-Object Drawing.Point(14, $y); $c.Size = New-Object Drawing.Size(680, 22); $g.Controls.Add($c); $y += 24 }
-  $u.CMap.Location = New-Object Drawing.Point(34, $y); $u.CMap.Size = New-Object Drawing.Size(660, 22); $g.Controls.Add($u.CMap)
+  foreach ($c in $u.RAll, $u.RHud, $u.RIsl, $u.CMap) { $c.UseMnemonic = $false; $g.Controls.Add($c) }   # "HUD & Skins": '&' is literal text
   $u.RAll.add_CheckedChanged({ Sync-MapArt }); $u.RHud.add_CheckedChanged({ Sync-MapArt }); $u.RIsl.add_CheckedChanged({ Sync-MapArt })
 
-  $u.Dry = New-Object Windows.Forms.CheckBox; $u.Dry.Text = T 'dry_run'; $u.Dry.Checked = $script:Dry
-  [void](Add-Ctl $u.Dry 14 448 700 22 $topLR)
-  $u.Saves = New-Object Windows.Forms.CheckBox; $u.Saves.Text = T 'remove_saves'
-  [void](Add-Ctl $u.Saves 14 472 700 22 $topLR)
+  $u.Dry = New-Object Windows.Forms.CheckBox; $u.Dry.Text = T 'dry_run'; $u.Dry.Checked = $script:Dry; $u.Dry.UseMnemonic = $false; $f.Controls.Add($u.Dry)
+  $u.Saves = New-Object Windows.Forms.CheckBox; $u.Saves.Text = T 'remove_saves'; $u.Saves.UseMnemonic = $false; $f.Controls.Add($u.Saves)
 
-  $u.BtnInstall = New-Object Windows.Forms.Button; $u.BtnInstall.Text = T 'install'
-  [void](Add-Ctl $u.BtnInstall 12 502 130 32 $null)
-  $u.BtnUninstall = New-Object Windows.Forms.Button; $u.BtnUninstall.Text = T 'uninstall'
-  [void](Add-Ctl $u.BtnUninstall 150 502 130 32 $null)
-  $u.BtnMigrate = New-Object Windows.Forms.Button; $u.BtnMigrate.Text = T 'migrate'; $u.BtnMigrate.Visible = $false
-  [void](Add-Ctl $u.BtnMigrate 288 502 210 32 $null)
-  $u.BtnClose = New-Object Windows.Forms.Button; $u.BtnClose.Text = T 'close'
-  [void](Add-Ctl $u.BtnClose 598 502 130 32 ($AW::Top -bor $AW::Right))
+  $u.BtnInstall = New-Object Windows.Forms.Button; $u.BtnInstall.Text = T 'install'; $f.Controls.Add($u.BtnInstall)
+  $u.BtnUninstall = New-Object Windows.Forms.Button; $u.BtnUninstall.Text = T 'uninstall'; $f.Controls.Add($u.BtnUninstall)
+  $u.BtnMigrate = New-Object Windows.Forms.Button; $u.BtnMigrate.Text = T 'migrate'; $u.BtnMigrate.Visible = $false; $f.Controls.Add($u.BtnMigrate)
+  $u.BtnClose = New-Object Windows.Forms.Button; $u.BtnClose.Text = T 'close'; $f.Controls.Add($u.BtnClose)
+  foreach ($b in $u.BtnInstall, $u.BtnUninstall, $u.BtnMigrate, $u.BtnClose, $u.GameBrowse, $u.McBrowse) { $b.UseMnemonic = $false }
   $u.BtnClose.add_Click({ $script:Ui.Form.Close() })
 
-  $u.Progress = New-Object Windows.Forms.ProgressBar; [void](Add-Ctl $u.Progress 12 542 716 14 $topLR)
+  $u.Progress = New-Object Windows.Forms.ProgressBar; $f.Controls.Add($u.Progress)
   $u.Log = New-Object Windows.Forms.TextBox; $u.Log.Multiline = $true; $u.Log.ReadOnly = $true; $u.Log.ScrollBars = 'Vertical'
-  $u.Log.Font = New-Object Drawing.Font('Consolas', 8.5)
-  [void](Add-Ctl $u.Log 12 562 716 128 ($AW::Top -bor $AW::Left -bor $AW::Right -bor $AW::Bottom))
+  $u.Log.Font = New-Object Drawing.Font('Consolas', (8.5 * $TestScale)); $f.Controls.Add($u.Log)
 
   $script:UiLog = { param($line) $script:Ui.Log.AppendText($line + "`r`n"); [Windows.Forms.Application]::DoEvents() }
   $script:UiProgress = { param($pct, $text) $script:Ui.Progress.Value = [Math]::Max(0, [Math]::Min(100, $pct)); [Windows.Forms.Application]::DoEvents() }
 
-  $u.LinkUe.add_LinkClicked({ Start-Process 'https://github.com/UE4SS-RE/RE-UE4SS/releases/tag/experimental-latest' })
-  $u.LinkPs.add_LinkClicked({ Start-Process 'https://github.com/Okaetsu/PalSchema/releases' })
+  $u.LinkUe.add_LinkClicked({ Start-Process $script:Ue4ssUrl })
+  $u.LinkPs.add_LinkClicked({ Start-Process $script:PalSchemaUrl })
   $u.GameBrowse.add_Click({ Select-GuiFolder $script:Ui.Game })
   $u.McBrowse.add_Click({ Select-GuiFolder $script:Ui.Mc })
   $u.Game.add_Leave({ Update-GuiState }); $u.Mc.add_Leave({ Update-GuiState })
   $u.BtnInstall.add_Click({ Start-GuiInstall })
   $u.BtnUninstall.add_Click({ Start-GuiUninstall })
   $u.BtnMigrate.add_Click({ Start-GuiMigrate })
+  $f.add_Resize({ Update-GuiLayout })
 
   # initial detection
   if ($GameDir) { $u.Game.Text = $GameDir }
@@ -964,19 +1342,24 @@ function Exit-WithError { param([string]$Msg, [int]$Code) Write-Log $Msg 'ERROR'
 if ($Silent -or $Uninstall -or $Migrate) {
   $game = $GameDir
   if (-not $game) { $f = @(Find-Palworld); if ($f.Count) { $game = $f[0] } }
-  if (-not (Test-PalworldDir $game)) { Exit-WithError 'Palworld folder not found (use -GameDir).' 1 }
+  if ($game -and (Test-XboxPalworld $game)) { Exit-WithError (T 'game_xbox') 5 }
+  if (-not (Test-PalworldDir $game)) { Exit-WithError ((T (Get-PalworldProblem $game)) + ' (-GameDir)') 1 }
   try {
     if ($Uninstall) { [void](Invoke-Uninstall $game ([bool]$RemoveSaves)); exit 0 }
     $dep = Get-DependencyInfo $game
     if ($Migrate) { [void](Invoke-Migration $game $dep); exit 0 }
-    if (-not ($dep.Ue4ssOk -and $dep.PalSchemaOk)) { Exit-WithError "Missing dependency: UE4SS ok=$($dep.Ue4ssOk), PalSchema ok=$($dep.PalSchemaOk). Install them first." 2 }
+    $probs = @(Get-DependencyProblems $dep)
+    foreach ($w in @($probs | Where-Object { $_.Level -eq 'warn' })) { Write-Log (Format-DependencyProblem $w) 'WARN' }
+    $errs = @($probs | Where-Object { $_.Level -eq 'error' })
+    if ($errs.Count) { Exit-WithError ((@($errs | ForEach-Object { Format-DependencyProblem $_ }) -join ' ') + ' ' + (T 'deps_stop')) 2 }
     $mc = if ($MinecraftDir) { Find-MinecraftInstall @($MinecraftDir) } else { Find-MinecraftInstall }
-    if (-not $mc) { Exit-WithError 'No installed Minecraft Java 1.21.11 found (own it and launch 1.21.11 once).' 3 }
+    if (-not $mc) { $dg = if ($MinecraftDir) { Get-McDiagnosis @($MinecraftDir) } else { Get-McDiagnosis }; Exit-WithError $dg.Message 3 }
     $r = Invoke-Install $game $PackChoice ([bool]$MapArt) $mc $dep $PayloadDir $RequiredList
     Write-Log "Done: $($r.Files) files, $($r.Missing.Count) missing Minecraft files."
     exit 0
   } catch {
-    if ($_.Exception.Message -eq 'NOT_WRITABLE') { Exit-WithError 'Game folder is not writable; run as administrator.' 4 }
+    if ($_.Exception.Message -eq 'NOT_WRITABLE') { Exit-WithError (T 'need_admin_stop') 4 }
+    if ($_.Exception.Data['ExitCode']) { Exit-WithError $_.Exception.Message ([int]$_.Exception.Data['ExitCode']) }
     Exit-WithError $_.Exception.Message 1
   }
 }
@@ -987,5 +1370,9 @@ try {
   [void][PalCraft.Win]::ShowWindow([PalCraft.Win]::GetConsoleWindow(), 0)   # hide the console behind the GUI
 } catch { }
 $script:Quiet = $true
+try {
+  Add-Type -Namespace PalCraft -Name Dpi -MemberDefinition '[DllImport("user32.dll")] public static extern bool SetProcessDPIAware();'
+  [void][PalCraft.Dpi]::SetProcessDPIAware()   # must precede the first window; avoids blurry bitmap scaling
+} catch { }
 $form = New-MainForm
 [void]$form.ShowDialog()
