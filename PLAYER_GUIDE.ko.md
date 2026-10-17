@@ -1,3 +1,5 @@
+**한국어** | [English](PLAYER_GUIDE.md)
+
 # PalCraft 플레이 가이드 — v1.1
 
 HUD & Skins의 기본 조작입니다. Islands & Animals 전용은 기본 조작을 유지합니다.
@@ -45,4 +47,4 @@ HUD & Skins의 기본 조작입니다. Islands & Animals 전용은 기본 조작
 이미 받은 아이템은 유지됩니다. 팰, 포획, 퀘스트와 기술은 기본 규칙을 따릅니다.
 Islands & Animals만 설치한 경우 크리에이티브를 사용할 수 없습니다.
 
-알려진 제한과 측정 범위는 [한국어 README](README.ko.md)를 확인하세요.
+알려진 제한과 측정 범위는 [README](README.md)를 확인하세요.

@@ -1,3 +1,5 @@
+[한국어](PLAYER_GUIDE.ko.md) | **English**
+
 # PalCraft player guide — v1.1
 
 These Minecraft controls require HUD & Skins; Islands & Animals alone keeps
